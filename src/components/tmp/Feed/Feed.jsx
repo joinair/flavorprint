@@ -63,7 +63,7 @@ Feed.propTypes = {
     externalUrl: PropTypes.string,
   })).isRequired,
   showMore: PropTypes.bool,
-  component: PropTypes.object,
+  component: PropTypes.func,
 
   onShowMore: PropTypes.func,
 };

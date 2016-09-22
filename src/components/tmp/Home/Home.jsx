@@ -5,7 +5,6 @@ import OnboardingPreface from 'components/blocks/OnboardingPreface';
 import AuthForOnboarding from 'components/banners/AuthForOnboarding';
 import { CenteredPreloader } from 'components/ui-elements/Preloader';
 import Sticky from 'components/ui-elements/Sticky';
-import Feed from './Feed';
 
 import './styles.css';
 
@@ -38,10 +37,6 @@ class Home extends Component {
             </div>
           </div>
         }
-
-        <div className="AppContainer AppContainer-mainSection">
-          <Feed />
-        </div>
 
         {!isAuthenticated &&
           <Sticky scrollHeight={getScrollHeight}>
