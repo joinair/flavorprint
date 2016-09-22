@@ -15,7 +15,7 @@ import initialLoad from 'helpers/initialLoad';
 
 import { RECIPES_NEW, RECIPES_IMPORT } from 'constants/Routes';
 
-import redirectToAuthPage from 'helpers/redirectToAuthPage';
+import redirectToAuthPage from './helpers/redirectToAuthPage';
 
 import RecipeBuilder from 'components/pages/RecipeBuilder';
 import RecipeBuilderTabs from 'components/pages/RecipeBuilder/RecipeBuilderTabs';
