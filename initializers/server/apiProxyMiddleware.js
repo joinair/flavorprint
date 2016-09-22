@@ -38,6 +38,7 @@ const apiProxyMiddleware = (req, res, next) => {
         if (error) {
           res.status(error.status).end(error.response.text);
         } else {
+          res.append('Content-Type', apiRes.type);
           res.end(apiRes.text);
         }
       });
