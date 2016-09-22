@@ -4,7 +4,7 @@ import mixpanel from 'analytics/mixpanel';
 import filter from 'lodash/filter';
 import map from 'lodash/map';
 
-import { RECIPE_FEED_VIEW } from 'constants/AnalyticsEventTypes';
+import { HOME_VIEW } from 'constants/AnalyticsEventTypes';
 import config from 'constants/Config';
 
 import {
@@ -41,7 +41,7 @@ const handler = state => {
 
 export default ({ state, action }) => {
   if (
-    action.type === RECIPE_FEED_VIEW || (
+    action.type === HOME_VIEW || (
       getOrigin(state) === 'Recipe feed' && (
         action.type === LOAD_FEED_SUCCESS ||
         action.type === LOAD_NEXT_FEED_PAGE_SUCCESS

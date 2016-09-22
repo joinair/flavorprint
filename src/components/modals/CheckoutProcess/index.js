@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 
 import omit from 'lodash/omit';
 
-import { RECIPE_FEED } from 'constants/Routes';
+import { HOME } from 'constants/Routes';
 import { SEND_ITEMS_TO_INVENTORY, SEND_ITEMS_TO_PEAPOD } from 'constants/Modals';
 
 import modal from 'actions/modal';
@@ -21,7 +21,7 @@ const back = () => (dispatch, getState) => {
   const { query, state } = getState().router;
 
   return dispatch(
-    router.replace(RECIPE_FEED, query, omit(state, 'modal'))
+    router.replace(HOME, query, omit(state, 'modal'))
   );
 };
 

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import get from 'lodash/get';
 import noop from 'lodash/noop';
 
-import { LOG_IN, RECIPE_FEED } from 'constants/Routes';
+import { LOG_IN, HOME } from 'constants/Routes';
 
 import notifications from 'actions/notifications';
 import router from 'actions/router';
@@ -19,7 +19,7 @@ const makeReset = newPassword => (dispatch, getState) => {
   const request$ = dispatch(user.resetPassword(newPassword, token));
 
   const onSuccess = () => {
-    dispatch(router.replace(isAuthenticated ? RECIPE_FEED : LOG_IN));
+    dispatch(router.replace(isAuthenticated ? HOME : LOG_IN));
   };
 
   request$.subscribe(onSuccess, noop);

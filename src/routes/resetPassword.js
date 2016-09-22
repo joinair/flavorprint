@@ -1,7 +1,7 @@
 
 import get from 'lodash/get';
 
-import { RECIPE_FEED, RESET_PASSWORD } from 'constants/Routes';
+import { HOME, RESET_PASSWORD } from 'constants/Routes';
 
 import user from 'actions/user';
 
@@ -21,7 +21,7 @@ export default store => ({
     const token = get(nextState, 'location.query.token');
 
     if (!token) {
-      replace({ pathname: RECIPE_FEED });
+      replace({ pathname: HOME });
       callback();
 
       return undefined;
@@ -36,7 +36,7 @@ export default store => ({
     };
 
     const onError = () => {
-      replace({ pathname: RECIPE_FEED });
+      replace({ pathname: HOME });
       callback();
     };
 

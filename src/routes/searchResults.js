@@ -9,7 +9,7 @@ import omitBy from 'lodash/omitBy';
 
 import Rx from 'rx';
 
-import { RECIPE_FEED, SEARCH_RESULTS } from 'constants/Routes';
+import { HOME, SEARCH_RESULTS } from 'constants/Routes';
 import {
   RECIPES_FILTER,
   APPLY_FILTERS,
@@ -92,7 +92,7 @@ export default store => ({
     const term = get(query, RECIPES_FILTER);
 
     const onDefault = () => {
-      replace({ pathname: RECIPE_FEED });
+      replace({ pathname: HOME });
       callback();
     };
 

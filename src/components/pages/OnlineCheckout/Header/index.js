@@ -10,7 +10,7 @@ import omit from 'lodash/omit';
 import itemsWithDecision from 'reducers/onlineCheckout/selectors/itemsWithDecision';
 
 import { CHECKOUT_INVENTORY, REDIRECT_PATH } from 'constants/QueryParams';
-import { RECIPE_FEED, ONLINE_CHECKOUT } from 'constants/Routes';
+import { HOME, ONLINE_CHECKOUT } from 'constants/Routes';
 
 import router from 'actions/router';
 import onlineCheckout from 'actions/onlineCheckout';
@@ -41,7 +41,7 @@ const selector = createStructuredSelector({
 
 const close = () => (dispatch, getState) => {
   const query = get(getState(), 'router.location.query');
-  const redirectPath = get(query, REDIRECT_PATH, RECIPE_FEED);
+  const redirectPath = get(query, REDIRECT_PATH, HOME);
 
   dispatch(
     router.push(
@@ -56,7 +56,7 @@ const redirectToFeed = () => (dispatch, getState) => {
 
   dispatch(
     router.push(
-      RECIPE_FEED,
+      HOME,
       omit(query, CHECKOUT_INVENTORY, REDIRECT_PATH)
     )
   );

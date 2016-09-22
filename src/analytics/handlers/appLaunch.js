@@ -8,7 +8,7 @@ import cookies from 'helpers/cookies';
 import {
   APP_LAUNCHED,
   COOKBOOK_VIEW,
-  RECIPE_FEED_VIEW,
+  HOME_VIEW,
   RECIPE_VIEW,
  } from 'constants/AnalyticsEventTypes';
 
@@ -57,7 +57,7 @@ const handler = (state, previousState) => {
   }
 
   if (origin === 'Recipe feed') {
-    analytics(state, { type: RECIPE_FEED_VIEW }, previousState);
+    analytics(state, { type: HOME_VIEW }, previousState);
   }
 
   if (origin === 'Recipe view') {

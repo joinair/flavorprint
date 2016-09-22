@@ -5,7 +5,7 @@ import identity from 'lodash/identity';
 import isEmpty from 'lodash/isEmpty';
 import Rx from 'rx';
 
-import { ONLINE_CHECKOUT, RECIPE_FEED } from 'constants/Routes';
+import { ONLINE_CHECKOUT, HOME } from 'constants/Routes';
 import { CHECKOUT_INVENTORY } from 'constants/QueryParams';
 
 import onlineCheckout from 'actions/onlineCheckout';
@@ -46,7 +46,7 @@ export default store => ({
     } = store.getState();
 
     if (!JWTHeader || isFetched && isEmpty(entries)) {
-      replace({ pathname: RECIPE_FEED });
+      replace({ pathname: HOME });
       callback();
 
       return undefined;
@@ -61,7 +61,7 @@ export default store => ({
 
     const onSuccess = ({ inventories }) => {
       if (isEmpty(inventories)) {
-        replace({ pathname: RECIPE_FEED });
+        replace({ pathname: HOME });
       } else {
         redirectToInventory(inventories, nextState.location, replace);
       }
@@ -70,7 +70,7 @@ export default store => ({
     };
 
     const onError = () => {
-      replace({ pathname: RECIPE_FEED });
+      replace({ pathname: HOME });
       callback();
     };
 

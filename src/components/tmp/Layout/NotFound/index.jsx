@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import Helmet from 'react-helmet';
 
-import { RECIPE_FEED } from 'constants/Routes';
+import { HOME } from 'constants/Routes';
 
 import './styles.css';
 
@@ -11,7 +11,7 @@ import BodyClassName from 'components/ui-elements/BodyClassName';
 
 const NotFound = () => {
   const homepage = (
-    <Link to={{ pathname: RECIPE_FEED }}>
+    <Link to={{ pathname: HOME }}>
       homepage
     </Link>
   );

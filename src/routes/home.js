@@ -5,7 +5,7 @@ import Rx from 'rx';
 import size from 'lodash/size';
 
 import { STEPS } from 'constants/Onboarding';
-import { RECIPE_FEED } from 'constants/Routes';
+import { HOME } from 'constants/Routes';
 import { ONBOARDING, ONBOARDING_CONTINUE } from 'constants/QueryParams';
 
 import collections from 'actions/collections';
@@ -19,7 +19,7 @@ import { platformPickLazy } from 'helpers/platformPick';
 import Home from 'components/tmp/Home';
 
 export default store => ({
-  path: RECIPE_FEED,
+  path: HOME,
   component: Home,
   analyticsTag: 'Recipe feed',
 

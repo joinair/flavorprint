@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 import includes from 'lodash/includes';
 
-import { COOKBOOK, LOG_IN, RECIPE_FEED, SIGN_UP } from 'constants/Routes';
+import { COOKBOOK, LOG_IN, HOME, SIGN_UP } from 'constants/Routes';
 
 import iconLogo from 'assets/images/icons/whisk-logo.svg';
 import iconNav from 'assets/images/icons/icon-mobile-nav.svg';
@@ -174,7 +174,7 @@ const AppHeader = ({
   onSidebarOpen,
   onSignUpButtonClick,
 }) => {
-  const isTransparent = includes([LOG_IN, RECIPE_FEED, SIGN_UP], routerPath);
+  const isTransparent = includes([LOG_IN, HOME, SIGN_UP], routerPath);
   const isFilled = isAuthenticated || !isTransparent || sticky;
 
   return (

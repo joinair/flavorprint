@@ -7,7 +7,7 @@ import omit from 'lodash/omit';
 import { setDate, getRemainingSteps } from 'helpers/onboarding';
 
 import { ONBOARDING } from 'constants/Modals';
-import { RECIPE_FEED } from 'constants/Routes';
+import { HOME } from 'constants/Routes';
 import { AUTHENTICATION, WELCOME } from 'constants/Onboarding';
 
 import modal from './modal';
@@ -53,7 +53,7 @@ export const finish = () => (dispatch, getState) => {
 
   dispatch(
     router.replace(
-      RECIPE_FEED,
+      HOME,
       query,
       assign({ forceReload: ONBOARDING }, omit(state, 'modal'))
     )
