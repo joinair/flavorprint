@@ -7,7 +7,7 @@ import omitBy from 'lodash/omitBy';
 import { SEARCH_RESULTS } from 'constants/Routes';
 import { APPLY_FILTERS, RECIPES_FILTER } from 'constants/QueryParams';
 
-import router from '../router';
+import router from 'actions/router';
 
 import { convertFiltersToQuery } from 'helpers/search';
 
