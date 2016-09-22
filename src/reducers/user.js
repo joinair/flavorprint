@@ -34,10 +34,6 @@ import {
 } from 'actions/oauth';
 
 import {
-  LOAD_COOKBOOK_USER_SUCCESS,
-} from 'actions/cookbook';
-
-import {
   COMPLETE_STEP,
 } from 'actions/onboarding';
 
@@ -92,15 +88,6 @@ const handlers = {
 
   [LOG_OUT]: () => initialState,
 
-  [LOAD_COOKBOOK_USER_SUCCESS]: (state, action) =>
-    action.meta.currentUserRefresh
-      ? assign(
-          {},
-          state,
-          { profile: assign({}, state.profile, action.payload) }
-        )
-      : state,
-
   [COMPLETE_STEP]: (state, action) => {
     const { onboarding = [] } = state.profile;
     const { step } = action.payload;
@@ -133,25 +120,3 @@ export default (state, action) =>
       { JWTHeader: get(action, 'meta.JWTHeader') }
     )
     : userReducer(state, action);
-
-// FIXME: FOLLOWS
-// import updeep from 'updeep';
-// import {
-//   FOLLOW_USER_REQUEST,
-//   FOLLOW_USER_FAILURE,
-
-//   UNFOLLOW_USER_REQUEST,
-//   UNFOLLOW_USER_FAILURE,
-// } from 'actions/follows';
-
-// const updateFollowing = follow => state =>
-//   updeep({
-//     profile: {
-//       numFollowing: value => (value | 0) + (follow ? 1 : -1),
-//     },
-//   }, state);
-
-// [FOLLOW_USER_REQUEST]: updateFollowing(true),
-// [FOLLOW_USER_FAILURE]: updateFollowing(false),
-// [UNFOLLOW_USER_REQUEST]: updateFollowing(false),
-// [UNFOLLOW_USER_FAILURE]: updateFollowing(true),

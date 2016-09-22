@@ -22,10 +22,9 @@ class Layout extends Component {
       children,
       isNotFound,
       isSidebarMenuOpened,
-      isShoppingListOpened,
     } = this.props;
 
-    const anySidebarsOpened = isSidebarMenuOpened || isShoppingListOpened;
+    const anySidebarsOpened = isSidebarMenuOpened;
 
     return (
       <BodyClassName className="Body">
@@ -62,7 +61,6 @@ Layout.propTypes = {
   children: PropTypes.any,
   isNotFound: PropTypes.bool.isRequired,
   isSidebarMenuOpened: PropTypes.bool.isRequired,
-  isShoppingListOpened: PropTypes.bool.isRequired,
 };
 
 export default Layout;

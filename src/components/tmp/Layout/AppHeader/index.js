@@ -8,7 +8,6 @@ import { AUTHENTICATION, SEARCH } from 'constants/Modals';
 
 import modal from 'actions/modal';
 import sidebarMenu from 'actions/sidebarMenu';
-import shoppingListSidebar from 'actions/shoppingListSidebar';
 
 import { logOut } from 'actions/user';
 
@@ -28,7 +27,6 @@ const actions = {
   onLogOut: logOut,
   onLogInButtonClick: () => modal.open(AUTHENTICATION, { selectedTab: 'Log in' }),
   onSearch: () => modal.open(SEARCH),
-  onShoppingListOpen: shoppingListSidebar.open,
   onSidebarOpen: sidebarMenu.open,
   onSignUpButtonClick: () => modal.open(AUTHENTICATION, { selectedTab: 'Sign up' }),
 };

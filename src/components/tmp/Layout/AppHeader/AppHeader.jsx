@@ -16,7 +16,6 @@ import {
 import iconLogo from 'assets/images/icons/whisk-logo.svg';
 import iconNav from 'assets/images/icons/icon-mobile-nav.svg';
 import iconSearch from 'assets/images/icons/icon-search.svg';
-import iconCart from 'assets/images/icons/icon-mobile-cart.svg';
 import './styles.css';
 
 import RecipeSearchField from './RecipeSearchField';
@@ -64,7 +63,6 @@ const Menu = ({
   onLogInButtonClick,
   onLogOut,
   onSearch,
-  onShoppingListOpen,
   onSidebarOpen,
   onSignUpButtonClick,
 }) => {
@@ -148,15 +146,6 @@ const Menu = ({
       <div className="AppHeader-item AppHeader-item--desktop AppHeader-item--flex" />
 
       {menu}
-
-      <div className="AppHeader-item AppHeader-item--desktop">
-        <div onClick={onShoppingListOpen} className="AppHeader-link AppHeader-link--button">
-          <svg className="AppHeader-link-icon AppHeader-link-icon--cart">
-            <use xlinkHref={iconCart} />
-          </svg>
-          <span className="AppHeader-link-text">Shopping list</span>
-        </div>
-      </div>
     </div>
   );
 };
@@ -176,7 +165,6 @@ const AppHeader = ({
   onLogInButtonClick,
   onLogOut,
   onSearch,
-  onShoppingListOpen,
   onSidebarOpen,
   onSignUpButtonClick,
 }) => {
@@ -198,7 +186,6 @@ const AppHeader = ({
             onLogInButtonClick={onLogInButtonClick}
             onLogOut={onLogOut}
             onSearch={onSearch}
-            onShoppingListOpen={onShoppingListOpen}
             onSidebarOpen={onSidebarOpen}
             onSignUpButtonClick={onSignUpButtonClick}
           />
@@ -226,7 +213,6 @@ Menu.propTypes = {
   onLogInButtonClick: PropTypes.func.isRequired,
   onLogOut: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  onShoppingListOpen: PropTypes.func.isRequired,
   onSidebarOpen: PropTypes.func.isRequired,
   onSignUpButtonClick: PropTypes.func.isRequired,
 };
@@ -245,7 +231,6 @@ AppHeader.propTypes = {
   onLogInButtonClick: PropTypes.func.isRequired,
   onLogOut: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  onShoppingListOpen: PropTypes.func.isRequired,
   onSidebarOpen: PropTypes.func.isRequired,
   onSignUpButtonClick: PropTypes.func.isRequired,
 };

@@ -20,9 +20,6 @@ import recipePrint from './recipePrint';
 import recipeSearch from './recipeSearch';
 import recipeSelection from './recipeSelection';
 import recipeView from './recipeView';
-import shoppingListActivation from './shoppingListActivation';
-import shoppingListItemsAddition from './shoppingListItemsAddition';
-import shoppingListView from './shoppingListView';
 import urlSharing from './urlSharing';
 import userAuthentication from './userAuthentication';
 import userDeletion from './userDeletion';
@@ -47,7 +44,6 @@ export default actions$ => {
     .tap(recipeSearch)
     .tap(recipeSelection)
     .tap(recipeView)
-    .tap(shoppingListActivation)
     .tap(urlSharing)
     .tap(userAuthentication)
     .tap(userDeletion)
@@ -61,7 +57,4 @@ export default actions$ => {
       return Rx.Observable.empty();
     })
     .subscribe(noop, noop);
-
-  shoppingListItemsAddition(actions$);
-  shoppingListView(actions$);
 };
