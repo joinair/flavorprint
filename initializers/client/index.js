@@ -12,19 +12,15 @@ import pick from 'lodash/pick';
 
 import createStore from 'store';
 
-import { APP_LAUNCHED } from 'constants/AnalyticsEventTypes';
 import config from 'constants/Config';
-import { JWT_HEADER, SHOPPING_LIST_VIEW, PEAPOD_CONFIG } from 'constants/CookiesKeys';
-import { SHOPPING_LIST_OPERATIONS } from 'constants/LocalStorageKeys';
+import { JWT_HEADER } from 'constants/CookiesKeys';
 
 import notFound from 'actions/notFound';
 import { routerDidChange } from 'actions/router';
-import shoppingList from 'actions/shoppingList';
 
 import createRoutes from 'routes';
 
 import prepareData from 'helpers/prepareData';
-import storage from 'helpers/storage';
 
 import './styles.css';
 
@@ -38,8 +34,6 @@ if (process.env.NODE_ENV === 'production') {
 
 const cookieSelector = state => ({
   [JWT_HEADER]: get(state, 'user.JWTHeader'),
-  [SHOPPING_LIST_VIEW]: get(state, 'shoppingList.sortBy'),
-  [PEAPOD_CONFIG]: state.peapod.config,
 });
 
 const history = browserHistory;
@@ -94,21 +88,7 @@ history.listen(location => {
         <Provider store={store}>
           <RouterContext {...state} />
         </Provider>,
-
-        document.getElementById('content'),
-
-        () => {
-          if (window.__INITIAL_STATE__) {
-            delete window.__INITIAL_STATE__;
-
-            const shoppingListOperations =
-              JSON.parse(storage.get(SHOPPING_LIST_OPERATIONS) || null) || [];
-
-            if (shoppingListOperations.length) {
-              store.dispatch(shoppingList.restoreOperations(shoppingListOperations));
-            }
-          }
-        }
+        document.getElementById('content')
       );
     }
   });
@@ -122,22 +102,4 @@ if (global.__DEVTOOLS__ && process.env.NODE_ENV === 'development' &&
     <Provider store={store}><DevTools /></Provider>,
     document.getElementById('devtools')
   );
-}
-
-if (process.env.NODE_ENV === 'production') {
-  const mixpanel = require('analytics/mixpanel');
-
-  mixpanel.init(config.mixpanel.token, {
-    loaded: () => {
-      const state = store.getState();
-
-      if (state.user.uid === mixpanel.getDistinctId()) {
-        if (state.user.isAuthenticated) {
-          mixpanel.identify(state.user.uid);
-        }
-      }
-
-      store.dispatch({ type: APP_LAUNCHED });
-    },
-  });
 }
