@@ -1,0 +1,14 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component AuthenticationModal {
+  background-color: #fff;
+  min-height: 100%;
+
+  @media (--s) {
+    width: 400px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,6 @@
+
+@component PrintRecipeBlock {
+  @descendent title {
+    margin-bottom: 15px;
+  }
+}

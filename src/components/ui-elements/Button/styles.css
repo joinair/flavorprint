@@ -1,0 +1,277 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@define-mixin icon $width, $padding {
+  &.Button--iconOnly {
+    padding: $padding;
+  }
+
+  &.Button--iconBefore {
+    padding-left: $(width);
+
+    .Button-iconContainer {
+      position: absolute;
+      left: 0;
+      width: $(width);
+    }
+  }
+
+  &.Button--iconAfter {
+    padding-right: $(width);
+
+    .Button-iconContainer {
+      position: absolute;
+      right: 0;
+      width: $(width);
+    }
+  }
+}
+
+@define-mixin size-small {
+  font-size: 14px;
+  line-height: 14px;
+  padding: 3px 8px;
+
+  @mixin icon 24px, 3px;
+}
+
+@define-mixin size-normal {
+  font-size: 15px;
+  line-height: 15px;
+  padding: 8.5px 13px;
+
+  @mixin icon 35px, 8.5px;
+}
+
+@define-mixin size-large {
+  font-size: 16px;
+  line-height: 16px;
+  padding: 14px 18px;
+
+  @mixin icon 36px, 14px;
+}
+
+@define-mixin size-xLarge {
+  font-size: 20px;
+  line-height: 20px;
+  padding: 14px 18px;
+
+  @mixin icon 44px, 14px;
+}
+
+@component Button {
+  background: transparent;
+  border-color: currentcolor;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+
+  @modifier small {
+    @mixin size-small;
+  }
+
+  @modifier normal {
+    @mixin size-normal;
+  }
+
+  @modifier large {
+    @mixin size-large;
+  }
+
+  @modifier xLarge {
+    @mixin size-xLarge;
+  }
+
+  @modifier fluid {
+    width: 100%;
+  }
+
+  @modifier primary {
+    background-color: #3aba5a;
+    border-color: #3aba5a;
+    color: #fff;
+
+    &:hover {
+      background-color: #51d673;
+      border-color: #51d673;
+    }
+
+    &:active {
+      background-color: #08923d;
+      border-color: #08923d;
+    }
+
+    .Button-icon {
+      fill: #fff;
+    }
+
+    &.Button--outline {
+      background-color: transparent;
+      border-color: #3aba5a;
+      color: #3aba5a;
+
+      &:hover {
+        border-color: #51d673;
+        color: #51d673;
+
+        .Button-icon {
+          fill: #51d673;
+        }
+      }
+
+      &:active {
+        border-color: #08923d;
+        color: #08923d;
+
+        .Button-icon {
+          fill: #08923d;
+        }
+      }
+
+      .Button-icon {
+        fill: #3aba5a;
+      }
+    }
+  }
+
+  @modifier danger {
+    background-color: #f74c4c;
+    border-color: #f74c4c;
+    color: #fff;
+
+    &:hover {
+      background-color: #ff7777;
+      border-color: #ff7777;
+    }
+
+    &:active {
+      background-color: #d64040;
+      border-color: #d64040;
+    }
+
+    .Button-icon {
+      fill: #fff;
+    }
+
+    &.Button--outline {
+      background-color: transparent;
+      border-color: #f74c4c;
+      color: #f74c4c;
+
+      &:hover {
+        border-color: #ff7777;
+        color: #ff7777;
+
+        .Button-icon {
+          fill: #ff7777;
+        }
+      }
+
+      &:active {
+        border-color: #d64040;
+        color: #d64040;
+
+        .Button-icon {
+          fill: #d64040;
+        }
+      }
+
+      .Button-icon {
+        fill: #f74c4c;
+      }
+    }
+  }
+
+  @modifier grey {
+    background-color: #fff;
+    border-color: #b3b3b3;
+    color: #454545;
+
+    &:hover {
+      border-color: #cfcfcf;
+      color: #b3b3b3;
+
+      .Button-icon {
+        fill: #b3b3b3;
+      }
+    }
+
+    &:active {
+      border-color: #454545;
+      color: #000;
+
+      .Button-icon {
+        fill: #000;
+      }
+    }
+
+    &.Button--outline {
+      background-color: transparent;
+      border-color: #b3b3b3;
+      color: #454545;
+
+      &:hover {
+        border-color: #cfcfcf;
+        color: #b3b3b3;
+      }
+
+      &:active {
+        border-color: #454545;
+        color: #000;
+      }
+    }
+
+    .Button-icon {
+      fill: #454545;
+    }
+  }
+
+  @modifier transparent {
+    background-color: transparent;
+    border-color: transparent;
+    color: inherit;
+  }
+
+  @when disabled {
+    background-color: #cfcfcf!important;
+    border-color: #cfcfcf!important;
+    color: #fff!important;
+    cursor: default;
+  }
+
+  @descendent iconContainer {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    top: 0;
+  }
+
+  @each $breakpoint in xxxs, xxs, xs, s, m, l, xl, xxl, xxxl, xxxxl {
+    @media (--$(breakpoint)) {
+      @each $size in small, normal, large, xLarge {
+        &.$(breakpoint)-$(size) {
+          @mixin size-$(size);
+        }
+      }
+    }
+  }
+}

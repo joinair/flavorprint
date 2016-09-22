@@ -1,0 +1,33 @@
+
+@import "imports/media-queries.css";
+
+@component RecipePageDirections {
+  border-top: 1px solid #e0e0e0;
+  padding-top: 30px;
+  text-align: center;
+
+  @media (--m) {
+    text-align: left;
+  }
+
+  @descendent title {
+    text-align: center;
+    color: #373a3d;
+
+    @media (--m) {
+      text-align: left;
+    }
+  }
+
+  @descendent link {
+    display: none;
+
+    @media (--m) {
+      display: block;
+    }
+  }
+
+  @descendent button {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,59 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component SearchModal {
+  background-color: #fff;
+  min-height: 100%;
+
+  @media (--s) {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 400px;
+  }
+
+  @descendent form {
+    padding: 20px;
+  }
+
+  @descendent inputContainer {
+    position: relative;
+    margin-bottom: 25px;
+  }
+
+  @descendent input {
+    padding: 8.5px 35px 7.5px 17px;
+    height: 36px;
+    font-size: 15px;
+    line-height: 20px;
+
+    color: var(--color-prunes);
+
+    border-radius: 25px;
+    border: 1px solid #a8a8a8;
+
+    outline: none;
+    width: 100%;
+
+    &:focus {
+      border: 2px solid var(--color-broccoli);
+      padding: 7.5px 34px 6.5px 16px;
+    }
+  }
+
+  @descendent iconContainer {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    padding: 10px 16px;
+  }
+
+  @descendent icon {
+    height: 16px;
+    width: 16px;
+
+    fill: var(--color-prunes);
+    opacity: .7;
+  }
+}

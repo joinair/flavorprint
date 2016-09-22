@@ -1,0 +1,189 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component SearchResults {
+  @descendent layout {
+    display: flex;
+    flex-direction: row;
+
+    @descendent preloader {
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      max-height: 100vh;
+
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      @media (--m) {
+        position: relative;
+        height: 100vh;
+      }
+    }
+
+    @descendent spinner {
+      margin-bottom: 1rem;
+    }
+  }
+
+  @descendent sidebar {
+    padding: var(--grid-offset);
+    width: 250px;
+    flex: 0 0 310px;
+    background: white;
+    padding: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+
+    display: none;
+    @media (--m) { display: block; }
+
+    @descendent inner {
+      width: 310px;
+    }
+
+    @descendent header {
+      margin-top: 40px;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      @descendent text {
+        display: inline-block;
+        font-size: 24px;
+        flex: 1;
+      }
+    }
+  }
+
+  @descendent container {
+    flex: 1;
+    padding: 0;
+    @media (--m) {
+      padding: 0px 30px;
+      .AppContainer {
+        width: auto;
+      }
+    }
+  }
+
+  @descendent containerInner {
+    margin: 0 auto;
+    /*
+      we need to set width for this block
+    */
+    @media (--m)    { width: 570px; }
+    @media (--l)    { width: 870px; }
+    @media (--xl)   { width: 930px; }
+    @media (--xxl)   { width: 1250px; }
+    @media (--xxxl)   { width: 1250px; }
+    @media (--xxxxl)   { width: 1570px; }
+  }
+
+  @descendent widget {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @descendent text {
+      display: block;
+
+      @media (--s) { display: none; }
+    }
+  }
+
+  @descendent label {
+    color: #a8a8a8;
+
+    @modifier mobile {
+      background-color: #fff;
+      font-size: 16px;
+      padding: 18px;
+      margin-bottom: 40px;
+
+      @media (--s) {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        margin-bottom: 0;
+      }
+
+      @media (--m) {
+        display: none;
+      }
+    }
+
+    @descendent searchField {
+      flex: 1;
+      @media (--s) {
+        padding-right: 10px;
+        input {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @modifier desktop {
+      font-size: 24px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      display: none;
+
+      @media (--s) {
+        display: block;
+      }
+    }
+  }
+
+  @descendent placeholderContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+
+    @media (--m) {
+      position: relative;
+      top: 0;
+      height: 90vh;
+      padding: 0;
+    }
+  }
+
+  @descendent placeholder {
+    color: #a8a8a8;
+
+    @modifier mobile {
+      background-color: #fff;
+      font-size: 20px;
+      line-height: 24px;
+      text-align: center;
+      padding: 47px 0px;
+
+      @media (--s) {
+        display: none;
+      }
+    }
+
+    @modifier desktop {
+      font-size: 24px;
+      line-height: 30px;
+      max-width: 600px;
+      text-align: center;
+    }
+  }
+
+  @descendent searchField {
+    width: 100%;
+    margin-bottom: 18px;
+  }
+}

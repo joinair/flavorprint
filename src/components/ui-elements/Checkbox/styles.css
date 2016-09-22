@@ -1,0 +1,92 @@
+@import "imports/variables.css";
+
+:root {
+  --Checkbox-uncheck-border-color: #979797;
+}
+
+@component Checkbox {
+  position: relative;
+
+  @descendent icon {
+    position: absolute;
+    top: 2px;
+    left: 0;
+
+    width: 16px;
+    height: 16px;
+
+    @descendent svg {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      width: 16px;
+      height: 16px;
+      opacity: 0;
+      z-index: 1;
+      fill: var(--color-broccoli);
+      /* FIXME: animation bug on page reload */
+      /* transition: opacity .15s ease-in; */
+    }
+  }
+
+  @descendent input {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    outline: 0;
+    width: 16px;
+    height: 16px;
+    z-index: -1;
+  }
+
+  @descendent label {
+    display: block;
+    position: relative;
+    padding: 0 0 0 24px;
+    line-height: 20px;
+    vertical-align: baseline;
+    cursor: pointer;
+    outline: 0;
+    z-index: 2;
+
+    &:hover {
+      ~ .Checkbox-icon {
+        border-color: var(--color-broccoli-hover);
+      }
+    }
+  }
+
+  @modifier disabled {
+    pointer-events: none;
+
+    .Checkbox-icon {
+      opacity: .5;
+    }
+    .Checkbox-icon-svg {
+      opacity: 1;
+    }
+  }
+
+  .Checkbox-input[type="checkbox"] {
+    ~ .Checkbox-icon {
+      border: 2px solid var(--Checkbox-uncheck-border-color);
+      border-radius: 2px;
+    }
+
+    &:checked ~ .Checkbox-icon .Checkbox-icon-svg--typeCheckbox {
+      opacity: 1;
+    }
+  }
+
+  .Checkbox-input[type="radio"] {
+    ~ .Checkbox-icon {
+      border: 2px solid var(--Checkbox-uncheck-border-color);
+      border-radius: 50%;
+    }
+    &:checked ~ .Checkbox-icon .Checkbox-icon-svg--typeRadio {
+      opacity: 1;
+    }
+  }
+}

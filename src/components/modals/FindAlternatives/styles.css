@@ -1,0 +1,26 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component FindAlternatives {
+  background-color: var(--color-white);
+  min-height: 100%;
+  padding-bottom: 70px;
+
+  @media (orientation: landscape) {
+    padding-bottom: 45px
+  }
+
+  @descendent preloader {
+    margin: 50px 0;
+  }
+
+  @media (--s) {
+    border-radius: 2px;
+    margin: var(--grid-offset) 0;
+    max-width: 860px;
+    overflow: hidden;
+    padding-bottom: 0;
+    width: calc(100vw - var(--grid-offset) * 2);
+  }
+}

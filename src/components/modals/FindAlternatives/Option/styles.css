@@ -1,0 +1,81 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component FindAlternativesOption {
+  display: flex;
+  flex: 1 1 100%;
+  padding-bottom: 18px;
+  padding-left: 18px;
+
+  @media (--xxxs) {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+  @media (--xs) {
+    flex-basis: 33.3%;
+    max-width: 33.3%;
+  }
+  @media (min-width: 860px) {
+    flex-basis: 25%;
+    max-width: 25%;
+  }
+
+  @when selected {
+    .FindAlternativesOption-inner {
+      box-shadow: 0 0 0 2px var(--color-broccoli);
+    }
+  }
+
+  @descendent inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 8px 13px 13px;
+    cursor: pointer;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px #c9c9c9;
+
+    &:hover {
+      box-shadow: 0 0 0 2px var(--color-broccoli-hover);
+    }
+
+    &:active {
+      box-shadow: 0 0 0 2px var(--color-broccoli-active);
+    }
+  }
+  @descendent imageContainer {
+    margin-bottom: 8px;
+  }
+  @descendent image {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+  }
+  @descendent name {
+    position: relative;
+    overflow: hidden;
+    height: 57px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--color-prunes);
+    font-size: 16px;
+    line-height: 19px;
+  }
+  @descendent details {
+    flex: 1 0 auto;
+    text-decoration: underline;
+    font-size: 13px;
+    line-height: 19px;
+  }
+  @descendent price {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  @descendent footer {
+    display: flex;
+    align-items: baseline;
+    justify-content: flex-end;
+  }
+}

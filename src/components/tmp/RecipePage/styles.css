@@ -1,0 +1,560 @@
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component RecipePage {
+  @descendent header {
+    padding: 40px 0;
+    background-color: #fff;
+
+    @descendent layout {
+      @media (--s) {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+  @descendent container {
+    max-width: 1240px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: var(--grid-offset);
+    padding-left: var(--grid-offset);
+  }
+  @descendent image {
+    margin-bottom: 20px;
+
+    @media (--s) {
+      max-width: 50%;
+      margin-right: 30px;
+      margin-bottom: 0;
+    }
+
+    @component LazyImage {
+      @descendent container {
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      @descendent image {
+        overflow: hidden;
+        max-width: 100%;
+        margin: 0 auto;
+        border-radius: 4px;
+
+        @media (--s) {
+          margin: 0;
+        }
+      }
+    }
+  }
+  @descendent fallback {
+    margin-bottom: 20px;
+
+    @media (--s) {
+      margin-right: 30px;
+      margin-bottom: 0;
+    }
+  }
+  @descendent fallbackContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 270px;
+    height: 270px;
+    margin: 0 auto;
+    border-radius: 4px;
+    background-color: #f3f3f3;
+  }
+  @descendent fallbackIcon {
+    width: 121px;
+    height: 101px;
+    fill: #dadada;
+  }
+  @descendent description {
+    flex: 1;
+  }
+  @descendent title {
+    margin-bottom: 10px;
+    text-align: center;
+
+    @media (--s) {
+      margin-bottom: 4px;
+      text-align: left;
+    }
+  }
+  @descendent affiliation {
+    margin-bottom: 12px;
+    text-align: center;
+
+    @media (--s) {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    @descendent link {
+      color: var(--color-paprika);
+      font-size: 15px;
+
+      &:hover {
+        color: var(--color-paprika-hover);
+      }
+    }
+  }
+  @descendent share {
+    display: none;
+
+    @media (--m) {
+      display: block;
+      margin: 40px 0;
+    }
+
+    .SharingIcons-item:first-child {
+      margin-left: 0;
+    }
+
+    @modifier small {
+      display: none;
+      flex-shrink: 0;
+      align-items: center;
+      margin: 0;
+
+      @media (--m) {
+        display: inline-flex;
+      }
+
+      .RecipePage-share-text {
+        margin: 0 10px 0 0;
+      }
+    }
+
+    @descendent text {
+      margin-bottom: 10px;
+      color: #a0abae;
+      font-size: 15px;
+    }
+  }
+  @descendent meta {
+    display: none;
+
+    @media (--m) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 30px;
+    }
+  }
+  @descendent print {
+    margin-right: 30px;
+  }
+  @descendent quote {
+    margin-bottom: 22px;
+
+    @media (--s) {
+      display: flex;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+
+    @descendent imageContainer {
+      width: 86px;
+      height: 86px;
+      margin: 0 auto 7px;
+
+      @media (--s) {
+        margin-right: 20px;
+        margin-bottom: 0;
+      }
+    }
+    @descendent image {
+      overflow: hidden;
+      border-radius: 50%;
+    }
+    @descendent text {
+      text-align: center;
+      color: #373a3d;
+      font-size: 15px;
+
+      @media (--s) {
+        flex: 1;
+        text-align: left;
+      }
+
+      &:before,
+      &:after {
+        content: '"';
+      }
+    }
+  }
+  @descendent stats {
+    margin-bottom: 27px;
+    text-align: center;
+    white-space: nowrap;
+
+    @media (--s) {
+      margin-bottom: 40px;
+      text-align: left;
+    }
+  }
+  @descendent stat {
+    display: inline-block;
+    margin-left: 30px;
+    text-align: center;
+
+    @media (--s) {
+      text-align: left;
+    }
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+
+    @descendent type {
+      color: #a0aBae;
+      font-size: 14px;
+
+      @media (--s) {
+        font-size: 15px;
+      }
+    }
+    @descendent value {
+      color: #373a3d;
+      font-size: 18px;
+
+      @media (--s) {
+        font-size: 20px;
+      }
+    }
+  }
+  @descendent actions {
+    display: flex;
+    justify-content: center;
+    margin-left: -22px;
+
+    @media (--s) {
+      justify-content: flex-start;
+    }
+
+    @modifier showS {
+      display: flex;
+      justify-content: center;
+
+      @media (--m) {
+        display: none;
+      }
+    }
+  }
+  @descendent actionGroup {
+    position: relative;
+
+    .RecipePage-action {
+      margin-right: 0;
+    }
+
+    @modifier mobile {
+      display: block;
+
+      @media (--m) {
+        display: none;
+      }
+    }
+  }
+  @descendent action {
+    margin-left: 22px;
+
+    @descendent wrapper {
+      position: relative;
+    }
+    @descendent dropdown {
+      position: absolute;
+      z-index: 90;
+      top: 44px;
+      right: 50%;
+      display: none;
+      visibility: visible;
+      visibility: visible;
+      align-items: center;
+      justify-content: center;
+      width: 226px;
+      height: 70px;
+      margin-top: 0;
+      margin-right: -113px;
+      transform-origin: center left;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 3px;
+      background-color: #fff;
+      box-shadow: 0px 8px 15px 0px rgba(111,111,111,0.33);
+
+      @media (--m) {
+        top: 50%;
+        right: -234px;
+        margin-top: -35px;
+        margin-right: 0;
+      }
+
+      &:before {
+        position: absolute;
+        z-index: 2;
+        top: -5px;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        content: '';
+        transform: rotate(45deg);
+        border-top: 1px solid rgba(0,0,0,0.12);
+        border-left: 1px solid rgba(0,0,0,0.12);
+        background: #FFF;
+        box-shadow: none;
+
+        @media (--m) {
+          top: 30px;
+          left: -5px;
+          border-top: none;
+          border-bottom: 1px solid rgba(0,0,0,0.12);
+          border-left: 1px solid rgba(0,0,0,0.12);
+        }
+      }
+
+      @when open {
+        display: flex;
+        visibility: visible;
+        animation-name: Share-dropdown-ShowAnimationMobile;
+        animation-duration: .3s;
+        animation-timing-function: ease;
+        animation-iteration-count: 1;
+
+        @media (--m) {
+          animation-name: Share-dropdown-ShowAnimationDesktop;
+        }
+
+        backface-visibility: hidden;
+        animation-fill-mode: both
+      }
+
+      backface-visibility: hidden
+    }
+  }
+  @descendent content {
+    padding: 22px 0;
+
+    @media (--s) {
+      padding: 40px 0;
+    }
+
+    @descendent layout {
+      @media (--m) {
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+  @descendent main {
+    margin-bottom: 30px;
+
+    @media (--m) {
+      display: flex;
+      flex: 1 1 auto;
+      margin-bottom: 0;
+    }
+
+    @modifier column {
+      flex-direction: column;
+
+      @media (--m) {
+        padding-right: 50px;
+      }
+
+      .RecipePage-block {
+        flex: 0 0 auto;
+        padding-right: 0;
+      }
+    }
+  }
+  @descendent aside {
+    @media (--m) {
+      flex-shrink: 0;
+    }
+  }
+  @descendent block {
+    @media (--m) {
+      flex: 1 1 50%;
+      padding-right: 50px;
+    }
+
+    @modifier ingredients {
+      @media (--m) {
+        flex: 1 1 40%;
+      }
+    }
+    @modifier directions {
+      @media (--m) {
+        flex: 1 1 60%;
+      }
+    }
+    @modifier alternatives {
+      padding-right: 0;
+
+      @media (--m) {
+        width: 285px;
+        padding-top: 5px;
+
+        .RecipePage-block-title {
+          margin-left: 13px;
+        }
+      }
+    }
+
+    @descendent title {
+      text-align: center;
+      color: #373a3d;
+
+      @media (--m) {
+        text-align: left;
+      }
+    }
+  }
+  @descendent ingredients {
+    margin-top: 30px;
+
+    @descendent button {
+      display: inline-flex;
+      align-items: center;
+      margin: 0 auto;
+      padding: 7px 13px;
+      cursor: pointer;
+      color: #fff;
+      border-radius: 4px;
+      background-color: var(--color-broccoli);
+      font-size: 15px;
+
+      @descendent icon {
+        width: 11px;
+        height: 11px;
+        margin-right: 8px;
+        fill: #fff;
+      }
+    }
+  }
+  @descendent ingredientLists {
+    @media (--s) {
+      display: flex;
+      flex-direction: row;
+    }
+  }
+  @descendent ingredientList {
+    flex: 1;
+    margin-right: 50px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @descendent ingredient {
+    display: flex;
+    margin-bottom: 15px;
+
+    @descendent selector {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      width: 31px;
+      height: 31px;
+      margin-right: 12px;
+      cursor: pointer;
+      border: 1px solid #d9d9d9;
+      border-radius: 50%;
+
+      @when added {
+        border-color: var(--color-broccoli);
+        background-color: var(--color-broccoli);
+
+        .RecipePage-ingredient-selector-icon {
+          width: 12px;
+          height: 8px;
+          fill: #fff;
+        }
+      }
+
+      @descendent icon {
+        width: 11px;
+        height: 11px;
+        fill: var(--color-broccoli);
+      }
+    }
+    @descendent text {
+      flex: 1;
+      margin: 4px 0;
+      color: #4c4c4c;
+      font-size: 15px;
+    }
+  }
+  @descendent instructions {
+    margin-top: 33px;
+  }
+  @descendent instruction {
+    margin-bottom: 13px;
+    color: #4c4c4c;
+    font-size: 15px;
+  }
+  @descendent alternativeRecipes {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 20px auto;
+
+    @media (--s) {
+      width: 610px;
+    }
+    @media (--m) {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    flex-wrap: wrap
+  }
+  @descendent buttonItem {
+    margin-bottom: 25px;
+    text-align: center;
+
+    @media (--s) {
+      display: inline-block;
+      margin-right: 30px;
+      text-align: left;
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+
+    @modifier hiddenS {
+      display: none;
+
+      @media (--m) {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+@keyframes Share-dropdown-ShowAnimationMobile {
+  from {
+    transform: translate3d(0, 5%, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes Share-dropdown-ShowAnimationDesktop {
+  from {
+    transform: translate3d(5%, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}

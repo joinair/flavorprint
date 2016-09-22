@@ -1,0 +1,77 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component DeleteAccountModal {
+  background-color: #fff;
+  min-height: 100%;
+
+  @media (--s) {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 400px;
+  }
+
+  @descendent reason {
+    margin: 10px 0;
+
+    @descendent comment {
+      margin-top: 10px;
+    }
+  }
+
+  @descendent form {
+    padding: 30px;
+    font-size: 16px;
+  }
+
+  @descendent message {
+    color: var(--color-prunes);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  @descendent warning {
+    color: var(--color-paprika);
+    margin-bottom: 30px;
+  }
+
+  @descendent link {
+    white-space: nowrap;
+
+    color: var(--color-broccoli);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--color-broccoli-hover);
+    }
+  }
+
+  @descendent actions {
+    text-align: right;
+    display: flex;
+    flex-direction: column-reverse;
+    align-content: stretch;
+    justify-content: stretch;
+
+    @media (--xxxs) {
+      display: block;
+    }
+  }
+
+  @descendent action {
+    flex: 1;
+
+    & + & {
+      margin-bottom: 10px;
+    }
+
+    @media (--xxxs) {
+      & + & {
+        margin-bottom: 0;
+        margin-left: 10px;
+      }
+    }
+  }
+}

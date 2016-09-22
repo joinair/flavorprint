@@ -1,0 +1,298 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component Onboarding {
+  width: 100%;
+  flex-direction: column;
+
+  @media (--s) {
+    width: 700px;
+  }
+
+  @media (--m) {
+    width: 890px;
+  }
+
+  @modifier withoutNavigation {
+    .Onboarding-modalBody {
+      bottom: 0;
+    }
+  }
+
+  @when loading {
+    .Preloader {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+
+      @media (--s) {
+        height: 200px;
+      }
+    }
+  }
+
+  @descendent modal {
+    width: 100%;
+    border-radius: 5px 5px 4px 4px;
+    background-color: #fff;
+  }
+
+  @descendent modalContainer {
+    height: 100vh;
+    position: relative;
+
+    @media (--s) {
+      height: auto;
+    }
+  }
+
+  @descendent modalBody {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 15px;
+
+    position: absolute;
+    width: 100%;
+    overflow-y: auto;
+    top: 0;
+    bottom: 0;
+
+    @media (--vxxxs){
+      bottom: 134px;
+      top: 120px;
+    }
+
+    @modifier withoutMargins {
+      padding: 0;
+
+      .Onboarding-modalBody-container {
+        margin: 0;
+      }
+    }
+
+    @media (--s) {
+      position: static;
+      min-height: 238px;
+      align-items: center;
+      overflow: visible;
+    }
+
+    @descendent container {
+      width: 100%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+  }
+
+  @descendent aboutYourself {
+    @descendent item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 27px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      @media (--s) {
+        margin-bottom: 50px;
+      }
+      @modifier count {
+        flex-direction: column;
+
+        @media (--s) {
+          flex-direction: row;
+        }
+      }
+    }
+
+    @descendent itemText {
+      font-size: 20px;
+
+      @media (--xs) {
+        font-size: 26px;
+      }
+      @media (--s) {
+        font-size: 26px;
+      }
+    }
+
+    @descendent checkboxList {
+      margin-right: 9px;
+
+      @media (--s) {
+        display: flex;
+      }
+    }
+
+    @descendent checkboxItem {
+      position: relative;
+      margin-bottom: 8px;
+      margin-left: 9px;
+      padding: 10px 15px 12px 40px;
+      height: 42px;
+      line-height: 14px;
+      font-size: 18px;
+      text-transform: lowercase;
+      color: #A8A8A8;
+      background-color: #F1F1F1;
+      border: 3px solid #F1F1F1;
+      border-radius: 100px;
+      cursor: pointer;
+      user-select: none;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      @media (--s) {
+        margin-bottom: 0;
+        font-size: 22px;
+      }
+
+      &:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        margin-top: -7.5px;
+        width: 15px;
+        height: 15px;
+        border-radius: 100%;
+        border: 2px solid #A8A8A8;
+      }
+
+      @when active {
+        color: var(--color-broccoli);
+        background-color: #FFF;
+        border-color: var(--color-broccoli);
+
+        &:before {
+          background-color: var(--color-broccoli);
+          border-color: var(--color-broccoli);
+        }
+      }
+    }
+  }
+
+  @descendent avoidances {
+    @descendent field {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @descendent list {
+      margin-top: 25px;
+    }
+  }
+
+  @descendent authentication {
+    .AuthenticationForm {
+      margin: 0 auto;
+      padding: 0;
+
+      @media (--s) {
+        width: 355px;
+      }
+    }
+  }
+
+  @descendent countList {
+    margin-top: 9px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    @media (--s) {
+      margin-top: 0;
+    }
+  }
+
+  @descendent loadLayout {
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+    padding: var(--grid-offset);
+    position: fixed;
+    right: 0;
+    text-align: center;
+    top: 0;
+
+    @descendent container {
+      transform: translate(0, -50%);
+    }
+
+    @descendent title {
+      font-size: 24px;
+      line-height: 28px;
+      margin-bottom: 20px;
+
+      @media (--s) {
+        font-size: 30px;
+        margin-bottom: 28px;
+      }
+    }
+
+    @descendent desc {
+      font-size: 16px;
+    }
+
+    @descendent icon {
+      fill: var(--color-paprika);
+      height: 18px;
+      margin: 0 5px;
+      position: relative;
+      stroke: var(--color-paprika);
+      top: 3px;
+      width: 24px;
+    }
+
+    .Preloader {
+      margin-bottom: 8px;
+
+      @media (--s) {
+        margin-bottom: 28px;
+      }
+    }
+  }
+
+  .OnboardingCounter {
+    margin-left: 9px;
+  }
+
+  @descendent recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 15px -20px;
+  }
+
+  @descendent recipe {
+    display: flex;
+    justify-content: center;
+    width: 48%;
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media (--s) {
+      width: 140px;
+
+      & + & {
+        margin-left: 20px;
+      }
+    }
+
+    @media (--m) {
+      width: 190px;
+    }
+  }
+}

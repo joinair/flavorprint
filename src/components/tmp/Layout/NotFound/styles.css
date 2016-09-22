@@ -1,0 +1,20 @@
+
+@import "imports/variables.css";
+
+@component NotFound {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  @descendent code {
+    margin-bottom: 35px;
+  }
+
+  @descendent message {
+    font-size: 22px;
+    line-height: 30px;
+    color: var(--color-prunes);
+  }
+}

@@ -1,0 +1,24 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component OnboardingBubbleList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-left: -10px;
+
+  .OnboardingBubble {
+    margin-bottom: 11px;
+    margin-left: 10px;
+  }
+
+  @media (--m) {
+    margin-top: auto;
+    margin-left: -20px;
+
+    .OnboardingBubble {
+      margin-left: 20px;
+    }
+  }
+}

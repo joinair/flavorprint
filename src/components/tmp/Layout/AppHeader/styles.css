@@ -1,0 +1,404 @@
+/* =============================================================== */
+/* AppHeader
+/* =============================================================== */
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+:root {
+  --AppHeader-height: 58px;
+}
+
+@component AppHeader {
+  height: var(--AppHeader-height);
+  position: relative;
+  z-index: var(--z-index-app-header);;
+
+  @descendent natural {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-index-app-header);
+    will-change: transform;
+
+    height: var(--AppHeader-height);
+
+    .Body--AuthPage & {
+      background-color: #fff;
+
+      @media (--s) {
+        background-color: transparent;
+      }
+    }
+
+    .is-filled & {
+      background-color: #fff;
+    }
+
+    &:after {
+      content: "";
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 58px;
+      z-index: var(--z-index-app-header-border);
+
+      .Body--AuthPage & {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+        @media (--s) {
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+      }
+
+      .is-filled & {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  @descendent substitute {
+    height: var(--AppHeader-height);
+  }
+
+  @descendent container {
+    padding-right: var(--grid-offset);
+    padding-left: var(--grid-offset);
+
+    @media (--m) {
+      padding-right: 25px;
+      padding-left: 25px;
+    }
+  }
+
+  @descendent menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    margin: 0 -14px;
+    height: var(--AppHeader-height);
+  }
+
+  @descendent item {
+    display: none;
+    margin: 0 12px;
+
+    @media (--l) {
+      margin: 0 14px;
+    }
+
+    @modifier flex {
+      flex: 1 0 auto;
+    }
+
+    @modifier logo {
+      flex: 1 0 auto;
+      display: inline-block;
+      text-align: center;
+      padding-top: 2px;
+      padding-bottom: 2px;
+
+      @media (--m) {
+        margin-right: 38px;
+        flex: 0 0 84px;
+      }
+    }
+
+    @modifier mobile {
+      display: block;
+      @media (--m) {
+        display: none;
+      }
+    }
+    @modifier desktop {
+      display: none;
+
+      @media (--m) {
+        display: inline-block;
+      }
+    }
+  }
+
+  @descendent link {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 17px;
+    font-size: 15px;
+    line-height: 18px;
+    cursor: pointer;
+    color: #fff;
+    border-bottom: 3px solid transparent;
+    outline: none;
+
+    &:hover {
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .is-filled &,
+    .is-filled &:hover {
+      color: #292B2B;
+    }
+
+    @modifier logo {
+      display: inline-block;
+
+      &:hover {
+        border-bottom-color: transparent;
+      }
+    }
+
+    @modifier button {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      padding: 6px 12px;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 4px;
+
+      .is-filled & {
+        border-color: #DCDCDC;
+      }
+    }
+
+    .is-active & {
+      border-bottom-color: var(--color-broccoli);
+    }
+
+    .is-filled & {
+      color: #292B2B;
+    }
+
+    .is-filled .is-active & {
+      color: var(--color-broccoli);
+    }
+
+    @descendent icon {
+      margin-right: 8px;
+
+      @modifier cart {
+        width: 18px;
+        height: 17px;
+        fill: var(--color-broccoli);
+      }
+    }
+  }
+
+  @descendent logo {
+    width: 84px;
+    height: 30px;
+    fill: #fff;
+
+    .Body--AuthPage & {
+      fill: var(--color-broccoli);
+
+      @media (--s) {
+        fill: #fff;
+      }
+    }
+
+    .is-filled & {
+      fill: var(--color-broccoli);
+    }
+  }
+
+  @descendent iconMobileNav {
+    width: 23px;
+    height: 18px;
+    fill: #fff;
+
+    .Body--AuthPage & {
+      fill: #333;
+
+      @media (--s) {
+        fill: #fff;
+      }
+    }
+
+    .is-filled & {
+      fill: #333;
+    }
+  }
+
+  @descendent iconMobileSearch {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+
+    .Body--AuthPage & {
+      fill: #333;
+
+      @media (--s) {
+        fill: #fff;
+      }
+    }
+
+    .is-filled & {
+      fill: #333;
+    }
+  }
+
+  @descendent search {
+    position: relative;
+    width: 170px;
+    will-change: width;
+    transition: width .15s ease;
+
+    @when open {
+      @media (--l) {
+        width: 300px;
+      }
+
+      .AppHeader-search-input {
+        background: rgba(255,255,255,0.07);
+        border-color: rgba(255,255,255,0.46);
+      }
+
+      .AppHeader-search-dropdown {
+        display: block;
+
+        visibility: visible;
+        backface-visibility: hidden;
+        animation-iteration-count: 1;
+        animation-duration: .3s;
+        animation-timing-function: ease;
+        animation-fill-mode: both;
+        animation-name: AppHeader-dropdown-ShowAnimation;
+      }
+    }
+
+    @descendent input {
+      padding: 7.5px 10px 7.5px 35px;
+      height: 36px;
+      font-size: 15px;
+      line-height: 20px;
+      color: #FFFFFF;
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: 25px;
+      border: 2px solid rgba(255,255,255,0);
+      width: 100%;
+      outline: none;
+      will-change: width;
+
+      &:focus {
+        outline: none;
+      }
+
+      .is-filled & {
+        color: var(--color-prunes);
+        background-color: rgba(119, 119, 119, 0.12);
+      }
+
+      .is-filled .is-open & {
+        opacity: 1;
+        background: #f7f7f7;
+      }
+
+      .is-filled .is-open & {
+        border-color: var(--color-broccoli);
+      }
+
+      .is-filled &::placeholder {color:#4A4A4A;}
+      &::placeholder {color:#fff;}
+    }
+
+    @descendent icon {
+      position: absolute;
+      top: 10px;
+      left: 11px;
+      width: 16px;
+      height: 16px;
+      fill: #fff;
+      opacity: .7;
+
+      .is-filled & {
+        fill: var(--color-prunes);
+      }
+    }
+
+    @descendent dropdown {
+      position: absolute;
+      top: 47px;
+      left: 0;
+      width: 250px;
+      height: 266px;
+      background-color: #fff;
+      display: none;
+      z-index: var(--z-index-app-header-dropdown);
+
+      border: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0px 8px 15px 0px rgba(111,111,111,0.33);
+      border-radius: 3px;
+      transform-origin: center top;
+
+      visibility: visible;
+      backface-visibility: hidden;
+
+      &:before {
+        content: '';
+        position: absolute;
+        left: 43px;
+        top: -5px;
+        width: 10px;
+        height: 10px;
+        background: #FFF;
+        transform: rotate(45deg);
+        z-index: 2;
+        box-shadow: none;
+        border-left: 1px solid rgba(0,0,0,0.12);
+        border-top: 1px solid rgba(0,0,0,0.12);
+      }
+
+      @descendent container {
+        display: flex;
+        flex-direction: row;
+        padding: 15px 13px 10px;
+      }
+      @descendent list {
+        flex: 1 0 auto;
+        padding: 0 10px 0 15px;
+      }
+      @descendent item {
+        color: #989999;
+        font-size: 15px;
+        line-height: 18px;
+
+        @descendent label {
+          padding: 6px 0;
+        }
+
+        @descendent link {
+          display: block;
+          color: #4C4C4C;
+          padding: 6px 0;
+
+          &:hover {
+            color: var(--color-broccoli-hover);
+          }
+
+          @modifier selected {
+            color: var(--color-broccoli-hover);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes AppHeader-dropdown-ShowAnimation {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -10%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+
+}

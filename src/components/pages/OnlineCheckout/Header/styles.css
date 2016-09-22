@@ -1,0 +1,240 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component OnlineCheckoutHeader {
+  background-color: var(--color-white);
+  margin: 0 -100vw;
+  padding: 10px 100vw;
+
+  @descendent area {
+    display: flex;
+    justify-content: space-between;
+
+    @modifier single {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    @modifier upper {
+      margin-bottom: 10px;
+    }
+
+    @modifier lower {
+      justify-content: center;
+
+      @media (--s) {
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  @descendent send {
+    @modifier mobile {
+      flex: 1 0 auto;
+
+      @media (--s) {
+        display: none;
+      }
+    }
+
+    @modifier desktop {
+      display: none;
+
+      @media (--s) {
+        display: block;
+      }
+    }
+  }
+
+  @descendent close {
+    white-space: nowrap;
+
+    @modifier hideOnXs {
+      display: none;
+      @media (--xs) { display: inline-block }
+    }
+
+    @modifier showOnXs {
+      display: inline-block;
+      @media (--xs) { display: none }
+    }
+
+    @modifier mobile {
+      margin-left: 15px;
+
+      @media (--s) {
+        display: none;
+      }
+    }
+
+    @modifier desktop {
+      display: none;
+
+      @media (--s) {
+        display: block;
+        margin-left: 15px;
+      }
+    }
+  }
+
+  @descendent logo {
+    cursor: pointer;
+    display: none;
+    fill: var(--color-broccoli);
+
+    @modifier permanent {
+      display: block;
+    }
+
+    @media (--m) {
+      display: block;
+    }
+  }
+
+  @descendent inventories {
+    display: none;
+
+    @media (--s) {
+      display: flex;
+    }
+  }
+
+  @descendent logoAndSelector {
+    justify-content: space-between;
+    flex-direction: column;
+    white-space: nowrap;
+    display: none;
+
+    @descendent space {
+      width: 15px;
+      height: 15px;
+    }
+
+    @media (--xs) {
+      display: flex;
+    }
+
+    @media (--m) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  @descendent spaceAndButton {
+    display: flex;
+    flex-direction: column-reverse;
+    flex: 1;
+    position: relative;
+
+    @media (--xs) {
+      flex: none;
+    }
+
+    @modifier withError {
+      padding-bottom: 30px;
+    }
+
+    @descendent space {
+      flex: 1;
+    }
+
+    @descendent delimiter {
+      width: 15px;
+      height: 16px;
+    }
+
+    @media (--m) {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  @descendent sendAndClose {
+    display: flex;
+    flex-direction: row;
+
+    @descendent send {
+      flex: 1;
+    }
+  }
+
+  @descendent zone {
+    flex-direction: row;
+    text-align: center;
+
+    @media (--xs) {
+      display: flex;
+    }
+
+    @descendent text {
+      display: inline-block;
+
+      @media (--xs) {
+        flex: 1;
+        text-align: right;
+      }
+    }
+
+    @descendent link {
+      display: inline-block;
+      margin-left: 5px;
+      a { cursor: pointer }
+    }
+  }
+
+  @descendent mobileSpace {
+    flex: 0;
+
+    @media (--xs) {
+      flex: 1;
+    }
+  }
+
+  @descendent changeZip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+    margin-top: -10px;
+    box-sizing: content-box;
+    z-index: 50;
+
+    background: var(--color-warning);
+
+    @descendent content {
+      padding: 0 10px;
+
+      display: flex;
+      flex-direction: column;
+
+      @media (--m) {
+        flex-direction: row;
+      }
+    }
+
+    @descendent input {
+      flex: 1;
+      input {
+        font-size: 10px;
+      }
+    }
+
+    @descendent controls {
+      text-align: center;
+      margin-top: 5px;
+
+      @media (--m) {
+        margin-top: 0;
+      }
+
+      .Button {
+        margin-left: 10px;
+      }
+    }
+  }
+}

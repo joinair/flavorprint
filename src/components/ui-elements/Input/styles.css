@@ -1,0 +1,87 @@
+
+@import "imports/variables.css";
+
+@component Input {
+  @modifier small {
+    .Input-field {
+      font-size: 14px;
+      height: 34px;
+    }
+
+    .Input-errorMessage {
+      padding-top: 5px;
+    }
+  }
+
+  @modifier normal {
+    .Input-field {
+      font-size: 16px;
+      height: 42px;
+    }
+  }
+
+  @modifier large {
+    .Input-field {
+      height: 46px;
+      font-size: 18px;
+    }
+  }
+
+  @modifier icon {
+    .Input-field {
+      padding-right: 40px;
+    }
+  }
+
+  @when error {
+    .Input-field {
+      border-color: var(--color-paprika);
+    }
+  }
+
+  @descendent fieldContainer {
+    position: relative;
+  }
+
+  @descendent field {
+    border: 1px solid var(--gray-81);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    color: var(--color-prunes);
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: middle;
+    outline: none;
+    width: 100%;
+
+    &:focus {
+      border-color: var(--color-broccoli);
+    }
+  }
+
+  @descendent iconContainer {
+    align-items: center;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+
+    @modifier clickable {
+      cursor: pointer;
+    }
+  }
+
+  @descendent icon {
+    fill: #c5c5c5;
+  }
+
+  @descendent errorMessage {
+    color: var(--color-paprika);
+    font-size: 13px;
+    line-height: 16px;
+    padding-top: 10px;
+  }
+}

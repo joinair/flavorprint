@@ -1,0 +1,80 @@
+
+@import "imports/variables";
+@import "imports/media-queries";
+
+@component OnboardingToggler {
+  & + & {
+    .OnboardingToggler-heading {
+      border-top: 1px solid #ececec;
+    }
+  }
+
+  @when open {
+    .OnboardingToggler-icon {
+      transform: rotateZ(180deg);
+    }
+
+    .OnboardingToggler-content {
+      display: block;
+    }
+  }
+
+  @descendent heading {
+    display: flex;
+    align-items: center;
+    height: 66px;
+    margin: 0 auto;
+    padding: 0 20px;
+    cursor: pointer;
+    user-select: none;
+
+    @media (--s) {
+      max-width: 420px;
+      height: 94px;
+    }
+  }
+  @descendent text {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    font-size: 20px;
+    line-height: 25px;
+
+    @media (--s) {
+      font-size: 26px;
+      line-height: 33px;
+    }
+  }
+  @descendent count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    margin-left: 5px;
+    color: var(--color-white);
+    border-radius: 50%;
+    background-color: var(--color-broccoli);
+    font-size: 15px;
+    line-height: 0;
+
+    @media (--s) {
+      margin-left: 10px;
+      font-size: 17px;
+    }
+
+    @when zero {
+      color: #3d3d3d;
+      background-color: #d8d8d8
+    }
+  }
+  @descendent icon {
+    transition: transform .2s ease;
+    fill: var(--color-broccoli);
+  }
+  @descendent content {
+    display: none;
+    margin-bottom: 20px;
+    padding: 0 15px;
+  }
+}

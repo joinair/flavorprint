@@ -1,0 +1,121 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component OnlineCheckout {
+  background-color: #f7f7f7;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: var(--z-index-online-checkout);
+
+  @descendent inner {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: var(--xl);
+    padding-left: 10px;
+    padding-right: 10px;
+
+    @media (--s)  { padding-left: 15px; padding-right: 15px; }
+    @media (--m)  { padding-left: 20px; padding-right: 20px; }
+    @media (--l)  { padding-left: 34px; padding-right: 34px; }
+    @media (--xl) { padding-left: 45px; padding-right: 45px; }
+  }
+
+  @descendent content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 10px;
+  }
+
+  @descendent preloader {
+    align-items: center;
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: center;
+    margin: 0;
+  }
+
+  @descendent recipe {
+    @descendent heading {
+      align-items: center;
+      background-color: #f0f0f0;
+      display: flex;
+      font-size: 14px;
+      justify-content: space-between;
+      line-height: 18px;
+      padding: 10px 100vw;
+      margin: 0 -100vw;
+    }
+
+    @descendent servings {
+      color: #707070;
+      display: flex;
+      flex: 1 0 auto;
+      flex-direction: column;
+      font-size: 13px;
+      justify-content: flex-end;
+      line-height: 16px;
+      margin-left: var(--grid-offset);
+      text-align: right;
+
+      @media (--s) {
+        flex-direction: row;
+
+        .OnlineCheckout-recipe-serves {
+          margin-right: 18px;
+        }
+      }
+    }
+  }
+
+  @descendent category {
+    @descendent heading {
+      align-items: center;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: row;
+      font-size: 14px;
+      line-height: 18px;
+      padding: 10px 100vw;
+      margin: 0 -100vw;
+    }
+  }
+
+  @descendent summary {
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0 30px;
+
+    @descendent table {
+      border-collapse: separate;
+      border-spacing: 0 12px;
+      margin: -12px 0 6px;
+      min-width: 190px;
+    }
+
+    @descendent key {
+      color: #a8a8a8;
+      font-size: 16px;
+      line-height: 18px;
+      padding-right: 15px;
+    }
+
+    @descendent value {
+      color: var(--color-prunes);
+      font-size: 16px;
+      line-height: 18px;
+      text-align: right;
+    }
+
+    @descendent action {
+      float: right;
+    }
+  }
+}

@@ -1,0 +1,127 @@
+/* =============================================================== */
+/* Sidebar Menu - contains main-menu sidebar (mobile-only)
+/* =============================================================== */
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component MobileMenu {
+  width: 85%;
+
+  @media (--xxs) {
+    width: 315px;
+  }
+
+  @descendent menu {
+    padding-bottom: 60px;
+
+    @descendent item {
+      margin: 0 30px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+      @descendent link {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin: 0 -30px;
+        padding: 18px 30px;
+        font-size: 18px;
+        color: var(--color-prunes);
+        line-height: 20px;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--color-prunes-hover);
+        }
+      }
+
+      @descendent iconContainer {
+        display: flex;
+        justify-content: center;
+        width: 25px;
+        margin-right: 20px;
+      }
+
+      @descendent icon {
+        fill: var(--color-prunes);
+
+        @modifier chefHat {
+          width: 23px;
+          height: 20px;
+        }
+
+        @modifier heart {
+          width: 20px;
+          height: 17px;
+        }
+
+        @modifier cart {
+          width: 21px;
+          height: 18px;
+        }
+
+        @modifier add {
+          width: 22.1px;
+          height: 22.1px;
+        }
+
+        @modifier help {
+          width: 19px;
+          height: 22px;
+        }
+
+        @modifier settings {
+          width: 23px;
+          height: 23px;
+        }
+
+        @modifier logout {
+          width: 18px;
+          height: 18px;
+        }
+      }
+
+      @descendent text {
+        flex: 1 0 auto;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  @descendent user {
+    padding: 44px 30px 0;
+    height: 234px;
+
+    @descendent avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 22px;
+      width: 106px;
+      height: 106px;
+
+      @descendent icon {
+        width: 106px;
+        height: 106px;
+      }
+    }
+    @descendent info {
+      text-align: center;
+      font-size: 22px;
+      color: #262827;
+      line-height: 20px;
+    }
+
+    @descendent authControls {
+      @descendent item {
+        & + & {
+          margin-left: 28px;
+        }
+      }
+    }
+  }
+}

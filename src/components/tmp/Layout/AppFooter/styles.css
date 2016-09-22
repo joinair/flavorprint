@@ -1,0 +1,114 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+:root {
+  --AppFooter-height: 70px;
+  --AppFooter-color: #8E8E8E;
+}
+@component AppFooter {
+  position: relative;
+  padding: 10px 0;
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  @media (--m) {
+    padding: 0;
+  }
+
+  .Page--mobileShoppingList & {
+    border-top: 1px solid #EBEBEB;
+  }
+
+  .Page--hiddenFooter & {
+    display: none;
+  }
+
+  @descendent container {
+    width: 100%;
+    padding: 0 var(--grid-offset);
+    text-align: center;
+
+    @media (--m) {
+      height: var(--AppFooter-height);
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @descendent item {
+    display: inline-block;
+    padding: 0 10px;
+    font-size: 15px;
+    line-height: 15px;
+    color: var(--AppFooter-color);
+  }
+
+  @descendent link {
+    display: block;
+    padding: 7px 0;
+    color: var(--AppFooter-color);
+
+    &:hover {
+      color: inherit;
+    }
+
+    @media (--m) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    @descendent icon {
+      fill: var(--AppFooter-color);
+
+      @modifier tw {
+        width: 22px;
+        height: 18px;
+
+        @media (--m) {
+          width: 18px;
+          height: 14px;
+        }
+      }
+
+      @modifier fb {
+        width: 12px;
+        height: 20px;
+
+        @media (--m) {
+          width: 8px;
+          height: 16px;
+        }
+      }
+
+      @modifier gplus {
+        width: 22px;
+        height: 19px;
+
+        @media (--m) {
+          width: 18px;
+          height: 15px;
+        }
+      }
+    }
+  }
+
+  @descendent iconsList {
+    display: block;
+    margin-top: 10px;
+
+    @media (--m) {
+      display: inline-block;
+      margin-top: 0;
+    }
+
+    @descendent item {
+      display: inline-block;
+      padding: 0 10px;
+    }
+  }
+}

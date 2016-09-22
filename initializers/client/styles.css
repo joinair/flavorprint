@@ -1,0 +1,223 @@
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+@import "imports/fonts.css";
+@import "imports/normalize.css";
+
+html,
+body {
+ min-height: 100%;
+ height: 100%;
+}
+
+html {
+ font-size: 15px;
+}
+
+@component Body {
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  min-width: 320px;
+  line-height: 1.4285em;
+  background-color: #f7f7f7;
+  color: var(--color-prunes);
+  font-family: var(--base-font-family);
+  font-size: 15px;
+  font-smoothing: antialiased;
+
+  @when modalOpened, sidebarOpened {
+    overflow: hidden;
+  }
+
+  @when authForOnboardingBannerVisible {
+    #content {
+      margin-bottom: 179px;
+
+      @media (--xxxs) {
+        margin-bottom: 153px;
+      }
+
+      @media (--xs) {
+        margin-bottom: 127px;
+      }
+
+      @media (--m) {
+        margin-bottom: 140px;
+      }
+    }
+  }
+
+  @modifier whiteBackground {
+    background-color: #fff;
+  }
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2857em;
+  font-family: var(--base-font-family);
+  font-weight: normal;
+}
+
+h1 {
+ font-size: 24px;
+ line-height: 32px;
+
+  @media (--m) {
+    font-size: 36px;
+    line-height: 42px;
+  }
+}
+
+h2 {
+  font-size: 21px;
+  line-height: 27px;
+
+  @media (--m) {
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+h3 {
+  font-size: 18px;
+  line-height: 24px;
+
+  @media (--m) {
+    font-size: 21px;
+    line-height: 27px;
+  }
+}
+
+h4 {
+  font-size: 16px;
+  line-height: 20px;
+
+  @media (--m) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+h5 {
+  font-size: 16px;
+  line-height: 20px;
+
+  @media (--m) {
+    font-size: 21px;
+    line-height: 27px;
+  }
+}
+
+
+p {
+  margin: 0em 0em 1em;
+  line-height: 21px;
+}
+
+p:first-child {
+ margin-top: 0em;
+}
+
+p:last-child {
+ margin-bottom: 0em;
+}
+
+
+a {
+  text-decoration: none;
+  color: var(--color-broccoli);
+  &:hover {
+    text-decoration: none;
+    color: var(--color-broccoli-hover);
+  }
+}
+
+svg {
+  pointer-events: none;
+}
+
+@component LayoutFlex {
+  display: flex;
+  flex-direction: column;
+
+  @descendent inner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  @descendent aside {
+    flex-shrink: 0;
+  }
+
+  @descendent main {
+    flex: 1 0 auto;
+  }
+}
+
+@component AppLayout {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+@component AppSidebar {
+  margin-bottom: 25px;
+}
+
+@component AppContent {
+  flex: 1 0 auto;
+}
+
+@component AppContainer {
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (--xxs)  {  }
+  @media (--xs)   { width: 510px; }
+  @media (--s)    { width: 610px; }
+  @media (--m)    { width: 870px; }
+  @media (--l)    { width: 1170px; }
+  @media (--xl)   { width: 1250px; }
+  @media (--xxxl)   { width: 1570px; }
+
+  @descendent mainSection {
+    margin-top: 55px;
+  }
+}
+
+@utility overlay {
+  position: relative;
+  z-index: 2;
+
+  &:after {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    content: '';
+    background-color: rgba(0,0,0,.4);
+    overflow: hidden;
+
+    z-index: var(--z-index-overlay);
+
+    animation-iteration-count: 1;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-name: ShowOverlayAnimation;
+  }
+}
+
+@keyframes ShowOverlayAnimation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

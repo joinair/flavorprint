@@ -1,0 +1,89 @@
+
+@import "imports/variables";
+@import "imports/media-queries";
+
+@component OnboardingBubble {
+  width: 90px;
+
+  @media (--m) {
+    width: 100px;
+  }
+
+  @when blocked {
+    .OnboardingBubble-circle {
+      box-shadow: inset 0 0 0 3px var(--color-paprika);
+
+      &:after {
+        position: absolute;
+        top: 1px;
+        bottom: 1px;
+        left: 50%;
+        width: 3px;
+        margin-left: -1.5px;
+        content: '';
+        transform: rotate(45deg);
+        background-color: var(--color-paprika);
+      }
+    }
+  }
+
+  @when disabled {
+    .OnboardingBubble-circle {
+      box-shadow: inset 0 0 0 3px var(--gray-70);
+
+      &:after {
+        position: absolute;
+        top: 1px;
+        bottom: 1px;
+        left: 50%;
+        width: 3px;
+        margin-left: -1.5px;
+        content: '';
+        transform: rotate(45deg);
+        background-color: var(--gray-70);
+      }
+    }
+  }
+
+  @descendent selection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    fill: var(--color-white);
+    border-radius: 50%;
+    background-color: rgba(58, 186, 90, .65);
+  }
+  @descendent circle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    height: 90px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    user-select: none;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 3px #f0f0f0;
+
+    @media (--m) {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  @descendent title {
+    text-align: center;
+    font-size: 15px;
+    line-height: 20px;
+  }
+  @descendent initials {
+    color: #dbdbdb;
+    font-size: 34px;
+    line-height: 40px;
+  }
+}

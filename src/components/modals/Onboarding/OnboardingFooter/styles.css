@@ -1,0 +1,50 @@
+
+@import "imports/media-queries";
+
+@component OnboardingFooter {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  bottom: 82px;
+  left: 0;
+  padding: 0 15px;
+  color: #9b9b9b;
+
+  @media (--vxxxs){
+    display: flex;
+  }
+
+  @media (--xxs) {
+    justify-content: center;
+  }
+
+  @media (--s) {
+    position: static;
+    padding-bottom: 40px;
+  }
+
+  .Button--l {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  @descendent leftButton {
+    text-align: right;
+    width: 100px;
+  }
+
+  @descendent rightButton {
+    text-align: left;
+    width: 100px;
+  }
+
+  .Button + .Button {
+    margin-left: 8px;
+
+    @media (--xs) {
+      margin-left: 26px;
+    }
+  }
+}

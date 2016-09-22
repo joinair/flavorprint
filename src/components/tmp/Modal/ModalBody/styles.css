@@ -1,0 +1,10 @@
+
+@import "imports/media-queries.css";
+
+@component ModalBody {
+  padding: 15px;
+
+  @media (--s) {
+    padding: 30px;
+  }
+}

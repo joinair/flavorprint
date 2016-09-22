@@ -1,0 +1,10 @@
+/* =============================================================== */
+/* Shopping list sidebar
+/* =============================================================== */
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component ShoppingListSidebar {
+  width: 480px;
+}

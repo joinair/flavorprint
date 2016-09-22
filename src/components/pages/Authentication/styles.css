@@ -1,0 +1,113 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component AuthenticationPage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  padding: 25px 0;
+
+  @media (--s) {
+    padding: 40px 0;
+  }
+
+  @descendent videoBannerContainer {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: var(--z-index-video-banner);
+    display: none;
+
+    @media (--s) {
+      display: block;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.35);
+      z-index: var(--z-index-video-banner-shadow);
+    }
+  }
+
+  @descendent videoBanner {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    min-height: 50%;
+    min-width: 50%;
+  }
+
+  @descendent header {
+    margin: 0 auto;
+    max-width: 662px;
+    text-align: center;
+
+    @media (--s) {
+      margin: 0 auto 50px;
+    }
+  }
+
+  @descendent title {
+    position: relative;
+    z-index: var(--z-index-authentication-page-content);
+    margin-bottom: 16px;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 44px;
+
+    @media (--s) {
+      font-size: 48px;
+      line-height: 53px;
+      color: #fff;
+    }
+  }
+
+  @descendent description {
+    position: relative;
+    z-index: var(--z-index-authentication-page-content);
+    font-size: 20px;
+    line-height: 28px;
+    padding: 0px 23px;
+
+    @media (--s) {
+      font-size: 24px;
+      line-height: 32px;
+      padding: auto;
+      color: #fff;
+    }
+  }
+
+  @descendent lineDivider {
+    display: none;
+
+    @media (--xs) {
+      display: block;
+    }
+  }
+
+  @descendent formContainer {
+    background-color: #fff;
+    position: relative;
+    z-index: var(--z-index-authentication-page-content);
+    width: 100%;
+
+    @media (--s) {
+      width: 400px;
+      border-radius: 2px;
+      box-shadow: 0px 11px 25px 0px rgba(0,0,0,0.25);
+    }
+  }
+}

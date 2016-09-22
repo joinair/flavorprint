@@ -1,0 +1,41 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component Modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--z-index-modal);
+
+  @descendent overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    will-change: transform;
+  }
+
+  @descendent container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    @media (--s) {
+      width: auto;
+      height: auto;
+      max-height: 100vh;
+    }
+  }
+}

@@ -1,0 +1,110 @@
+@import "imports/variables.css";
+
+@component SharingIcons {
+  display: flex;
+  flex-direction: row;
+
+  @descendent item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @modifier facebook {
+      .SharingIcons--rounded & {
+        background-color: var(--color-facebook);
+      }
+    }
+    @modifier twitter {
+      .SharingIcons--rounded & {
+        background-color: var(--color-twitter);
+      }
+    }
+    @modifier gplus {
+      .SharingIcons--rounded & {
+        background-color: var(--color-gplus);
+      }
+    }
+    @modifier pinterest {
+      .SharingIcons--rounded & {
+        background-color: var(--color-pinterest);
+      }
+    }
+    @modifier mail {
+      .SharingIcons--rounded & {
+        background-color: #B7B7B7;
+      }
+    }
+  }
+
+  @descendent icon {
+    .SharingIcons--rounded & {
+      fill: #fff;
+    }
+    .SharingIcons--small & {
+      fill: #B3B3B3;
+    }
+  }
+
+  @modifier rounded {
+    .SharingIcons-item {
+      margin-right: 5px;
+      margin-left: 5px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .SharingIcons-item--facebook svg {
+      width: 10px;
+      height: 20px;
+    }
+    .SharingIcons-item--twitter svg {
+      width: 20px;
+      height: 16px;
+    }
+    .SharingIcons-item--gplus svg {
+      width: 23px;
+      height: 20px;
+    }
+    .SharingIcons-item--pinterest svg {
+      width: 16px;
+      height: 20px;
+    }
+    .SharingIcons-item--mail svg {
+      width: 20px;
+      height: 15px;
+    }
+  }
+
+  @modifier small {
+    .SharingIcons-item {
+      margin-right: 8px;
+      margin-left: 8px;
+      width: 16px;
+      height: 18px;
+    }
+
+    .SharingIcons-item--facebook svg {
+      width: 8px;
+      height: 16px;
+    }
+    .SharingIcons-item--twitter svg {
+      width: 16px;
+      height: 12px;
+    }
+    .SharingIcons-item--gplus svg {
+      width: 23px;
+      height: 20px;
+    }
+    .SharingIcons-item--pinterest svg {
+      width: 15px;
+      height: 18px;
+    }
+    .SharingIcons-item--mail svg {
+      width: 16px;
+      height: 12px;
+    }
+  }
+}

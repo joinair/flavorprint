@@ -1,0 +1,93 @@
+/* =============================================================== */
+/* Variables - commonly used properties and settings stored here
+/* =============================================================== */
+
+:root {
+  /* Colors
+  /* ------------------------------------------------------------- */
+  --color-black: #000;
+  --color-white: #fff;
+
+  /*
+    FIXME: Give human-friendly names for the main colors.
+    The numbers are obtained from http://www.color-hex.com/
+  */
+  --gray-44: #707070;
+  --gray-70: #b3b3b3;
+  --gray-81: #cfcfcf;
+  --color-font-secondary: #B2B2B2;
+
+  --blue-dark: #424348;
+  --blue-darker: #393A40;
+
+  --color-prunes: #454545;
+  --color-prunes-hover: #636363;
+
+  --color-broccoli: #3ABA5A;
+  --color-broccoli-hover: #51D673;
+  --color-broccoli-active: #08923D;
+  --color-broccoli-text: #547D54;
+  --color-broccoli-light: #DEF4E1;
+  --color-broccoli-icon: #74AA81;
+  --color-broccoli-bg: #B6E1B7;
+
+  --color-paprika: #F74C4C;
+  --color-paprika-hover: #FF7777;
+  --color-paprika-text: #775656;
+  --color-paprika-light: #FAEDED;
+  --color-paprika-icon: #AA8787;
+
+  --color-warning: #FFF9C4;
+
+  --color-facebook: #437dc5;
+  --color-twitter: #63B6E3;
+  --color-gplus: #F24646;
+  --color-pinterest: #CC1D1F;
+
+  /* Fonts
+  /* ------------------------------------------------------------- */
+  --font-size-secondary: 12px;
+  --base-font-family: 'CircularStd', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+
+  /* Grid
+  /* ------------------------------------------------------------- */
+  --grid-offset: 15px;
+
+  --xxxs:  360px;
+  --xxs:   400px;
+  --xs:    550px;
+  --s:     700px;
+  --m:     960px;
+  --l:     1240px;
+  --xl:    1440px;
+  --xxl:   1600px;
+  --xxxl:  1700px;
+  --xxxxl: 2000px;
+
+  /* Z-indexes
+  /* ------------------------------------------------------------- */
+  --z-index-popup: 90;
+  --z-index-complete-profile-banner: 95;
+  --z-index-start-onboarding-banner: 95;
+  --z-index-app-header: 100;
+  --z-index-app-header-border: 101;
+  --z-index-app-header-dropdown: 102;
+  --z-index-sidebar: 102;
+  --z-index-online-checkout: 105;
+  --z-index-mobile-shopping-list-input: 110;
+  --z-index-modal: 115;
+  --z-index-notification: 200;
+  --z-index-video-banner: 1;
+  --z-index-video-banner-shadow: 2;
+  --z-index-video-banner-text: 3;
+  --z-index-hero-background: 1;
+  --z-index-hero-background-shadow: 2;
+  --z-index-onboarding-preface: 3;
+  --z-index-authentication-page-content: 3;
+  --z-index-overlay: 1000;
+
+  /* Border-radius
+  /* ------------------------------------------------------------- */
+
+  --border-radius: 4px;
+}

@@ -1,0 +1,22 @@
+
+@component PrintRecipeStats {
+  margin-bottom: 15px;
+  
+  @descendent stat {
+    display: inline-block;
+
+    & + & {
+      margin-left: 40px;
+    }
+  }
+  @descendent statType {
+    color: #707070;
+    font-size: 15px;
+    line-height: 19px;
+  }
+  @descendent statValue {
+    color: #373a3d;
+    font-size: 20px;
+    line-height: 25px;
+  }
+}

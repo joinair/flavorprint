@@ -1,0 +1,381 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+:root {
+  --RecipeCard-margin: var(--grid-offset);
+  --RecipeCard-title-color: #454545;
+  --RecipeCard-subtitle-color: #A8A8A8;
+  --RecipeCard-removed-background: #F8F8F8;
+  --RecipeCard-removed-title-color: #B3B3B3;
+}
+
+@component RecipeCard {
+  margin: 0 var(--RecipeCard-margin) 40px;
+  padding: 0;
+  width: 290px;
+  height: 380px;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.06);
+  border-radius: 5px;
+  will-change: width;
+
+  @when removed {
+    background-color: var(--RecipeCard-removed-background);
+
+    .RecipeCard-image-container {
+      opacity: 0.4;
+    }
+
+    .RecipeCard-title-link {
+      color: var(--RecipeCard-removed-title-color);
+    }
+  }
+
+  @media (--xxxs) {
+    width: 320px;
+    height: 410px;
+  }
+  @media (--xs) {
+    width: 240px;
+    height: 314px;
+  }
+
+  @media (--s) {
+    width: 290px;
+    height: 380px;
+  }
+
+  @media (--m) {
+    width: 270px;
+    height: 355px;
+  }
+
+  @media (--xl) {
+    width: 290px;
+    height: 380px;
+  }
+
+  @descendent content {
+    position: relative;
+    padding: 12px 56px 6px 16px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+
+    @media (--xs) {
+      padding-top: 6px;
+      height: 74px;
+    }
+
+    @media (--s) {
+      padding-top: 12px;
+      height: 80px;
+    }
+
+  }
+
+  @descendent title {
+    max-height: 40px;
+    overflow: hidden;
+    font-size: 17px;
+    color: var(--color-prunes);
+    line-height: 21px;
+
+    @media (--xs) {
+      max-height: 36px;
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    @media (--s) {
+      max-height: 40px;
+      font-size: 17px;
+      line-height: 21px;
+    }
+
+  }
+
+  @descendent subtitle {
+    margin-top: 3px;
+    font-size: 13px;
+    color: var(--RecipeCard-subtitle-color);
+    line-height: 16px;
+
+    @modifier link {
+      &:hover {
+        color: var(--RecipeCard-subtitle-color);
+      }
+    }
+  }
+
+  @descendent title-link {
+    color: var(--color-prunes);
+
+    &:hover {
+      color: var(--color-prunes-hover);
+    }
+  }
+
+  @descendent panel {
+    position: absolute;
+    top: 15px;
+    z-index: 1;
+    max-width: 85%;
+
+    @descendent container {
+      position: relative;
+      padding: 0 4px 0 14px;
+      height: 32px;
+      background-color: #fff;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+
+      &:before {
+        content: "";
+        width: 16px;
+        bottom: 0;
+        position: absolute;
+        display: block;
+        border: 16px solid #fff;
+        box-shadow: none;
+        right: -16px;
+        border-left-width: 7px;
+        border-right-color: transparent;
+        border-right-width: 7px;
+        z-index: -1;
+      }
+    }
+
+    @descendent imageContainer {
+      margin-right: 6px;
+      min-width: 22px;
+      height: 22px;
+    }
+    @descendent text {
+      flex: 1 0 auto;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      color: #505253;
+    }
+    @descendent image {
+      position: relative;
+      top: -7px;
+      width: 38px;
+      height: 38px;
+      border: 3px solid white;
+      border-radius: 50%;
+    }
+
+    @descendent icon {
+      width: 22px;
+      height: 22px;
+
+      @modifier dinners { fill: #A753C5; }
+      @modifier easyDinners { fill: #F74C4C; }
+      @modifier healthy { fill: #3ABA5A; }
+      @modifier trending { fill: #57D7E6; }
+    }
+  }
+
+  @descendent image-container {
+    position: relative;
+    width: 290px;
+    height: 290px;
+
+    @media (--xxxs) {
+      width: 320px;
+      height: 320px;
+    }
+
+    @media (--xs) {
+      width: 240px;
+      height: 240px;
+    }
+
+    @media (--s) {
+      width: 290px;
+      height: 290px;
+    }
+
+    @media (--m) {
+      width: 270px;
+      height: 270px;
+    }
+
+    @media (--xl) {
+      width: 290px;
+      height: 290px;
+    }
+
+    @component LazyImage {
+      @descendent container {
+        width: 100%!important;
+        height: 100%!important;
+      }
+
+      @descendent image {
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+      }
+    }
+  }
+
+  @descendent image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @descendent fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f9f9f9;
+  }
+
+  @descendent fallbackIcon {
+    width: 121px;
+    height: 101px;
+    fill: #e0e0e0;
+  }
+
+  @descendent like {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    margin-top: -22px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      .RecipeCard-like-icon {
+        stroke: var(--color-paprika);
+      }
+    }
+
+    @descendent icon {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      background: url(/images/heart-sprite.png) no-repeat;
+      background-size: 1500px 50px;
+      background-position: 0 0;
+      cursor: pointer;
+
+      &:hover {
+        background-position: -50px 0;
+      }
+
+      @modifier saved {
+        background-position: -1450px 0;
+
+        &:hover {
+          background-position: -1450px 0;
+        }
+      }
+
+      @when animating {
+        background-position: -1450px 0;
+        animation: fave-heart 1s steps(29) 1;
+      }
+    }
+  }
+
+  @modifier alternative {
+    width: 275px;
+    height: 275px;
+    margin-bottom: 30px;
+
+    @media (--s) {
+      margin-right: 15px;
+      margin-left: 15px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .RecipeCard-image-container {
+      width: 275px;
+      height: 200px;
+    }
+    .RecipeCard-content {
+      padding-top: 0;
+    }
+
+    .RecipeCard-like {
+      margin-top: -28px;
+    }
+
+    @media (--xs) {
+      width: 240px;
+      height: 240px;
+
+      .RecipeCard-image-container {
+        width: 240px;
+        height: 165px;
+      }
+    }
+
+    @media (--s) {
+      width: 275px;
+      height: 275px;
+
+      .RecipeCard-image-container {
+        width: 275px;
+        height: 200px;
+      }
+    }
+
+    @media (--m) {
+      width: 255px;
+      height: 255px;
+
+      .RecipeCard-image-container {
+        width: 255px;
+        height: 180px;
+      }
+    }
+
+    @media (--xl) {
+      width: 275px;
+      height: 275px;
+
+      .RecipeCard-image-container {
+        width: 275px;
+        height: 200px;
+      }
+    }
+  }
+
+  @descendent cornerButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+@keyframes fave-heart {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1450px 0;
+  }
+}

@@ -1,0 +1,12 @@
+
+@component Avatar {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+
+  @modifier changeable {
+    cursor: pointer;
+  }
+}

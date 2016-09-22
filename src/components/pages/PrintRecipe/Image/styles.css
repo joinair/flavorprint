@@ -1,0 +1,8 @@
+
+@component PrintRecipeImage {
+  overflow: hidden;
+
+  @descendent image {
+    display: block;
+  }
+}

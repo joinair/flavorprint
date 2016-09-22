@@ -1,0 +1,165 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component AvoidancesAutocomplete {
+  position: relative;
+
+  @when inOnboarding {
+    width: 100%;
+
+    @media (--s) {
+      width: 290px;
+    }
+
+    .AvoidancesAutocomplete-field {
+      padding-left: 40px;
+      border-radius: 50px;
+    }
+
+    .AvoidancesAutocomplete-iconContainer {
+      width: 46px;
+    }
+
+    .AvoidancesAutocomplete-icon {
+      fill: var(--gray-44);
+    }
+  }
+
+  @descendent fieldContainer {
+    position: relative;
+  }
+  @descendent field {
+    width: 100%;
+    height: 42px;
+    padding: 0 10px 0 36px;
+    color: var(--color-prunes);
+    border: none;
+    border: 1px solid #c9c9c9;
+    border-radius: 2px;
+    outline: none;
+    font-size: 15px;
+  }
+  @descendent iconContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 42px;
+  }
+  @descendent icon {
+    width: 18px;
+    height: 18px;
+    fill: var(--color-prunes);
+  }
+  @descendent popup {
+    position: absolute;
+    z-index: var(--z-index-popup);
+    top: 55px;
+    left: 0;
+    visibility: visible;
+    width: 290px;
+    transform-origin: center top;
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 3px;
+    background-color: #fff;
+    box-shadow: 0px 8px 15px 0px rgba(111,111,111,0.33);
+
+    &:before {
+      position: absolute;
+      z-index: 2;
+      top: -5px;
+      left: 43px;
+      width: 10px;
+      height: 10px;
+      content: '';
+      transform: rotate(45deg);
+      border-top: 1px solid rgba(0,0,0,0.12);
+      border-left: 1px solid rgba(0,0,0,0.12);
+      background-color: #fff;
+      box-shadow: none;
+    }
+
+    backface-visibility: hidden;
+    @descendent inner {
+      padding: 10px;
+    }
+    @descendent group {
+      color: var(--gray-44);
+      font-size: 14px;
+
+      @descendent text {
+        padding: 13px 10px 7px;
+      }
+    }
+    @descendent item {
+      position: relative;
+      height: 40px;
+      padding: 0 10px;
+      cursor: pointer;
+      color: var(--color-prunes);
+      font-size: 16px;
+      line-height: 40px;
+
+      & + & {
+        margin-top: 1px;
+      }
+
+      &:hover {
+        color: var(--color-broccoli);
+      }
+
+      @modifier disliked {
+        padding-left: 30px;
+        cursor: not-allowed;
+        background-color: #fff6f6;
+
+        &:hover {
+          color: inherit;
+        }
+      }
+      @modifier selected {
+        background: #D8F2DE;
+      }
+
+      @descendent iconContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 40px;
+      }
+      @descendent icon {
+        width: 12px;
+        height: 12px;
+        fill: #ffacac;
+      }
+      @descendent text {
+        display: inline-block;
+        color: #707070;
+
+        &:first-letter {
+          text-transform: uppercase;
+        }
+
+        b {
+          color: #454545;
+        }
+      }
+    }
+    @descendent message {
+      height: 40px;
+      padding: 0 10px;
+      color: #b3b3b3;
+      font-size: 16px;
+      font-size: 16px;
+      line-height: 40px;
+    }
+  }
+}

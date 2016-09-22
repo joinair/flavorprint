@@ -1,0 +1,59 @@
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component Notification {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: var(--z-index-notification);
+  will-change: transform;
+
+  @media (--s) {
+    top: 82px;
+    bottom: auto;
+
+    .Notification-container {
+      max-width: 700px;
+      width: auto;
+    }
+
+    .Notification-text {
+      text-align: center;
+    }
+  }
+
+  @descendent container {
+    width: 100%;
+    position: relative;
+    padding: 20px 45px 20px 15px;
+    background-color: #ffee85;
+    border-radius: 4px;
+    box-shadow: -5px 10px 15px 0px rgba(0, 0, 0, 0.25);
+  }
+
+  @descendent text {
+    font-size: 16px;
+  }
+
+  @descendent dismiss {
+    width: 46px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+  }
+
+  @descendent dismissIcon {
+    width: 14px;
+    height: 14px;
+    fill: #454545;
+    opacity: .3;
+  }
+}

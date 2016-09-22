@@ -1,0 +1,30 @@
+/* =============================================================== */
+/* Layout - contains the main app header
+/* =============================================================== */
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+@import "imports/fonts.css";
+
+/* ID ensures semantic-ui is overridden without dozens of !important */
+#content {
+
+  @component container {
+    @media (--s)    { width: 768px; }
+    @media (--m)    { width: 870px; }
+    @media (--l)    { width: 1170px; }
+    @media (--xxl)  { width: 1470px; }
+    @media (--xxxl) { width: 1770px; }
+
+    @descendent mainSection {
+      margin-top: 18px;
+    }
+  }
+
+  @component page-wrapper {
+  }
+
+  .pusher {
+    height: 100vh;
+    overflow: hidden;
+  }
+}

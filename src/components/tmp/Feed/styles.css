@@ -1,0 +1,24 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component Feed {
+  @descendent list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    @media (--xs) {
+      margin-left: -var(--grid-offset);
+      margin-right: -var(--grid-offset);
+      flex-direction: row;
+      justify-content: flex-start;
+    }
+  }
+
+  @descendent showMoreButton {
+    display: block;
+    margin: 0 auto 60px;
+  }
+}

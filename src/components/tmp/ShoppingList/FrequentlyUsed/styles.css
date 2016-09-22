@@ -1,0 +1,13 @@
+
+@import "imports/variables.css";
+
+@component ShoppingList {
+  @descendent frequentlyUsed {
+    padding: 0px 20px;
+  }
+
+  @descendent returnButton {
+    display: block;
+    margin: 70px auto 0px;
+  }
+}

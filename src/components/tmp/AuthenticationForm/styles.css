@@ -1,0 +1,295 @@
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component AuthenticationForm {
+  padding: 30px 20px;
+
+  @media (--s) {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  @when inOnboarding {
+    .AuthenticationForm-tab {
+      padding: 11px 0;
+    }
+  }
+
+  @when inAuthenticationFlow {
+    @media (--s) {
+      padding: 0;
+
+      .AuthenticationForm-tabPanel {
+        padding-right: 30px;
+        padding-bottom: 40px;
+        padding-left: 30px;
+      }
+
+      .AuthenticationForm-tab {
+        background-color: #eef0f1;
+        border: none;
+
+        &:after {
+          content: none;
+        }
+
+        &.is-selected {
+          background-color: #fff;
+        }
+      }
+    }
+  }
+
+  @descendent tabList {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @descendent tabPanel {
+    padding: 28px 0 0;
+
+    @media (--s) {
+      padding-top: 40px;
+    }
+  }
+
+  @descendent tab {
+    flex: 1 1 auto;
+    padding: 11px 0;
+    color: #7d8b94;
+    background-color: #fff;
+    border: 1px solid #f3f3f3;
+    border-right: none;
+    font-size: 16px;
+    text-align: center;
+    cursor: pointer;
+
+    @media (--s) {
+      padding-top: 17px;
+      padding-bottom: 17px;
+    }
+
+    &:first-child {
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
+    }
+
+    &:last-child {
+      border-right: 1px solid #f3f3f3;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+
+    @when selected {
+      position: relative;
+      color: #2e3031;
+      background-color: #e9ecee;
+      border-color: #e9ecee;
+
+      &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        position: absolute;
+        left: 50%;
+        bottom: -6px;
+        margin-left: -12px;
+        border-style: solid;
+        border-width: 6px 12px 0 12px;
+        border-color: #e9ecee transparent transparent transparent;
+      }
+    }
+  }
+
+  @descendent socialButton {
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+
+    @descendent iconContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 47px;
+      position: absolute;
+    }
+
+    @modifier facebook {
+      color: #fff;
+      background-color: var(--color-facebook);
+      margin-bottom: 20px;
+
+      @media (--s) {
+        margin-bottom: 25px;
+      }
+
+      .AuthenticationForm-socialButton-icon {
+        height: 22px;
+        width: 11px;
+        fill: #fff;
+      }
+    }
+
+    @modifier google {
+      color: #4a4a4a;
+      background-color: #fff;
+      border: 1px solid #cdcdcd;
+
+      .AuthenticationForm-socialButton-icon {
+        height: 22px;
+        width: 22px;
+      }
+    }
+  }
+
+  @descendent terms {
+    color: #8e8e8e;
+    font-size: 12px;
+    margin-bottom: -20px;
+    margin-top: 16px;
+    text-align: center;
+
+    @descendent link {
+      color: var(--color-broccoli);
+    }
+
+    @media(--s) {
+      margin-top: 18px;
+    }
+  }
+
+  @descendent divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+    overflow: hidden;
+
+    @media(--s) {
+      margin-top: 18px;
+      margin-bottom: 18px;
+    }
+
+    &:before,
+    &:after {
+      content: "";
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      height: 2px;
+      vertical-align: middle;
+      background: #e7e7e7;
+      background-clip: content-box;
+      border-bottom: 1px solid rgba(255,255,255,.5);
+    }
+
+    &:before {
+      left: -29px;
+      margin: 0 0 0 -50%;
+    }
+
+    &:after {
+      left: 29px;
+      margin: 0 -50% 0 0;
+    }
+  }
+
+  @descendent dividerText {
+    color: #7d8b94;
+    font-size: 16px;
+    vertical-align: middle;
+  }
+
+  @descendent fields {
+    margin-bottom: 16px;
+
+    @modifier signup {
+      margin-bottom: 40px;
+    }
+  }
+
+  @descendent fieldsRow {
+    display: flex;
+    margin-bottom: 25px;
+
+    .AuthenticationForm-field {
+      flex: 1 1 auto;
+      margin-bottom: 0;
+
+      &:last-child {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  @descendent field {
+    position: relative;
+    margin-bottom: 25px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @descendent helpers {
+    display: flex;
+    flex-direction: row;
+
+    margin-bottom: 20px;
+    text-align: right;
+
+    @media (--s) {
+      margin-top: -11px;
+    }
+  }
+
+  @descendent helper {
+    flex: 1 1 auto;
+  }
+
+  @descendent forgotPassword {
+    color: var(--color-broccoli);
+    font-size: 14px;
+    cursor: pointer;
+
+    @media (--s) {
+      font-size: 13px;
+    }
+
+    &:hover {
+      color: var(--color-broccoli);
+    }
+  }
+
+  @descendent action {
+    @descendent iconContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 50px;
+      height: 42px;
+      position: absolute;
+    }
+
+    @modifier email {
+      height: 42px;
+      line-height: 42px;
+      background-color: var(--color-broccoli);
+      border-radius: var(--border-radius);
+      text-align: center;
+      cursor: pointer;
+      font-size: 16px;
+      color: #fff;
+
+      .AuthenticationForm-action-icon {
+        height: 16px;
+        width: 21px;
+        fill: #fff;
+      }
+    }
+  }
+}

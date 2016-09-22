@@ -1,0 +1,28 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component RequestResetPasswordModal {
+  background-color: #fff;
+  min-height: 100%;
+
+  @media (--s) {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 400px;
+  }
+
+  @descendent form {
+    padding: 30px;
+    font-size: 16px;
+  }
+
+  @descendent message {
+    color: var(--color-prunes);
+    margin-bottom: 20px;
+  }
+
+  @descendent field {
+    margin-bottom: 25px;
+  }
+}

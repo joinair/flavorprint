@@ -1,0 +1,13 @@
+
+@component OnlineCheckoutViewSelector {
+  display: flex;
+  flex-direction: row;
+
+  @descendent item {
+    line-height: 20px;
+
+    & + & {
+      margin-left: 10px;
+    }
+  }
+}

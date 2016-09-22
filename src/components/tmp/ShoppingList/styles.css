@@ -1,0 +1,488 @@
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component ShoppingList {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: #fff;
+  max-width: var(--s);
+
+  @descendent inner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  @when inputing {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    z-index: var(--z-index-mobile-shopping-list-input);
+
+    @media (--s) {
+      position: relative;
+      top: auto;
+      width: auto;
+      z-index: auto;
+    }
+
+    .ShoppingList-actions {
+      @media (--s) {
+        display: flex;
+      }
+
+      display: none;
+    }
+  }
+
+  @descendent actions {
+    margin: 14px 0px 0px;
+    padding-right: var(--grid-offset);
+    padding-left: var(--grid-offset);
+    display: flex;
+
+    @modifier flex {
+      .ShoppingList-actions-button {
+        display: block;
+        width: 100%;
+        flex: 1 0 auto;
+      }
+    }
+  }
+
+  @descendent closeButton {
+    height: 18px;
+    width: 18px;
+    fill: var(--color-prunes);
+  }
+  @descendent settingsButton {
+    width: 20px;
+    height: 20px;
+    fill: var(--color-prunes);
+  }
+
+  @descendent addSection {
+    padding: 14px var(--grid-offset);
+
+    @descendent row {
+      display: flex;
+      position: relative;
+    }
+
+    @descendent icon {
+      width: 30px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      cursor: pointer;
+    }
+  }
+
+  @descendent settingsPanelDropdown {
+    position: absolute;
+    top: 39px;
+    right: -6px;
+    width: 234px;
+    z-index: 1;
+    border-radius: 4px;
+    transform-origin: center top;
+    visibility: visible;
+    backface-visibility: hidden;
+    border: 1px solid rgba(0,0,0,0.12);
+    box-shadow: -5px 0px 15px 0px rgba(111,111,111,0.33);
+    display: none;
+
+    &:before {
+      content: '';
+      position: absolute;
+      right: 10px;
+      top: -6px;
+      margin-left: -5px;
+      width: 10px;
+      height: 10px;
+      background: #FFF;
+      transform: rotate(45deg);
+      z-index: 2;
+      box-shadow: none;
+      border-left: 1px solid rgba(0,0,0,0.12);
+      border-top: 1px solid rgba(0,0,0,0.12);
+    }
+
+    @when open {
+      display: block;
+    }
+
+    @descendent container {
+      border-radius: 4px;
+      background-color: #fff;
+    }
+
+    @descendent column {
+      padding: 10px;
+
+      &:last-of-type {
+        border-top: 1px solid #DBDBDB;
+      }
+    }
+
+    @descendent sortBy {
+      display: flex;
+
+      @descendent item {
+        margin-left: 10px;
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+      }
+    }
+
+    @descendent clearBtn {
+      display: block;
+      padding: 10px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      font-size: 15px;
+      color: #707070;
+      background-color: #F5F5F5;
+      border: 1px solid #DBDBDB;
+      border-radius: 4px;
+
+      &:hover {
+        border-color: var(--color-broccoli-hover);
+      }
+    }
+  }
+
+  @descendent emptyList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    @descendent container {
+      text-align: center;
+    }
+
+    @descendent imageContainer {
+      margin-bottom: 12px;
+    }
+
+    @descendent image {
+      max-width: 310px;
+    }
+
+    @descendent message {
+      color: #979797;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @descendent messageHeader {
+      color: var(--color-prunes);
+      font-size: 22px;
+      line-height: 30px;
+      display: block;
+    }
+  }
+
+  @descendent item {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0px 1px 0px 0px #F0F0F0;
+
+    &:last-of-type {
+      box-shadow: none;
+    }
+
+    @descendent content {
+      display: flex;
+      align-items: center;
+      padding: 11px var(--grid-offset);
+
+      @modifier listItem {
+        min-height: 60px;
+      }
+    }
+
+    @descendent heading {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 6px var(--grid-offset);
+      height: 40px;
+      line-height: 18px;
+      font-size: 14px;
+      color: #707070;
+      background-color: #F0F0F0;
+
+      @modifier editable {
+        cursor: pointer;
+      }
+
+      @descendent title {
+        flex: 1 0 auto;
+      }
+      @descendent count {
+        margin-left: 12px;
+        color: #A2A2A2;
+      }
+      @descendent icon {
+        margin-right: 12px;
+        width: 18px;
+        height: 14px;
+        fill: #707070;
+      }
+      @descendent titleIcon {
+        width: 12px;
+        height: 8px;
+        fill: #797979;
+
+        .is-active & {
+          transform: rotate(180deg);
+        }
+      }
+      @descendent linkClear {
+        display: inline-block;
+        padding: 4px 12px;
+        cursor: pointer;
+        color: #FFF;
+        text-decoration: none;
+        border: 1px solid #FFF;
+        border-radius: 5px;
+
+        &:hover {
+          color: #FFF;
+          text-decoration: none;
+          border: 1px solid #FFF;
+        }
+      }
+
+      @modifier gotIt {
+        background-color: var(--color-prunes);
+        color: #FFF;
+
+        .ShoppingList-item-heading-icon {
+          fill: #FFF;
+        }
+      }
+    }
+
+    @descendent text {
+      flex: 1;
+
+      @modifier clickable {
+        cursor: pointer;
+      }
+    }
+
+    @descendent subName {
+      font-size: 14px;
+      color: #A8A8A8;
+    }
+
+    @descendent name {
+      font-size: 16px;
+      color: var(--color-prunes);
+      line-height: 19px;
+
+      @descendent input {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        color: var(--color-prunes);
+        line-height: 19px;
+        border: none;
+        background-color: transparent;
+        outline: none;
+
+        &:focus {
+          outline: none;
+          border: none;
+        }
+      }
+    }
+    @descendent remove {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0 10px 10px;
+      width: 22px;
+      height: 30px;
+      cursor: pointer;
+
+      @descendent icon {
+        width: 10px;
+        height: 10px;
+        fill: #C2C2C2;
+      }
+    }
+
+    .Checkbox {
+      position: relative;
+      margin-top: -5px;
+      margin-right: 14px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .Checkbox-icon-svg {
+      fill: var(--color-prunes);
+    }
+  }
+
+  @descendent itemEdit {
+    position: relative;
+    background-color: var(--color-prunes);
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      display: block;
+      margin-left: -7px;
+      width: 14px;
+      border-style: solid;
+      border-color: transparent;
+      border-top-color: #fff;
+      box-shadow: none;
+      border-width: 5px 7px 7px 7px;
+
+      .is-active & {
+        border-top-color: #F0F0F0;
+      }
+    }
+
+    @descendent link {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 1 0 auto;
+      line-height: 20px;
+      text-align: center;
+      color: #FFF;
+      cursor: pointer;
+
+      &:hover {
+        color: #FFF;
+      }
+
+      @descendent icon {
+        margin-right: 7px;
+        width: 15px;
+        height: 15px;
+        fill: #FFF;
+
+        @modifier edit {
+          width: 15px;
+          height: 15px;
+        }
+        @modifier view {
+          width: 18px;
+          height: 18px;
+        }
+        @modifier save {
+          fill: transparent;
+          stroke: #fff;
+          stroke-width: 2px;
+          width: 22px;
+          height: 16px;
+        }
+        @modifier remove {
+          width: 14px;
+          height: 14px;
+        }
+        @when saved {
+          fill: #fff;
+        }
+      }
+    }
+  }
+
+  @descendent sectionWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @descendent section {
+    position: relative;
+    flex: 1 0 auto;
+    min-height: 200px;
+
+    @media (--s) {
+      border-top: 1px solid #dbdbdb;
+    }
+
+    .Page--mobileShoppingList & {
+      padding-bottom: 76px;
+    }
+
+    @descendent overlay {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      z-index: 10;
+    }
+  }
+
+  @descendent dropdownAddToList {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    left: 0;
+    z-index: 11;
+  }
+}
+
+@component ItemsAutocomplete {
+  position: relative;
+  flex: 1 0 auto;
+
+  @descendent field {
+    width: 100%;
+    height: 42px;
+    padding: 12px 10px 10px;
+    font-size: 16px;
+    color: #858585;
+    line-height: 20px;
+    background-color: #FFFFFF;
+    border: 1px solid #C9C9C9;
+    border-radius: 4px;
+    outline: none;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-broccoli);
+    }
+
+    @when error {
+      border: 1px solid var(--color-paprika);
+    }
+  }
+
+  @descendent icon {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    padding: 12px;
+    cursor: pointer;
+  }
+
+  @descendent button {
+    fill: #a8a8a8;
+    height: 19px;
+    width: 19px;
+  }
+}

@@ -1,0 +1,25 @@
+/* =============================================================== */
+/* Media queries
+/* =============================================================== */
+
+@custom-media --xxxs  (min-width: 360px);
+@custom-media --xxs   (min-width: 400px);
+@custom-media --xs    (min-width: 550px);
+@custom-media --s     (min-width: 700px);
+@custom-media --m     (min-width: 960px);
+@custom-media --l     (min-width: 1240px);
+@custom-media --xl    (min-width: 1440px);
+@custom-media --xxl   (min-width: 1600px);
+@custom-media --xxxl  (min-width: 1700px);
+@custom-media --xxxxl (min-width: 2000px);
+
+@custom-media --vxxxs  (min-height: 360px);
+@custom-media --vxxs   (min-height: 400px);
+@custom-media --vxs    (min-height: 550px);
+@custom-media --vs     (min-height: 700px);
+@custom-media --vm     (min-height: 960px);
+@custom-media --vl     (min-height: 1240px);
+@custom-media --vxl    (min-height: 1440px);
+@custom-media --vxxl   (min-height: 1600px);
+@custom-media --vxxxl  (min-height: 1700px);
+@custom-media --vxxxxl (min-height: 2000px);

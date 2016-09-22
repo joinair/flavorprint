@@ -1,0 +1,561 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component RecipeBuilder {
+  @descendent container {
+    margin: 0 auto;
+    padding: 45px var(--grid-offset);
+    max-width: 640px;
+  }
+
+  @descendent title {
+    margin-bottom: 35px;
+    text-align: center;
+  }
+
+  @descendent photo {
+    position: relative;
+    height: 225px;
+    margin-bottom: 22px;
+
+    @media (--m) {
+      height: 250px;
+    }
+
+    @descendent label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    @descendent empty {
+      width: 100%;
+      height: 100%;
+      border: 1px dashed #c2c2c2;
+      border-radius: 4px;
+
+      @when uploading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .Preloader {
+          margin: 0;
+        }
+      }
+    }
+
+    @descendent show {
+      width: 100%;
+      height: 100%;
+    }
+
+    @descendent preview {
+      display: flex;
+      justify-content: center;
+      height: 100%;
+    }
+
+    @descendent actions {
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+    }
+
+    @descendent action {
+      & + & {
+        margin-left: 10px;
+      }
+    }
+
+    @descendent iconContainer {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    @descendent icon {
+      width: 65px;
+      height: 48px;
+      fill: #c2c2c2;
+    }
+  }
+
+  @descendent formGroup {
+    padding: 18px 0;
+    border-bottom: 1px solid #ebebeb;
+
+    @media (--m) {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .RecipeBuilder-formLabel {
+        align-self: flex-start;
+        margin-top: 10px;
+      }
+    }
+  }
+
+  @descendent formControl {
+    flex: 1 0 auto;
+
+    @descendent row {
+      display: flex;
+      flex-direction: row;
+      margin: 0 -4px;
+    }
+
+    @descendent column {
+      flex: 1 0 auto;
+      padding: 0 4px;
+    }
+  }
+
+  @descendent formDropdown {
+    width: 145px;
+
+    @descendent fieldContainer {
+      display: table;
+      position: relative;
+      border-collapse: separate;
+    }
+
+    @descendent field {
+      display: table-cell;
+      float: left;
+      width: 100%;
+      height: 42px;
+      font-size: 16px;
+      text-align: center;
+      color: var(--color-prunes);
+      background-color: #fff;
+      border: 1px solid #c2c2c2;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+
+      &:focus {
+        outline: 0;
+      }
+
+      @when error {
+        border-color: var(--color-paprika);
+      }
+    }
+
+    @component Dropdown {
+      display: table-cell;
+      width: 100px;
+      white-space: nowrap;
+      vertical-align: middle;
+
+      @descendent button {
+        display: flex;
+        align-items: center;
+        height: 42px;
+        padding: 0 10px;
+        font-size: 15px;
+        text-align: left;
+        background-color: #f2f2f2;
+        border: 1px solid #c9c9c9;
+        border-left: none;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        cursor: pointer;
+      }
+
+      @descendent text {
+        flex: 1 0 auto;
+      }
+
+      @descendent iconContainer {
+        margin-left: 10px;
+      }
+
+      @descendent icon {
+        width: 12px;
+        height: 8px;
+        fill: #a8a8a8;
+      }
+
+      @descendent menu {
+        position: absolute;
+        display: none;
+        top: 55px;
+        right: 0;
+        width: 145px;
+        background-color: #fff;
+        padding: 5px 0;
+
+        border: 1px solid rgba(0,0,0,0.12);
+        box-shadow: 0px 8px 15px 0px rgba(111,111,111,0.33);
+        border-radius: 3px;
+        transform-origin: center top;
+
+        visibility: visible;
+        backface-visibility: hidden;
+
+        &:before {
+          content: '';
+          position: absolute;
+          right: 30px;
+          top: -6px;
+          width: 10px;
+          height: 10px;
+          background: #FFF;
+          transform: rotate(45deg);
+          z-index: 1;
+          box-shadow: none;
+          border-left: 1px solid rgba(0,0,0,0.12);
+          border-top: 1px solid rgba(0,0,0,0.12);
+        }
+
+        @when visible {
+          display: block;
+          z-index: 1;
+        }
+      }
+
+      @descendent menuItem {
+        position: relative;
+        font-size: 16px;
+        padding: 12px;
+        padding-left: 33px;
+        color: var(--color-prunes);
+        z-index: 2;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--color-prunes-hover);
+          background-color: #f6f6f6;
+        }
+
+        @when selected {
+          color: var(--color-broccoli);
+
+          &:before {
+            content: '\2022';
+            position: absolute;
+            margin-top: -1px;
+            left: 15px;
+          }
+
+          &:hover {
+            color: var(--color-broccoli-hover);
+          }
+        }
+      }
+    }
+  }
+
+  @descendent formLabel {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+    color: var(--color-prunes);
+    line-height: 24px;
+
+    @media (--m) {
+      flex: 0 0 174px;
+      width: 174px;
+      margin-bottom: 0;
+    }
+  }
+
+  @descendent ingredient {
+    margin-bottom: 18px;
+  }
+
+  @descendent addButton {
+    display: inline-block;
+    color: var(--color-broccoli);
+    cursor: pointer;
+    font-size: 15px;
+
+    &:hover {
+      color: var(--color-broccoli-hover);
+
+      .RecipeBuilder-addButton-icon {
+        fill: var(--color-broccoli-hover);
+      }
+    }
+
+    @descendent icon {
+      margin-right: 5px;
+      fill: var(--color-broccoli);
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  @descendent instruction {
+    margin-bottom: 15px;
+  }
+
+  @descendent actionGroup {
+    padding-top: 40px;
+    display: flex;
+    flex-direction: column;
+
+    @media (--m) {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @descendent item {
+      flex: 1 0 auto;
+      text-align: center;
+
+      @media (--m) {
+        margin-bottom: 0;
+      }
+
+      @modifier delete {
+        order: 2;
+        margin-top: 25px;
+
+        @media (--m) {
+          order: initial;
+          text-align: left;
+          margin: 0;
+        }
+      }
+
+      @modifier save {
+        display: block;
+        order: 1;
+
+        @media (--m) {
+          order: initial;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  @descendent button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 15px;
+    line-height: 19px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+
+    & + & {
+      @media (--m) {
+        margin-right: 10px;
+      }
+    }
+
+    @modifier save {
+      width: 100%;
+
+      @media (--m) {
+        width: auto;
+      }
+    }
+
+    @modifier publish {
+      width: 100%;
+
+      @media (--m) {
+        width: auto;
+      }
+    }
+
+    @modifier delete {
+      color: var(--color-paprika);
+      padding-left: 0;
+      padding-right: 0;
+
+      &:hover {
+        color: var(--color-paprika-hover);
+      }
+    }
+  }
+
+  @descendent timeLabel {
+    display: none;
+
+    @media (--m) {
+      display: block;
+    }
+  }
+
+  @descendent time {
+    display: block;
+
+    @media (--xxxs) {
+      display: inline-block;
+    }
+
+    @media (--m) {
+      & + & {
+        margin: 0;
+        float: right;
+      }
+    }
+
+    & + & {
+      margin-top: 15px;
+
+      @media (--xxxs) {
+        margin-top: 0px;
+        margin-left: 15px;
+      }
+    }
+
+    @descendent container {
+      @media (--m) {
+        display: flex;
+        flex: 1 0 auto;
+        align-items: center;
+      }
+    }
+
+    @descendent label {
+      font-size: 16px;
+      margin-bottom: 10px;
+
+      @media (--m) {
+        margin-right: 15px;
+        margin-bottom: 0;
+      }
+
+      @modifier desktop {
+        display: none;
+
+        @media (--m) {
+          display: block;
+        }
+      }
+
+      @modifier mobile {
+        @media (--m) {
+          display: none;
+        }
+      }
+    }
+
+    @descendent errorMessage {
+      margin-top: 15px;
+      color: var(--color-paprika);
+      font-size: 13px;
+    }
+  }
+
+  @descendent yield {
+    max-width: 80px;
+  }
+
+  @descendent tabs {
+    padding-top: 22px;
+    background-color: #f7f7f7;
+
+    @media (--m) {
+      padding-top: 35px;
+    }
+
+    @descendent list {
+      display: flex;
+      flex-direction: row;
+      list-style: none;
+      margin: 0 auto;
+      max-width: 640px;
+      padding: 0 var(--grid-offset);
+
+      @descendent tab{
+        display: block;
+        margin-right: 22px;
+        padding: 20px 0 18px;
+        font-size: 22px;
+        color: var(--color-prunes);
+        line-height: 22px;
+        border-bottom: 5px solid transparent;
+        cursor: pointer;
+
+        &:hover {
+          color: var(--color-broccoli-hover);
+        }
+
+        &:last-of-type {
+          margin-right: 0;
+        }
+
+        @when selected {
+          color: var(--color-broccoli);
+          border-bottom-color: var(--color-broccoli);
+        }
+      }
+    }
+  }
+
+  @descendent import {
+    @descendent text {
+      font-size: 16px;
+    }
+
+    @descendent inputForm {
+      display: flex;
+      flex-direction: column;
+      margin-top: 25px;
+
+      @media (--s) {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      @descendent input {
+        flex: 1 0 auto;
+
+        @media (--s) {
+          margin-right: 10px;
+        }
+      }
+
+      @descendent button {
+        width: 100%;
+        margin-top: 10px;
+        height: 42px;
+        line-height: 42px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        @media (--s) {
+          margin-top: 0;
+          width: auto;
+        }
+      }
+    }
+  }
+
+  @descendent warning {
+    border-radius: var(--border-radius);
+    margin: 20px 0 40px 0;
+    background: var(--color-warning);
+    padding: 15px 20px;
+    display: flex;
+
+    @descendent icon {
+      width: 20px;
+      height: 20px;
+      margin: 10px 20px 0 0;
+      fill: var(--color-prunes);
+    }
+
+    @descendent text {
+      flex: 1;
+    }
+
+    @descendent button {
+      display: block;
+      margin-top: 15px;
+    }
+  }
+}

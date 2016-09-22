@@ -1,0 +1,12 @@
+
+@component PrintListExtraLines {
+  display: none;
+
+  @when extraLinesVisible {
+    display: block;
+  }
+
+  @descendent item {
+    padding: 5px 0;
+  }
+}

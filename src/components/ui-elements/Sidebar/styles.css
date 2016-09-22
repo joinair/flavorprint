@@ -1,0 +1,66 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component Sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  backface-visibility: hidden;
+  will-change: transform;
+  visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: var(--z-index-sidebar);
+  will-change: transform;
+  transition: transform .5s ease;
+  width: 100%;
+  background-color: transparent;
+
+  @descendent container {
+    min-height: 100vh;
+    background-color: #fff;
+
+    animation-iteration-count: 1;
+    animation-duration: 0.3s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+
+    @modifier left {
+      animation-name: LeftSidebar-ShowAnimation;
+    }
+
+    @modifier right {
+      position: absolute;
+      right: 0;
+      animation-name: RightSidebar-ShowAnimation;
+    }
+  }
+
+  @when open {
+    visibility: visible;
+  }
+}
+
+@keyframes LeftSidebar-ShowAnimation {
+  from {
+    transform: translate3d(-100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+@keyframes RightSidebar-ShowAnimation {
+  from {
+    transform: translate3d(100%, 0, 0);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}

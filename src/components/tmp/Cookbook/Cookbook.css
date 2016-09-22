@@ -1,0 +1,82 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component Cookbook {
+  @descendent container {
+    padding-top: 42px;
+
+    @media (--m) {
+      padding-top: 0;
+    }
+  }
+}
+
+@component CookbookPlaceholder {
+  margin: 0 auto;
+  padding: 0 var(--grid-offset) 50px;
+  max-width: 640px;
+  text-align: center;
+
+  @descendent title {
+    margin-bottom: 25px;
+    font-size: 30px;
+    color: #9C9C9C;
+    line-height: 38px;
+  }
+
+  @descendent description {
+    margin-bottom: 38px;
+    font-size: 16px;
+    line-height: 20px;
+    color: #9C9C9C;
+  }
+
+  @descendent link {
+    color: var(--color-paprika);
+
+    &:hover {
+      color: var(--color-paprika-hover);
+    }
+  }
+
+  @descendent addRecipeBtn {
+    display: none;
+
+    @media (--m) {
+      display: inline-block;
+    }
+  }
+
+  @descendent text {
+    margin: 12px 0;
+    line-height: 30px;
+    font-size: 21px;
+  }
+
+  @descendent delimeter {
+    display: none;
+    margin: 4px 0 12px;
+    font-size: 21px;
+
+    @media (--m) {
+      display: block;
+    }
+  }
+
+  @descendent emptyCookbookIcon {
+    margin: 15px auto 13px;
+    width: 185px;
+    height: 199px;
+    background: url(/images/cookbook/empty-cookbook-placeholder.png) no-repeat;
+    background-size: cover;
+  }
+
+  @descendent emptyCollectionIcon {
+    margin: 0 auto;
+    width: 261px;
+    height: 243px;
+    background: url(/images/cookbook/empty-collection-placeholder.png) no-repeat;
+    background-size: cover;
+  }
+}

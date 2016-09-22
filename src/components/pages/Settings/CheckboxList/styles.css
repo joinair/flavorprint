@@ -1,0 +1,33 @@
+
+@component CheckboxList {
+  @modifier inline {
+    margin-left: -30px;
+
+    .Checkbox {
+      display: inline-block;
+      margin-left: 30px;
+    }
+  }
+
+  @modifier columns {
+    margin: -10px 0;
+
+    .Checkbox {
+      margin: 10px 0;
+    }
+  }
+
+  @descendent columns {
+    display: flex;
+    flex-direction: row;
+  }
+
+  @descendent column {
+    flex: 1;
+    margin-right: 20px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

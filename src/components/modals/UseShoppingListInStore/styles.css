@@ -1,0 +1,107 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component UseShoppingListInStoreModal {
+  background-color: var(--color-white);
+  min-height: 100%;
+
+  @media (--s) {
+    border-radius: 2px;
+    overflow: hidden;
+    width: 400px;
+  }
+
+  @descendent form {
+    font-size: 16px;
+    padding: 30px;
+  }
+
+  @descendent field {
+    flex: 1 0 0px;
+    overflow: hidden;
+    padding-right: 10px;
+  }
+
+  @descendent fieldAction {
+    height: 42px;
+    line-height: 42px;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+
+  @descendent emailField {
+    display: flex;
+  }
+
+  @descendent action {
+    height: 42px;
+    line-height: 42px;
+    background-color: var(--color-broccoli);
+    border-radius: 4px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    position: relative;
+
+    @descendent iconContainer {
+      align-items: center;
+      bottom: 0;
+      display: flex;
+      justify-content: center;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 60px;
+    }
+
+    @descendent icon {
+      width: 20px;
+      height: 18px;
+      fill: #fff;
+    }
+  }
+
+  @descendent divider {
+    margin: 15px 0 20px;
+    text-align: center;
+    overflow: hidden;
+
+    &:before,
+    &:after {
+      content: "";
+      position: relative;
+      display: inline-block;
+      width: 50%;
+      height: 2px;
+      vertical-align: middle;
+      background: #dbdbdb;
+      background-clip: content-box;
+      border-bottom: 1px solid rgba(255, 255, 255, .5);
+    }
+
+    &:before {
+      left: -12px;
+      margin: 0 0 0 -50%;
+    }
+
+    &:after {
+      left: 12px;
+      margin: 0 -50% 0 0;
+    }
+  }
+
+  @descendent dividerText {
+    color: rgba(112, 112, 112, .5);
+    font-size: 16px;
+    vertical-align: middle;
+  }
+
+  @descendent noItemsWarning {
+    color: var(--color-paprika);
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 20px;
+  }
+}

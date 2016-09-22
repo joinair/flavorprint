@@ -1,0 +1,11 @@
+
+@component SendItemsToInventoryFAQItem {
+  & + & {
+    margin-top: 22px;
+  }
+
+  @descendent question {
+    color: #9b9b9b;
+    margin-bottom: 2px;
+  }
+}

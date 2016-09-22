@@ -1,0 +1,51 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+@component ModalHeader {
+  background-color: #eef0f1;
+
+  @modifier mobile {
+    @media (--s) {
+      display: none;
+    }
+  }
+
+  @descendent container {
+    padding: 15px 44px 15px 15px;
+    position: relative;
+
+    @media (--s) {
+      padding: 17px 70px 16px;
+      text-align: center;
+    }
+  }
+
+  @descendent close {
+    align-items: center;
+    bottom: 0;
+    cursor: pointer;
+    display: flex;
+    fill: var(--color-prunes);
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 44px;
+
+    @media (--s) {
+      width: 70px;
+    }
+  }
+
+  @descendent title {
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--color-prunes);
+
+    @media (--s) {
+      font-size: 21px;
+      line-height: 27px;
+    }
+  }
+}

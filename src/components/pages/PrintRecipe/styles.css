@@ -1,0 +1,74 @@
+
+@import "imports/variables.css";
+
+@component PrintRecipe {
+  width: 840px;
+  margin: 20px auto;
+  padding: 30px 40px;
+  color: #373a3d;
+  border: #858585 1px dashed;
+  border-radius: 3px;
+  font-family: var(--base-font-family);
+
+  @media print {
+    margin: 0 auto;
+    border: none;
+  }
+
+  @modifier noImage {
+    .PrintRecipe-header {
+      margin-bottom: 30px;
+    }
+  }
+
+  @descendent header {
+    margin-bottom: 20px;
+  }
+  @descendent logo {
+    fill: var(--color-broccoli);
+  }
+  @descendent info {
+    display: flex;
+    flex-direction: row;
+  }
+  @descendent image {
+    max-width: 50%;
+    margin-right: 25px;
+    margin-bottom: 0;
+  }
+  @descendent title {
+    margin-bottom: 4px;
+    font-size: 26px;
+    line-height: 28px;
+  }
+  @descendent affiliation {
+    margin-bottom: 20px;
+  }
+  @descendent content {
+    display: flex;
+    flex-direction: row;
+    padding-top: 20px;
+    border-top: 1px solid #dbdbdb;
+
+    & + & {
+      margin-top: 20px;
+    }
+  }
+  @descendent block {
+    flex: 1 1 50%;
+
+    @modifier ingredients {
+      padding-right: 35px;
+    }
+    @modifier directions {
+      padding-left: 35px;
+      border-left: 1px dashed #c2c2c2;
+    }
+  }
+  @descendent recipeUrl {
+    margin-top: 20px;
+    font-size: 13px;
+    line-height: 24px;
+    color: #999999;
+  }
+}
