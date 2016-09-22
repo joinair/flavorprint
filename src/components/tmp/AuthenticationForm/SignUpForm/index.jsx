@@ -25,6 +25,7 @@ const AuthenticationFormTerms = () => (
       <a
         className="AuthenticationForm-terms-link"
         href="https://about.whisk.com/terms"
+        rel="noopener noreferrer"
         target="_blank"
       >
         Terms & Conditions

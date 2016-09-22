@@ -7,7 +7,6 @@ import classnames from 'classnames';
 import './styles.css';
 
 import SidebarMenu from './SidebarMenu';
-import ShoppingListSidebar from './ShoppingListSidebar';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import NotFound from './NotFound';
@@ -32,7 +31,6 @@ class Layout extends Component {
       <BodyClassName className="Body">
         <div className="page-wrapper">
           <SidebarMenu />
-          <ShoppingListSidebar />
 
           <div className={classnames({ 'u-overlay': anySidebarsOpened })}>
             <div className="LayoutFlex">

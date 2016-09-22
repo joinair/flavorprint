@@ -9,13 +9,13 @@ const Preloader = ({ className }) =>
     <div className="Preloader-wrapper">
       <div className="Preloader-spinnerLayer">
         <div className="Preloader-circleClipper Preloader-circleClipper--left">
-          <div className="Preloader-circle Preloader-circle--leftSpin"></div>
+          <div className="Preloader-circle Preloader-circle--leftSpin" />
         </div>
         <div className="Preloader-gapPatch Preloader-circleClipper--right">
-          <div className="Preloader-gapPatch-circle"></div>
+          <div className="Preloader-gapPatch-circle" />
         </div>
         <div className="Preloader-circleClipper">
-          <div className="Preloader-circle Preloader-circle--rightSpin"></div>
+          <div className="Preloader-circle Preloader-circle--rightSpin" />
         </div>
       </div>
     </div>

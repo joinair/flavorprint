@@ -1,7 +1,7 @@
 
 import uuid from 'uuid';
 
-let clientId = undefined;
+let clientId;
 
 export default () => {
   if (!clientId) {

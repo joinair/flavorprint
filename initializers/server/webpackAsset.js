@@ -18,4 +18,6 @@ if (process.env.NODE_ENV === 'development') {
     `${config.ASSETS_PUBLIC_PATH}/${manifest[`${asset}.${extension}`]}`;
 }
 
-export default webpackAsset;
+const toExport = webpackAsset;
+
+export default toExport;

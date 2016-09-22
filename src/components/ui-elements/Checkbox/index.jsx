@@ -20,8 +20,9 @@ const Checkbox = ({ checked, disabled, label, onChange, type }) =>
       className="Checkbox-input"
       onChange={noop}
       type={type}
+      name="checkbox"
     />
-    <label className="Checkbox-label">{label}</label>
+    <label className="Checkbox-label" htmlFor="checkbox">{label}</label>
     <div className="Checkbox-icon">
       <svg className="Checkbox-icon-svg Checkbox-icon-svg--typeCheckbox">
         <use xlinkHref={iconCheckbox} />

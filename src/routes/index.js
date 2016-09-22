@@ -46,7 +46,3 @@ export default store => [
     ],
   },
 ];
-
-// FIXME: FOLLOWS
-// import followsRoutes from './follows';
-// ...followsRoutes(store),

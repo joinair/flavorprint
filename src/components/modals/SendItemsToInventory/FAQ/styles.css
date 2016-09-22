@@ -1,9 +1,0 @@
-
-@import "imports/variables.css";
-
-@component SendItemsToInventoryFAQ {
-  color: var(--color-prunes);
-  font-size: 14px;
-  line-height: 18px;
-  margin-top: 30px;
-}

@@ -1,4 +1,6 @@
 
+export const HOME = '/';
+
 export const LOG_IN = '/login';
 export const PREFERENCES = '/preferences';
 export const RECIPES = '/recipes';
@@ -8,6 +10,7 @@ export const SETTINGS_MORE = '/settings-more';
 export const SIGN_UP = '/signup';
 
 export default {
+  HOME,
   LOG_IN,
   PREFERENCES,
   RECIPES,

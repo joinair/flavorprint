@@ -4,3 +4,7 @@ export const openPopupWindow = (...args) => {
   if (win && win.focus) { win.focus(); }
   return win;
 };
+
+export default {
+  openPopupWindow,
+};

@@ -10,3 +10,7 @@ export const splitByColumns = columns => rows => map(
   ),
   x => map(x, head)
 );
+
+export default {
+  splitByColumns,
+};

@@ -14,7 +14,7 @@ const reload = (require, moduleName) => {
   if (cache) decache(require, cache);
 };
 
-export default require => moduleName => (
-  reload(require, moduleName),
-  require(moduleName)
-);
+export default require => moduleName => {
+  reload(require, moduleName);
+  return require(moduleName);
+};

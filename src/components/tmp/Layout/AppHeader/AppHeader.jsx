@@ -5,7 +5,13 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 import includes from 'lodash/includes';
 
-import { COOKBOOK, LOG_IN, HOME, SIGN_UP } from 'constants/Routes';
+import {
+  RECIPES,
+  COOKBOOK,
+  LOG_IN,
+  HOME,
+  SIGN_UP,
+} from 'constants/Routes';
 
 import iconLogo from 'assets/images/icons/whisk-logo.svg';
 import iconNav from 'assets/images/icons/icon-mobile-nav.svg';
@@ -110,11 +116,11 @@ const Menu = ({
         className={
           classnames(
             'AppHeader-item AppHeader-item--desktop',
-            { 'is-active': isLinkActive(routerPath, '/') }
+            { 'is-active': isLinkActive(routerPath, RECIPES) }
           )
         }
       >
-        <Link to={{ pathname: '/' }} className="AppHeader-link">
+        <Link to={RECIPES} className="AppHeader-link">
           <span className="AppHeader-link-text">Just for you</span>
         </Link>
       </div>
@@ -128,7 +134,7 @@ const Menu = ({
         }
       >
         <Link to={COOKBOOK} className="AppHeader-link">
-          <span className="AppHeader-link-text">Your Cookbook</span>
+          <span className="AppHeader-link-text">FlavorPrint</span>
         </Link>
       </div>
 

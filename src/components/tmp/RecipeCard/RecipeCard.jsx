@@ -208,7 +208,7 @@ class RecipeCard extends Component {
           </RecipePageLink>
 
           {pendingExternal && (
-            <a href={sourceUrl} target="_blank">
+            <a href={sourceUrl} rel="noopener noreferrer" target="_blank">
               <Button
                 outline
                 size="small"
@@ -236,8 +236,7 @@ class RecipeCard extends Component {
 
             <CollectionsPopup openDelay={isSaved ? 0 : 500} recipe={recipe}>
               <div className="RecipeCard-like">
-                <div className={selectButtonClass}>
-                </div>
+                <div className={selectButtonClass} />
               </div>
             </CollectionsPopup>
           </div>

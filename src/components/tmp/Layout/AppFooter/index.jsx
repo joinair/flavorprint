@@ -10,7 +10,12 @@ const staticPage = path => `https://about.whisk.com${path}`;
 
 const TextLink = ({ to, children }) =>
   <div className="AppFooter-item">
-    <a href={to} target="_blank" className="AppFooter-link">
+    <a
+      href={to}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="AppFooter-link"
+    >
       {children}
     </a>
   </div>;
@@ -20,6 +25,7 @@ const IconLink = ({ to, children }) =>
      <a
        href={to}
        target="_blank"
+       rel="noopener noreferrer"
        className="AppFooter-link AppFooter-link--icon"
      >
       {children}
