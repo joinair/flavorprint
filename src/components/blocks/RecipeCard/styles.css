@@ -1,0 +1,239 @@
+
+@import "imports/variables.css";
+@import "imports/media-queries.css";
+
+:root {
+  --RecipeCard-margin: var(--grid-offset);
+  --RecipeCard-title-color: #454545;
+  --RecipeCard-subtitle-color: #A8A8A8;
+  --RecipeCard-removed-background: #F8F8F8;
+  --RecipeCard-removed-title-color: #B3B3B3;
+}
+
+@component RecipeCard {
+  margin: 0 var(--RecipeCard-margin) 40px;
+  padding: 0;
+  width: 290px;
+  position: relative;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.06);
+  border-radius: 5px;
+  will-change: width;
+
+  @when removed {
+    background-color: var(--RecipeCard-removed-background);
+
+    .RecipeCard-image-container {
+      opacity: 0.4;
+    }
+
+    .RecipeCard-title-link {
+      color: var(--RecipeCard-removed-title-color);
+    }
+  }
+
+  @media (--xxxs) {
+    width: 320px;
+  }
+  @media (--xs) {
+    width: 240px;
+  }
+
+  @media (--s) {
+    width: 290px;
+  }
+
+  @media (--m) {
+    width: 270px;
+  }
+
+  @media (--xl) {
+    width: 290px;
+  }
+
+  @descendent content {
+    position: relative;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 0 15px;
+
+    @media (--xs) {
+      height: 74px;
+    }
+
+    @media (--s) {
+      height: 80px;
+    }
+  }
+
+  @descendent info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 15px 15px 15px;
+  }
+
+  @descendent match {
+    padding: 2px 7px 2px 0;
+    border-right: 1px solid #d2d2d2;
+
+    @descendent percent {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    @descendent text {
+      font-size: 14px;
+    }
+  }
+
+  @descendent flavors {
+    flex: 1;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    padding-left: 13px;
+    margin-top: -5px;
+
+    @descendent flavor {
+      & + & {
+        margin-top: 5px;
+      }
+
+      @descendent color {
+        width: 17px;
+        height: 17px;
+        border-radius: var(--border-radius);
+        display: inline-block;
+        margin-right: 7px;
+        vertical-align: middle;
+      }
+
+      @descendent text {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 14px;
+        font-size: 12px;
+        color: #A8A8A8;
+      }
+    }
+  }
+
+  @descendent title {
+    max-height: 40px;
+    overflow: hidden;
+    font-size: 17px;
+    color: var(--color-prunes);
+    line-height: 21px;
+
+    @media (--xs) {
+      max-height: 36px;
+      font-size: 15px;
+      line-height: 18px;
+    }
+
+    @media (--s) {
+      max-height: 40px;
+      font-size: 17px;
+      line-height: 21px;
+    }
+
+  }
+
+  @descendent subtitle {
+    margin-top: 3px;
+    font-size: 13px;
+    color: var(--RecipeCard-subtitle-color);
+    line-height: 16px;
+
+    @modifier link {
+      &:hover {
+        color: var(--RecipeCard-subtitle-color);
+      }
+    }
+  }
+
+  @descendent title-link {
+    color: var(--color-prunes);
+
+    &:hover {
+      color: var(--color-prunes-hover);
+    }
+  }
+
+  @descendent imageContainer {
+    position: relative;
+    width: 290px;
+    height: 290px;
+    overflow: hidden;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+
+    @media (--xxxs) {
+      width: 320px;
+      height: 320px;
+    }
+
+    @media (--xs) {
+      width: 240px;
+      height: 240px;
+    }
+
+    @media (--s) {
+      width: 290px;
+      height: 290px;
+    }
+
+    @media (--m) {
+      width: 270px;
+      height: 270px;
+    }
+
+    @media (--xl) {
+      width: 290px;
+      height: 290px;
+    }
+  }
+
+  @descendent image {
+    position: absolute;
+    height: 100%;
+
+    @modifier horizontal {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  @descendent fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #f9f9f9;
+  }
+
+  @descendent fallbackIcon {
+    width: 121px;
+    height: 101px;
+    fill: #e0e0e0;
+  }
+
+}
+
+@keyframes fave-heart {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -1450px 0;
+  }
+}

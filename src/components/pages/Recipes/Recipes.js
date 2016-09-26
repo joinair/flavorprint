@@ -4,7 +4,7 @@ import React from 'react';
 import Feed from './Feed';
 
 const Recipes = () => (
-  <div>
+  <div className="AppContainer AppContainer-mainSection">
     <Feed />
   </div>
 );

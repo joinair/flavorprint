@@ -2,20 +2,19 @@
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import feed from 'actions/feed';
+import feed from 'actions/recipes';
 import fetching from 'actions/fetching';
+import selectors from 'reducers/selectors';
 
-import Feed from 'components/tmp/Feed';
+import Feed from 'components/blocks/Feed';
 
 const isFetchingSelector = state => state.fetching[fetching.GROUP_IDS.FEED];
-const recipesSelector = state => state.feed.recipes;
-const showMoreSelector = state =>
-  state.feed.recipes.length < state.feed.paging.total;
 
 const selector = createStructuredSelector({
   isFetching: isFetchingSelector,
-  recipes: recipesSelector,
-  showMore: showMoreSelector,
+  recommendationName: () => 'recipes',
+  recommendations: selectors.getSortedRecipes,
+  showMore: selectors.canLoadMoreRecipes,
 });
 
 const actions = {

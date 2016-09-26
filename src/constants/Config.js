@@ -2,7 +2,11 @@
 export const api = {
   url: global.__APP_ENV__ === 'production'
     ? 'https://whisk.com/api'
-    : 'https://dev.whisk.com/api',
+    : `http://localhost:${global.__PORT__}/api`,
+
+  protocol: global.__APP_ENV__ === 'production'
+    ? 'https'
+    : 'http',
 };
 
 export const banner = {

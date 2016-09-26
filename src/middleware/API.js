@@ -32,8 +32,12 @@ const apiCall = (
   const subject = new Rx.Subject();
   const HTTPMethod = method.toLowerCase();
 
+  const formattedUrl = url.match(/^\/\//)
+    ? `${config.api.protocol}:${url}`
+    : url;
+
   request
-    [HTTPMethod](url + endpoint)
+    [HTTPMethod](formattedUrl + endpoint)
     [sendMethod(HTTPMethod)](sendArguments(HTTPMethod, query))
     .set(headers)
     .end((error, data) => {
@@ -102,9 +106,15 @@ export default region => store => next => action => {
   };
 
   const onSuccess = rawData => {
-    const payload = get(rawData, 'body') || {};
+    let payload = get(rawData, 'body');
     const meta = { signature };
     const newJWTHeader = get(rawData, 'headers.authorization');
+
+    if (rawData.type === 'application/octet-stream') {
+      payload = JSON.parse(rawData.text);
+    } else if (!payload) {
+      payload = {};
+    }
 
     if (newJWTHeader) { meta.JWTHeader = newJWTHeader; }
 

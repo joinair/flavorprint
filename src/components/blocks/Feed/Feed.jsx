@@ -7,17 +7,18 @@ import './styles.css';
 
 import Button from 'components/ui-elements/Button';
 import Preloader from 'components/ui-elements/Preloader';
-import RecipeCard from 'components/tmp/RecipeCard';
+import RecipeCard from 'components/blocks/RecipeCard';
 
 const Feed = ({
   component,
   isFetching,
   onShowMore,
   placeholder,
-  recipes,
+  recommendationName,
+  recommendations,
   showMore,
 }) => {
-  if (isFetching && !recipes.length) {
+  if (isFetching && !recommendations.length) {
     return <Preloader />;
   }
 
@@ -31,19 +32,19 @@ const Feed = ({
       size="xLarge"
       onClick={onShowMore}
     >
-      Show more recipes
+      Show more {recommendationName}
     </Button>
   );
 
-  const renderRecipe = (recipe, index) =>
+  const renderRecommendation = (rec, index) =>
     <CardComponent
-      key={recipe.externalUrl || recipe.id || index}
-      recipe={recipe}
+      key={rec.itemId || index}
+      recommendation={rec}
     />;
 
-  const content = recipes.length
+  const content = recommendations.length
     ? <div className="Feed-list">
-        {map(recipes, renderRecipe)}
+        {map(recommendations, renderRecommendation)}
       </div>
     : placeholder;
 
@@ -56,14 +57,14 @@ const Feed = ({
 };
 
 Feed.propTypes = {
+  component: PropTypes.func,
   isFetching: PropTypes.any,
   placeholder: PropTypes.node,
-  recipes: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.any,
-    externalUrl: PropTypes.string,
+  recommendationName: PropTypes.string.isRequired,
+  recommendations: PropTypes.arrayOf(PropTypes.shape({
+    itemId: PropTypes.any,
   })).isRequired,
   showMore: PropTypes.bool,
-  component: PropTypes.func,
 
   onShowMore: PropTypes.func,
 };

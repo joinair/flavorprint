@@ -2,9 +2,6 @@
 import Application from 'components/Application';
 import Layout from 'components/tmp/Layout';
 
-import preferences from 'actions/preferences';
-import { anonymousSignUp } from 'actions/user';
-
 import authenticationRoutes from './authentication';
 import homeRoute from './home';
 import notFound from './notFound';
@@ -19,16 +16,6 @@ export default store => [
 
   {
     component: Application,
-
-    prepareData() {
-      if (global.Platform.OS === 'browser') {
-        if (!store.getState().user.JWTHeader) {
-          store.dispatch(anonymousSignUp());
-        }
-      }
-
-      return store.dispatch(preferences.load());
-    },
 
     childRoutes: [
       {
