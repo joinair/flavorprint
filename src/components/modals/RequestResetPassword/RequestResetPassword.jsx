@@ -62,7 +62,7 @@ class RequestResetPasswordModal extends Component {
         <div className="RequestResetPasswordModal-form">
           <div className="RequestResetPasswordModal-message">
             Enter the email address associated with your account,
-            and we'll email you a link to reset your password.
+            and we{"'"}ll email you a link to reset your password.
           </div>
 
           <div className="RequestResetPasswordModal-field">

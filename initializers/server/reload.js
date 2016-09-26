@@ -1,3 +1,4 @@
+/* eslint import/no-dynamic-require:0 */
 
 const decache = (require, cache) => {
   cache.children.forEach(child => {

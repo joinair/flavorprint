@@ -36,7 +36,7 @@ const NotFound = () => {
       </div>
 
       <div className="NotFound-message">
-        This page doesn't exist.<br />
+        This page doesn{"'"}t exist.<br />
         Maybe you would like to go to {homepage} or {contactUs}?
       </div>
     </div>

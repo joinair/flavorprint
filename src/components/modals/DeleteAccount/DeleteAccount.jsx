@@ -89,7 +89,7 @@ class DeleteAccount extends Component {
 
         <div className="DeleteAccountModal-form">
           <div className="DeleteAccountModal-message">
-            <div>Sorry to see you go! Tell us why you're leaving:</div>
+            <div>Sorry to see you go! Tell us why you{"'"}re leaving:</div>
             {this.renderReasons()}
           </div>
 
