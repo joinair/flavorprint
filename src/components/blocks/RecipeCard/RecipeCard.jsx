@@ -58,7 +58,7 @@ const RecipeCard = ({ recommendation }) => {
   );
 
   const linkWrap = el => (
-    <a href={link}>
+    <a href={link} target="_blank" rel="noopener noreferrer">
       {el}
     </a>
   );
