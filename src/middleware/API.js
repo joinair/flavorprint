@@ -111,7 +111,11 @@ export default region => store => next => action => {
     const newJWTHeader = get(rawData, 'headers.authorization');
 
     if (rawData.type === 'application/octet-stream') {
-      payload = JSON.parse(rawData.text);
+      try {
+        payload = JSON.parse(rawData.text);
+      } catch (e) {
+        payload = {};
+      }
     } else if (!payload) {
       payload = {};
     }

@@ -10,6 +10,7 @@ import notifications from './notifications';
 import popularProducts from './popularProducts';
 import preferences from './preferences';
 import printList from './printList';
+import products from './products';
 import recipes from './recipes';
 import router from './router';
 import searchPreferences from './searchPreferences';
@@ -27,6 +28,7 @@ export default combineReducers({
   popularProducts,
   preferences,
   printList,
+  products,
   recipes,
   router,
   searchPreferences,

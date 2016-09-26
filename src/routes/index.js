@@ -5,6 +5,7 @@ import Layout from 'components/tmp/Layout';
 import authenticationRoutes from './authentication';
 import homeRoute from './home';
 import notFound from './notFound';
+import productsRoute from './products';
 import recipesRoute from './recipes';
 import resetPasswordRoute from './resetPassword';
 import settingsRoutes from './settings';
@@ -23,6 +24,7 @@ export default store => [
         childRoutes: [
           ...authenticationRoutes(store),
           homeRoute(store),
+          productsRoute(store),
           recipesRoute(store),
           resetPasswordRoute(store),
           ...settingsRoutes(store),
