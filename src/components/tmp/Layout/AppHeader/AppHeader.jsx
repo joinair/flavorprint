@@ -13,12 +13,10 @@ import {
   SIGN_UP,
 } from 'constants/Routes';
 
-import iconLogo from 'assets/images/icons/whisk-logo.svg';
 import iconNav from 'assets/images/icons/icon-mobile-nav.svg';
 import iconSearch from 'assets/images/icons/icon-search.svg';
 import './styles.css';
 
-import RecipeSearchField from './RecipeSearchField';
 import UserMenu from './UserMenu';
 
 const GuestMenu = ({ onLogInButtonClick, onSignUpButtonClick }) => {
@@ -96,9 +94,11 @@ const Menu = ({
 
       <div className="AppHeader-item AppHeader-item--logo">
         <Link to={{ pathname: '/' }} className="AppHeader-link AppHeader-link--logo">
-          <svg className="AppHeader-logo">
-            <use xlinkHref={iconLogo} />
-          </svg>
+          <img
+            alt="FlavorPrint"
+            src="/assets/images/static-images/flavorprint-logo@1x.png"
+            srcSet="/assets/images/static-images/flavorprint-logo@2x.png 2x"
+          />
         </Link>
       </div>
 
@@ -137,13 +137,6 @@ const Menu = ({
         <Link to="/" className="AppHeader-link">
           <span className="AppHeader-link-text">FlavorPrint</span>
         </Link>
-      </div>
-
-      <div className="AppHeader-item AppHeader-item--desktop">
-        <RecipeSearchField
-          iconPosition="left"
-          placeholder="Find a recipe"
-        />
       </div>
 
       <div className="AppHeader-item AppHeader-item--desktop AppHeader-item--flex" />
