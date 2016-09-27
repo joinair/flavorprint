@@ -36,19 +36,23 @@ const apiCall = (
     ? `${config.api.protocol}:${url}`
     : url;
 
-  request
+  let req = request
     [HTTPMethod](formattedUrl + endpoint)
     [sendMethod(HTTPMethod)](sendArguments(HTTPMethod, query))
-    .set(headers)
-    .buffer()
-    .end((error, data) => {
-      if (error) {
-        subject.onError({ data, error });
-      } else {
-        subject.onNext(data);
-        subject.onCompleted();
-      }
-    });
+    .set(headers);
+
+  if (req.buffer) {
+    req = req.buffer();
+  }
+
+  req.end((error, data) => {
+    if (error) {
+      subject.onError({ data, error });
+    } else {
+      subject.onNext(data);
+      subject.onCompleted();
+    }
+  });
 
   return subject;
 };
