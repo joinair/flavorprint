@@ -1,6 +1,7 @@
 
 import Rx from 'rx';
 
+import filter from 'lodash/filter';
 import identity from 'lodash/identity';
 import map from 'lodash/map';
 import noop from 'lodash/noop';
@@ -59,10 +60,10 @@ export const loadDetailedProducts = params => (dispatch, getState) => {
 
   products$.subscribe(noop, noop, () => {
     const details$ = Rx.Observable.from(
-      map(
+      filter(map(
         selectors.getProducts(getState()),
         x => dispatch(loadDetails(x))
-      )
+      ))
     ).flatMap(identity);
 
     details$.subscribe(noop, noop, subject.onCompleted);

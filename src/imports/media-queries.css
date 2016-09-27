@@ -23,3 +23,5 @@
 @custom-media --vxxl   (min-height: 1600px);
 @custom-media --vxxxl  (min-height: 1700px);
 @custom-media --vxxxxl (min-height: 2000px);
+
+@custom-media --retina (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi);

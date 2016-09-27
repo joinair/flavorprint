@@ -6,10 +6,10 @@ import classnames from 'classnames';
 import includes from 'lodash/includes';
 
 import {
-  RECIPES,
-  COOKBOOK,
-  LOG_IN,
   HOME,
+  LOG_IN,
+  PRODUCTS,
+  RECIPES,
   SIGN_UP,
 } from 'constants/Routes';
 
@@ -114,7 +114,10 @@ const Menu = ({
         className={
           classnames(
             'AppHeader-item AppHeader-item--desktop',
-            { 'is-active': isLinkActive(routerPath, RECIPES) }
+            {
+              'is-active': isLinkActive(routerPath, RECIPES) ||
+                isLinkActive(routerPath, PRODUCTS)
+            }
           )
         }
       >
@@ -131,7 +134,7 @@ const Menu = ({
           )
         }
       >
-        <Link to={COOKBOOK} className="AppHeader-link">
+        <Link to="/" className="AppHeader-link">
           <span className="AppHeader-link-text">FlavorPrint</span>
         </Link>
       </div>
