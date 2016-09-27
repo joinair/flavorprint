@@ -23,13 +23,10 @@
   --color-prunes: #454545;
   --color-prunes-hover: #636363;
 
-  --color-broccoli: #F42929;
-  --color-broccoli-hover: #51D673;
-  --color-broccoli-active: #08923D;
-  --color-broccoli-text: #547D54;
-  --color-broccoli-light: #DEF4E1;
-  --color-broccoli-icon: #74AA81;
-  --color-broccoli-bg: #B6E1B7;
+  --color-tomato: #F42929;
+  --color-tomato-hover: #E9A6A;
+  --color-tomato-active: #BE2424;
+  --color-tomato-bg: #BE2424;
 
   --color-paprika: #F74C4C;
   --color-paprika-hover: #FF7777;

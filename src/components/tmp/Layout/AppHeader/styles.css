@@ -168,7 +168,7 @@
     }
 
     .is-active & {
-      border-bottom-color: var(--color-broccoli);
+      border-bottom-color: var(--color-tomato);
     }
 
     .is-filled & {
@@ -176,7 +176,7 @@
     }
 
     .is-filled .is-active & {
-      color: var(--color-broccoli);
+      color: var(--color-tomato);
     }
 
     @descendent icon {
@@ -185,7 +185,7 @@
       @modifier cart {
         width: 18px;
         height: 17px;
-        fill: var(--color-broccoli);
+        fill: var(--color-tomato);
       }
     }
   }
@@ -196,7 +196,7 @@
     fill: #fff;
 
     .Body--AuthPage & {
-      fill: var(--color-broccoli);
+      fill: var(--color-tomato);
 
       @media (--s) {
         fill: #fff;
@@ -204,7 +204,7 @@
     }
 
     .is-filled & {
-      fill: var(--color-broccoli);
+      fill: var(--color-tomato);
     }
   }
 
@@ -301,7 +301,7 @@
       }
 
       .is-filled .is-open & {
-        border-color: var(--color-broccoli);
+        border-color: var(--color-tomato);
       }
 
       .is-filled &::placeholder {color:#4A4A4A;}
@@ -379,11 +379,11 @@
           padding: 6px 0;
 
           &:hover {
-            color: var(--color-broccoli-hover);
+            color: var(--color-tomato-hover);
           }
 
           @modifier selected {
-            color: var(--color-broccoli-hover);
+            color: var(--color-tomato-hover);
           }
         }
       }

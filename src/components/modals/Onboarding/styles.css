@@ -168,13 +168,13 @@
       }
 
       @when active {
-        color: var(--color-broccoli);
+        color: var(--color-tomato);
         background-color: #FFF;
-        border-color: var(--color-broccoli);
+        border-color: var(--color-tomato);
 
         &:before {
-          background-color: var(--color-broccoli);
-          border-color: var(--color-broccoli);
+          background-color: var(--color-tomato);
+          border-color: var(--color-tomato);
         }
       }
     }

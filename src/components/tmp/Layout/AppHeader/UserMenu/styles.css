@@ -169,7 +169,7 @@
           text-decoration: none;
 
           .AppHeader-user-dropdown-link-icon {
-            fill: var(--color-broccoli-hover);
+            fill: var(--color-tomato-hover);
           }
         }
       }

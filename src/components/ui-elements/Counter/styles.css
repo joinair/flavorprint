@@ -18,14 +18,14 @@
     bottom: 0;
     cursor: pointer;
     display: flex;
-    fill: var(--color-broccoli);
+    fill: var(--color-tomato);
     justify-content: center;
     position: absolute;
     top: 0;
     width: 30px;
 
     &:hover {
-      fill: var(--color-broccoli-hover);
+      fill: var(--color-tomato-hover);
     }
 
     @modifier increment {
@@ -41,7 +41,7 @@
       opacity: .3;
 
       &:hover {
-        fill: var(--color-broccoli);
+        fill: var(--color-tomato);
       }
     }
   }

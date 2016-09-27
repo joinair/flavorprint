@@ -109,7 +109,7 @@
       }
 
       &:hover {
-        color: var(--color-broccoli);
+        color: var(--color-tomato);
       }
 
       @modifier disliked {

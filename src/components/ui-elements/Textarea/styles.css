@@ -33,7 +33,7 @@
     width: 100%;
 
     &:focus {
-      border-color: var(--color-broccoli);
+      border-color: var(--color-tomato);
     }
   }
 

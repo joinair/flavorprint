@@ -40,11 +40,11 @@
   @descendent link {
     white-space: nowrap;
 
-    color: var(--color-broccoli);
+    color: var(--color-tomato);
     text-decoration: none;
 
     &:hover {
-      color: var(--color-broccoli-hover);
+      color: var(--color-tomato-hover);
     }
   }
 

@@ -110,7 +110,7 @@
     cursor: pointer;
 
     &:hover {
-      color: var(--color-broccoli-hover);
+      color: var(--color-tomato-hover);
     }
 
     &:last-of-type {
@@ -118,8 +118,8 @@
     }
 
     @when selected {
-      color: var(--color-broccoli);
-      border-bottom-color: var(--color-broccoli);
+      color: var(--color-tomato);
+      border-bottom-color: var(--color-tomato);
     }
   }
 

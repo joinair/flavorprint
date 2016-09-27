@@ -52,7 +52,7 @@
 
     @when selected {
       opacity: 1;
-      border-bottom-color: var(--color-broccoli);
+      border-bottom-color: var(--color-tomato);
     }
   }
 }

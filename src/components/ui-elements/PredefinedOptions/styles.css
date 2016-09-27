@@ -22,19 +22,19 @@
     background-color: #fff;
 
     border-radius: 25px;
-    border: 1px solid var(--color-broccoli);
+    border: 1px solid var(--color-tomato);
 
     outline: none;
     cursor: pointer;
 
     &:active {
       color: #fff;
-      background-color: var(--color-broccoli);
+      background-color: var(--color-tomato);
     }
 
     @when selected {
       color: #fff;
-      background-color: var(--color-broccoli);
+      background-color: var(--color-tomato);
 
       &:active {
         color: var(--color-prunes);

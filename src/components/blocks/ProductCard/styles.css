@@ -147,7 +147,7 @@
   @descendent discount {
     margin-top: 10px;
     font-size: 15px;
-    color: var(--color-broccoli);
+    color: var(--color-tomato);
   }
 
   @descendent title-link {

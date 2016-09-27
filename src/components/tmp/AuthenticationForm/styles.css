@@ -154,7 +154,7 @@
     text-align: center;
 
     @descendent link {
-      color: var(--color-broccoli);
+      color: var(--color-tomato);
     }
 
     @media(--s) {
@@ -251,7 +251,7 @@
   }
 
   @descendent forgotPassword {
-    color: var(--color-broccoli);
+    color: var(--color-tomato);
     font-size: 14px;
     cursor: pointer;
 
@@ -260,7 +260,7 @@
     }
 
     &:hover {
-      color: var(--color-broccoli);
+      color: var(--color-tomato);
     }
   }
 
@@ -278,7 +278,7 @@
     @modifier email {
       height: 42px;
       line-height: 42px;
-      background-color: var(--color-broccoli);
+      background-color: var(--color-tomato);
       border-radius: var(--border-radius);
       text-align: center;
       cursor: pointer;
