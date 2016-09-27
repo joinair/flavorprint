@@ -12,7 +12,7 @@ import './assignPolyfill';
 import './cssHook';
 import './svgHook';
 
-import apiProxyMiddleware from './apiProxyMiddleware';
+import flavorprintProxyMiddleware from './flavorprint/proxyMiddleware';
 import browserCheckMiddleware from './browserCheckMiddleware';
 
 import './globals';
@@ -109,7 +109,7 @@ if (cluster.isMaster) {
       (req, res) => { res.status(200).send(); });
   }
 
-  application.use(apiProxyMiddleware);
+  application.use(flavorprintProxyMiddleware);
   application.use(browserCheckMiddleware);
   application.get('*', render);
   server = application.listen(__PORT__); // eslint-disable-line
