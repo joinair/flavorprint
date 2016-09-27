@@ -55,6 +55,7 @@ export default (req, res) => {
                 req.session.userId = response.body.id;
 
                 res.end(JSON.stringify({
+                  provider: 'facebook',
                   data: response.body,
                   success: true,
                 }));
