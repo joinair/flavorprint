@@ -88,7 +88,12 @@ history.listen(location => {
         <Provider store={store}>
           <RouterContext {...state} />
         </Provider>,
-        document.getElementById('content')
+        document.getElementById('content'),
+        () => {
+          if (window.__INITIAL_STATE__) {
+            delete window.__INITIAL_STATE__;
+          }
+        }
       );
     }
   });

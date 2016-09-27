@@ -3,6 +3,8 @@ import { RECIPES } from 'constants/Routes';
 
 import { loadDetailedRecipes } from 'actions/recipes';
 
+import initialLoad from 'helpers/initialLoad';
+
 import Recipes from 'components/pages/Recipes';
 
 export default store => ({
@@ -10,6 +12,7 @@ export default store => ({
   component: Recipes,
 
   prepareData: () => {
-    store.dispatch(loadDetailedRecipes());
+    if (initialLoad()) { return undefined; }
+    return store.dispatch(loadDetailedRecipes());
   },
 });

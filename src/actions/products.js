@@ -4,9 +4,9 @@ import Rx from 'rx';
 import filter from 'lodash/filter';
 import identity from 'lodash/identity';
 import map from 'lodash/map';
-import noop from 'lodash/noop';
 
 import { API_CALL } from 'middleware/API';
+import { CHAIN } from 'middleware/chain';
 
 import selectors from 'reducers/selectors';
 
@@ -54,23 +54,18 @@ export const loadDetails = product => product.detailUrl ? ({
   },
 }) : undefined;
 
-export const loadDetailedProducts = params => (dispatch, getState) => {
-  const subject = new Rx.Subject();
-  const products$ = dispatch(loadProducts(params));
-
-  products$.subscribe(noop, noop, () => {
-    const details$ = Rx.Observable.from(
+export const loadDetailedProducts = params => ({
+  [CHAIN]: [
+    loadProducts(params),
+    () => (dispatch, getState) => Rx.Observable.from(
       filter(map(
         selectors.getProducts(getState()),
         x => dispatch(loadDetails(x))
       ))
-    ).flatMap(identity);
+    ).flatMap(identity),
+  ],
+});
 
-    details$.subscribe(noop, noop, subject.onCompleted);
-  });
-
-  return subject;
-};
 
 export default {
   loadProducts,

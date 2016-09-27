@@ -40,6 +40,7 @@ const apiCall = (
     [HTTPMethod](formattedUrl + endpoint)
     [sendMethod(HTTPMethod)](sendArguments(HTTPMethod, query))
     .set(headers)
+    .buffer()
     .end((error, data) => {
       if (error) {
         subject.onError({ data, error });

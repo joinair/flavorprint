@@ -6,6 +6,7 @@ import map from 'lodash/map';
 import noop from 'lodash/noop';
 
 import { API_CALL } from 'middleware/API';
+import { CHAIN } from 'middleware/chain';
 
 import selectors from 'reducers/selectors';
 
@@ -53,23 +54,17 @@ export const loadDetails = recipe => ({
   },
 });
 
-export const loadDetailedRecipes = params => (dispatch, getState) => {
-  const subject = new Rx.Subject();
-  const recipes$ = dispatch(loadRecipes(params));
-
-  recipes$.subscribe(noop, noop, () => {
-    const details$ = Rx.Observable.from(
+export const loadDetailedRecipes = params => ({
+  [CHAIN]: [
+    loadRecipes(params),
+    () => (dispatch, getState) => Rx.Observable.from(
       map(
         selectors.getRecipes(getState()),
         x => dispatch(loadDetails(x))
       )
-    ).flatMap(identity);
-
-    details$.subscribe(noop, noop, subject.onCompleted);
-  });
-
-  return subject;
-};
+    ).flatMap(identity),
+  ],
+});
 
 export default {
   loadRecipes,
