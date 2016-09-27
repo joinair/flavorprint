@@ -11,14 +11,19 @@ import domain from 'domain';
 import './assignPolyfill';
 import './cssHook';
 import './svgHook';
+import './globals'; // keep this above everything that uses Config
 
-import flavorprintProxyMiddleware from './flavorprint/proxyMiddleware';
+import apiProxyMiddleware from './flavorprint/proxyMiddleware';
+import oauthMiddleware from './flavorprint/oauthMiddleware';
 import browserCheckMiddleware from './browserCheckMiddleware';
 
-import './globals';
+import { FP_SESSION } from '../../src/constants/CookiesKeys';
+
 import config from '../config';
 
 import express from 'express';
+import bodyParser from 'body-parser';
+import session from 'cookie-session';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
@@ -52,6 +57,12 @@ if (cluster.isMaster) {
 
   let server;
   const application = express();
+
+  application.use(session({
+    secret: config.SESSION_SECRET,
+    name: FP_SESSION,
+    keys: config.SESSION_KEYS,
+  }));
 
   application.use((req, res, next) => {
     const reqDomain = domain.create();
@@ -109,7 +120,10 @@ if (cluster.isMaster) {
       (req, res) => { res.status(200).send(); });
   }
 
-  application.use(flavorprintProxyMiddleware);
+  application.use(bodyParser.urlencoded({ extended: false }));
+  application.use(bodyParser.json());
+  application.use(oauthMiddleware);
+  application.use(apiProxyMiddleware);
   application.use(browserCheckMiddleware);
   application.get('*', render);
   server = application.listen(__PORT__); // eslint-disable-line

@@ -1,5 +1,6 @@
 
 @import "imports/variables";
+@import "imports/media-queries";
 
 @component JustForYouTabs {
   background: url('/images/static-images/tabs-bg@1x.png');

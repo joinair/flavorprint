@@ -6,7 +6,7 @@ import qs from 'qs';
 import {
   FLAVORPRINT_API_URL,
   FLAVORPRINT_API_KEY,
-} from '../config';
+} from '../../config';
 
 const sendMethod = HTTPMethod =>
   (HTTPMethod === 'post' || HTTPMethod === 'put' || HTTPMethod === 'patch')
@@ -28,12 +28,13 @@ export default ({ method, query, endpoint }) => {
   request
     [method](url + endpoint)
     [sendMethod(method)](sendArguments(method, query))
+    .type('json')
     .set(headers)
     .end((error, apiRes) => {
       if (error) {
         subject.onError(error);
       } else {
-        subject.onSuccess(apiRes);
+        subject.onNext(apiRes);
         subject.onCompleted();
       }
     });

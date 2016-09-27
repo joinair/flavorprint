@@ -1,5 +1,9 @@
 
 export const api = {
+  host: global.__APP_ENV__ === 'production'
+    ? 'whisk.com'
+    : `localhost:${global.__PORT__}`,
+
   url: global.__APP_ENV__ === 'production'
     ? 'https://whisk.com/api'
     : `http://localhost:${global.__PORT__}/api`,
@@ -46,7 +50,7 @@ export const domain = {
 export const facebook = {
   id: global.__APP_ENV__ === 'production'
     ? '1439473699618528'
-    : '1659078084308910',
+    : '1785132991698406',
 };
 
 export const google = {
