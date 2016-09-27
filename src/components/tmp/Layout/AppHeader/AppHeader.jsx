@@ -116,7 +116,7 @@ const Menu = ({
             'AppHeader-item AppHeader-item--desktop',
             {
               'is-active': isLinkActive(routerPath, RECIPES) ||
-                isLinkActive(routerPath, PRODUCTS)
+                isLinkActive(routerPath, PRODUCTS),
             }
           )
         }

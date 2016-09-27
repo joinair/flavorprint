@@ -35,7 +35,7 @@ const imageUrl = rec => {
 };
 
 const ProductCard = ({ recommendation }) => {
-  const { title, originName, topFlavors } = recommendation;
+  const { title, topFlavors } = recommendation;
   const link = get(recommendation, 'details.link');
 
   const image = imageUrl(recommendation);
@@ -62,8 +62,6 @@ const ProductCard = ({ recommendation }) => {
       {el}
     </a>
   );
-
-  const subtitle = <div className="ProductCard-subtitle">{originName}</div>;
 
   return (
     <div className="ProductCard">
