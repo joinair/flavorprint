@@ -18,7 +18,7 @@ const Feed = ({
   recommendations,
   showMore,
 }) => {
-  if (isFetching && !recommendations.length) {
+  if (isFetching) {
     return <Preloader />;
   }
 

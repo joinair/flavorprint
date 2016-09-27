@@ -1,6 +1,7 @@
 
 export const GROUP_IDS = {
-  FEED: 'FEED',
+  RECIPES: 'RECIPES',
+  PRODUCTS: 'PRODUCTS',
   HOME_PAGE: 'HOME_PAGE',
 };
 

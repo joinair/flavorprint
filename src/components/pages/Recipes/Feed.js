@@ -8,7 +8,7 @@ import selectors from 'reducers/selectors';
 
 import Feed from 'components/blocks/Feed';
 
-const isFetchingSelector = state => state.fetching[fetching.GROUP_IDS.FEED];
+const isFetchingSelector = state => state.fetching[fetching.GROUP_IDS.RECIPES];
 
 const selector = createStructuredSelector({
   isFetching: isFetchingSelector,

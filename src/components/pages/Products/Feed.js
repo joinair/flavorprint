@@ -9,7 +9,7 @@ import selectors from 'reducers/selectors';
 import Feed from 'components/blocks/Feed';
 import ProductCard from 'components/blocks/ProductCard';
 
-const isFetchingSelector = state => state.fetching[fetching.GROUP_IDS.FEED];
+const isFetchingSelector = state => state.fetching[fetching.GROUP_IDS.PRODUCTS];
 
 const selector = createStructuredSelector({
   isFetching: isFetchingSelector,
