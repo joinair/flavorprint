@@ -13,7 +13,10 @@ import pick from 'lodash/pick';
 import createStore from 'store';
 
 import config from 'constants/Config';
-import { JWT_HEADER } from 'constants/CookiesKeys';
+import {
+  FP_SESSION,
+  FP_SESSION_SIG,
+} from 'constants/CookiesKeys';
 
 import notFound from 'actions/notFound';
 import { routerDidChange } from 'actions/router';
@@ -33,7 +36,8 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const cookieSelector = state => ({
-  [JWT_HEADER]: get(state, 'user.JWTHeader'),
+  [FP_SESSION]: get(state, 'user.sessionKey'),
+  [FP_SESSION_SIG]: get(state, 'user.sessionSig'),
 });
 
 const history = browserHistory;

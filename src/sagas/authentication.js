@@ -11,13 +11,7 @@ import { UNAUTHENTICATED } from 'middleware/authentication';
 
 import modal from 'actions/modal';
 import router, { ROUTER_DID_CHANGE } from 'actions/router';
-
-import {
-  LOG_IN_SUCCESS,
-  SIGN_UP_SUCCESS,
-  BECOME_USER_SUCCESS,
-} from 'actions/user';
-
+import { BECOME_USER_SUCCESS } from 'actions/user';
 import { OAUTH_LOG_IN_SUCCESS } from 'actions/oauth';
 
 const isModalOpen = ({ payload, type }) =>
@@ -42,8 +36,6 @@ function* auth() {
     const { cancel } = yield race({
       cancel: take(isModalClosed),
       success: take([
-        LOG_IN_SUCCESS,
-        SIGN_UP_SUCCESS,
         BECOME_USER_SUCCESS,
         OAUTH_LOG_IN_SUCCESS,
       ]),

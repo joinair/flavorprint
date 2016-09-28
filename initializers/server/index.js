@@ -14,7 +14,7 @@ import './svgHook';
 import './globals'; // keep this above everything that uses Config
 
 import apiProxyMiddleware from './flavorprint/proxyMiddleware';
-import oauthMiddleware from './flavorprint/oauthMiddleware';
+import authMiddleware from './flavorprint/authMiddleware';
 import browserCheckMiddleware from './browserCheckMiddleware';
 
 import { FP_SESSION } from '../../src/constants/CookiesKeys';
@@ -122,7 +122,7 @@ if (cluster.isMaster) {
 
   application.use(bodyParser.urlencoded({ extended: false }));
   application.use(bodyParser.json());
-  application.use(oauthMiddleware);
+  application.post('/api/auth/:action', authMiddleware);
   application.use(apiProxyMiddleware);
   application.use(browserCheckMiddleware);
   application.get('*', render);

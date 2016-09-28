@@ -11,44 +11,48 @@ import {
   formatUserResponse,
 } from '../actions/users';
 
+
 export default (req, res) => {
   const query = {
-    client_id: Config.facebook.id,
-    client_secret: config.OAUTH_SECRET.FACEBOOK,
+    client_id: Config.google.id,
+    client_secret: config.OAUTH_SECRET.GOOGLE,
     redirect_uri: req.body.redirectUri,
     code: req.body.code,
+    grant_type: 'authorization_code',
   };
 
   const fail = (err) => res.status(401).end(JSON.stringify(err));
 
   request
-    .get('https://graph.facebook.com/v2.7/oauth/access_token')
-    .query(query)
-    .end((error, fbRes) => {
+    .post('https://www.googleapis.com/oauth2/v4/token')
+    .type('form')
+    .send(query)
+    .end((error, gglRes) => {
       if (error) {
         fail();
       } else {
+        const accessToken = get(gglRes, 'body.access_token');
+
         request
-          .get('https://graph.facebook.com/v2.7/me')
+          .get('https://www.googleapis.com/plus/v1/people/me')
           .query({
-            fields: 'id,email,first_name,last_name,picture,gender',
-            access_token: fbRes.body.access_token,
+            fields: 'id,image/url,emails,gender,name',
+            access_token: accessToken,
           })
           .end((err, appRes) => {
-            let body;
-            try { body = JSON.parse(get(appRes, 'text')); } catch (e) { /* ... */ }
+            if (err) return fail();
 
-            if (err || !body) {
-              return fail();
-            }
+            const { body } = appRes;
 
-            let email = body.email;
-            if (!email) email = `${body.id}@facebook.local`;
+            const email = get(
+              body, 'emails.0.value',
+              `${body.id}@google.local`
+            );
 
             const data = {
-              firstName: body.first_name,
-              lastName: body.last_name,
-              avatarUrl: get(body, 'picture.data.url'),
+              firstName: get(body, 'name.givenName'),
+              lastName: get(body, 'name.familyName'),
+              avatarUrl: get(body, 'image.url'),
               gender: { male: 'm', female: 'f' }[body.gender],
               email,
             };
@@ -58,7 +62,7 @@ export default (req, res) => {
                 req.session.userId = response.body.id;
 
                 res.append('Content-Type', 'application/json');
-                res.end(formatUserResponse('facebook', response.body));
+                res.end(formatUserResponse('google', response.body));
               },
               fail
             );

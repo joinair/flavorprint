@@ -20,20 +20,18 @@ import config from '../config';
 
 let createRoutes = require('routes').default;
 let createStore = require('store').default;
+const { FP_SESSION, FP_SESSION_SIG } = require('constants/CookiesKeys');
 
 import clientActions from 'actions/client';
-import cookiesActions from 'actions/cookies';
 import { routerDidChange } from 'actions/router';
 import { become, logOut } from 'actions/user';
+import cookiesActions from 'actions/cookies';
 
-import cookies from 'helpers/cookies';
 import prepareData from 'helpers/prepareData';
 
 import render500 from './render500';
 import templates from './templates';
 import webpackAsset from './webpackAsset';
-
-import { JWT_HEADER } from 'constants/CookiesKeys';
 
 import BodyClassName from 'components/ui-elements/BodyClassName';
 
@@ -85,9 +83,7 @@ export default (req, res) => {
     createStore = reload('store').default;
   }
 
-  const region = req.headers['cf-ipcountry'];
-  const store = createStore({ region });
-
+  const store = createStore({});
   const initialState = store.getState();
 
   store.dispatch(cookiesActions.restore(req.cookies));
@@ -133,19 +129,16 @@ export default (req, res) => {
     });
   };
 
-  const JWTHeaderCookiesKey = cookies.formatKey(JWT_HEADER);
-
-  if (req.cookies[JWTHeaderCookiesKey]) {
-    const logOutAndRender = () => {
-      store.dispatch(logOut());
-      matchRoute();
-    };
-
-    store
-      .dispatch(become(req.cookies[JWTHeaderCookiesKey]))
-      .timeout(10000)
-      .subscribe(matchRoute, logOutAndRender);
-  } else {
+  const logOutAndRender = () => {
+    store.dispatch(logOut());
     matchRoute();
-  }
+  };
+
+  const sessionKey = req.cookies[FP_SESSION];
+  const sessionSig = req.cookies[FP_SESSION_SIG];
+
+  store
+    .dispatch(become(sessionKey, sessionSig))
+    .timeout(10000)
+    .subscribe(matchRoute, logOutAndRender);
 };

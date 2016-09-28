@@ -29,43 +29,12 @@ const loadConfiguration = () => ({
   },
 });
 
-const loadSearchPreferences = () => ({
-  [API_CALL]: {
-    endpoint: '/preferences/search',
-    types: [
-      LOAD_SEARCH_PREFERENCES_REQUEST,
-      LOAD_SEARCH_PREFERENCES_SUCCESS,
-      LOAD_SEARCH_PREFERENCES_FAILURE,
-    ],
-  },
-});
-
-export const loadPopularProducts = () => ({
-  [API_CALL]: {
-    endpoint: '/preferences/dislikedProducts',
-    query: { term: '' },
-    types: [
-      LOAD_POPULAR_PRODUCTS_REQUEST,
-      LOAD_POPULAR_PRODUCTS_SUCCESS,
-      LOAD_POPULAR_PRODUCTS_FAILURE,
-    ],
-  },
-});
-
 export const load = () => (dispatch, getState) => {
   const state = getState();
   const observables = [];
 
   if (!state.preferences.isFetched) {
     observables.push(dispatch(loadConfiguration()));
-  }
-
-  if (!state.popularProducts.isFetched) {
-    observables.push(dispatch(loadPopularProducts()));
-  }
-
-  if (!state.searchPreferences.isFetched) {
-    observables.push(dispatch(loadSearchPreferences()));
   }
 
   const fetchers$ = Rx.Observable.fromArray(observables).flatMap(identity);

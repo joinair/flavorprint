@@ -9,8 +9,6 @@ import { CHAIN } from 'middleware/chain';
 
 import selectors from 'reducers/selectors';
 
-import { CONTEXT, LIMIT } from './feed';
-
 export const LOAD_RECIPES_REQUEST = 'LOAD_RECIPES_REQUEST';
 export const LOAD_RECIPES_SUCCESS = 'LOAD_RECIPES_SUCCESS';
 export const LOAD_RECIPES_FAILURE = 'LOAD_RECIPES_FAILURE';
@@ -22,11 +20,9 @@ export const LOAD_RECIPE_DETAILS_FAILURE = 'LOAD_RECIPE_DETAILS_FAILURE';
 export const loadRecipes = (params = {}) => {
   const endpoint = '/v3/recommendations';
   const type = 'RECIPE';
-  const size = params.size || LIMIT;
+  const size = params.size || 8;
 
   return {
-    payload: { context: CONTEXT.FEED },
-
     [API_CALL]: {
       endpoint,
       query: { type, size },

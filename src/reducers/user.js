@@ -1,29 +1,18 @@
 
 import assign from 'lodash/assign';
-import get from 'lodash/get';
 import includes from 'lodash/includes';
 
-import { formatKey } from 'helpers/cookies';
 import createReducer from 'helpers/createReducer';
 
-import { JWT_HEADER } from 'constants/CookiesKeys';
-
-import { RESTORE_FROM_COOKIES } from 'actions/cookies';
+import {
+  FP_SESSION,
+  FP_SESSION_SIG,
+} from 'constants/CookiesKeys';
 
 import {
   BECOME_USER_SUCCESS,
   UPDATE_USER_SUCCESS,
-
   UPDATE_USER_LOCALLY,
-
-  SIGN_UP_SUCCESS,
-  SIGN_UP_FAILURE,
-
-  ANONYMOUS_SIGN_UP_SUCCESS,
-  ANONYMOUS_SIGN_UP_FAILURE,
-
-  LOG_IN_SUCCESS,
-  LOG_IN_FAILURE,
 
   LOG_OUT,
 } from 'actions/user';
@@ -37,6 +26,10 @@ import {
   COMPLETE_STEP,
 } from 'actions/onboarding';
 
+import {
+  RESTORE_FROM_COOKIES,
+} from 'actions/cookies';
+
 const initialState = {
   isAuthenticated: false,
   error: {},
@@ -47,9 +40,10 @@ const initialState = {
 
 const authenticateUser = (state, action) => {
   const { provider } = action.payload;
+  const { sessionKey, sessionSig } = action.meta;
 
   return assign(
-    {},
+    { sessionKey, sessionSig },
     initialState,
     action.payload,
     { isAuthenticated: provider !== 'anonymous' }
@@ -67,25 +61,18 @@ const updateUser = (state, action) =>
   );
 
 const handlers = {
-  [RESTORE_FROM_COOKIES]: (state, action) =>
-    assign({}, state, {
-      JWTHeader: action.payload[formatKey(JWT_HEADER)],
-    }),
+  [RESTORE_FROM_COOKIES]: (state, action) => assign({}, state, {
+    sessionKey: action.payload[FP_SESSION],
+    sessionSig: action.payload[FP_SESSION_SIG],
+  }),
 
   [UPDATE_USER_SUCCESS]: updateUser,
   [UPDATE_USER_LOCALLY]: updateUser,
 
-  [SIGN_UP_SUCCESS]: authenticateUser,
-  [LOG_IN_SUCCESS]: authenticateUser,
   [BECOME_USER_SUCCESS]: authenticateUser,
-  [ANONYMOUS_SIGN_UP_SUCCESS]: authenticateUser,
   [OAUTH_LOG_IN_SUCCESS]: authenticateUser,
 
-  [LOG_IN_FAILURE]: handleError,
-  [SIGN_UP_FAILURE]: handleError,
-  [ANONYMOUS_SIGN_UP_FAILURE]: handleError,
   [OAUTH_LOG_IN_FAILURE]: handleError,
-
   [LOG_OUT]: () => initialState,
 
   [COMPLETE_STEP]: (state, action) => {
@@ -110,13 +97,4 @@ const handlers = {
   },
 };
 
-const userReducer = createReducer(initialState, handlers);
-
-export default (state, action) =>
-  get(action, 'meta.JWTHeader')
-    ? assign(
-      {},
-      userReducer(state, action),
-      { JWTHeader: get(action, 'meta.JWTHeader') }
-    )
-    : userReducer(state, action);
+export default createReducer(initialState, handlers);

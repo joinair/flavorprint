@@ -31,12 +31,6 @@ export const cookie = {
   domain: process.env.NODE_ENV === 'production'
     ? '.whisk.com'
     : '',
-
-  prefix: {
-    development: 'localhost.whisk',
-    staging: 'dev.whisk',
-    production: 'whisk',
-  }[global.__APP_ENV__],
 };
 
 export const domain = {
@@ -60,7 +54,7 @@ export const google = {
 
   id: global.__APP_ENV__ === 'production'
     ? '1034335430073-f61h59ao6d5pl2ceir1v6sl15lqm5d8c.apps.googleusercontent.com'
-    : '1034335430073-uvt9cd9r7cg1b78t9pb90h40svuv5hfs.apps.googleusercontent.com',
+    : '838731358549-dalr15he82j6vj19j3r8454occqcb6o9.apps.googleusercontent.com',
 };
 
 export const sentry = {

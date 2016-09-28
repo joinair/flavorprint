@@ -29,6 +29,7 @@ export const SESSION_KEYS = [
 
 export const OAUTH_SECRET = {
   FACEBOOK: 'd88f7ff68604a04efceb44818af85323',
+  GOOGLE: '2C0lYkJkVJbLa31AE5KpXnxu',
 };
 
 export default {
