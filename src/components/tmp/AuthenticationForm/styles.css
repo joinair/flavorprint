@@ -292,4 +292,33 @@
       }
     }
   }
+
+  @descendent heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    @descendent fp {
+      width: 80px;
+      height: 80px;
+      margin-right: 20px;
+      background-image: url('/images/static-images/signup-fp-mark.png');
+      background-size: 72px 78px;
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      @media (--retina) {
+        background-image: url('/images/static-images/signup-fp-mark@2x.png');
+      }
+    }
+
+    @descendent text {
+      font-size: 30px;
+      line-height: 30px;
+      font-weight: bold;
+      flex: 1;
+    }
+  }
 }
