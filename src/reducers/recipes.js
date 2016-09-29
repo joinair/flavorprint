@@ -1,6 +1,7 @@
 
 import assign from 'lodash/assign';
 import map from 'lodash/map';
+import reduce from 'lodash/reduce';
 
 import createReducer from 'helpers/createReducer';
 import { normalizeEntities } from 'helpers/reducer';
@@ -8,6 +9,7 @@ import { normalizeEntities } from 'helpers/reducer';
 import {
   LOAD_RECIPES_SUCCESS,
   LOAD_RECIPE_DETAILS_SUCCESS,
+  LOAD_RECIPES_COMPATIBILITIES_SUCCESS,
 } from 'actions/recipes';
 
 const initialState = {
@@ -30,6 +32,17 @@ const handlers = assign({
         details: payload,
       },
     },
+  }),
+
+  [LOAD_RECIPES_COMPATIBILITIES_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    entries: reduce(payload, (acc, val) => ({
+      ...acc,
+      [val.itemId]: {
+        ...acc[val.itemId],
+        ...val,
+      },
+    }), state.entries),
   }),
 });
 

@@ -19,7 +19,8 @@ export const LOAD_PRODUCT_DETAILS_SUCCESS = 'LOAD_PRODUCT_DETAILS_SUCCESS';
 export const LOAD_PRODUCT_DETAILS_FAILURE = 'LOAD_PRODUCT_DETAILS_FAILURE';
 
 export const loadProducts = (params = {}) => {
-  const endpoint = '/v3/recommendations';
+  const endpoint = '/v3/recommendations' +
+    (params.userId ? `/${params.userId}` : '');
   const type = 'PRODUCT';
   const size = params.size || 12;
 

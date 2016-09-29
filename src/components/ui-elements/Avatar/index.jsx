@@ -3,8 +3,6 @@ import React, { PropTypes } from 'react';
 
 import classnames from 'classnames';
 
-import { avatarURL } from 'helpers/user';
-
 import iconChef from 'assets/images/icons/icon-chef.svg';
 import iconChefChangeable from 'assets/images/icons/icon-chef-changeable.svg';
 import './styles.css';
@@ -15,21 +13,19 @@ const Avatar = ({
   changeable, className, height, iconClassName, url, width,
   onClick,
 }) => {
-  const srcs = avatarURL(url, height, width);
   const avatarClasses = classnames(
     'Avatar',
     { 'Avatar--changeable': changeable },
     className
   );
 
-  return srcs
+  return url
     ? (
       <img
         alt=""
         className={avatarClasses}
         height={height}
-        src={srcs.src}
-        srcSet={srcs.srcSet}
+        src={url}
         width={width}
         onClick={onClick}
       />

@@ -23,8 +23,6 @@ const authenticationSelector = createStructuredSelector({
   isAuthenticated: isAuthenticatedSelector,
   isPublishersLanding: isPublishersLandingSelector,
   routerPath: routerPathSelector,
-
-  isTizenFridge: state => state.tizen.isFridge,
 });
 
 const actions = {

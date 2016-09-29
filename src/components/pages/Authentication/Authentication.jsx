@@ -14,7 +14,6 @@ import './styles.css';
 
 import AuthenticationForm from 'components/tmp/AuthenticationForm';
 import BodyClassName from 'components/ui-elements/BodyClassName';
-import VideoBanner from 'components/blocks/VideoBanner';
 
 const ROUTES = [
   {
@@ -65,7 +64,7 @@ class Authentication extends Component {
   }
 
   render() {
-    const { routerPath, isTizenFridge } = this.props;
+    const { routerPath } = this.props;
     const { alternativeMotto } = this.state;
 
     const title = alternativeMotto
@@ -90,11 +89,7 @@ class Authentication extends Component {
         className="Body--whiteBackground Body--AuthPage Page--hiddenFooter"
       >
         <div className="AuthenticationPage">
-          {!isTizenFridge &&
-            <div className="AuthenticationPage-videoBannerContainer">
-              <VideoBanner className="AuthenticationPage-videoBanner" />
-            </div>
-          }
+          <div className="AuthenticationPage-videoBannerContainer" />
 
           <div className="AuthenticationPage-header">
             <div className="AuthenticationPage-title">{title}</div>
@@ -119,7 +114,6 @@ class Authentication extends Component {
 Authentication.propTypes = {
   isAuthenticated: PropTypes.bool,
   isPublishersLanding: PropTypes.bool,
-  isTizenFridge: PropTypes.bool,
   location: PropTypes.object.isRequired,
   routerPath: PropTypes.string,
   onAuth: PropTypes.func.isRequired,

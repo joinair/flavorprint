@@ -149,7 +149,7 @@ const Menu = ({
 const AppHeader = ({
   isAuthenticated,
   profile: {
-    avatar,
+    avatarUrl,
     email,
     firstName,
     lastName,
@@ -172,7 +172,7 @@ const AppHeader = ({
       <div className="AppHeader-natural">
         <div className="AppHeader-container">
           <Menu
-            avatar={avatar}
+            avatar={avatarUrl}
             email={email}
             firstName={firstName}
             isAuthenticated={isAuthenticated}

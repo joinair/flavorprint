@@ -18,7 +18,8 @@ export const LOAD_RECIPE_DETAILS_SUCCESS = 'LOAD_RECIPE_DETAILS_SUCCESS';
 export const LOAD_RECIPE_DETAILS_FAILURE = 'LOAD_RECIPE_DETAILS_FAILURE';
 
 export const loadRecipes = (params = {}) => {
-  const endpoint = '/v3/recommendations';
+  const endpoint = '/v3/recommendations' +
+    (params.userId ? `/${params.userId}` : '');
   const type = 'RECIPE';
   const size = params.size || 8;
 
@@ -60,6 +61,30 @@ export const loadDetailedRecipes = params => ({
     ).flatMap(identity),
   ],
 });
+
+export const LOAD_RECIPES_COMPATIBILITIES_REQUEST =
+  'LOAD_RECIPES_COMPATIBILITIES_REQUEST';
+export const LOAD_RECIPES_COMPATIBILITIES_SUCCESS =
+  'LOAD_RECIPES_COMPATIBILITIES_SUCCESS';
+export const LOAD_RECIPES_COMPATIBILITIES_FAILURE =
+  'LOAD_RECIPES_COMPATIBILITIES_FAILURE';
+
+export const loadRecipesCompatibilities =
+  userId =>
+  (dispatch, getState) => dispatch({
+    [API_CALL]: {
+      endpoint: `/v3/recommendations/${userId}/compatibilities`,
+      query: {
+        userId,
+        sourceIds: map(selectors.getRecipes(getState()), 'sourceId').join(','),
+      },
+      types: [
+        LOAD_RECIPES_COMPATIBILITIES_REQUEST,
+        LOAD_RECIPES_COMPATIBILITIES_SUCCESS,
+        LOAD_RECIPES_COMPATIBILITIES_FAILURE,
+      ],
+    },
+  });
 
 export default {
   loadRecipes,

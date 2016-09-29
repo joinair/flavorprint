@@ -7,9 +7,12 @@ import filter from 'lodash/filter';
 import find from 'lodash/find';
 import get from 'lodash/get';
 import map from 'lodash/map';
+import partial from 'lodash/partial';
 import sortBy from 'lodash/sortBy';
 
 import iconDish from 'assets/images/icons/icon-dish.svg';
+import iconDislike from 'assets/images/icons/icon-dislike.svg';
+import iconLike from 'assets/images/icons/icon-like.svg';
 import './styles.css';
 
 import Icon from 'components/ui-elements/Icon';
@@ -34,8 +37,18 @@ const imageUrl = rec => {
   return image || parsed[0];
 };
 
-const RecipeCard = ({ recommendation }) => {
-  const { title, originName, topFlavors } = recommendation;
+const RecipeCard = ({
+  uid,
+  recommendation,
+  onLike,
+  onDislike,
+}) => {
+  const {
+    title,
+    originName,
+    topFlavors,
+    compatibilityScore,
+  } = recommendation;
   const link = get(recommendation, 'details.link');
 
   const image = imageUrl(recommendation);
@@ -68,11 +81,23 @@ const RecipeCard = ({ recommendation }) => {
   return (
     <div className="RecipeCard">
       <div className="RecipeCard-container">
-        {linkWrap(
-          <div className="RecipeCard-imageContainer">
-            {lazyImage}
+        <div className="RecipeCard-imageContainer">
+          {linkWrap(lazyImage)}
+          <div className="RecipeCard-imageLikes">
+            <div
+              className="RecipeCard-like"
+              onClick={partial(onLike, uid, recommendation)}
+            >
+              <Icon glyph={iconLike} className="RecipeCard-like-icon" />
+            </div>
+            <div
+              className="RecipeCard-like"
+              onClick={partial(onDislike, uid, recommendation)}
+            >
+              <Icon glyph={iconDislike} className="RecipeCard-like-icon" />
+            </div>
           </div>
-        )}
+        </div>
 
         {linkWrap(
           <div className="RecipeCard-content">
@@ -85,14 +110,16 @@ const RecipeCard = ({ recommendation }) => {
         )}
 
         <div className="RecipeCard-info">
-          <div className="RecipeCard-match">
-            <div className="RecipeCard-match-percent">
-              95%
+          {(compatibilityScore === 0 || compatibilityScore) && (
+            <div className="RecipeCard-match">
+              <div className="RecipeCard-match-percent">
+                {Math.round(compatibilityScore)}%
+              </div>
+              <div className="RecipeCard-match-text">
+                Match
+              </div>
             </div>
-            <div className="RecipeCard-match-text">
-              Match
-            </div>
-          </div>
+          )}
 
           <div className="RecipeCard-flavors">
             {map(topFlavors, (flavor, i) => (
@@ -114,11 +141,16 @@ const RecipeCard = ({ recommendation }) => {
 };
 
 RecipeCard.propTypes = {
+  uid: PropTypes.string,
+
   recommendation: PropTypes.shape({
     title: PropTypes.string.isRequired,
     originName: PropTypes.string.isRequired,
     details: PropTypes.object,
   }).isRequired,
+
+  onLike: PropTypes.func.isRequired,
+  onDislike: PropTypes.func.isRequired,
 };
 
 export default RecipeCard;

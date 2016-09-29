@@ -199,6 +199,40 @@
     }
   }
 
+  @descendent imageLikes {
+    position: absolute;
+    bottom: 13px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  @descendent like {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,.75);
+    border-radius: 20px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+
+    & + & {
+      margin-left: 10px;
+    }
+
+    &:hover {
+      background-color: white;
+    }
+
+    @descendent icon {
+      width: 18px;
+      height: 18px;
+      fill: #454545;
+      vertical-align: middle;
+    }
+  }
+
   @descendent image {
     position: absolute;
     height: 100%;

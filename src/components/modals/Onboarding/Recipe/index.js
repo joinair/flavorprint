@@ -2,7 +2,6 @@
 import React, { PropTypes } from 'react';
 
 import Icon from 'components/ui-elements/Icon';
-import LazyImage from 'components/ui-elements/LazyImage';
 
 import iconCheckRecipe from 'assets/images/icons/icon-check-recipe.svg';
 import './styles.css';
@@ -20,13 +19,12 @@ const OnboardingRecipe = ({ recipe, selected, onSelect }) => {
   return (
     <div className="OnboardingRecipe" onClick={onSelect}>
       <div className="OnboardingRecipe-containerImage">
-        <LazyImage
+        <img
+          alt=""
           className="OnboardingRecipe-image"
-          image={{ url: recipe.imageUrl }}
+          src={recipe.imageUrl}
           maxHeight={190}
           maxWidth={190}
-          previewTransformation="c_fill,f_auto,e_blur:3000"
-          transformation="c_fill,f_auto,e_sharpen"
         />
         {selection}
       </div>

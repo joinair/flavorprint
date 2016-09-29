@@ -2,7 +2,6 @@
 import assign from 'lodash/assign';
 import get from 'lodash/get';
 import isEqual from 'lodash/isEqual';
-import last from 'lodash/last';
 import { parse } from 'qs';
 
 import { HISTORY_CALL } from 'middleware/history';
@@ -10,8 +9,6 @@ import { HISTORY_CALL } from 'middleware/history';
 export const ROUTER_DID_CHANGE = 'ROUTER_DID_CHANGE';
 
 export const routerDidChange = state => (dispatch, getState) => {
-  const analyticsTag = get(last(state.routes), 'analyticsTag');
-
   const prevLocation = getState().router.location;
   const nextLocation = assign(
     {},
@@ -36,10 +33,6 @@ export const routerDidChange = state => (dispatch, getState) => {
     type: ROUTER_DID_CHANGE,
     payload: assign({ synthetic }, state, {
       location: nextLocation,
-      tag: (
-        analyticsTag === 'Cookbook' &&
-        get(state.params, 'username') !== get(getState().user, 'profile.username')
-      ) ? 'Other user cookbook' : analyticsTag,
     }),
   });
 };

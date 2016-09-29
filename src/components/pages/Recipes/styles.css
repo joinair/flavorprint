@@ -1,0 +1,18 @@
+
+@component RecipePage {
+
+  @descendent title {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 40px;
+    color: #454545;
+  }
+
+  @descendent subtitle {
+    font-weight: 100;
+    font-size: 18px;
+    text-align: center;
+    color: #454545;
+  }
+}
