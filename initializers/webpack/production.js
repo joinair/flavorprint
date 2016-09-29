@@ -25,7 +25,7 @@ export default {
   postcss: common.postcss,
 
   entry: {
-    vendor: common.entry.vendor.concat('mixpanel-browser'),
+    vendor: common.entry.vendor,
     bundle: common.entry.bundle,
   },
 

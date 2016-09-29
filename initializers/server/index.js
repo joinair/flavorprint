@@ -1,9 +1,6 @@
 /* global __APP_ENV__ __PORT__ */
 
-import path from 'path';
-import appModulePath from 'app-module-path';
-
-appModulePath.addPath(path.join(process.cwd(), 'src'));
+import './globals'; // keep this above everything that uses Config
 
 import cluster from 'cluster';
 import domain from 'domain';
@@ -11,19 +8,16 @@ import domain from 'domain';
 import './assignPolyfill';
 import './cssHook';
 import './svgHook';
-import './globals'; // keep this above everything that uses Config
 
 import apiProxyMiddleware from './flavorprint/proxyMiddleware';
 import authMiddleware from './flavorprint/authMiddleware';
+import sessionMiddleware from './flavorprint/sessionMiddleware';
 import browserCheckMiddleware from './browserCheckMiddleware';
-
-import { FP_SESSION } from '../../src/constants/CookiesKeys';
 
 import config from '../config';
 
 import express from 'express';
 import bodyParser from 'body-parser';
-import session from 'cookie-session';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
@@ -58,12 +52,6 @@ if (cluster.isMaster) {
   let server;
   const application = express();
 
-  application.use(session({
-    secret: config.SESSION_SECRET,
-    name: FP_SESSION,
-    keys: config.SESSION_KEYS,
-  }));
-
   application.use((req, res, next) => {
     const reqDomain = domain.create();
     reqDomain.add(req);
@@ -91,6 +79,7 @@ if (cluster.isMaster) {
 
   application.use(morgan('combined'));
   application.use(cookieParser());
+  application.use(sessionMiddleware);
 
   if (process.env.NODE_ENV === 'development') {
     application.use(
@@ -122,6 +111,7 @@ if (cluster.isMaster) {
 
   application.use(bodyParser.urlencoded({ extended: false }));
   application.use(bodyParser.json());
+
   application.post('/api/auth/:action', authMiddleware);
   application.use(apiProxyMiddleware);
   application.use(browserCheckMiddleware);

@@ -20,15 +20,4 @@ export const remove = (key, options = {}) => {
   return cookies.remove(key, assign({ domain }, options));
 };
 
-export const parse = rawCookie => {
-  const param = rawCookie.split(';')[0] || '';
-  const match = param.match(/^([^=]+)=(.+)/);
-
-  if (match) {
-    return { [match[1]]: match[2] };
-  }
-
-  return {};
-};
-
 export default { get, set, remove };

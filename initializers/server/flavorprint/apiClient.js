@@ -6,7 +6,7 @@ import qs from 'qs';
 import {
   FLAVORPRINT_API_URL,
   FLAVORPRINT_API_KEY,
-} from '../../config';
+} from '../serverConfig';
 
 const sendMethod = HTTPMethod =>
   (HTTPMethod === 'post' || HTTPMethod === 'put' || HTTPMethod === 'patch')

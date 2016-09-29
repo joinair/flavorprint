@@ -4,8 +4,8 @@ import request from 'superagent';
 
 import get from 'lodash/get';
 
-import Config from '../../../../src/constants/Config';
-import config from '../../../config';
+import Config from 'constants/Config';
+import serverConfig from '../../serverConfig';
 import {
   authorizeFromOauth,
   formatUserResponse,
@@ -15,7 +15,7 @@ import {
 export default (req, res) => {
   const query = {
     client_id: Config.google.id,
-    client_secret: config.OAUTH_SECRET.GOOGLE,
+    client_secret: serverConfig.OAUTH_SECRET.GOOGLE,
     redirect_uri: req.body.redirectUri,
     code: req.body.code,
     grant_type: 'authorization_code',
@@ -59,8 +59,7 @@ export default (req, res) => {
 
             authorizeFromOauth(data, req.session.userId).subscribe(
               response => {
-                req.session.userId = response.body.id;
-
+                req.setSession({ userId: response.body.id });
                 res.append('Content-Type', 'application/json');
                 res.end(formatUserResponse('google', response.body));
               },

@@ -20,7 +20,7 @@ import config from '../config';
 
 let createRoutes = require('routes').default;
 let createStore = require('store').default;
-const { FP_SESSION, FP_SESSION_SIG } = require('constants/CookiesKeys');
+import { FP_SESSION } from 'constants/CookiesKeys';
 
 import clientActions from 'actions/client';
 import { routerDidChange } from 'actions/router';
@@ -135,10 +135,9 @@ export default (req, res) => {
   };
 
   const sessionKey = req.cookies[FP_SESSION];
-  const sessionSig = req.cookies[FP_SESSION_SIG];
 
   store
-    .dispatch(become(sessionKey, sessionSig))
+    .dispatch(become(sessionKey))
     .timeout(10000)
     .subscribe(matchRoute, logOutAndRender);
 };

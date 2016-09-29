@@ -5,8 +5,6 @@ import omit from 'lodash/omit';
 import { API_CALL } from 'middleware/API';
 import { CHAIN } from 'middleware/chain';
 
-import { FP_SESSION, FP_SESSION_SIG } from 'constants/CookiesKeys';
-
 import router from './router';
 
 export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
@@ -61,14 +59,13 @@ export const updateLocally = (data = {}) => ({
   payload: data,
 });
 
-export const become = (sessionKey, sessionSig) => ({
+export const become = sessionKey => ({
   [API_CALL]: {
     endpoint: '/auth/become',
     method: 'POST',
-    cookies: {
-      [FP_SESSION]: sessionKey,
-      [FP_SESSION_SIG]: sessionSig,
-    },
+    headers: sessionKey ? {
+      'X-Session-Key': sessionKey,
+    } : {},
     types: [
       BECOME_USER_REQUEST,
       BECOME_USER_SUCCESS,
@@ -85,6 +82,7 @@ export const logOut = () => (dispatch, getState) => {
     return dispatch({
       [CHAIN]: [
         action,
+        become(),
         router.push(pathname, query, omit(state, 'modal', 'forceReload')),
       ],
     });

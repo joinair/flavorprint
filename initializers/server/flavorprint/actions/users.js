@@ -101,6 +101,7 @@ export const formatUserResponse = (provider, user) =>
   JSON.stringify({
     provider,
     profile: user,
+    uid: user.id,
   });
 
 export default {

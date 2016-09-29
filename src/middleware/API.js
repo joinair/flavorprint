@@ -1,8 +1,6 @@
 
 import assign from 'lodash/assign';
 import get from 'lodash/get';
-import isEmpty from 'lodash/isEmpty';
-import map from 'lodash/map';
 import merge from 'lodash/merge';
 
 import Rx from 'rx';
@@ -11,10 +9,8 @@ import request from 'superagent';
 import qs from 'qs';
 
 import config from 'constants/Config';
-import { FP_SESSION, FP_SESSION_SIG } from 'constants/CookiesKeys';
 
 import { logOut } from 'actions/user';
-import { parse as parseCookie } from 'helpers/cookies';
 
 const sendMethod = HTTPMethod =>
   (HTTPMethod === 'post' || HTTPMethod === 'put' || HTTPMethod === 'patch')
@@ -32,7 +28,6 @@ const apiCall = (
   method = 'GET',
   query = {},
   headers = {},
-  cookies = {},
 ) => {
   const subject = new Rx.Subject();
   const HTTPMethod = method.toLowerCase();
@@ -45,10 +40,6 @@ const apiCall = (
     [HTTPMethod](formattedUrl + endpoint)
     [sendMethod(HTTPMethod)](sendArguments(HTTPMethod, query))
     .set(headers);
-
-  if (!isEmpty(cookies)) {
-    req = req.set('Cookie', map(cookies, (v, k) => `${k}=${v}`).join('; '));
-  }
 
   if (req.buffer) {
     req = req.buffer();
@@ -77,18 +68,16 @@ const nextAction = (action, data) => {
 export default store => next => action => {
   if (!get(action, API_CALL)) return next(action);
 
-  const { endpoint, headers, method, query, types, url, cookies } = action[API_CALL];
+  const { endpoint, headers, method, query, types, url } = action[API_CALL];
   const [requestType, successType, failureType] = types;
 
   const signature = Date.now();
   const sessionKey = get(store.getState(), 'user.sessionKey');
-  const sessionSig = get(store.getState(), 'user.sessionSig');
 
   const completeHeaders = assign(
     { 'Content-Type': 'application/json' },
-    sessionKey && sessionSig ? {
-      [FP_SESSION]: sessionKey,
-      [FP_SESSION_SIG]: sessionSig,
+    sessionKey ? {
+      'X-Session-Key': sessionKey,
     } : {},
     headers
   );
@@ -96,7 +85,7 @@ export default store => next => action => {
   next(nextAction(action, { type: requestType, meta: { signature } }));
 
   const subject = new Rx.Subject();
-  const apiRequest = apiCall(url, endpoint, method, query, completeHeaders, cookies);
+  const apiRequest = apiCall(url, endpoint, method, query, completeHeaders);
 
   const onError = rawData => {
     const payload = get(rawData, 'data.body') || {};
@@ -130,12 +119,8 @@ export default store => next => action => {
       payload = {};
     }
 
-    let resCookies = map(get(rawData, 'headers.set-cookie', []), parseCookie);
-    resCookies = assign(...resCookies);
-    if (resCookies[FP_SESSION] && resCookies[FP_SESSION_SIG]) {
-      meta.sessionKey = resCookies[FP_SESSION];
-      meta.sessionSig = resCookies[FP_SESSION_SIG];
-    }
+    const key = get(rawData, 'headers.x-session-key');
+    if (key) meta.sessionKey = key;
 
     const data = { meta, payload, type: successType };
 

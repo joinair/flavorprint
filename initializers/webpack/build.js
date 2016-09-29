@@ -37,8 +37,6 @@ webpack(webpackConfig, (_error, stats) => {
   exec(
     `cd ${process.cwd()} &&
      mkdir ${config.ASSETS_PATH}/images/ &&
-     cp -R ${config.STATIC_ASSETS_PATH}/images/static-images ${config.ASSETS_PATH}/images/ &&
-     cp -R ${config.STATIC_ASSETS_PATH}/images/shops ${config.ASSETS_PATH}/images/ &&
-     cp -R ${config.STATIC_ASSETS_PATH}/images/print-sl ${config.ASSETS_PATH}/images/`
+     cp -R ${config.STATIC_ASSETS_PATH}/images/static-images ${config.ASSETS_PATH}/images/`
   );
 });

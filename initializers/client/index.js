@@ -15,7 +15,6 @@ import createStore from 'store';
 import config from 'constants/Config';
 import {
   FP_SESSION,
-  FP_SESSION_SIG,
 } from 'constants/CookiesKeys';
 
 import notFound from 'actions/notFound';
@@ -37,7 +36,6 @@ if (process.env.NODE_ENV === 'production') {
 
 const cookieSelector = state => ({
   [FP_SESSION]: get(state, 'user.sessionKey'),
-  [FP_SESSION_SIG]: get(state, 'user.sessionSig'),
 });
 
 const history = browserHistory;

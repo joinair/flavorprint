@@ -11,7 +11,7 @@ export default (req, res) => {
 
   loadOrCreateUser(data).subscribe(userRes => {
     const { body } = userRes;
-    req.session.userId = body.id;
+    req.setSession({ userId: body.id });
     res.append('Content-Type', 'application/json');
     res.end(formatUserResponse(
       body.email ? 'become' : 'anonymous',

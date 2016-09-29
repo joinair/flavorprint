@@ -6,11 +6,11 @@ import createReducer from 'helpers/createReducer';
 
 import {
   FP_SESSION,
-  FP_SESSION_SIG,
 } from 'constants/CookiesKeys';
 
 import {
   BECOME_USER_SUCCESS,
+  BECOME_USER_FAILURE,
   UPDATE_USER_SUCCESS,
   UPDATE_USER_LOCALLY,
 
@@ -40,10 +40,10 @@ const initialState = {
 
 const authenticateUser = (state, action) => {
   const { provider } = action.payload;
-  const { sessionKey, sessionSig } = action.meta;
+  const { sessionKey } = action.meta;
 
   return assign(
-    { sessionKey, sessionSig },
+    { sessionKey },
     initialState,
     action.payload,
     { isAuthenticated: provider !== 'anonymous' }
@@ -60,10 +60,12 @@ const updateUser = (state, action) =>
     { profile: assign({}, state.profile, action.payload) }
   );
 
+const reloadPage = () =>
+  global.Platform.OS === 'browser' && window.location.reload();
+
 const handlers = {
   [RESTORE_FROM_COOKIES]: (state, action) => assign({}, state, {
     sessionKey: action.payload[FP_SESSION],
-    sessionSig: action.payload[FP_SESSION_SIG],
   }),
 
   [UPDATE_USER_SUCCESS]: updateUser,
@@ -72,7 +74,9 @@ const handlers = {
   [BECOME_USER_SUCCESS]: authenticateUser,
   [OAUTH_LOG_IN_SUCCESS]: authenticateUser,
 
+  [BECOME_USER_FAILURE]: reloadPage,
   [OAUTH_LOG_IN_FAILURE]: handleError,
+
   [LOG_OUT]: () => initialState,
 
   [COMPLETE_STEP]: (state, action) => {

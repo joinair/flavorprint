@@ -16,7 +16,6 @@ export default ({
 }) => {
   const middlewares = [
     thunk,
-    // store => next => action => console.log('action', action) || next(action),
     authentication,
     chain,
     apiMiddleware,
@@ -31,10 +30,6 @@ export default ({
 
     sagaMiddleware = require('redux-saga').default();
     middlewares.push(sagaMiddleware);
-  }
-
-  if (global.Platform.OS === 'browser' && process.env.NODE_ENV === 'production') {
-    middlewares.push(require('middleware/analytics').default);
   }
 
   if (process.env.NODE_ENV === 'development') {
