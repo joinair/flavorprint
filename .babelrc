@@ -1,16 +1,13 @@
-
-require('babel-register')({
-  babelrc: false,
-  presets: ['react', 'es2015'],
-  plugins: ['transform-object-rest-spread'],
-  env: {
-    production: {
-      plugins: [
-        'transform-react-constant-elements',
-        'transform-react-inline-elements'
+{
+  "babelrc": false,
+  "presets": ["react", "es2015"],
+  "plugins": ["transform-object-rest-spread"],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-constant-elements",
+        "transform-react-inline-elements"
       ]
     }
   }
-});
-
-module.exports = {};
+}

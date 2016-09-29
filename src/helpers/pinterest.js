@@ -1,13 +1,12 @@
 
 import get from 'lodash/get';
 
-import { logo, logoSize } from 'constants/SharingMeta';
+import { logo } from 'constants/SharingMeta';
 
-import { avatarURL } from 'helpers/user';
 import { openPopupWindow } from 'helpers/popupWindow';
 
 export const profileToConfig = profile => {
-  const imgUrl = get(avatarURL(profile.avatar, logoSize, logoSize), 'src', logo);
+  const imgUrl = get(profile, 'avatarUrl', logo);
 
   return ({
     media: imgUrl,

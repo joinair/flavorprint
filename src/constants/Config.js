@@ -17,20 +17,10 @@ export const banner = {
   name: 'Hero v5',
 };
 
-export const cloudinary = (() => {
-  const apiKey = '387429317192936';
-  const cloudName = 'whisk';
-  const avatarsPreset = 'v3-user-profile-image';
-  const recipesPreset = 'v3-recipe-upload';
-  const url = `https://api.cloudinary.com/v1_1/${cloudName}`;
-
-  return { apiKey, cloudName, avatarsPreset, recipesPreset, url };
-})();
-
 export const cookie = {
   domain: process.env.NODE_ENV === 'production'
     ? '.whisk.com'
-    : '',
+    : 'localhost',
 };
 
 export const domain = {
@@ -66,7 +56,6 @@ export const sentry = {
 export default {
   api,
   banner,
-  cloudinary,
   cookie,
   domain,
   facebook,
