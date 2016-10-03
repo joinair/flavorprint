@@ -105,18 +105,18 @@
   }
 
   @modifier primary {
-    background-color: #3aba5a;
-    border-color: #3aba5a;
+    background-color: var(--color-tomato);
+    border-color: var(--color-tomato);
     color: #fff;
 
     &:hover {
-      background-color: #51d673;
-      border-color: #51d673;
+      background-color: var(--color-tomato-hover);
+      border-color: var(--color-tomato-hover);
     }
 
     &:active {
-      background-color: #08923d;
-      border-color: #08923d;
+      background-color: var(--color-tomato-active);
+      border-color: var(--color-tomato-active);
     }
 
     .Button-icon {
@@ -125,29 +125,29 @@
 
     &.Button--outline {
       background-color: transparent;
-      border-color: #3aba5a;
-      color: #3aba5a;
+      border-color: var(--color-tomato);
+      color: var(--color-tomato);
 
       &:hover {
-        border-color: #51d673;
-        color: #51d673;
+        border-color: var(--color-tomato-hover);
+        color: var(--color-tomato-hover);
 
         .Button-icon {
-          fill: #51d673;
+          fill: var(--color-tomato-hover);
         }
       }
 
       &:active {
-        border-color: #08923d;
-        color: #08923d;
+        border-color: var(--color-tomato-active);
+        color: var(--color-tomato-active);
 
         .Button-icon {
-          fill: #08923d;
+          fill: var(--color-tomato-active);
         }
       }
 
       .Button-icon {
-        fill: #3aba5a;
+        fill: var(--color-tomato);
       }
     }
   }

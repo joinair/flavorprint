@@ -1,0 +1,251 @@
+
+@import "imports/variables";
+@import "imports/media-queries";
+
+@component Home {
+  @descendent content {
+    width: 100%;
+    margin: 0 auto;
+
+    @media (--m) {
+      width: 960px;
+    }
+  }
+
+  @descendent columns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    @media (--m) {
+      flex-direction: row;
+    }
+
+    @descendent column {
+      flex: 1;
+    }
+  }
+
+  @descendent main {
+    background: url('/images/static-images/home-main-bg.png');
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+
+    @media (--retina) {
+      background-image: url('/images/static-images/home-main-bg@2x.png');
+    }
+
+    @descendent cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.4);
+    }
+
+    @descendent content {
+      padding: 50px 0;
+      position: relative;
+      z-index: 2;
+
+      @media (--m) {
+        height: 480px;
+        padding: 0;
+      }
+    }
+
+    @descendent title {
+      font-size: 42px;
+      line-height: 46px;
+      text-shadow: 0 1px 3px rgba(0,0,0,.6);
+      color: white;
+      padding: 0 10px;
+
+      @media (--s) {
+        padding: 0;
+        font-size: 46px;
+      }
+    }
+
+    @descendent description {
+      font-size: 22px;
+      line-height: 30px;
+      text-shadow: 0 1px 3px black;
+      color: white;
+      margin-top: 11px;
+      padding: 0 10px;
+
+      @media (--s) {
+        padding: 0;
+        font-size: 26px;
+      }
+    }
+
+    @descendent button {
+      box-shadow: 0 1px 3px black;
+      margin-top: 30px;
+      height: 40px;
+      margin-left: 10px;
+
+      @media (--s) {
+        margin-left: 0;
+      }
+    }
+
+    @descendent video {
+      background: rgba(255,255,255,.5);
+      border: 2px solid rgba(0,0,0,.7);
+      border-radius: var(--border-radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin-top: 50px;
+      width: 320px;
+      height: 184px;
+
+      @media (--s) {
+        width: 400px;
+        height: 230px;
+      }
+
+      @media (--m) {
+        margin-top: 0;
+      }
+
+      @descendent play {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  @descendent details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 10px;
+
+    @media (--m) {
+      margin: 0;
+    }
+
+    @descendent iconContainer {
+      padding-right: 26px;
+      margin-bottom: 54px;
+    }
+
+    @descendent text {
+      @descendent title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-bottom: 15px;
+      }
+
+      @descendent content {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      flex: 1;
+    }
+
+    @descendent button {
+      height: 34px;
+    }
+  }
+
+  @descendent recs {
+    background: white;
+    padding: 60px 0;
+
+    @descendent left {
+      @media (--m) {
+        padding-right: 80px;
+      }
+    }
+
+    @descendent right {
+      padding-top: 20px;
+
+      @media (--m) {
+        border-left: 1px solid #C2C2C2;
+        padding-top: 0;
+        padding-left: 80px;
+      }
+    }
+  }
+
+  @descendent taste {
+    background: url('/images/static-images/home-taste-bg.png');
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+
+    color: white;
+    font-size: 46px;
+    line-height: 46px;
+    text-shadow: 0 1px 3px rgba(0,0,0,.65);
+
+    @media (--retina) {
+      background-image: url('/images/static-images/home-taste-bg@2x.png');
+    }
+
+    @descendent cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,.4);
+    }
+
+    @descendent content {
+      padding: 50px 0;
+      position: relative;
+      z-index: 2;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      @media (--m) {
+        flex-direction: row;
+        height: 300px;
+        padding: 0;
+      }
+
+      @descendent small {
+        flex: 1;
+        text-align: center;
+      }
+
+      @descendent large {
+        flex: 2;
+        text-align: center;
+      }
+    }
+  }
+
+  @descendent vivanda {
+    background: #40CEAC;
+    color: white;
+    fill: white;
+    padding: 69px 0;
+
+    .Button {
+      &, &:hover, &:active {
+        border-color: white;
+        color: white;
+
+        .Button-icon {
+          fill: white;
+        }
+      }
+    }
+  }
+}
