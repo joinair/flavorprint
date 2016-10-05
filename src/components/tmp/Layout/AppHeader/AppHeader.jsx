@@ -11,8 +11,11 @@ import {
   SIGN_UP,
 } from 'constants/Routes';
 
+import Icon from 'components/ui-elements/Icon';
+
 import iconNav from 'assets/images/icons/icon-mobile-nav.svg';
 import iconSearch from 'assets/images/icons/icon-search.svg';
+import fpLogo from 'assets/images/icons/fp-logo.svg';
 import './styles.css';
 
 import UserMenu from './UserMenu';
@@ -92,10 +95,13 @@ const Menu = ({
 
       <div className="AppHeader-item AppHeader-item--logo">
         <Link to={{ pathname: '/' }} className="AppHeader-link AppHeader-link--logo">
-          <img
-            alt="FlavorPrint"
-            src="/assets/images/static-images/flavorprint-logo@1x.png"
-            srcSet="/assets/images/static-images/flavorprint-logo@2x.png 2x"
+          <Icon
+            glyph={fpLogo}
+            style={{
+              fill: 'black',
+              width: 232,
+              height: 25,
+            }}
           />
         </Link>
       </div>
