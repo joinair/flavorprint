@@ -3,10 +3,8 @@ import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
 import classnames from 'classnames';
-import includes from 'lodash/includes';
 
 import {
-  HOME,
   LOG_IN,
   PRODUCTS,
   RECIPES,
@@ -156,41 +154,35 @@ const AppHeader = ({
     username,
   },
   routerPath,
-  sticky,
 
   onLogInButtonClick,
   onLogOut,
   onSearch,
   onSidebarOpen,
   onSignUpButtonClick,
-}) => {
-  const isTransparent = includes([LOG_IN, HOME, SIGN_UP], routerPath);
-  const isFilled = isAuthenticated || !isTransparent || sticky;
-
-  return (
-    <div className={classnames('AppHeader LayoutFlex-aside', { 'is-filled': isFilled })}>
-      <div className="AppHeader-natural">
-        <div className="AppHeader-container">
-          <Menu
-            avatar={avatarUrl}
-            email={email}
-            firstName={firstName}
-            isAuthenticated={isAuthenticated}
-            lastName={lastName}
-            routerPath={routerPath}
-            username={username}
-            onLogInButtonClick={onLogInButtonClick}
-            onLogOut={onLogOut}
-            onSearch={onSearch}
-            onSidebarOpen={onSidebarOpen}
-            onSignUpButtonClick={onSignUpButtonClick}
-          />
-        </div>
+}) => (
+  <div className="AppHeader LayoutFlex-aside is-filled">
+    <div className="AppHeader-natural">
+      <div className="AppHeader-container">
+        <Menu
+          avatar={avatarUrl}
+          email={email}
+          firstName={firstName}
+          isAuthenticated={isAuthenticated}
+          lastName={lastName}
+          routerPath={routerPath}
+          username={username}
+          onLogInButtonClick={onLogInButtonClick}
+          onLogOut={onLogOut}
+          onSearch={onSearch}
+          onSidebarOpen={onSidebarOpen}
+          onSignUpButtonClick={onSignUpButtonClick}
+        />
       </div>
-      <div className="AppHeader-substitute" />
     </div>
-  );
-};
+    <div className="AppHeader-substitute" />
+  </div>
+);
 
 GuestMenu.propTypes = {
   onLogInButtonClick: PropTypes.func.isRequired,
@@ -222,7 +214,6 @@ AppHeader.propTypes = {
     lastName: PropTypes.string,
   }),
   routerPath: PropTypes.string,
-  sticky: PropTypes.bool,
 
   onLogInButtonClick: PropTypes.func.isRequired,
   onLogOut: PropTypes.func.isRequired,

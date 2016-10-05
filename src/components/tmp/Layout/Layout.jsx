@@ -11,7 +11,6 @@ import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import NotFound from './NotFound';
 import BodyClassName from 'components/ui-elements/BodyClassName';
-import Sticky from 'components/ui-elements/Sticky';
 import CompleteProfile from 'components/banners/CompleteProfile';
 import Modal from 'components/tmp/Modal';
 import Notification from 'components/tmp/Notification';
@@ -34,9 +33,7 @@ class Layout extends Component {
           <div className={classnames({ 'u-overlay': anySidebarsOpened })}>
             <div className="LayoutFlex">
               <div className="LayoutFlex-inner">
-                <Sticky scrollHeight={1}>
-                  <AppHeader />
-                </Sticky>
+                <AppHeader />
 
                 <div className="LayoutFlex-main">
                   {isNotFound ? <NotFound /> : children}
