@@ -1,5 +1,8 @@
 
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+
+import { PRODUCTS, RECIPES } from 'constants/Routes';
 
 import Button from 'components/ui-elements/Button';
 import Icon from 'components/ui-elements/Icon';
@@ -28,7 +31,7 @@ const Details = ({ title, text, iconProps, buttonText, buttonUrl }) => (
         {text}
       </div>
 
-      <a href={buttonUrl}>
+      <Link to={buttonUrl}>
         <Button
           outline
           icon={iconMore}
@@ -37,7 +40,7 @@ const Details = ({ title, text, iconProps, buttonText, buttonUrl }) => (
         >
           {buttonText}
         </Button>
-      </a>
+      </Link>
     </div>
   </div>
 );
@@ -87,6 +90,7 @@ const Recommendations = () => (
           title="Product recommendations"
           text="Find products that match your taste and save money with the best offers."
           buttonText="Explore products"
+          buttonUrl={PRODUCTS}
           iconProps={{
             glyph: iconProductRecs,
             style: { width: 63, height: 58 },
@@ -98,7 +102,8 @@ const Recommendations = () => (
         <Details
           title="Recipe recommendations"
           text="Discover delicious recipes that are perfectly matched to your unique tastes."
-          buttonText="Explore products"
+          buttonText="Explore recipes"
+          buttonUrl={RECIPES}
           iconProps={{
             glyph: iconRecipeRecs,
             style: { width: 66, height: 78 },
