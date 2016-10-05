@@ -11,6 +11,7 @@ import iconPlay from 'assets/images/icons/icon-play.svg';
 import iconProductRecs from 'assets/images/icons/icon-product-recs.svg';
 import iconRecipeRecs from 'assets/images/icons/icon-recipe-recs.svg';
 import iconMore from 'assets/images/icons/icon-more.svg';
+import vivandaLogo from 'assets/images/icons/vivanda-logo.svg';
 
 import './styles.css';
 
@@ -143,7 +144,12 @@ const Vivanda = () => (
         "
         buttonText="Learn more"
         iconProps={{
-          style: { width: 83, height: 83 },
+          glyph: vivandaLogo,
+          style: {
+            width: 99,
+            height: 99,
+            marginBottom: -54, // see styles.css
+          },
         }}
       />
     </div>
