@@ -22,18 +22,7 @@
     will-change: transform;
 
     height: var(--AppHeader-height);
-
-    .Body--AuthPage & {
-      background-color: #fff;
-
-      @media (--s) {
-        background-color: transparent;
-      }
-    }
-
-    .is-filled & {
-      background-color: #fff;
-    }
+    background-color: #fff;
 
     &:after {
       content: "";
@@ -43,18 +32,7 @@
       right: 0;
       top: 58px;
       z-index: var(--z-index-app-header-border);
-
-      .Body--AuthPage & {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-
-        @media (--s) {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-      }
-
-      .is-filled & {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-      }
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
   }
 
