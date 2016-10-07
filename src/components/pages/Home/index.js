@@ -15,36 +15,42 @@ import vivandaLogo from 'assets/images/icons/vivanda-logo.svg';
 
 import './styles.css';
 
-const Details = ({ title, text, iconProps, buttonText, buttonUrl }) => (
-  <div className="Home-details">
-    <div className="Home-details-iconContainer">
-      <Icon
-        className="Home-details-iconContainer-icon"
-        {...iconProps}
-      />
-    </div>
-    <div className="Home-details-text">
-      <div className="Home-details-text-title">
-        {title}
-      </div>
+const Details = ({ title, text, iconProps, buttonText, buttonUrl }) => {
+  const isExternal = buttonUrl.match(/^http/);
+  const ButtonComp = isExternal ? 'a' : Link;
+  const target = isExternal ? '_blank' : null;
 
-      <div className="Home-details-text-content">
-        {text}
+  return (
+    <div className="Home-details">
+      <div className="Home-details-iconContainer">
+        <Icon
+          className="Home-details-iconContainer-icon"
+          {...iconProps}
+        />
       </div>
+      <div className="Home-details-text">
+        <div className="Home-details-text-title">
+          {title}
+        </div>
 
-      <Link to={buttonUrl}>
-        <Button
-          outline
-          icon={iconMore}
-          iconBefore={false}
-          iconStyle={{ width: 12, height: 12 }}
-        >
-          {buttonText}
-        </Button>
-      </Link>
+        <div className="Home-details-text-content">
+          {text}
+        </div>
+
+        <ButtonComp href={buttonUrl} to={buttonUrl} target={target}>
+          <Button
+            outline
+            icon={iconMore}
+            iconBefore={false}
+            iconStyle={{ width: 12, height: 12 }}
+          >
+            {buttonText}
+          </Button>
+        </ButtonComp>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 Details.propTypes = {
   buttonText: PropTypes.string,
@@ -143,6 +149,7 @@ const Vivanda = () => (
           and personalized food experiences.
         "
         buttonText="Learn more"
+        buttonUrl="http://vivanda.com"
         iconProps={{
           glyph: vivandaLogo,
           style: {

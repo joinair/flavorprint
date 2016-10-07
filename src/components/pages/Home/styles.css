@@ -28,13 +28,13 @@
   }
 
   @descendent main {
-    background: url('/images/static-images/home-main-bg.png');
+    background: url('/images/static-images/home-main-bg.jpg');
     background-position: center center;
     background-size: cover;
     position: relative;
 
     @media (--retina) {
-      background-image: url('/images/static-images/home-main-bg@2x.png');
+      background-image: url('/images/static-images/home-main-bg@2x.jpg');
     }
 
     @descendent cover {
@@ -43,7 +43,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.4);
     }
 
     @descendent content {
@@ -180,7 +179,7 @@
   }
 
   @descendent taste {
-    background: url('/images/static-images/home-taste-bg.png');
+    background: url('/images/static-images/home-taste-bg.jpg');
     background-position: center center;
     background-size: cover;
     position: relative;
@@ -191,7 +190,7 @@
     text-shadow: 0 1px 3px rgba(0,0,0,.65);
 
     @media (--retina) {
-      background-image: url('/images/static-images/home-taste-bg@2x.png');
+      background-image: url('/images/static-images/home-taste-bg@2x.jpg');
     }
 
     @descendent cover {
@@ -200,7 +199,6 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,.4);
     }
 
     @descendent content {

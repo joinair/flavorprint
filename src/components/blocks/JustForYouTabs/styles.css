@@ -3,7 +3,7 @@
 @import "imports/media-queries";
 
 @component JustForYouTabs {
-  background: url('/images/static-images/tabs-bg@1x.png');
+  background: url('/images/static-images/tabs-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -11,11 +11,10 @@
   position: relative;
 
   @media (--retina) {
-    background: url('/images/static-images/tabs-bg@2x.png');
+    background: url('/images/static-images/tabs-bg@2x.jpg');
   }
 
   @descendent cover {
-    background-color: rgba(0,0,0,.4);
     width: 100%;
     height: 100%;
   }
