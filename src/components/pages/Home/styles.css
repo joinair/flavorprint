@@ -37,14 +37,6 @@
       background-image: url('/images/static-images/home-main-bg@2x.jpg');
     }
 
-    @descendent cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
     @descendent content {
       padding: 50px 0;
       position: relative;
@@ -183,6 +175,7 @@
     background-position: center center;
     background-size: cover;
     position: relative;
+    height: 300px;
 
     color: white;
     font-size: 46px;
@@ -193,16 +186,7 @@
       background-image: url('/images/static-images/home-taste-bg@2x.jpg');
     }
 
-    @descendent cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
     @descendent content {
-      padding: 50px 0;
       position: relative;
       z-index: 2;
 
@@ -211,20 +195,47 @@
       align-items: center;
       justify-content: center;
 
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      transition: left 0.2s ease, opacity 0.2s ease;
+
       @media (--m) {
         flex-direction: row;
         height: 300px;
         padding: 0;
       }
 
+      @modifier beforeActive {
+        left: -100px;
+      }
+
+      @modifier afterActive {
+        left: 100px;
+      }
+
+      @modifier active {
+        opacity: 1;
+        left: 0;
+      }
+
       @descendent small {
         flex: 1;
-        text-align: center;
+        text-align: right;
+        padding-right: 20px;
       }
 
       @descendent large {
         flex: 2;
         text-align: center;
+        padding-top: 30px;
+
+        @media (--m) {
+          padding-top: 0;
+        }
       }
     }
   }

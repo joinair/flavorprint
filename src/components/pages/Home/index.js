@@ -1,6 +1,10 @@
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import classnames from 'classnames';
+
+import map from 'lodash/map';
+import bind from 'lodash/bind';
 
 import { PRODUCTS, RECIPES } from 'constants/Routes';
 
@@ -62,7 +66,6 @@ Details.propTypes = {
 
 const Main = () => (
   <div className="Home-main">
-    <div className="Home-main-cover" />
     <div className="Home-main-content Home-content Home-columns">
       <div className="Home-columns-column">
         <div className="Home-main-title">
@@ -121,21 +124,74 @@ const Recommendations = () => (
   </div>
 );
 
-const Taste = () => (
-  <div className="Home-taste">
-    <div className="Home-taste-cover" />
-    <div className="Home-content Home-taste-content">
-      <div className="Home-taste-content-small">
-        87%
+class Taste extends Component {
+  constructor(props, context) {
+    super(props, context);
+
+    this.tick = bind(this.tick, this);
+
+    this.state = {
+      steps: [
+        { percent: '87%', text: <span>Taste Drives Food<br />Choise Statistic</span> },
+        { percent: '89%', text: <span>Taste Drives Food<br />Choise Statistic</span> },
+        { percent: '90%', text: <span>Taste Drives Food<br />Choise Statistic</span> },
+      ],
+
+      previousStep: null,
+      activeStep: 0,
+    };
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(this.tick, 2000);
+  }
+
+  componentWillUnmount() {
+    this.interval = clearInterval(this.interval);
+  }
+
+  tick() {
+    const { steps, activeStep } = this.state;
+    this.setState({ activeStep: (activeStep + 1) % steps.length });
+  }
+
+  render() {
+    const { steps, activeStep } = this.state;
+
+    const renders = map(steps, ({ percent, text }, i) => type => (
+      <div
+        key={i}
+        className={
+          classnames('Home-content Home-taste-content', {
+            'Home-taste-content--active': type === 'active',
+            'Home-taste-content--beforeActive': type === 'before',
+            'Home-taste-content--afterActive': type === 'after',
+          })
+        }
+      >
+        <div className="Home-taste-content-small" />
+        <div className="Home-taste-content-small">
+          {percent}
+        </div>
+        <div className="Home-taste-content-large">
+          {text}
+        </div>
+        <div className="Home-taste-content-small" />
+        <div className="Home-taste-content-small" />
       </div>
-      <div className="Home-taste-content-large">
-        Taste Drives Food <br />
-        Choice Statistic
+    ));
+
+    const last = steps.length - 1;
+
+    return (
+      <div className="Home-taste">
+        {renders[activeStep === 0 ? last : activeStep - 1]('before')}
+        {renders[activeStep]('active')}
+        {renders[activeStep === last ? 0 : activeStep + 1]('after')}
       </div>
-      <div className="Home-taste-content-small" />
-    </div>
-  </div>
-);
+    );
+  }
+}
 
 const Vivanda = () => (
   <div className="Home-vivanda">
