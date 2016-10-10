@@ -8,7 +8,7 @@ import { API_CALL } from 'middleware/API';
 import { CHAIN } from 'middleware/chain';
 
 const SIZE = 10;
-const CACHE_SIZE = 10;
+const CACHE_SIZE = 100;
 
 export default function buildRecommendationsActions({
   LOAD_REQUEST,
