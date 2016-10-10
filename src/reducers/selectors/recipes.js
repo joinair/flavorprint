@@ -7,8 +7,7 @@ export const getRecipes = state =>
 export const getSortedRecipes = state =>
   map(state.recipes.entriesOrder, id => state.recipes.entries[id]);
 
-export const canLoadMoreRecipes = state =>
-  state.recipes.canRequestNext;
+export const canLoadMoreRecipes = () => true;
 
 export default {
   getRecipes,

@@ -1,80 +1,24 @@
 
-import Rx from 'rx';
-
-import identity from 'lodash/identity';
-import map from 'lodash/map';
-
 import { API_CALL } from 'middleware/API';
-import { CHAIN } from 'middleware/chain';
+
+import map from 'lodash/map';
 
 import selectors from 'reducers/selectors';
 
-export const LOAD_RECIPES_MORE_REQUEST = 'LOAD_RECIPES_REQUEST';
-export const LOAD_RECIPES_MORE_SUCCESS = 'LOAD_RECIPES_SUCCESS';
-export const LOAD_RECIPES_MORE_FAILURE = 'LOAD_RECIPES_FAILURE';
+import buildRecommendationsActions from './recommendations';
 
-export const LOAD_RECIPES_REQUEST = 'LOAD_RECIPES_REQUEST';
-export const LOAD_RECIPES_SUCCESS = 'LOAD_RECIPES_SUCCESS';
+export const LOAD_RECIPES_REQUEST = 'LOAD_RECIPES_REQUEST'; export const LOAD_RECIPES_SUCCESS = 'LOAD_RECIPES_SUCCESS';
 export const LOAD_RECIPES_FAILURE = 'LOAD_RECIPES_FAILURE';
+
+export const LOAD_RECIPES_MORE_REQUEST = 'LOAD_RECIPES_MORE_REQUEST';
+export const LOAD_RECIPES_MORE_SUCCESS = 'LOAD_RECIPES_MORE_SUCCESS';
+export const LOAD_RECIPES_MORE_FAILURE = 'LOAD_RECIPES_MORE_FAILURE';
+
+export const LOAD_RECIPES_FROM_CACHE = 'LOAD_RECIPES_FROM_CACHE';
 
 export const LOAD_RECIPE_DETAILS_REQUEST = 'LOAD_RECIPE_DETAILS_REQUEST';
 export const LOAD_RECIPE_DETAILS_SUCCESS = 'LOAD_RECIPE_DETAILS_SUCCESS';
 export const LOAD_RECIPE_DETAILS_FAILURE = 'LOAD_RECIPE_DETAILS_FAILURE';
-
-export const loadRecipes = (params = {}) => (dispatch, getState) => {
-  const endpoint = '/v3/recommendations' +
-    (params.userId ? `/${params.userId}` : '');
-  const type = 'RECIPE';
-  const size = params.size || 8;
-  const more = !!params.more;
-
-  const ignore = map(
-    selectors.getSortedRecipes(getState()),
-    x => x.itemId
-  );
-
-  return dispatch({
-    [API_CALL]: {
-      endpoint,
-      query: { type, size, ignore },
-      types: more ? [
-        LOAD_RECIPES_MORE_REQUEST,
-        LOAD_RECIPES_MORE_SUCCESS,
-        LOAD_RECIPES_MORE_FAILURE,
-      ] : [
-        LOAD_RECIPES_REQUEST,
-        LOAD_RECIPES_SUCCESS,
-        LOAD_RECIPES_FAILURE,
-      ],
-    },
-  });
-};
-
-export const loadDetails = recipe => ({
-  payload: { recipeId: recipe.itemId, recipe },
-
-  [API_CALL]: {
-    endpoint: '',
-    url: recipe.detailUrl,
-    types: [
-      LOAD_RECIPE_DETAILS_REQUEST,
-      LOAD_RECIPE_DETAILS_SUCCESS,
-      LOAD_RECIPE_DETAILS_FAILURE,
-    ],
-  },
-});
-
-export const loadDetailedRecipes = params => ({
-  [CHAIN]: [
-    () => loadRecipes(params),
-    () => (dispatch, getState) => Rx.Observable.from(
-      map(
-        selectors.getRecipes(getState()),
-        x => dispatch(loadDetails(x))
-      )
-    ).flatMap(identity),
-  ],
-});
 
 export const LOAD_RECIPES_COMPATIBILITIES_REQUEST =
   'LOAD_RECIPES_COMPATIBILITIES_REQUEST';
@@ -82,6 +26,23 @@ export const LOAD_RECIPES_COMPATIBILITIES_SUCCESS =
   'LOAD_RECIPES_COMPATIBILITIES_SUCCESS';
 export const LOAD_RECIPES_COMPATIBILITIES_FAILURE =
   'LOAD_RECIPES_COMPATIBILITIES_FAILURE';
+
+const recipesActions = buildRecommendationsActions({
+  LOAD_REQUEST: LOAD_RECIPES_REQUEST,
+  LOAD_SUCCESS: LOAD_RECIPES_SUCCESS,
+  LOAD_FAILURE: LOAD_RECIPES_FAILURE,
+  LOAD_MORE_REQUEST: LOAD_RECIPES_MORE_REQUEST,
+  LOAD_MORE_SUCCESS: LOAD_RECIPES_MORE_SUCCESS,
+  LOAD_MORE_FAILURE: LOAD_RECIPES_MORE_FAILURE,
+  LOAD_FROM_CACHE: LOAD_RECIPES_FROM_CACHE,
+  LOAD_DETAILS_REQUEST: LOAD_RECIPE_DETAILS_REQUEST,
+  LOAD_DETAILS_SUCCESS: LOAD_RECIPE_DETAILS_SUCCESS,
+  LOAD_DETAILS_FAILURE: LOAD_RECIPE_DETAILS_FAILURE,
+
+  recommendationsSelector: selectors.getSortedRecipes,
+  cacheSelector: state => state.recipes.paginationCache,
+  type: 'RECIPE',
+});
 
 export const loadRecipesCompatibilities =
   userId =>
@@ -100,8 +61,13 @@ export const loadRecipesCompatibilities =
     },
   });
 
+export const loadRecipes = recipesActions.load;
+export const loadRecipeDetails = recipesActions.loadDetails;
+export const loadDetailedRecipes = recipesActions.loadDetailed;
+
 export default {
+  loadRecipesCompatibilities,
   loadRecipes,
-  loadDetails,
+  loadRecipeDetails,
   loadDetailedRecipes,
 };
