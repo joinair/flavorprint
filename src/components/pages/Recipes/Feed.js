@@ -18,7 +18,7 @@ const selector = createStructuredSelector({
 });
 
 const actions = {
-  onShowMore: () => feed.load(true),
+  onShowMore: () => feed.loadDetailedRecipes({ more: true }),
 };
 
 export default connect(selector, actions)(Feed);

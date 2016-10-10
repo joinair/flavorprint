@@ -20,7 +20,7 @@ const selector = createStructuredSelector({
 });
 
 const actions = {
-  onShowMore: () => feed.load(true),
+  onShowMore: () => feed.loadDetailedProducts({ more: true }),
 };
 
 export default connect(selector, actions)(Feed);

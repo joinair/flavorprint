@@ -7,8 +7,8 @@ export const getProducts = state =>
 export const getSortedProducts = state =>
   map(state.products.entriesOrder, id => state.products.entries[id]);
 
-export const canLoadMoreProducts = () =>
-  false;
+export const canLoadMoreProducts = state =>
+  state.products.canRequestNext;
 
 export default {
   getProducts,

@@ -14,27 +14,41 @@ export const LOAD_PRODUCTS_REQUEST = 'LOAD_PRODUCTS_REQUEST';
 export const LOAD_PRODUCTS_SUCCESS = 'LOAD_PRODUCTS_SUCCESS';
 export const LOAD_PRODUCTS_FAILURE = 'LOAD_PRODUCTS_FAILURE';
 
+export const LOAD_PRODUCTS_MORE_REQUEST = 'LOAD_PRODUCTS_REQUEST';
+export const LOAD_PRODUCTS_MORE_SUCCESS = 'LOAD_PRODUCTS_SUCCESS';
+export const LOAD_PRODUCTS_MORE_FAILURE = 'LOAD_PRODUCTS_FAILURE';
+
 export const LOAD_PRODUCT_DETAILS_REQUEST = 'LOAD_PRODUCT_DETAILS_REQUEST';
 export const LOAD_PRODUCT_DETAILS_SUCCESS = 'LOAD_PRODUCT_DETAILS_SUCCESS';
 export const LOAD_PRODUCT_DETAILS_FAILURE = 'LOAD_PRODUCT_DETAILS_FAILURE';
 
-export const loadProducts = (params = {}) => {
+export const loadProducts = (params = {}) => (dispatch, getState) => {
   const endpoint = '/v3/recommendations' +
     (params.userId ? `/${params.userId}` : '');
   const type = 'PRODUCT';
   const size = params.size || 12;
+  const more = !!params.more;
 
-  return {
+  const ignore = map(
+    selectors.getSortedProducts(getState()),
+    x => x.itemId
+  );
+
+  return dispatch({
     [API_CALL]: {
       endpoint,
-      query: { type, size },
-      types: [
+      query: { type, size, ignore },
+      types: more ? [
+        LOAD_PRODUCTS_MORE_REQUEST,
+        LOAD_PRODUCTS_MORE_SUCCESS,
+        LOAD_PRODUCTS_MORE_FAILURE,
+      ] : [
         LOAD_PRODUCTS_REQUEST,
         LOAD_PRODUCTS_SUCCESS,
         LOAD_PRODUCTS_FAILURE,
       ],
     },
-  };
+  });
 };
 
 export const loadDetails = product => product.detailUrl ? ({
@@ -53,7 +67,7 @@ export const loadDetails = product => product.detailUrl ? ({
 
 export const loadDetailedProducts = params => ({
   [CHAIN]: [
-    loadProducts(params),
+    () => loadProducts(params),
     () => (dispatch, getState) => Rx.Observable.from(
       filter(map(
         selectors.getProducts(getState()),
