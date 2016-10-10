@@ -16,6 +16,7 @@ import iconProductRecs from 'assets/images/icons/icon-product-recs.svg';
 import iconRecipeRecs from 'assets/images/icons/icon-recipe-recs.svg';
 import iconMore from 'assets/images/icons/icon-more.svg';
 import vivandaLogo from 'assets/images/icons/vivanda-logo.svg';
+import iconFlavorprint from 'assets/images/icons/icon-flavorprint.svg';
 
 import './styles.css';
 
@@ -79,7 +80,7 @@ const Main = () => (
         <Button
           className="Home-main-button"
         >
-          Get your FlavorPrint
+          Get your <strong>FlavorPrint</strong>
         </Button>
       </div>
 
