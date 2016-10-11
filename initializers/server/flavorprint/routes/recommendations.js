@@ -3,7 +3,6 @@ import map from 'lodash/map';
 import filter from 'lodash/filter';
 
 import apiClient from '../apiClient';
-import { toJson, fromJson } from '../helpers';
 
 const mergeInteractions = recs => ints =>
   map(recs, rec => ({
@@ -18,7 +17,7 @@ const getRecommendations = (query, userId) =>
     endpoint: `/v3/recommendations/${userId}`,
   })
   .map(x => x.text)
-  .flatMap(toJson);
+  .map(JSON.parse);
 
 const getInteractions = userId => recs =>
   apiClient({
@@ -29,9 +28,9 @@ const getInteractions = userId => recs =>
     endpoint: `/v3/users/${userId}/interactions`,
   })
   .map(x => x.text)
-  .flatMap(toJson)
+  .map(JSON.parse)
   .map(mergeInteractions(recs))
-  .flatMap(fromJson);
+  .map(JSON.stringify);
 
 export default (req, res) =>
   getRecommendations(req.query, req.params.userId)

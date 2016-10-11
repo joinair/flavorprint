@@ -11,7 +11,6 @@ import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import NotFound from './NotFound';
 import BodyClassName from 'components/ui-elements/BodyClassName';
-import CompleteProfile from 'components/banners/CompleteProfile';
 import Modal from 'components/tmp/Modal';
 import Notification from 'components/tmp/Notification';
 
@@ -47,7 +46,6 @@ class Layout extends Component {
           <Modal />
           <Notification autoDismiss={10000} />
 
-          <CompleteProfile />
         </div>
       </BodyClassName>
     );

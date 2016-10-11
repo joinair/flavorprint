@@ -19,7 +19,7 @@ const sendArguments = (HTTPMethod, query) =>
     : qs.stringify(query, { arrayFormat: 'brackets' });
 
 export default ({ method, query, endpoint }) => {
-  const subject = new Rx.AsyncSubject();
+  const subject = new Rx.Subject();
   const url = FLAVORPRINT_API_URL;
   const headers = {
     'x-api-key': FLAVORPRINT_API_KEY,

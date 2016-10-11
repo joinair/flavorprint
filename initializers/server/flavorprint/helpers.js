@@ -30,35 +30,7 @@ export const passThrough = (req, res) => {
   });
 };
 
-export const toJson = text => {
-  const subject = new Rx.AsyncSubject();
-
-  try {
-    subject.onNext(JSON.parse(text));
-    subject.onCompleted();
-  } catch (e) {
-    subject.onError('cannot parse json');
-  }
-
-  return subject;
-};
-
-export const fromJson = json => {
-  const subject = new Rx.AsyncSubject();
-
-  try {
-    subject.onNext(JSON.stringify(json));
-    subject.onCompleted();
-  } catch (e) {
-    subject.onError('cannot stringify json');
-  }
-
-  return subject;
-};
-
 export default {
   verifyUser,
   passThrough,
-  toJson,
-  fromJson,
 };

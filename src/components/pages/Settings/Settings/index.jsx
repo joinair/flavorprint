@@ -19,8 +19,6 @@ import union from 'lodash/union';
 import config from 'constants/Config';
 import routes from 'constants/Routes';
 
-import getCustomErrorDescription from 'helpers/getCustomErrorDescription';
-
 import './styles.css';
 
 import Button from 'components/ui-elements/Button';
@@ -176,17 +174,7 @@ class Settings extends Component {
       this.props.onLeave();
     };
 
-    const onError = ({ httpCode, fields }) => {
-      if (httpCode === 400) {
-        this.setState({
-          errors: reduce(
-            fields,
-            (errors, error, path) =>
-              set(errors, path, getCustomErrorDescription('settings', path, error)),
-            {}
-          ),
-        });
-      }
+    const onError = () => {
     };
 
     const data = assign(
