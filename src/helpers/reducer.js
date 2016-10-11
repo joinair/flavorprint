@@ -4,7 +4,7 @@ import reduce from 'lodash/reduce';
 import set from 'lodash/set';
 
 export const normalizeEntities =
-  (entities, key = 'itemId', value = '') =>
+  (entities, key = 'sourceId', value = '') =>
     reduce(
       entities,
       (normalized, entity) =>

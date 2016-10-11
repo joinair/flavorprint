@@ -28,7 +28,7 @@ export default function buildREcommendationsReducer({
 
       return {
         paginationCache: cache,
-        entriesOrder: map(display, 'itemId'),
+        entriesOrder: map(display, 'sourceId'),
         entries: normalizeEntities(display),
       };
     },
@@ -39,7 +39,7 @@ export default function buildREcommendationsReducer({
 
       return {
         paginationCache: cache,
-        entriesOrder: [...state.entriesOrder, ...map(display, 'itemId')],
+        entriesOrder: [...state.entriesOrder, ...map(display, 'sourceId')],
         entries: { ...state.entries, ...normalizeEntities(display) },
       };
     },
@@ -51,7 +51,7 @@ export default function buildREcommendationsReducer({
 
       return {
         paginationCache: [...state.paginationCache, ...cache],
-        entriesOrder: [...state.entriesOrder, ...map(display, 'itemId')],
+        entriesOrder: [...state.entriesOrder, ...map(display, 'sourceId')],
         entries: { ...state.entries, ...normalizeEntities(display) },
       };
     },

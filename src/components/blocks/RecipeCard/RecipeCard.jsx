@@ -10,6 +10,8 @@ import map from 'lodash/map';
 import partial from 'lodash/partial';
 import sortBy from 'lodash/sortBy';
 
+import { likeState } from 'helpers/interactions';
+
 import iconDish from 'assets/images/icons/icon-dish.svg';
 import iconDislike from 'assets/images/icons/icon-dislike.svg';
 import iconLike from 'assets/images/icons/icon-like.svg';
@@ -53,6 +55,8 @@ const RecipeCard = ({
 
   const image = imageUrl(recommendation);
 
+  const likeStateVal = likeState(recommendation);
+
   const lazyImage = image ? (
     <img
       alt=""
@@ -85,13 +89,17 @@ const RecipeCard = ({
           {linkWrap(lazyImage)}
           <div className="RecipeCard-imageLikes">
             <div
-              className="RecipeCard-like"
+              className={classnames('RecipeCard-like', {
+                'RecipeCard-like--green': likeStateVal === 'liked',
+              })}
               onClick={partial(onLike, uid, recommendation)}
             >
               <Icon glyph={iconLike} className="RecipeCard-like-icon" />
             </div>
             <div
-              className="RecipeCard-like"
+              className={classnames('RecipeCard-like', {
+                'RecipeCard-like--red': likeStateVal === 'disliked',
+              })}
               onClick={partial(onDislike, uid, recommendation)}
             >
               <Icon glyph={iconDislike} className="RecipeCard-like-icon" />

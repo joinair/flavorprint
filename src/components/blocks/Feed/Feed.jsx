@@ -38,7 +38,7 @@ const Feed = ({
 
   const renderRecommendation = (rec, index) =>
     <CardComponent
-      key={rec.itemId || index}
+      key={rec.sourceId || index}
       recommendation={rec}
     />;
 
@@ -62,7 +62,7 @@ Feed.propTypes = {
   placeholder: PropTypes.node,
   recommendationName: PropTypes.string.isRequired,
   recommendations: PropTypes.arrayOf(PropTypes.shape({
-    itemId: PropTypes.any,
+    sourceId: PropTypes.any,
   })).isRequired,
   showMore: PropTypes.bool,
 

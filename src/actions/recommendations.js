@@ -34,8 +34,7 @@ export default function buildRecommendationsActions({
   });
 
   const load = (params = {}) => (dispatch, getState) => {
-    const endpoint = '/v3/recommendations' +
-      (params.userId ? `/${params.userId}` : '');
+    const endpoint = `/custom/recommendations/${params.userId}`;
     const more = !!params.more;
 
     const state = getState();
@@ -77,7 +76,7 @@ export default function buildRecommendationsActions({
   };
 
   const loadDetails = recipe => ({
-    payload: { recipeId: recipe.itemId, recipe },
+    payload: { recipeId: recipe.sourceId, recipe },
 
     [API_CALL]: {
       endpoint: '',

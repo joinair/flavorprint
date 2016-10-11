@@ -216,6 +216,7 @@
     text-align: center;
     display: inline-block;
     cursor: pointer;
+    fill: #454545;
 
     & + & {
       margin-left: 10px;
@@ -225,10 +226,26 @@
       background-color: white;
     }
 
+    &:active {
+      background-color: #454545;
+      fill: white;
+    }
+
+    @modifier green {
+      background-color: rgb(65,185,94);
+      cursor: default;
+      fill: white;
+    }
+
+    @modifier red {
+      background-color: red;
+      fill: white;
+      cursor: default;
+    }
+
     @descendent icon {
       width: 18px;
       height: 18px;
-      fill: #454545;
       vertical-align: middle;
     }
   }

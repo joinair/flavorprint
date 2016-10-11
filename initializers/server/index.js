@@ -113,7 +113,7 @@ if (cluster.isMaster) {
   application.use(bodyParser.json());
 
   application.post('/api/auth/:action', authMiddleware);
-  application.use(apiProxyMiddleware);
+  apiProxyMiddleware(application);
   application.use(browserCheckMiddleware);
   application.get('*', render);
   server = application.listen(__PORT__); // eslint-disable-line
