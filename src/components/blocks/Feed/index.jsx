@@ -32,7 +32,7 @@ const Feed = ({
       size="xLarge"
       onClick={onShowMore}
     >
-      Show more {recommendationName}
+      More {recommendationName}
     </Button>
   );
 
