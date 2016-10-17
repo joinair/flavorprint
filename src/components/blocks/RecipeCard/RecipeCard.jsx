@@ -18,7 +18,6 @@ import './styles.css';
 import Icon from 'components/ui-elements/Icon';
 
 const RecipeCard = ({
-  uid,
   recommendation,
   onLike,
   onDislike,
@@ -33,7 +32,7 @@ const RecipeCard = ({
 
   const image = recipeImageUrl(recommendation);
 
-  const likeStateVal = likeState(recommendation);
+  const likeStateVal = likeState(recommendation) || recommendation.pendingInteraction;
 
   const lazyImage = image ? (
     <img
@@ -70,7 +69,7 @@ const RecipeCard = ({
               className={classnames('RecipeCard-like', {
                 'RecipeCard-like--green': likeStateVal === 'liked',
               })}
-              onClick={partial(onLike, uid, recommendation)}
+              onClick={likeStateVal !== 'liked' && partial(onLike, recommendation)}
             >
               <Icon glyph={iconLike} className="RecipeCard-like-icon" />
             </div>
@@ -78,7 +77,7 @@ const RecipeCard = ({
               className={classnames('RecipeCard-like', {
                 'RecipeCard-like--red': likeStateVal === 'disliked',
               })}
-              onClick={partial(onDislike, uid, recommendation)}
+              onClick={likeStateVal !== 'disliked' && partial(onDislike, recommendation)}
             >
               <Icon glyph={iconDislike} className="RecipeCard-like-icon" />
             </div>
@@ -127,8 +126,6 @@ const RecipeCard = ({
 };
 
 RecipeCard.propTypes = {
-  uid: PropTypes.string,
-
   recommendation: PropTypes.shape({
     title: PropTypes.string.isRequired,
     originName: PropTypes.string.isRequired,

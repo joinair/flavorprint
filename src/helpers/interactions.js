@@ -14,8 +14,6 @@ export const likeState = rec => {
     if (lastInt.interaction === 'LIKE') return 'liked';
     if (lastInt.interaction === 'DISLIKE_FLAVOR') return 'disliked';
   }
-
-  return 'none';
 };
 
 export default {

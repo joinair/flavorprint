@@ -14,11 +14,11 @@ const selector = createStructuredSelector({
   isFetching: isFetchingSelector,
   recommendationName: () => 'recipes',
   recommendations: selectors.getSortedRecipes,
-  showMore: selectors.canLoadMoreRecipes,
+  showMore: () => true,
 });
 
 const actions = {
-  onShowMore: () => feed.loadDetailedRecipes({ more: true }),
+  onShowMore: () => feed.loadDetailedRecipes(),
 };
 
 export default connect(selector, actions)(Feed);

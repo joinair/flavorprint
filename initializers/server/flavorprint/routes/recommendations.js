@@ -33,8 +33,8 @@ const getInteractions = userId => recs =>
   .map(JSON.stringify);
 
 export default (req, res) =>
-  getRecommendations(req.query, req.params.userId)
-    .flatMap(getInteractions(req.params.userId))
+  getRecommendations(req.query, req.session.userId)
+    .flatMap(getInteractions(req.session.userId))
     .subscribe(
       text => {
         res.append('Content-Type', 'application/json');

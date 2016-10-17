@@ -7,9 +7,8 @@ import identity from 'lodash/identity';
 import { API_CALL } from 'middleware/API';
 import { CHAIN } from 'middleware/chain';
 
-import { userIdSelector } from 'reducers/selectors/user';
-
-export const LOAD_ONBOARDING_RECIPES_REQUEST = 'LOAD_ONBOARDING_RECIPES_REQUEST'; export const LOAD_ONBOARDING_RECIPES_SUCCESS = 'LOAD_ONBOARDING_RECIPES_SUCCESS';
+export const LOAD_ONBOARDING_RECIPES_REQUEST = 'LOAD_ONBOARDING_RECIPES_REQUEST';
+export const LOAD_ONBOARDING_RECIPES_SUCCESS = 'LOAD_ONBOARDING_RECIPES_SUCCESS';
 export const LOAD_ONBOARDING_RECIPES_FAILURE = 'LOAD_ONBOARDING_RECIPES_FAILURE';
 
 export const LOAD_ONBOARDING_RECIPES_DETAILS_REQUEST =
@@ -59,49 +58,40 @@ export const loadOnboardingData = sourceIds => ({
   ],
 });
 
-export const selectRecipe = sourceId => (dispatch, getState) => {
-  const userId = userIdSelector(getState());
+export const selectRecipe = sourceId => ({
+  payload: { sourceId },
 
-  return dispatch({
-    payload: { sourceId },
-
-    [API_CALL]: {
-      endpoint: `/v3/recommendations/${userId}/compatibilities`,
-      query: {
-        userId,
-        sourceIds: sourceId,
-      },
-      types: [
-        ONBOARDING_SELECT_RECIPE_REQUEST,
-        ONBOARDING_SELECT_RECIPE_SUCCESS,
-        ONBOARDING_SELECT_RECIPE_FAILURE,
-      ],
+  [API_CALL]: {
+    endpoint: '/custom/recommendations/compatibilities',
+    query: {
+      sourceIds: sourceId,
     },
-  });
-};
+    types: [
+      ONBOARDING_SELECT_RECIPE_REQUEST,
+      ONBOARDING_SELECT_RECIPE_SUCCESS,
+      ONBOARDING_SELECT_RECIPE_FAILURE,
+    ],
+  },
+});
 
 export const ONBOARDING_ANSWER_QUESTION_REQUEST = 'ONBOARDING_ANSWER_QUESTION_REQUEST';
 export const ONBOARDING_ANSWER_QUESTION_SUCCESS = 'ONBOARDING_ANSWER_QUESTION_SUCCESS';
 export const ONBOARDING_ANSWER_QUESTION_FAILURE = 'ONBOARDING_ANSWER_QUESTION_FAILURE';
 
-export const answerQuestion = (questionId, answers) => (dispatch, getState) => {
-  const userId = userIdSelector(getState());
-
-  return dispatch({
-    [API_CALL]: {
-      endpoint: `/v3/users/${userId}/preferences`,
-      query: {
-        questionId,
-        answers: answers.join(','),
-      },
-      types: [
-        ONBOARDING_ANSWER_QUESTION_REQUEST,
-        ONBOARDING_ANSWER_QUESTION_SUCCESS,
-        ONBOARDING_ANSWER_QUESTION_FAILURE,
-      ],
+export const answerQuestion = (questionId, answers) => ({
+  [API_CALL]: {
+    endpoint: '/custom/users/preferences',
+    query: {
+      questionId,
+      answers: answers.join(','),
     },
-  });
-};
+    types: [
+      ONBOARDING_ANSWER_QUESTION_REQUEST,
+      ONBOARDING_ANSWER_QUESTION_SUCCESS,
+      ONBOARDING_ANSWER_QUESTION_FAILURE,
+    ],
+  },
+});
 
 export const ONBOARDING_SET_STATE = 'ONBOARDING_SET_STATE';
 

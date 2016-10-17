@@ -232,15 +232,19 @@
     }
 
     @modifier green {
-      background-color: rgb(65,185,94);
-      cursor: default;
-      fill: white;
+      &, &:hover, &:active {
+        background-color: rgb(65,185,94);
+        cursor: default;
+        fill: white;
+      }
     }
 
     @modifier red {
-      background-color: red;
-      fill: white;
-      cursor: default;
+      &, &:hover, &:active {
+        background-color: red;
+        fill: white;
+        cursor: default;
+      }
     }
 
     @descendent icon {

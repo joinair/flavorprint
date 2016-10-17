@@ -16,11 +16,11 @@ const selector = createStructuredSelector({
   component: () => ProductCard,
   recommendationName: () => 'products',
   recommendations: selectors.getSortedProducts,
-  showMore: selectors.canLoadMoreProducts,
+  showMore: () => true,
 });
 
 const actions = {
-  onShowMore: () => feed.loadDetailedProducts({ more: true }),
+  onShowMore: () => feed.loadDetailedProducts(),
 };
 
 export default connect(selector, actions)(Feed);

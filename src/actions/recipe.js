@@ -12,21 +12,21 @@ export const DISLIKE_RECIPE_REQUEST = 'DISLIKE_RECIPE_REQUEST';
 export const DISLIKE_RECIPE_SUCCESS = 'DISLIKE_RECIPE_SUCCESS';
 export const DISLIKE_RECIPE_FAILURE = 'DISLIKE_RECIPE_FAILURE';
 
-const interactWithRecipe =
-  (interaction, types) =>
-  (userId, { sourceId }) => ({
-    [CHAIN]: [
-      {
-        [API_CALL]: {
-          endpoint: `/v3/users/${userId}/interactions`,
-          method: 'POST',
-          query: { interaction, sourceId },
-          types,
-        },
+const interactWithRecipe = (interaction, types) => ({ sourceId }) => ({
+  [CHAIN]: [
+    {
+      payload: { sourceId },
+
+      [API_CALL]: {
+        endpoint: '/custom/users/interactions',
+        method: 'POST',
+        query: { interaction, sourceId },
+        types,
       },
-      () => loadRecipesCompatibilities(userId),
-    ],
-  });
+    },
+    () => loadRecipesCompatibilities(),
+  ],
+});
 
 export const likeRecipe = interactWithRecipe('LIKE', [
   LIKE_RECIPE_REQUEST,
