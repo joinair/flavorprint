@@ -1,6 +1,4 @@
 
-import Rx from 'rx';
-
 import apiClient from './apiClient';
 
 export const verifyUser = (handler, id = 'userId') => (req, res) => {

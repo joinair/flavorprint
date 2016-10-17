@@ -3,14 +3,12 @@ import React, { PropTypes } from 'react';
 
 import classnames from 'classnames';
 
-import filter from 'lodash/filter';
-import find from 'lodash/find';
 import get from 'lodash/get';
 import map from 'lodash/map';
 import partial from 'lodash/partial';
-import sortBy from 'lodash/sortBy';
 
 import { likeState } from 'helpers/interactions';
+import { recipeImageUrl } from 'helpers/recipe';
 
 import iconDish from 'assets/images/icons/icon-dish.svg';
 import iconDislike from 'assets/images/icons/icon-dislike.svg';
@@ -18,26 +16,6 @@ import iconLike from 'assets/images/icons/icon-like.svg';
 import './styles.css';
 
 import Icon from 'components/ui-elements/Icon';
-
-const imageUrl = rec => {
-  const minWidth = 580;
-  const minHeight = 580;
-
-  let imageUrls = get(rec, 'details.images', []);
-  imageUrls = filter(imageUrls, 'link');
-
-  const parsed = map(imageUrls, ({ size, link }) => ({
-    link,
-    size: map(size.split('x'), parseFloat),
-  }));
-  const sorted = sortBy(parsed, x => Math.min(x.size));
-
-  const image = find(sorted, ({ size }) => (
-    size[0] >= minWidth && size[1] >= minHeight
-  ));
-
-  return image || parsed[0];
-};
 
 const RecipeCard = ({
   uid,
@@ -53,7 +31,7 @@ const RecipeCard = ({
   } = recommendation;
   const link = get(recommendation, 'details.link');
 
-  const image = imageUrl(recommendation);
+  const image = recipeImageUrl(recommendation);
 
   const likeStateVal = likeState(recommendation);
 

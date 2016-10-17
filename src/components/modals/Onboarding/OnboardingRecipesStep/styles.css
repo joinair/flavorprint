@@ -1,0 +1,22 @@
+
+@import "imports/media-queries";
+
+@component OnboardingRecipesStep {
+  @media (--s) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 0 30px;
+  }
+
+  @descendent recipe {
+    & + & {
+      margin-top: 20px;
+
+      @media (--s) {
+        margin: 0;
+      }
+    }
+  }
+}

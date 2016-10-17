@@ -1,18 +1,24 @@
 
-export const ABOUT_YOURSELF = 'ABOUT_YOURSELF';
-export const SPECIAL_DIETS = 'SPECIAL_DIETS';
-export const ALLERGIES = 'ALLERGIES';
-export const AVOIDANCES = 'AVOIDANCES';
-export const INVENTORIES = 'INVENTORIES';
-export const COMBINED_AVOIDANCES = 'COMBINED_AVOIDANCES';
+export const RECIPES_SEED = {
+  recipe1: 'SE-honey-biscuits-recipe',
+  recipe2: 'SE-strawberry-balsamic-sauce',
+  recipe3: 'SE-rum-and-pear-pancakes-sunday-brunch',
+  recipe4: 'SE-lemon-pine-nut-biscotti-recipe',
+};
 
-export const AUTHENTICATION = 'AUTHENTICATION';
-export const WELCOME = 'WELCOME';
+export const TYPE_RECIPES = 'TYPE_RECIPES';
+export const TYPE_DIETS = 'TYPE_DIETS';
+export const TYPE_BUBBLES = 'TYPE_BUBBLES';
 
-export const STEPS = [
-  COMBINED_AVOIDANCES,
-];
+export const BUTTON_CONTINUE = 'BUTTON_CONTINUE';
+export const BUTTON_SKIP = 'BUTTON_SKIP';
 
-export const OUTDATED_STEPS = [
-  SPECIAL_DIETS, ALLERGIES, ABOUT_YOURSELF, AVOIDANCES, INVENTORIES,
-];
+export default {
+  RECIPES_SEED,
+  TYPE_RECIPES,
+  TYPE_DIETS,
+  TYPE_BUBBLES,
+
+  BUTTON_CONTINUE,
+  BUTTON_SKIP,
+};

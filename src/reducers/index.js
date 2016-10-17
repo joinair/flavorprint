@@ -5,6 +5,7 @@ import fetching from './fetching';
 import modal from './modal';
 import notFound from './notFound';
 import notifications from './notifications';
+import onboarding from './onboarding';
 import products from './products';
 import recipes from './recipes';
 import router from './router';
@@ -16,6 +17,7 @@ export default combineReducers({
   modal,
   notFound,
   notifications,
+  onboarding,
   products,
   recipes,
   router,

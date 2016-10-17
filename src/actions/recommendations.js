@@ -3,7 +3,6 @@ import Rx from 'rx';
 
 import identity from 'lodash/identity';
 import map from 'lodash/map';
-
 import { API_CALL } from 'middleware/API';
 import { CHAIN } from 'middleware/chain';
 

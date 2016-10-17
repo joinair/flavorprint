@@ -12,8 +12,6 @@ import map from 'lodash/map';
 import omit from 'lodash/omit';
 import partial from 'lodash/partial';
 import pick from 'lodash/pick';
-import reduce from 'lodash/reduce';
-import set from 'lodash/set';
 import union from 'lodash/union';
 
 import config from 'constants/Config';
