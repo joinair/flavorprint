@@ -9,6 +9,7 @@ import productsRoute from './products';
 import recipesRoute from './recipes';
 import resetPasswordRoute from './resetPassword';
 import settingsRoutes from './settings';
+import flavorprint from './flavorprint';
 
 import OAuthCallbackRoute from './OAuthCallback';
 
@@ -22,6 +23,7 @@ export default store => [
       {
         component: Layout,
         childRoutes: [
+          flavorprint(store),
           ...authenticationRoutes(store),
           homeRoute(store),
           productsRoute(store),

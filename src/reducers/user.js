@@ -15,6 +15,8 @@ import {
   UPDATE_USER_LOCALLY,
 
   LOG_OUT,
+
+  LOAD_MARK_SUCCESS,
 } from 'actions/user';
 
 import {
@@ -99,6 +101,14 @@ const handlers = {
       }
     );
   },
+
+  [LOAD_MARK_SUCCESS]: (state, { payload }) => ({
+    ...state,
+    profile: {
+      ...state.profile,
+      mark: payload,
+    },
+  }),
 };
 
 export default createReducer(initialState, handlers);

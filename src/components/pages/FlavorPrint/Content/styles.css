@@ -1,0 +1,13 @@
+
+@import "imports/media-queries";
+
+@component FlavorPrintContent {
+  width: 100%;
+  padding: 0 15px;
+
+  @media (--m) {
+    padding: 0;
+    width: 960px;
+    margin: 0 auto;
+  }
+}

@@ -9,6 +9,7 @@ import {
   PRODUCTS,
   RECIPES,
   SIGN_UP,
+  FLAVORPRINT,
 } from 'constants/Routes';
 
 import Icon from 'components/ui-elements/Icon';
@@ -134,11 +135,11 @@ const Menu = ({
         className={
           classnames(
             'AppHeader-item AppHeader-item--desktop',
-            { 'is-active': isLinkActive(routerPath, `/${username}`) }
+            { 'is-active': isLinkActive(routerPath, FLAVORPRINT) }
           )
         }
       >
-        <Link to="/" className="AppHeader-link">
+        <Link to={FLAVORPRINT} className="AppHeader-link">
           <span className="AppHeader-link-text">FlavorPrint</span>
         </Link>
       </div>

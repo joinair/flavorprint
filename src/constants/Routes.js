@@ -9,6 +9,7 @@ export const RESET_PASSWORD = '/reset-password';
 export const SETTINGS = '/settings';
 export const SETTINGS_MORE = '/settings-more';
 export const SIGN_UP = '/signup';
+export const FLAVORPRINT = '/flavorprint';
 
 export default {
   HOME,
@@ -20,4 +21,5 @@ export default {
   SETTINGS,
   SETTINGS_MORE,
   SIGN_UP,
+  FLAVORPRINT,
 };

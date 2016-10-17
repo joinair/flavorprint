@@ -113,11 +113,28 @@ export const destroy = (reason, comment) => dispatch => {
   return dispatch({ [CHAIN]: [action, logOut] });
 };
 
+export const LOAD_MARK_REQUEST = 'LOAD_MARK_REQUEST';
+export const LOAD_MARK_SUCCESS = 'LOAD_MARK_SUCCESS';
+export const LOAD_MARK_FAILURE = 'LOAD_MARK_FAILURE';
+
+export const loadMark = () => ({
+  [API_CALL]: {
+    endpoint: '/custom/users/mark',
+    query: {},
+    types: [
+      LOAD_MARK_REQUEST,
+      LOAD_MARK_SUCCESS,
+      LOAD_MARK_FAILURE,
+    ],
+  },
+});
+
 export default {
   become,
   update,
   destroy,
   logOut,
+  loadMark,
 
   updateLocally,
 };

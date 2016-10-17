@@ -34,4 +34,9 @@ export default app => {
   );
 
   app.get('/api/v3/recommendations', passThrough());
+
+  app.get(
+    '/api/custom/users/mark',
+    passThroughWithUser(id => `/v3/users/${id}/marks/personal`)
+  );
 };
