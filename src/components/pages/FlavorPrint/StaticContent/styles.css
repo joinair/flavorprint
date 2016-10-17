@@ -1,0 +1,53 @@
+
+@component FlavorPrintStaticContent {
+  background-color: #F5F5F5;
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  h2 {
+    border-bottom: 1px solid rgba(0,0,0,.3);
+    font-weight: bold;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    padding-bottom: 20px;
+  }
+
+  h4 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  @descendent columns {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    & > * {
+      flex: 1;
+    }
+  }
+
+  @descendent centered {
+    padding: 0 10%;
+    text-align: center;
+  }
+
+  @descendent par {
+    margin-top: 50px;
+
+    &:first-child {
+      margin-right: 30px;
+    }
+
+    &:last-child {
+      margin-left: 30px;
+    }
+  }
+}
