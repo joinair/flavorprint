@@ -62,7 +62,7 @@ export default createReducer(initialState, {
     action.payload.sourceId,
     entry => ({
       ...entry,
-      // pendingInteraction: undefined,
+      pendingInteraction: undefined,
       interactions: [...entry.interactions, action.payload],
     })
   ),
@@ -81,7 +81,7 @@ export default createReducer(initialState, {
     action.payload.sourceId,
     entry => ({
       ...entry,
-      // pendingInteraction: undefined,
+      pendingInteraction: undefined,
       interactions: [...entry.interactions, action.payload],
     })
   ),
