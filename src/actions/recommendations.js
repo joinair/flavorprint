@@ -8,7 +8,7 @@ import { CHAIN } from 'middleware/chain';
 
 const SIZE = 8;
 
-export const loadRecommendations = types => ({ type, ignore }) => ({
+export const loadRecommendations = types => ({ type, ignore } = {}) => ({
   [API_CALL]: {
     endpoint: '/custom/recommendations',
     query: {
