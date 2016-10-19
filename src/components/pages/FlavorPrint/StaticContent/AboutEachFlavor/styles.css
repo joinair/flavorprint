@@ -1,0 +1,100 @@
+
+@import "imports/variables";
+
+@component AboutEachFlavor {
+  background: white;
+  padding-top: 30px;
+
+  h1 {
+    padding-bottom: 60px;
+  }
+
+  @descendent flavor {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(0,0,0,.1);
+  }
+
+  @descendent heading {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    @descendent image {
+      margin-right: 50px;
+    }
+
+    @descendent text {
+      flex: 1;
+
+      h2 {
+        margin-bottom: 20px;
+      }
+
+      p {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  @descendent content {
+    padding-top: 50px;
+
+    @descendent recipes {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    @descendent recipe {
+      flex: 1;
+      margin-top: 60px;
+
+      & + & {
+        margin-left: 50px;
+      }
+
+      a {
+        font-size: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        border-radius: var(--border-radius);
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  @descendent progress {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+
+    @descendent text {
+      font-size: 20px;
+    }
+
+    @descendent bg {
+      margin-left: 20px;
+      flex: 1;
+      height: 30px;
+      border: 1px solid rgba(0,0,0,.2);
+      background-color: #F6F6F6;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      position: relative;
+    }
+
+    @descendent bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+}
