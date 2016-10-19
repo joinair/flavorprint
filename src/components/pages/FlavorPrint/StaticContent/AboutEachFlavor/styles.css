@@ -1,5 +1,6 @@
 
 @import "imports/variables";
+@import "imports/media-queries";
 
 @component AboutEachFlavor {
   background: white;
@@ -13,16 +14,40 @@
     margin-bottom: 25px;
     padding-bottom: 25px;
     border-bottom: 1px solid rgba(0,0,0,.1);
+
+    &:last-child {
+      padding-bottom: 50px;
+      margin-bottom: 0;
+      border: none;
+    }
   }
 
   @descendent heading {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
+    @media (--s) {
+      align-items: center;
+    }
+
     @descendent image {
-      margin-right: 50px;
+      margin-right: 30px;
+
+      @media (--s) {
+        margin-right: 50px;
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
+
+        @media (--s) {
+          width: auto;
+          height: auto;
+        }
+      }
     }
 
     @descendent text {
@@ -43,17 +68,26 @@
 
     @descendent recipes {
       display: flex;
-      flex-direction: row;
-      align-items: flex-start;
+      flex-direction: column;
+      align-items: center;
       justify-content: space-between;
+
+      @media (--s) {
+        flex-direction: row;
+      }
     }
 
     @descendent recipe {
       flex: 1;
       margin-top: 60px;
+      max-width: 300px;
 
-      & + & {
-        margin-left: 50px;
+      @media (--s) {
+        max-width: auto;
+
+        & + & {
+          margin-left: 50px;
+        }
       }
 
       a {

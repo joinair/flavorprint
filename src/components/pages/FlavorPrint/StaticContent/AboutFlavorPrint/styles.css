@@ -1,4 +1,6 @@
 
+@import "imports/media-queries";
+
 @component FlavorPrintStaticAbout {
   background-color: #F5F5F5;
   padding-top: 50px;
@@ -24,13 +26,15 @@
   }
 
   @descendent columns {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
+    @media (--s) {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-between;
 
-    & > * {
-      flex: 1;
+      & > div {
+        flex: 1;
+      }
     }
   }
 
@@ -40,14 +44,26 @@
   }
 
   @descendent par {
-    margin-top: 50px;
-
     &:first-child {
-      margin-right: 30px;
+      margin-top: 15px;
+      margin-bottom: 15px;
     }
 
     &:last-child {
-      margin-left: 30px;
+      margin-top: 15px;
+    }
+
+    @media (--s) {
+      &:first-child {
+        margin-top: 50px;
+        margin-bottom: 0;
+        margin-right: 30px;
+      }
+
+      &:last-child {
+        margin-top: 50px;
+        margin-left: 30px;
+      }
     }
   }
 }

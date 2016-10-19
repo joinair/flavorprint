@@ -22,8 +22,7 @@ const StaticContent = () => (
         <img
           alt=""
           className="FlavorPrintStaticAbout-imgLeft"
-          src="/assets/images/static-images/home-main-bg.jpg"
-          width={400}
+          src="/assets/images/static-images/fp-static-recipe.png"
         />
 
         <div className="FlavorPrintStaticAbout-par">
@@ -59,8 +58,7 @@ const StaticContent = () => (
         <img
           alt=""
           className="FlavorPrintStaticAbout-imgLeft"
-          src="/assets/images/static-images/home-main-bg.jpg"
-          width={400}
+          src="/assets/images/static-images/fp-static-mark.png"
         />
       </div>
 
