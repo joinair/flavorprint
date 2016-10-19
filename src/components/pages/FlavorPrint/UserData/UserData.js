@@ -82,7 +82,7 @@ const UserData = ({ showSave, showRefine, mark, onSave, onRefine }) => (
 
       <div className="FlavorPrintUserData-footer">
         FlavorPrint is a service by Vivanda, built on 150 years
-        of sensory science. <a>Learn more</a>
+        of sensory science. <a href="http://vivanda.com">Learn more</a>
       </div>
     </Content>
   </div>
