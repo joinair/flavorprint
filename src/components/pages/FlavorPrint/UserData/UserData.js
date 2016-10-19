@@ -1,5 +1,6 @@
 
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
 
 import map from 'lodash/map';
 
@@ -7,9 +8,11 @@ import Content from '../Content';
 import Button from 'components/ui-elements/Button';
 import Mark from 'components/blocks/Mark';
 
+import { PRODUCTS, RECIPES } from 'constants/Routes';
+
 import './styles.css';
 
-const UserData = ({ mark }) => (
+const UserData = ({ showSave, showRefine, mark, onSave, onRefine }) => (
   <div className="FlavorPrintUserData">
     <Content>
       <div className="FlavorPrintUserData-blocks">
@@ -19,16 +22,27 @@ const UserData = ({ mark }) => (
             As you interact with food experiences and
             tell us more, your FlavorPrint will evolve.
           </p>
-          <Button
-            className="FlavorPrintUserData-saveButton"
-          >
-            Save your FlavorPrint
-          </Button>
+          {showSave && (
+            <Button
+              onClick={onSave}
+              className="FlavorPrintUserData-saveButton"
+            >
+              Save your FlavorPrint
+            </Button>
+          )}
+          {!showSave && showRefine && (
+            <Button
+              onClick={onRefine}
+              className="FlavorPrintUserData-saveButton"
+            >
+              Refine your FlavorPrint
+            </Button>
+          )}
           <p>
             Explore your{' '}
-            <a>Product</a>{' '}
+            <Link to={PRODUCTS}>Product</Link>{' '}
             or{' '}
-            <a>Recipe</a>{' '}
+            <Link to={RECIPES}>Recipe</Link>{' '}
             recommendations.
           </p>
         </div>
@@ -58,7 +72,9 @@ const UserData = ({ mark }) => (
                 </div>
               ))}
 
-              <Button outline>Refine your FlavorPrint</Button>
+              {showSave && showRefine && (
+                <Button onClick={onRefine} outline>Refine your FlavorPrint</Button>
+              )}
             </div>
           )}
         </div>
@@ -74,6 +90,11 @@ const UserData = ({ mark }) => (
 
 UserData.propTypes = {
   mark: PropTypes.object,
+  showSave: PropTypes.bool,
+  showRefine: PropTypes.bool,
+
+  onSave: PropTypes.func,
+  onRefine: PropTypes.func,
 };
 
 export default UserData;
