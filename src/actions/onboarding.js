@@ -24,7 +24,7 @@ export const ONBOARDING_SELECT_RECIPE_FAILURE = 'ONBOARDING_SELECT_RECIPE_FAILUR
 
 const loadRecipes = sourceIds => ({
   [API_CALL]: {
-    endpoint: '/v3/recommendations',
+    endpoint: '/custom/onboarding-recommendations',
     query: {
       sourceIds: sourceIds.join(','),
     },

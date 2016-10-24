@@ -1,73 +1,53 @@
 
-import pick from 'lodash/pick';
-import values from 'lodash/values';
-
+import stepRecipes from './stepRecipes';
 import stepOccasions from './stepOccasions';
 
 import {
   RECIPES_SEED,
-  TYPE_RECIPES,
   TYPE_DIETS,
   TYPE_BUBBLES,
   BUTTON_CONTINUE,
-  BUTTON_SKIP,
 } from 'constants/Onboarding';
 
-const stepSundayMorning = state => ({
-  type: TYPE_RECIPES,
-  title: 'What would you prefer on a Sunday morning?',
-  button: BUTTON_SKIP,
-
-  recipes: values(pick(
-    state.recipes,
+const stepSundayMorning = stepRecipes(
+  'What would you prefer on a Sunday morning?',
+  [
     RECIPES_SEED.recipe1,
     RECIPES_SEED.recipe2,
     RECIPES_SEED.recipe3,
     RECIPES_SEED.recipe4,
-  )),
-});
+  ]
+);
 
-const stepSnacks = state => ({
-  type: TYPE_RECIPES,
-  title: 'When it\'s time for a snack, what would you choose?',
-  button: BUTTON_SKIP,
-
-  recipes: values(pick(
-    state.recipes,
+const stepSnacks = stepRecipes(
+  'When it\'s time for a snack, what would you choose?',
+  [
     RECIPES_SEED.recipe4,
     RECIPES_SEED.recipe2,
     RECIPES_SEED.recipe3,
     RECIPES_SEED.recipe1,
-  )),
-});
+  ]
+);
 
-const stepDesert = state => ({
-  type: TYPE_RECIPES,
-  title: 'Which of these is sure to get your mouth watering?',
-  button: BUTTON_SKIP,
-
-  recipes: values(pick(
-    state.recipes,
+const stepDesert = stepRecipes(
+  'Which of these is sure to get your mouth watering?',
+  [
     RECIPES_SEED.recipe3,
     RECIPES_SEED.recipe4,
     RECIPES_SEED.recipe2,
     RECIPES_SEED.recipe1,
-  )),
-});
+  ]
+);
 
-const stepWeekendDinner = state => ({
-  type: TYPE_RECIPES,
-  title: 'What would you like for dinner on the weekend?',
-  button: BUTTON_SKIP,
-
-  recipes: values(pick(
-    state.recipes,
+const stepWeekendDinner = stepRecipes(
+  'What would you like for dinner on the weekend?',
+  [
     RECIPES_SEED.recipe2,
     RECIPES_SEED.recipe3,
     RECIPES_SEED.recipe4,
     RECIPES_SEED.recipe1,
-  )),
-});
+  ]
+);
 
 const stepDiets = () => ({
   type: TYPE_DIETS,

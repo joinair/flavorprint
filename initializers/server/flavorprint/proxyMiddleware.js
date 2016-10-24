@@ -7,6 +7,9 @@ import {
 
 import recommendations from './routes/recommendations';
 
+import onboardingRecommendations from
+  './routes/onboardingRecommendations';
+
 export default app => {
   app.post(
     '/api/custom/users/interactions',
@@ -21,6 +24,11 @@ export default app => {
   app.post(
     '/api/custom/users/interactions',
     passThroughWithUser(id => `/v3/users/${id}/interactions`)
+  );
+
+  app.get(
+    '/api/custom/onboarding-recommendations',
+    verifyUser(onboardingRecommendations)
   );
 
   app.get(

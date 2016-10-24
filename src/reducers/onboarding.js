@@ -15,7 +15,7 @@ import {
 } from 'actions/onboarding';
 
 const initialState = {
-  currentStep: 4,
+  currentStep: 0,
   recipes: {},
   selectedRecipes: [],
   state: {},
