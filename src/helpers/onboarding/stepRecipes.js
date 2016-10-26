@@ -29,7 +29,7 @@ export default (title, recipesData) => state => {
 
   return {
     type: TYPE_RECIPES,
-    title: 'What would you prefer on a Sunday morning?',
+    title,
     button: BUTTON_SKIP,
     isFinished,
 

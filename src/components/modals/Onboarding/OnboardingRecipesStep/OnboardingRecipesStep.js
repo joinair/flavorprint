@@ -4,6 +4,7 @@ import React, { Component, PropTypes } from 'react';
 import bind from 'lodash/bind';
 import debounce from 'lodash/debounce';
 import filter from 'lodash/filter';
+import isEqual from 'lodash/isEqual';
 import map from 'lodash/map';
 
 import OnboardingRecipe from '../OnboardingRecipe';
@@ -14,23 +15,28 @@ class OnboardingRecipesStep extends Component {
   constructor(props, context) {
     super(props, context);
     this.selectRecipe = bind(this.selectRecipe, this);
-    this.selectRecipe = debounce(this.selectRecipe, 1000);
+    this.selectRecipe = debounce(this.selectRecipe, 700);
 
     this.state = {
       selectedRecipes: props.selectedRecipes,
+      interacting: false,
     };
   }
 
   componentWillReceiveProps(props) {
-    this.setState({ selectedRecipes: props.selectedRecipes });
+    if (!this.state.interacting) {
+      this.setState({ selectedRecipes: props.selectedRecipes });
+    }
   }
 
   onSelectRecipe(sourceId) {
     return () => {
       this.setState({
         selectedRecipes: [sourceId],
+        interacting: true,
+      }, () => {
+        this.selectRecipe(sourceId);
       });
-      this.selectRecipe(sourceId);
     };
   }
 
@@ -40,7 +46,9 @@ class OnboardingRecipesStep extends Component {
       'sourceId'
     );
 
-    this.props.onSelectRecipe(sourceId, deselect);
+    this.setState({ interacting: false }, () => {
+      this.props.onSelectRecipe(sourceId, deselect);
+    });
   }
 
   render() {
