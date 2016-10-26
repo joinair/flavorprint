@@ -25,8 +25,11 @@ export const onboardingSelectedRecipesSelector = state =>
   state.onboarding.selectedRecipes;
 
 export const isFinishedOnboardingSelector = createSelector(
-  onboardingSelector,
-  onboarding => isEmpty(filterFinishedSteps(onboarding)),
+  state => filterFinishedSteps(onboardingSelector(state)),
+  state => state.onboarding.currentStep,
+  (onboarding, currentStep) =>
+    isEmpty(onboarding) ||
+    currentStep >= onboarding.length
 );
 
 export default {
