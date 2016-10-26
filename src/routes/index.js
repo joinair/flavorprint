@@ -2,7 +2,6 @@
 import Application from 'components/Application';
 import Layout from 'components/tmp/Layout';
 
-import authenticationRoutes from './authentication';
 import homeRoute from './home';
 import notFound from './notFound';
 import productsRoute from './products';
@@ -24,7 +23,6 @@ export default store => [
         component: Layout,
         childRoutes: [
           flavorprint(store),
-          ...authenticationRoutes(store),
           homeRoute(store),
           productsRoute(store),
           recipesRoute(store),

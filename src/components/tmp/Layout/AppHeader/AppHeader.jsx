@@ -5,10 +5,8 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 
 import {
-  LOG_IN,
   PRODUCTS,
   RECIPES,
-  SIGN_UP,
   FLAVORPRINT,
 } from 'constants/Routes';
 
@@ -31,7 +29,7 @@ const GuestMenu = ({ onLogInButtonClick, onSignUpButtonClick }) => {
       <div className="AppHeader-item AppHeader-item--desktop">
         <a
           className="AppHeader-link"
-          href={SIGN_UP}
+          href="/"
           onClick={onAuth(onSignUpButtonClick)}
         >
           <span className="AppHeader-link-text">Sign Up</span>
@@ -40,7 +38,7 @@ const GuestMenu = ({ onLogInButtonClick, onSignUpButtonClick }) => {
       <div className="AppHeader-item AppHeader-item--desktop">
         <a
           className="AppHeader-link"
-          href={LOG_IN}
+          href="/"
           onClick={onAuth(onLogInButtonClick)}
         >
           <span className="AppHeader-link-text">Log In</span>

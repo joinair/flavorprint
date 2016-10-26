@@ -1,7 +1,6 @@
 
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
-import Helmet from 'react-helmet';
 
 import assign from 'lodash/assign';
 import bind from 'lodash/bind';
@@ -267,7 +266,7 @@ class Settings extends Component {
                   />
 
                   <div className="Settings-formHint">
-                    <span>Your Whisk URL: </span>
+                    <span>Your FlavorPrint URL: </span>
                     <Link to={`/${fields.username}`}>
                       {config.domain.split('/')[2]}/{fields.username}
                     </Link>
@@ -332,7 +331,7 @@ class Settings extends Component {
                   <div className="Settings-inlineList">
                     <Checkbox
                       checked={fields.receiveNotifications}
-                      label="Receive emails from Whisk"
+                      label="Receive emails from FlavorPrint"
                       onChange={partial(this.handleChange, 'receiveNotifications')}
                     />
                   </div>
@@ -384,7 +383,6 @@ class Settings extends Component {
     return (
       <div>
         <BodyClassName className="Body--whiteBackground" />
-        <Helmet title="Settings - Whisk" />
         {content}
       </div>
     );

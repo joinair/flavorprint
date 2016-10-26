@@ -1,6 +1,5 @@
 
 import React, { Component, PropTypes } from 'react';
-import Helmet from 'react-helmet';
 
 import assign from 'lodash/assign';
 import bind from 'lodash/bind';
@@ -104,8 +103,6 @@ class ResetPassword extends Component {
 
     return (
       <div className="ResetPassword">
-        <Helmet title="Reset password - Whisk" />
-
         <div className="ResetPassword-formContainer">
           <div className="ResetPassword-header">
             <div className="ResetPassword-title">

@@ -37,13 +37,13 @@ const AppFooter = () =>
     <div className="AppFooter-container">
       <TextLink to="http://whisk.uservoice.com/">Help & Support</TextLink>
       <TextLink to={staticPage('/')}>About Us</TextLink>
-      <TextLink to={staticPage('/business')}>Whisk for Business</TextLink>
+      <TextLink to={staticPage('/business')}>FlavorPrint for Business</TextLink>
       <TextLink to={staticPage('/privacy-policy')}>Privacy</TextLink>
         <TextLink to={staticPage('/terms')}>Terms</TextLink>
-        <div className="AppFooter-item">© 2012 – 2016 Whisk</div>
+        <div className="AppFooter-item">© 2012 – 2016 FlavorPrint</div>
 
         <div className="AppFooter-item AppFooter-iconsList">
-          <IconLink to="https://twitter.com/WhiskTeam">
+          <IconLink to="https://twitter.com/FlavorPrint">
             <svg className="AppFooter-link-icon AppFooter-link-icon--tw">
               <use xlinkHref={iconTwitter} />
             </svg>
@@ -55,7 +55,7 @@ const AppFooter = () =>
             </svg>
           </IconLink>
 
-          <IconLink to="https://www.facebook.com/Whiskapps">
+          <IconLink to="https://www.facebook.com/FlavorPrint">
             <svg className="AppFooter-link-icon AppFooter-link-icon--fb">
               <use xlinkHref={iconFacebook} />
             </svg>
