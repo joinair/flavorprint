@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import OnboardingBubblesStep from './OnboardingBubblesStep';
 
 const selector = (state, props) => ({
-  values: props.values ? props.values(state) : [],
+  values: props.values || [],
 });
 
 const actions = (dispatch, props) => bindActionCreators({

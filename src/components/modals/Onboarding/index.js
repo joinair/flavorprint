@@ -30,13 +30,13 @@ const stepSelector = createSelector(
   selectors.onboardingCurrentStepSelector,
   currentStep => ({
     ...currentStep,
-    type: typeMapping[currentStep.type],
+    type: currentStep && typeMapping[currentStep.type],
   })
 );
 
 const selector = createStructuredSelector({
   step: stepSelector,
-  isLastStep: selectors.isLastOnboardingStepSelector,
+  isFirstStep: selectors.isFirstOnboardingStepSelector,
 });
 
 const actions = {

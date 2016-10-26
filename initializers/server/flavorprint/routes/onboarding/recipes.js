@@ -2,7 +2,7 @@
 import map from 'lodash/map';
 import filter from 'lodash/filter';
 
-import apiClient from '../apiClient';
+import apiClient from '../../apiClient';
 
 const mergeInteractions = recs => ints =>
   map(recs, rec => ({
