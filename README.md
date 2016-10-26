@@ -4,7 +4,7 @@
 
 ```bash
 npm install
-npm run build
+NODE_ENV=production npm run build
 docker build -t whisk/flavorprint:0.0.1 .
 ```
 
