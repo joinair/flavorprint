@@ -4,7 +4,6 @@ import React, { Component, PropTypes } from 'react';
 import bind from 'lodash/bind';
 import debounce from 'lodash/debounce';
 import filter from 'lodash/filter';
-import isEqual from 'lodash/isEqual';
 import map from 'lodash/map';
 
 import OnboardingRecipe from '../OnboardingRecipe';

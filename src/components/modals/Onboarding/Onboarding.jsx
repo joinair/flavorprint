@@ -57,6 +57,8 @@ const Onboarding = ({
         onClose={onClose}
       />
 
+      <div className="Onboarding-mark" />
+
       <StepComponent {...step} />
 
       <div className="Onboarding-footer">
