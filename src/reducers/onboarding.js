@@ -60,6 +60,7 @@ export default createReducer(initialState, {
   [LOAD_ONBOARDING_RECIPES_SUCCESS]: (state, { payload }) => ({
     ...state,
     recipes: normalizeEntities(payload),
+    selectedRecipes: [],
   }),
 
   [ONBOARDING_SELECT_RECIPE_REQUEST]: (state, { payload }) => ({

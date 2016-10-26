@@ -12,7 +12,8 @@ import Home from './Home';
 
 const actions = {
   onStartOnboarding: () => (dispatch, getState) => {
-    const isFinished = selectors.isFinishedOnboardingSelector(getState());
+    const state = getState();
+    const isFinished = selectors.isFinishedOnboardingSelector(state);
 
     if (isFinished) {
       dispatch(router.push(FLAVORPRINT));
