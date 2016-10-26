@@ -40,6 +40,7 @@ const OnboardingBubble = ({
         {image &&
           <img
             alt=""
+            key={image}
             src={image}
             srcSet={imageSet}
           />

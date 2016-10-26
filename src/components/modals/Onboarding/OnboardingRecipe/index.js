@@ -16,6 +16,7 @@ const OnboardingRecipe = ({ recipe, onClick, selected }) => (
       {recipe.image && (
         <img
           alt=""
+          key={recipe.image}
           src={`/assets/images/static-images/recipes/${recipe.image}.png`}
         />
       )}
