@@ -6,6 +6,7 @@ import {
 } from 'reselect';
 
 import onboarding from 'actions/onboarding';
+import router from 'actions/router';
 
 import selectors from 'reducers/selectors';
 
@@ -14,6 +15,7 @@ import {
   TYPE_DIETS,
   TYPE_BUBBLES,
 } from 'constants/Onboarding';
+import { FLAVORPRINT } from 'constants/Routes';
 
 import Onboarding from './Onboarding';
 import OnboardingRecipesStep from './OnboardingRecipesStep';
@@ -41,7 +43,15 @@ const selector = createStructuredSelector({
 
 const actions = {
   onNext: () => (dispatch, getState) => {
-    const step = stepSelector(getState());
+    const state = getState();
+    const isFinished = selectors.isFinishedOnboardingSelector(state);
+    const isAuthenticated = selectors.isAuthenticatedSelector(state);
+    const step = stepSelector(state);
+
+    if (isFinished && isAuthenticated) {
+      return dispatch(router.push(FLAVORPRINT));
+    }
+
     if (step.onNext) {
       dispatch(step.onNext());
     }

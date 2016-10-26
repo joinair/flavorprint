@@ -1,6 +1,8 @@
 
 @component Mark {
   position: relative;
+  width: 384px;
+  height: 384px;
 
   img {
     position: absolute;

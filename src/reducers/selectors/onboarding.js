@@ -1,6 +1,7 @@
 
 import { createSelector } from 'reselect';
 import reject from 'lodash/reject';
+import isEmpty from 'lodash/isEmpty';
 
 import { generateOnboardingSteps } from 'helpers/onboarding';
 
@@ -23,8 +24,10 @@ export const onboardingCurrentStepSelector = createSelector(
 export const onboardingSelectedRecipesSelector = state =>
   state.onboarding.selectedRecipes;
 
-export const isFinishedOnboardingSelector = () =>
-  false;
+export const isFinishedOnboardingSelector = createSelector(
+  onboardingSelector,
+  onboarding => isEmpty(filterFinishedSteps(onboarding)),
+);
 
 export default {
   isFirstOnboardingStepSelector,
