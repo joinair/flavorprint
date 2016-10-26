@@ -54,7 +54,7 @@ const Onboarding = ({
       <ModalHeader
         className="Onboarding-header"
         title={step.title}
-        onClose={onClose}
+        onHide={onClose}
       />
 
       <div className="Onboarding-mark" />
