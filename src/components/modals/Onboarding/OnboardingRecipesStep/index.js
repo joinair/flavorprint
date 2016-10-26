@@ -16,8 +16,8 @@ const selector = createStructuredSelector({
 });
 
 const actions = {
-  onSelectRecipe: sourceId => dispatch => {
-    dispatch(selectRecipe(sourceId));
+  onSelectRecipe: (sourceId, deselect) => dispatch => {
+    dispatch(selectRecipe(sourceId, deselect));
     dispatch(skipStep());
   },
 };

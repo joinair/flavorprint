@@ -11,7 +11,7 @@ import UserData from './UserData';
 
 const selector = createStructuredSelector({
   mark: selectors.userMarkSelector,
-  showSave: state => !state.user.isAuthenticated,
+  showSave: state => !selectors.isAuthenticatedSelector(state),
   showRefine: state => !selectors.isFinishedOnboardingSelector(state),
 });
 

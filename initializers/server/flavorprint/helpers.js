@@ -29,11 +29,17 @@ export const passThrough = _endpoint => (req, res) => {
 };
 
 export const passThroughWithUser = endpoint => verifyUser(
-  (req, res) => passThrough(endpoint(req.session.userId))(req, res)
+  (req, res) => passThrough(endpoint(req.session.userId, req, res))(req, res)
 );
+
+export const sendJson = res => data => {
+  res.append('Content-Type', 'application/json');
+  return res.end(data);
+};
 
 export default {
   verifyUser,
   passThrough,
   passThroughWithUser,
+  sendJson,
 };

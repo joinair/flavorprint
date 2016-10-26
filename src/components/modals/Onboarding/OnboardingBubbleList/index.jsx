@@ -43,8 +43,8 @@ const OnboardingBubbleList = ({
 
   return (
     <div className={listClasses}>
-      {map(groups, group => (
-        <div className="OnboardingBubbleList-group">
+      {map(groups, (group, key) => (
+        <div className="OnboardingBubbleList-group" key={key}>
           {group}
         </div>
       ))}

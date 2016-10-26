@@ -1,35 +1,41 @@
 
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 
-import { recipeImageUrl } from 'helpers/recipe';
+import Icon from 'components/ui-elements/Icon';
 
+import iconCheckRecipe from 'assets/images/icons/icon-check-recipe.svg';
 import './styles.css';
 
-const OnboardingRecipe = ({ recipe, onClick, selected }) => {
-  const image = recipeImageUrl(recipe);
-
-  return (
-    <div
-      className="OnboardingRecipe"
-      onClick={onClick}
-    >
-      <div className="OnboardingRecipe-image">
-        {image && (
-          <img
-            alt=""
-            src={image.link}
-          />
-        )}
-        {selected && (
-          <div className="OnboardingRecipe-selectedCover" />
-        )}
-      </div>
-      <div className="OnboardingRecipe-caption">
-        {recipe.title}
+const OnboardingRecipe = ({ recipe, onClick, selected }) => (
+  <div
+    className="OnboardingRecipe"
+    onClick={onClick}
+  >
+    <div className="OnboardingRecipe-image">
+      {recipe.image && (
+        <img
+          alt=""
+          key={recipe.image}
+          src={`/assets/images/static-images/recipes/${recipe.image}.png`}
+        />
+      )}
+      <div
+        className={classnames('OnboardingRecipe-selectedCover', {
+          'is-visible': selected,
+        })}
+      >
+        <Icon
+          glyph={iconCheckRecipe}
+          style={{ height: '25px', width: '31px' }}
+        />
       </div>
     </div>
-  );
-};
+    <div className="OnboardingRecipe-caption">
+      {recipe.title}
+    </div>
+  </div>
+);
 
 OnboardingRecipe.propTypes = {
   recipe: PropTypes.shape({

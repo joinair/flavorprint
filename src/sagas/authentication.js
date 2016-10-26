@@ -6,7 +6,7 @@ import assign from 'lodash/assign';
 import get from 'lodash/get';
 import omit from 'lodash/omit';
 
-import { AUTHENTICATION } from 'constants/Modals';
+import { AUTHENTICATION, ONBOARDING } from 'constants/Modals';
 import { UNAUTHENTICATED } from 'middleware/authentication';
 
 import modal from 'actions/modal';
@@ -14,13 +14,23 @@ import router, { ROUTER_DID_CHANGE } from 'actions/router';
 import { BECOME_USER_SUCCESS } from 'actions/user';
 import { OAUTH_LOG_IN_SUCCESS } from 'actions/oauth';
 
-const isModalOpen = ({ payload, type }) =>
-  type === ROUTER_DID_CHANGE &&
-  get(payload.location, 'state.modal.type') === AUTHENTICATION;
+const isModalOpen = ({ payload, type }) => {
+  const isModal = modalType =>
+    get(payload.location, 'state.modal.type') === modalType;
 
-const isModalClosed = ({ payload, type }) =>
-  type === ROUTER_DID_CHANGE &&
-  get(payload.location, 'state.modal.type') !== AUTHENTICATION;
+  return type === ROUTER_DID_CHANGE && (
+    isModal(AUTHENTICATION) || isModal(ONBOARDING)
+  );
+};
+
+const isModalClosed = ({ payload, type }) => {
+  const isModal = modalType =>
+    get(payload.location, 'state.modal.type') === modalType;
+
+  return type === ROUTER_DID_CHANGE &&
+    isModal(AUTHENTICATION) &&
+    isModal(ONBOARDING);
+};
 
 function* auth() {
   while (true) {

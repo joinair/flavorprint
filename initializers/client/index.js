@@ -26,10 +26,6 @@ import prepareData from 'helpers/prepareData';
 
 import './styles.css';
 
-if (process.env.NODE_ENV !== 'development' && typeof Raven !== 'undefined') {
-  Raven.config(config.sentry.dsn, { release: global.__BUILD_NUMBER__ }).install();
-}
-
 if (process.env.NODE_ENV === 'production') {
   window.ga('create', config.google.analyticsId, 'auto');
 }

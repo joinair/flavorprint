@@ -5,6 +5,7 @@ import { BUTTON_CONTINUE } from 'constants/Onboarding';
 
 import Button from 'components/ui-elements/Button';
 import ModalHeader from 'components/tmp/Modal/ModalHeader';
+import AuthenticationModal from 'components/modals/Authentication';
 
 import './styles.css';
 
@@ -31,10 +32,21 @@ const ContinueButton = ({ onClick }) => (
 );
 
 const Onboarding = ({
+  isFirstStep,
   step,
   onPrevious,
   onNext,
+  onClose,
 }) => {
+  if (!step.type) {
+    return (
+      <AuthenticationModal
+        onClose={onClose}
+        selectedTab="Sign up"
+      />
+    );
+  }
+
   const StepComponent = step.type;
 
   return (
@@ -42,20 +54,25 @@ const Onboarding = ({
       <ModalHeader
         className="Onboarding-header"
         title={step.title}
+        onHide={onClose}
       />
+
+      <div className="Onboarding-mark" />
 
       <StepComponent {...step} />
 
       <div className="Onboarding-footer">
         <div className="Onboarding-footer-secondary">
-          <Button
-            color="transparent"
-            outline
-            size="large"
-            onClick={onPrevious}
-          >
-            Back
-          </Button>
+          {!isFirstStep && (
+            <Button
+              color="transparent"
+              outline
+              size="large"
+              onClick={onPrevious}
+            >
+              Back
+            </Button>
+          )}
         </div>
         <div className="Onboarding-footer-primary">
           {step.button === BUTTON_CONTINUE ? (
@@ -74,11 +91,10 @@ SkipButton.propTypes = { onClick: PropTypes.func };
 ContinueButton.propTypes = { onClick: PropTypes.func };
 
 Onboarding.propTypes = {
-  step: PropTypes.shape({
-    type: PropTypes.any.isRequired,
-  }),
-  isLastStep: PropTypes.bool,
+  step: PropTypes.object.isRequired,
+  isFirstStep: PropTypes.bool,
 
+  onClose: PropTypes.func.isRequired,
   onNext: PropTypes.func.isRequired,
   onPrevious: PropTypes.func.isRequired,
 };

@@ -21,20 +21,6 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
 
-import raven from 'raven';
-let sentryClient;
-
-if (process.env.NODE_ENV !== 'development') {
-  const SENTRY_DSN = __APP_ENV__ === 'production'
-    ? 'https://dac302eec22e46289e32e11cf080ae81:' +
-      '53b3ea69ec86409a9737aa0694055d57@app.getsentry.com/68736'
-    : 'https://1d936ea2c1fc41f19ae871ab47f14b77:' +
-      '9ef661a89cac41979c121f92eca77b18@app.getsentry.com/61598';
-
-  sentryClient = new raven.Client(SENTRY_DSN);
-  sentryClient.patchGlobal();
-}
-
 if (cluster.isMaster) {
   cluster.fork();
   if (process.env.NODE_ENV !== 'development') {
@@ -59,8 +45,6 @@ if (cluster.isMaster) {
 
     reqDomain.once('error', error => {
       if (process.env.NODE_ENV !== 'development') {
-        sentryClient.captureException(new Error(error.message, error.name));
-
         const killtimer = setTimeout(() => process.exit(1), 30000);
         killtimer.unref();
 

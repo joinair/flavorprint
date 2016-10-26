@@ -1,4 +1,4 @@
-/* global __APP_ENV__ __PORT__ */
+/* global __APP_DOMAIN__ __APP_ENV__ __PORT__ */
 /* eslint max-len:0 */
 
 export const head = (config, webpackAsset) => `
@@ -22,6 +22,10 @@ export const head = (config, webpackAsset) => `
     }
     <script type="text/javascript" src="${webpackAsset('meta', 'js')}"></script>
     <script type="text/javascript" src="${webpackAsset('vendor', 'js')}"></script>
+    <script type="text/javascript">
+      window.__APP_DOMAIN__ = "${__APP_DOMAIN__}";
+      window.__APP_ENV__ = "${__APP_ENV__}";
+    </script>
     <script type="text/javascript">window.__APP_ENV__ = "${__APP_ENV__}"</script>
     ${
       (process.env.NODE_ENV === 'development')

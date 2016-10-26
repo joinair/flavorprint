@@ -1,40 +1,34 @@
 
 import {
   verifyUser,
-  passThrough,
   passThroughWithUser,
 } from './helpers';
 
 import recommendations from './routes/recommendations';
+import onboarding from './routes/onboarding';
 
 export default app => {
+  // Like/Dislike recipes
   app.post(
     '/api/custom/users/interactions',
     passThroughWithUser(id => `/v3/users/${id}/interactions`)
   );
 
+  // Comptibility ("match") score for recipes
   app.get(
     '/api/custom/recommendations/compatibilities',
     passThroughWithUser(id => `/v3/recommendations/${id}/compatibilities`)
   );
 
-  app.post(
-    '/api/custom/users/interactions',
-    passThroughWithUser(id => `/v3/users/${id}/interactions`)
-  );
+  // Recipes/Products page
+  app.get('/api/custom/recommendations', verifyUser(recommendations));
 
-  app.get(
-    '/api/custom/recommendations',
-    verifyUser(recommendations)
-  );
+  // Onboarding
+  app.get('/api/custom/onboarding/recipes', verifyUser(onboarding.recipes));
+  app.get('/api/custom/onboarding/questions', verifyUser(onboarding.questions.load));
+  app.post('/api/custom/onboarding/questions', verifyUser(onboarding.questions.answer));
 
-  app.post(
-    '/api/custom/users/preferences',
-    passThroughWithUser(id => `/v3/users/${id}/preferences`)
-  );
-
-  app.get('/api/v3/recommendations', passThrough());
-
+  // Flavorprint mark
   app.get(
     '/api/custom/users/mark',
     passThroughWithUser(id => `/v3/users/${id}/marks/personal`)

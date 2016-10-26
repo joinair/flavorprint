@@ -1,146 +1,93 @@
 
-import pick from 'lodash/pick';
-import values from 'lodash/values';
-
+import stepRecipes from './stepRecipes';
 import stepOccasions from './stepOccasions';
+import stepEquipment from './stepEquipment';
+import stepCookingTechniques from './stepCookingTechniques';
+import stepPantry from './stepPantry';
 
-import {
-  RECIPES_SEED,
-  TYPE_RECIPES,
-  TYPE_DIETS,
-  TYPE_BUBBLES,
-  BUTTON_CONTINUE,
-  BUTTON_SKIP,
-} from 'constants/Onboarding';
+import { RECIPES_SEED } from 'constants/Onboarding';
 
-const stepSundayMorning = state => ({
-  type: TYPE_RECIPES,
-  title: 'What would you prefer on a Sunday morning?',
-  button: BUTTON_SKIP,
+const stepLunch = stepRecipes(
+  'Pick the recipe you prefer for lunch',
+  [
+    { sourceId: RECIPES_SEED.classicBurger, image: 'classicBurger' },
+    { sourceId: RECIPES_SEED.fettuccineWithAsparagus, image: 'fettuccineWithAsparagus' },
+    { sourceId: RECIPES_SEED.cedarPlankSalmon, image: 'cedarPlankSalmon' },
+    { sourceId: RECIPES_SEED.arugulaAppleAndPomegranateSalad, image: 'arugulaAppleAndPomegranateSalad' },
+  ]
+);
 
-  recipes: values(pick(
-    state.recipes,
-    RECIPES_SEED.recipe1,
-    RECIPES_SEED.recipe2,
-    RECIPES_SEED.recipe3,
-    RECIPES_SEED.recipe4,
-  )),
-});
+const stepSundayMorning = stepRecipes(
+  'What would you prefer on a Sunday morning?',
+  [
+    { sourceId: RECIPES_SEED.cerealWithWalnutsAndDriedFruit, image: 'cerealWithWalnutsAndDriedFruit' },
+    { sourceId: RECIPES_SEED.friedEggsWithBacon, image: 'friedEggsWithBacon' },
+    { sourceId: RECIPES_SEED.pancakesWithMapleSyrup, image: 'pancakesWithMapleSyrup' },
+    { sourceId: RECIPES_SEED.chickenAndWaffles, image: 'chickenAndWaffles' },
+  ]
+);
 
-const stepSnacks = state => ({
-  type: TYPE_RECIPES,
-  title: 'When it\'s time for a snack, what would you choose?',
-  button: BUTTON_SKIP,
+const stepSnack = stepRecipes(
+  'When it\'s time for a snack, what would you choose?',
+  [
+    { sourceId: RECIPES_SEED.chipotleLimeMixedNuts, image: 'chipotleLimeMixedNuts' },
+    { sourceId: RECIPES_SEED.houmousWithPitaBread, image: 'houmousWithPitaBread' },
+    { sourceId: RECIPES_SEED.bakedCamembertWithBacon, image: 'bakedCamembertWithBacon' },
+    { sourceId: RECIPES_SEED.blueberryMuffins, image: 'blueberryMuffins' },
+  ]
+);
 
-  recipes: values(pick(
-    state.recipes,
-    RECIPES_SEED.recipe4,
-    RECIPES_SEED.recipe2,
-    RECIPES_SEED.recipe3,
-    RECIPES_SEED.recipe1,
-  )),
-});
+const stepDesert = stepRecipes(
+  'Which of these is sure to get your mouth watering?',
+  [
+    { sourceId: RECIPES_SEED.freshFruitSalad, image: 'freshFruitSalad' },
+    { sourceId: RECIPES_SEED.chocolateCake, image: 'chocolateCake' },
+    { sourceId: RECIPES_SEED.raspberryIceCream, image: 'raspberryIceCream' },
+    { sourceId: RECIPES_SEED.caramelisedPeachTarts, image: 'caramelisedPeachTarts' },
+  ]
+);
 
-const stepDesert = state => ({
-  type: TYPE_RECIPES,
-  title: 'Which of these is sure to get your mouth watering?',
-  button: BUTTON_SKIP,
+const stepDinner = stepRecipes(
+  'What would you like for dinner on the weekend',
+  [
+    { sourceId: RECIPES_SEED.seafoodStew, image: 'seafoodStew' },
+    { sourceId: RECIPES_SEED.vegetablePastaWithBalsamicVinaigrette, image: 'vegetablePastaWithBalsamicVinaigrette' },
+    { sourceId: RECIPES_SEED.garlicPepperSteak, image: 'garlicPepperSteak' },
+    { sourceId: RECIPES_SEED.sweetAsianBbqStirFry, image: 'sweetAsianBbqStirFry' },
+  ]
+);
 
-  recipes: values(pick(
-    state.recipes,
-    RECIPES_SEED.recipe3,
-    RECIPES_SEED.recipe4,
-    RECIPES_SEED.recipe2,
-    RECIPES_SEED.recipe1,
-  )),
-});
+const stepParty = stepRecipes(
+  'Which of these would you like to run into at a party?',
+  [
+    { sourceId: RECIPES_SEED.beerCheeseDip, image: 'beerCheeseDip' },
+    { sourceId: RECIPES_SEED.brazilianChimichurriSteak, image: 'brazilianChimichurriSteak' },
+    { sourceId: RECIPES_SEED.mozzarellaAndBasilPizza, image: 'mozzarellaAndBasilPizza' },
+    { sourceId: RECIPES_SEED.roastedVegetables, image: 'roastedVegetables' },
+  ]
+);
 
-const stepWeekendDinner = state => ({
-  type: TYPE_RECIPES,
-  title: 'What would you like for dinner on the weekend?',
-  button: BUTTON_SKIP,
-
-  recipes: values(pick(
-    state.recipes,
-    RECIPES_SEED.recipe2,
-    RECIPES_SEED.recipe3,
-    RECIPES_SEED.recipe4,
-    RECIPES_SEED.recipe1,
-  )),
-});
-
-const stepDiets = () => ({
-  type: TYPE_DIETS,
-  title: 'Do you have any diets or avoidances?',
-  button: BUTTON_CONTINUE,
-});
-
-const stepEquipment = () => ({
-  type: TYPE_BUBBLES,
-  title: 'What cooking equipment do you have?',
-  button: BUTTON_CONTINUE,
-
-  bubbles: [
-    { text: 'Food Processor', value: 'food_processor', image: 'quiz_equipment_food_processor' },
-    { text: 'Blender', value: 'blender', image: 'quiz_equipment_blender' },
-    { text: 'Slow Cooker', value: 'slow_cooker', image: 'quiz_equipment_slow_cooker' },
-    { text: 'Stand Mixer', value: 'stand_mixer', image: 'quiz_equipment_stand_mixer' },
-    { text: 'Springform Pan', value: 'springform_pan', image: 'quiz_equipment_springform_pan' },
-    { text: 'Ice Cream Maker', value: 'ice_cream_maker', image: 'quiz_equipment_ice_cream_maker' },
-    { text: 'Mandolin', value: 'mandolin', image: 'quiz_equipment_mandolin' },
-    { text: 'Bread Machine', value: 'bread_machine', image: 'quiz_equipment_bread_machine' },
-    { text: 'Pizza Stone', value: 'pizza_stone', image: 'quiz_equipment_pizza_stone' },
-    { text: 'Pressure Cooker', value: 'pressure_cooker', image: 'quiz_equipment_pressure_cooker' },
-  ],
-});
-
-const stepTechniques = () => ({
-  type: TYPE_BUBBLES,
-  title: 'What kind of cooking techniques do you like?',
-  button: BUTTON_CONTINUE,
-
-  bubbles: [
-    { text: 'Bake', image: 'quiz_techniques_bake' },
-    { text: 'Grill', image: 'quiz_techniques_grill' },
-    { text: 'Stir-Fry', image: 'quiz_techniques_stir_fry' },
-    { text: 'Deep Fry', image: 'quiz_techniques_deep_fry' },
-    { text: 'Smoke', image: 'quiz_techniques_smoke' },
-    { text: 'Preserve', image: 'quiz_techniques_preserve' },
-    { text: 'Roast', image: 'quiz_techniques_roast' },
-    { text: 'Puree', image: 'quiz_techniques_puree' },
-    { text: 'Saute', image: 'quiz_techniques_saute' },
-    { text: 'Poach', image: 'quiz_techniques_poach' },
-  ],
-});
-
-const stepPantry = () => ({
-  type: TYPE_BUBBLES,
-  title: 'What do you usually have in your pantry?',
-  button: BUTTON_CONTINUE,
-
-  bubbles: [
-    { text: 'Onions', image: 'quiz_pantry_onion' },
-    { text: 'Eggs', image: 'quiz_pantry_eggs' },
-    { text: 'Olive Oil', image: 'quiz_pantry_olive_oil' },
-    { text: 'Fresh Garlic', image: 'quiz_pantry_fresh_garlic' },
-    { text: 'Brown Sugar', image: 'quiz_pantry_brown_sugar' },
-    { text: 'Vanilla Extract', image: 'quiz_pantry_vanilla_extract' },
-    { text: 'Cinnamon', image: 'quiz_pantry_cinnamon' },
-    { text: 'Honey', image: 'quiz_pantry_honey' },
-    { text: 'Rice', image: 'quiz_pantry_rice' },
-    { text: 'Lettuce', image: 'quiz_pantry_lettuce' },
-  ],
-});
+const stepBeverage = stepRecipes(
+  'Which beverage sounds most delicious?',
+  [
+    { sourceId: RECIPES_SEED.mintMojito, image: 'mintMojito' },
+    { sourceId: RECIPES_SEED.pinaColada, image: 'pinaColada' },
+    { sourceId: RECIPES_SEED.hibiscusPomegranateIcedTea, image: 'hibiscusPomegranateIcedTea' },
+    { sourceId: RECIPES_SEED.bloodyMary, image: 'bloodyMary' },
+  ]
+);
 
 export const generateOnboardingSteps = state => [
+  stepLunch(state),
   stepSundayMorning(state),
-  stepSnacks(state),
+  stepSnack(state),
   stepDesert(state),
-  stepWeekendDinner(state),
+  stepDinner(state),
+  stepParty(state),
+  stepBeverage(state),
   stepOccasions(state),
-  stepDiets(state),
   stepEquipment(state),
-  stepTechniques(state),
+  stepCookingTechniques(state),
   stepPantry(state),
 ];
 
