@@ -23,7 +23,8 @@ const getInteractions = userId => recs =>
   apiClient({
     method: 'get',
     query: {
-      sourceIds: map(recs, 'sourceId'),
+      sourceIds: map(recs, 'sourceId').join(','),
+      size: recs.length,
     },
     endpoint: `/v3/users/${userId}/interactions`,
   })
