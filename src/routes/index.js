@@ -2,6 +2,8 @@
 import Application from 'components/Application';
 import Layout from 'components/tmp/Layout';
 
+import { loadMark } from 'actions/user';
+
 import homeRoute from './home';
 import notFound from './notFound';
 import productsRoute from './products';
@@ -17,6 +19,8 @@ export default store => [
 
   {
     component: Application,
+
+    prepareData: () => store.dispatch(loadMark()),
 
     childRoutes: [
       {

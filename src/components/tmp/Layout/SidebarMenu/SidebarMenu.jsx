@@ -2,14 +2,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import { COOKBOOK } from 'constants/Routes';
-import { VIEW_FROM_SIDEBAR, VIEW_SOURCE } from 'constants/QueryParams';
+import { SETTINGS, RECIPES, FLAVORPRINT } from 'constants/Routes';
 
 import iconChefHat from 'assets/images/icons/icon-mobile-chef-hat.svg';
 import iconHeart from 'assets/images/icons/icon-mobile-heart.svg';
-import iconCart from 'assets/images/icons/icon-mobile-cart.svg';
-import iconRoundedAdd from 'assets/images/icons/icon-mobile-rounded-add.svg';
-import iconHelp from 'assets/images/icons/icon-mobile-help.svg';
 import iconSettings from 'assets/images/icons/icon-mobile-settings.svg';
 import iconLogout from 'assets/images/icons/icon-mobile-logout.svg';
 
@@ -18,7 +14,7 @@ import './styles.css';
 import Button from 'components/ui-elements/Button';
 import Icon from 'components/ui-elements/Icon';
 import Sidebar from 'components/ui-elements/Sidebar';
-import Avatar from 'components/ui-elements/Avatar';
+import Mark from 'components/blocks/Mark';
 
 const UserName = ({ user }) =>
   user.firstName
@@ -34,27 +30,23 @@ const UserMenu = ({
     onSidebarClose();
   };
 
-  const avatar = (
-    <Avatar
-      className="MobileMenu-user-avatar"
-      height={110}
-      iconClassName="MobileMenu-user-avatar-icon"
-      url={user.avatar}
-      width={110}
-    />
+  const mark = (
+    <div className="MobileMenu-mark">
+      <Mark width={120} mark={user.mark} />
+    </div>
   );
 
   return user.isAuthenticated
     ? (
       <div className="MobileMenu-user">
-        {avatar}
+        {mark}
         <div className="MobileMenu-user-info">
           <UserName user={user} />
         </div>
       </div>
     ) : (
       <div className="MobileMenu-user">
-        {avatar}
+        {mark}
         <div className="MobileMenu-user-info">
           <div className="MobileMenu-user-authControls">
             <Button
@@ -126,7 +118,7 @@ const SidebarMenu = ({
 
       <div className="MobileMenu-menu">
         <div className="MobileMenu-menu-item">
-          <Link to="/" className="MobileMenu-menu-item-link">
+          <Link to={RECIPES} className="MobileMenu-menu-item-link">
             <div className="MobileMenu-menu-item-iconContainer">
               <Icon
                 className="MobileMenu-menu-item-icon MobileMenu-menu-item-icon--chefHat"
@@ -140,7 +132,7 @@ const SidebarMenu = ({
         </div>
 
         <div className="MobileMenu-menu-item">
-          <Link to={COOKBOOK} className="MobileMenu-menu-item-link">
+          <Link to={FLAVORPRINT} className="MobileMenu-menu-item-link">
             <div className="MobileMenu-menu-item-iconContainer">
               <Icon
                 className="MobileMenu-menu-item-icon MobileMenu-menu-item-icon--heart"
@@ -148,21 +140,7 @@ const SidebarMenu = ({
               />
             </div>
             <div className="MobileMenu-menu-item-text">
-              Your Cookbook
-            </div>
-          </Link>
-        </div>
-
-        <div className="MobileMenu-menu-item">
-          <Link to="/shopping-list" className="MobileMenu-menu-item-link">
-            <div className="MobileMenu-menu-item-iconContainer">
-              <Icon
-                className="MobileMenu-menu-item-icon MobileMenu-menu-item-icon--cart"
-                glyph={iconCart}
-              />
-            </div>
-            <div className="MobileMenu-menu-item-text">
-              Shopping list
+              FlavorPrint
             </div>
           </Link>
         </div>
@@ -170,47 +148,7 @@ const SidebarMenu = ({
         {
           user.isAuthenticated &&
             <div className="MobileMenu-menu-item">
-              <Link
-                className="MobileMenu-menu-item-link"
-                to={{
-                  pathname: '/recipes/new',
-                  query: { [VIEW_SOURCE]: VIEW_FROM_SIDEBAR },
-                }}
-              >
-                <div className="MobileMenu-menu-item-iconContainer">
-                  <Icon
-                    className="MobileMenu-menu-item-icon MobileMenu-menu-item-icon--add"
-                    glyph={iconRoundedAdd}
-                  />
-                </div>
-                <div className="MobileMenu-menu-item-text">
-                  Add recipe
-                </div>
-              </Link>
-            </div>
-        }
-
-        <div className="MobileMenu-menu-item">
-          <a
-            href="http://whisk.uservoice.com/"
-            className="MobileMenu-menu-item-link"
-          >
-            <div className="MobileMenu-menu-item-iconContainer">
-              <Icon
-                className="MobileMenu-menu-item-icon MobileMenu-menu-item-icon--help"
-                glyph={iconHelp}
-              />
-            </div>
-            <div className="MobileMenu-menu-item-text">
-              Help & Feedback
-            </div>
-          </a>
-        </div>
-
-        {
-          user.isAuthenticated &&
-            <div className="MobileMenu-menu-item">
-              <Link to="/settings" className="MobileMenu-menu-item-link">
+              <Link to={SETTINGS} className="MobileMenu-menu-item-link">
                 <div className="MobileMenu-menu-item-iconContainer">
                   <Icon
                     className="MobileMenu-menu-item-icon MobileMenu-menu-item-icon--settings"

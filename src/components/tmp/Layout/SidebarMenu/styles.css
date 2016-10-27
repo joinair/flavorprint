@@ -12,6 +12,13 @@
     width: 315px;
   }
 
+  @descendent mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 15px;
+  }
+
   @descendent menu {
     padding-bottom: 60px;
 
@@ -94,7 +101,7 @@
 
   @descendent user {
     padding: 44px 30px 0;
-    height: 234px;
+    height: 240px;
 
     @descendent avatar {
       display: flex;
