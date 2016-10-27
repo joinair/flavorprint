@@ -1,5 +1,5 @@
 
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import UserData from './UserData';
 import StaticContent from './StaticContent';

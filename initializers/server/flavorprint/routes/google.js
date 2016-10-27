@@ -75,4 +75,3 @@ export default ({ query, session }) => {
 
   return subject;
 };
-

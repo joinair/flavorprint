@@ -1,6 +1,4 @@
 
-import selectors from 'reducers/selectors';
-
 import {
   loadRecommendations,
   loadDetails,

@@ -6,7 +6,7 @@ import {
 
 import Settings from 'components/pages/Settings';
 
-export default store => [
+export default () => [
   {
     path: SETTINGS,
     component: Settings,
