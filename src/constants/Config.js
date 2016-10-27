@@ -44,7 +44,7 @@ export const google = {
 
   id: global.__APP_ENV__ === 'production'
     ? 'XXXXXXXXXXXX-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY.apps.googleusercontent.com'
-    : 'XXXXXXXXXXXX-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY.apps.googleusercontent.com',
+    : '838731358549-dalr15he82j6vj19j3r8454occqcb6o9.apps.googleusercontent.com',
 };
 
 export default {

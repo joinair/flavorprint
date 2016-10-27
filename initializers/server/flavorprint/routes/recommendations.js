@@ -31,15 +31,8 @@ const getInteractions = userId => recs =>
   .map(x => x.text)
   .map(JSON.parse)
   .map(mergeInteractions(recs))
-  .map(JSON.stringify);
+  .map(body => ({ body }));
 
-export default (req, res) =>
-  getRecommendations(req.query, req.session.userId)
-    .flatMap(getInteractions(req.session.userId))
-    .subscribe(
-      text => {
-        res.append('Content-Type', 'application/json');
-        res.end(text);
-      },
-      err => res.status(500).end(JSON.stringify(err))
-    );
+export default ({ query, session }) =>
+  getRecommendations(query, session.userId)
+    .flatMap(getInteractions(session.userId));

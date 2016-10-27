@@ -6,7 +6,6 @@ import keys from 'lodash/keys';
 import map from 'lodash/map';
 
 import apiClient from '../../apiClient';
-import { sendJson } from '../../helpers';
 
 import { normalizeEntities } from 'helpers/reducer';
 
@@ -64,22 +63,14 @@ const handleAnswers = (previousAnswers, answers, userId) => {
     .map(x => normalizeEntities(x, 'questionId'));
 };
 
-export const load = (req, res) =>
-  loadQuestions(req.query.questionIds, req.session.userId)
-  .map(JSON.stringify)
-  .subscribe(
-    sendJson(res),
-    err => res.status(500).end(JSON.stringify(err))
-  );
+export const load = ({ query, session }) =>
+  loadQuestions(query.questionIds, session.userId)
+  .map(body => ({ body }));
 
-export const answer = (req, res) =>
-  loadQuestions(keys(req.body), req.session.userId)
-  .flatMap(pa => handleAnswers(pa, req.body, req.session.userId))
-  .map(JSON.stringify)
-  .subscribe(
-    sendJson(res),
-    err => res.status(500).end(JSON.stringify(err))
-  );
+export const answer = ({ query, session }) =>
+  loadQuestions(keys(query), session.userId)
+  .flatMap(pa => handleAnswers(pa, query, session.userId))
+  .map(body => ({ body }));
 
 export default {
   load,

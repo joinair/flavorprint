@@ -5,6 +5,8 @@ import omit from 'lodash/omit';
 import { API_CALL } from 'middleware/API';
 import { CHAIN } from 'middleware/chain';
 
+import { X_SESSION_KEY } from 'constants/Headers';
+
 import router from './router';
 
 export const UPDATE_USER_REQUEST = 'UPDATE_USER_REQUEST';
@@ -64,7 +66,7 @@ export const become = sessionKey => ({
     endpoint: '/auth/become',
     method: 'POST',
     headers: sessionKey ? {
-      'X-Session-Key': sessionKey,
+      [X_SESSION_KEY]: sessionKey,
     } : {},
     types: [
       BECOME_USER_REQUEST,

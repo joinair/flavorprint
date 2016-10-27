@@ -1,45 +1,37 @@
 
+import Rx from 'rx';
+
 import apiClient from './apiClient';
 
-export const verifyUser = handler => (req, res) => {
-  const { userId } = req.session;
+export const verifyUser = handler => data => {
+  const { userId } = data.session;
 
   if (!userId) {
-    return res.status(403).end('Please authorize');
+    const subject = new Rx.AsyncSubject();
+    subject.onError({ error: 'Please authorized' });
+    return subject;
   }
 
-  return handler(req, res);
+  return handler(data);
 };
 
-export const passThrough = _endpoint => (req, res) => {
-  const { method } = req;
-  const httpMethod = method.toLowerCase();
-  const query = httpMethod === 'get' ? req.query : req.body;
-
+export const passThrough = _endpoint => ({ method, endpoint, query }) => {
   const regex = /^\/api(\/.*)?$/i;
-  const match = req.path.match(regex);
-  const endpoint = _endpoint || match[1];
+  const match = endpoint.match(regex);
+  const apiEndpoint = _endpoint || match[1];
 
-  return apiClient({ method: httpMethod, query, endpoint }).subscribe(apiRes => {
-    res.append('Content-Type', apiRes.type);
-    res.end(apiRes.text);
-  }, error => {
-    res.status(error.status).end(error.response.text);
-  });
+  return apiClient({ method, query, endpoint: apiEndpoint })
+    .map(x => x.text)
+    .map(JSON.parse)
+    .map(body => ({ body }));
 };
 
 export const passThroughWithUser = endpoint => verifyUser(
-  (req, res) => passThrough(endpoint(req.session.userId, req, res))(req, res)
+  data => passThrough(endpoint(data.session.userId, data))(data)
 );
-
-export const sendJson = res => data => {
-  res.append('Content-Type', 'application/json');
-  return res.end(data);
-};
 
 export default {
   verifyUser,
   passThrough,
   passThroughWithUser,
-  sendJson,
 };

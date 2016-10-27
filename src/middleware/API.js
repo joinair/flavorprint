@@ -9,6 +9,7 @@ import request from 'superagent';
 import qs from 'qs';
 
 import config from 'constants/Config';
+import { X_SESSION_KEY } from 'constants/Headers';
 
 import { logOut } from 'actions/user';
 
@@ -77,7 +78,7 @@ export default store => next => action => {
   const completeHeaders = assign(
     { 'Content-Type': 'application/json' },
     sessionKey ? {
-      'X-Session-Key': sessionKey,
+      [X_SESSION_KEY]: sessionKey,
     } : {},
     headers
   );
@@ -119,7 +120,7 @@ export default store => next => action => {
       payload = {};
     }
 
-    const key = get(rawData, 'headers.x-session-key');
+    const key = get(rawData, `headers.${X_SESSION_KEY}`);
     if (key) meta.sessionKey = key;
 
     const data = { meta, payload, type: successType };

@@ -20,6 +20,7 @@ import config from '../config';
 
 let createRoutes = require('routes').default;
 let createStore = require('store').default;
+let storeApiProxyMiddleware = require('./flavorprint/storeApiProxyMiddleware').default;
 import { FP_SESSION } from 'constants/CookiesKeys';
 
 import clientActions from 'actions/client';
@@ -81,9 +82,12 @@ export default (req, res) => {
     const reload = require('./reload').default(require);
     createRoutes = reload('routes').default;
     createStore = reload('store').default;
+    storeApiProxyMiddleware = reload('./flavorprint/storeApiProxyMiddleware').default;
   }
 
-  const store = createStore({});
+  const store = createStore({
+    extraMiddleware: [storeApiProxyMiddleware(req, res)],
+  });
   const initialState = store.getState();
 
   store.dispatch(cookiesActions.restore(req.cookies));
