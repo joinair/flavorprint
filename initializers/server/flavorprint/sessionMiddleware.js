@@ -2,7 +2,10 @@
 
 import crypto from 'crypto';
 import onHeaders from 'on-headers';
+import each from 'lodash/each';
 import config from '../serverConfig';
+
+import { X_SESSION_KEY } from 'constants/Headers';
 
 const password = config.SESSION_SECRET;
 
@@ -28,28 +31,41 @@ const digest = text => {
   return hmac.read();
 };
 
-export default (req, res, next) => {
-  req.session = {};
+const encryptFromData = newData => {
+  const strData = JSON.stringify(newData);
 
-  const header = req.headers['x-session-key'];
+  return encrypt({
+    data: strData,
+    _digest: digest(strData),
+  });
+};
 
+export const decryptFromHeaders = header => {
   if (header) {
     const decrypted = decrypt(header);
     if (decrypted) {
       const { data, _digest } = decrypted;
       if (data && _digest && digest(data) === _digest) {
-        req.session = JSON.parse(data);
+        return JSON.parse(data);
       }
     }
   }
 
-  req.setSession = newData => onHeaders(res, function callback() {
-    const strData = JSON.stringify(newData);
+  return {};
+};
 
-    this.setHeader('X-Session-Key', encrypt({
-      data: strData,
-      _digest: digest(strData),
-    }));
+export const getSessionHeaders = data => ({
+  [X_SESSION_KEY]: encryptFromData(data),
+});
+
+export default (req, res, next) => {
+  const header = req.headers[X_SESSION_KEY];
+  req.session = decryptFromHeaders(header);
+
+  req.setSession = newData => onHeaders(res, function callback() {
+    each(getSessionHeaders(newData), (value, headerName) => {
+      this.setHeader(headerName, value);
+    });
   });
   return next();
 };

@@ -23,7 +23,7 @@ const NotFound = () => {
 
   return (
     <div className="NotFound">
-      <Helmet title="Not found - Whisk" />
+      <Helmet title="Not found - FlavorPrint" />
       <BodyClassName className="Body--whiteBackground" />
 
       <div className="NotFound-code">

@@ -8,7 +8,7 @@ import request from 'superagent';
 
 import qs from 'qs';
 
-import config from 'constants/Config';
+import { X_SESSION_KEY } from 'constants/Headers';
 
 import { logOut } from 'actions/user';
 
@@ -22,8 +22,17 @@ const sendArguments = (HTTPMethod, query) =>
     ? JSON.stringify(query)
     : qs.stringify(query, { arrayFormat: 'brackets' });
 
+const defaultUrl = () =>
+  global.Platform.OS === 'browser' &&
+  window.location.origin + '/api';
+
+const defaultProtocol = () =>
+  global.Platform.OS === 'browser'
+    ? window.location.protocol
+    : 'https:';
+
 const apiCall = (
-  url = config.api.url,
+  url = defaultUrl(),
   endpoint = '',
   method = 'GET',
   query = {},
@@ -33,7 +42,7 @@ const apiCall = (
   const HTTPMethod = method.toLowerCase();
 
   const formattedUrl = url.match(/^\/\//)
-    ? `${config.api.protocol}:${url}`
+    ? `${defaultProtocol()}${url}`
     : url;
 
   let req = request
@@ -77,7 +86,7 @@ export default store => next => action => {
   const completeHeaders = assign(
     { 'Content-Type': 'application/json' },
     sessionKey ? {
-      'X-Session-Key': sessionKey,
+      [X_SESSION_KEY]: sessionKey,
     } : {},
     headers
   );
@@ -119,7 +128,7 @@ export default store => next => action => {
       payload = {};
     }
 
-    const key = get(rawData, 'headers.x-session-key');
+    const key = get(rawData, `headers.${X_SESSION_KEY}`);
     if (key) meta.sessionKey = key;
 
     const data = { meta, payload, type: successType };

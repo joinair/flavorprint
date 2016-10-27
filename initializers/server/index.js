@@ -10,7 +10,6 @@ import './cssHook';
 import './svgHook';
 
 import apiProxyMiddleware from './flavorprint/proxyMiddleware';
-import authMiddleware from './flavorprint/authMiddleware';
 import sessionMiddleware from './flavorprint/sessionMiddleware';
 import browserCheckMiddleware from './browserCheckMiddleware';
 
@@ -96,7 +95,6 @@ if (cluster.isMaster) {
   application.use(bodyParser.urlencoded({ extended: false }));
   application.use(bodyParser.json());
 
-  application.post('/api/auth/:action', authMiddleware);
   apiProxyMiddleware(application);
   application.use(browserCheckMiddleware);
   application.get('*', render);

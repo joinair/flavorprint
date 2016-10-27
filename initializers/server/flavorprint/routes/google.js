@@ -1,4 +1,5 @@
-/* eslint no-param-reassign:0 */
+
+import Rx from 'rx';
 
 import request from 'superagent';
 
@@ -11,25 +12,26 @@ import {
   formatUserResponse,
 } from '../actions/users';
 
+import { getSessionHeaders } from '../sessionMiddleware';
 
-export default (req, res) => {
-  const query = {
+export default ({ query, session }) => {
+  const subject = new Rx.Subject();
+
+  const oauthQuery = {
     client_id: Config.google.id,
     client_secret: serverConfig.OAUTH_SECRET.GOOGLE,
-    redirect_uri: req.body.redirectUri,
-    code: req.body.code,
+    redirect_uri: query.redirectUri,
+    code: query.code,
     grant_type: 'authorization_code',
   };
-
-  const fail = (err) => res.status(401).end(JSON.stringify(err));
 
   request
     .post('https://www.googleapis.com/oauth2/v4/token')
     .type('form')
-    .send(query)
+    .send(oauthQuery)
     .end((error, gglRes) => {
       if (error) {
-        fail();
+        subject.onError();
       } else {
         const accessToken = get(gglRes, 'body.access_token');
 
@@ -40,7 +42,7 @@ export default (req, res) => {
             access_token: accessToken,
           })
           .end((err, appRes) => {
-            if (err) return fail();
+            if (err) return subject.onError();
 
             const { body } = appRes;
 
@@ -57,16 +59,19 @@ export default (req, res) => {
               email,
             };
 
-            authorizeFromOauth(data, req.session.userId).subscribe(
+            authorizeFromOauth(data, session.userId).subscribe(
               response => {
-                req.setSession({ userId: response.body.id });
-                res.append('Content-Type', 'application/json');
-                res.end(formatUserResponse('google', response.body));
+                subject.onNext({
+                  headers: getSessionHeaders({ userId: response.body.id }),
+                  body: formatUserResponse('google', response.body),
+                });
+                subject.onCompleted();
               },
-              fail
+              () => subject.onError()
             );
           });
       }
     });
-};
 
+  return subject;
+};

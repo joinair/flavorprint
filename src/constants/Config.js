@@ -6,20 +6,6 @@ const hostPort = host =>
     ? host
     : `${host}:${global.__PORT__}`;
 
-export const api = {
-  host: global.__APP_ENV__ === 'production'
-    ? hostPort(DOMAIN)
-    : `localhost:${global.__PORT__}`,
-
-  url: global.__APP_ENV__ === 'production'
-    ? `https://${hostPort(DOMAIN)}/api`
-    : `http://${hostPort('localhost')}/api`,
-
-  protocol: global.__APP_ENV__ === 'production'
-    ? 'https'
-    : 'http',
-};
-
 export const cookie = {
   domain: global.__APP_ENV__ === 'production'
     ? '.' + DOMAIN
@@ -43,12 +29,11 @@ export const google = {
     : 'UA-XXXXXXXX-8',
 
   id: global.__APP_ENV__ === 'production'
-    ? 'XXXXXXXXXXXX-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY.apps.googleusercontent.com'
-    : 'XXXXXXXXXXXX-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY.apps.googleusercontent.com',
+    ? '474785211570-go3ar3sjrubdh2dg9c35hmmdq2e4rguv.apps.googleusercontent.com'
+    : '838731358549-dalr15he82j6vj19j3r8454occqcb6o9.apps.googleusercontent.com',
 };
 
 export default {
-  api,
   cookie,
   domain,
   facebook,

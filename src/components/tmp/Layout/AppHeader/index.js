@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 
 import get from 'lodash/get';
 
-import { AUTHENTICATION, SEARCH } from 'constants/Modals';
+import { AUTHENTICATION } from 'constants/Modals';
 
 import modal from 'actions/modal';
 import sidebarMenu from 'actions/sidebarMenu';
@@ -26,7 +26,6 @@ const appHeaderSelector = createStructuredSelector({
 const actions = {
   onLogOut: logOut,
   onLogInButtonClick: () => modal.open(AUTHENTICATION, { selectedTab: 'Log in' }),
-  onSearch: () => modal.open(SEARCH),
   onSidebarOpen: sidebarMenu.open,
   onSignUpButtonClick: () => modal.open(AUTHENTICATION, { selectedTab: 'Sign up' }),
 };

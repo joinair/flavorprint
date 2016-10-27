@@ -43,14 +43,14 @@ export const loadOrCreateUser = data => {
     createUser(pick(data, UPDATE_FIELDS)).subscribe(
       res => subject.onNext(res),
       res => subject.onError(res),
-      () => subject.onComplete()
+      () => subject.onCompleted()
     );
   };
 
   if (data.id || data.email) {
     loadUser(data.id || data.email).subscribe(res => {
       subject.onNext(res);
-      subject.onComplete();
+      subject.onCompleted();
     }, create);
   } else {
     create();
@@ -70,7 +70,7 @@ export const authorizeFromOauth = (data, sessionUserId) => {
   const subs = [
     res => subject.onNext(res),
     res => subject.onError(res),
-    () => subject.onComplete(),
+    () => subject.onCompleted(),
   ];
 
   const create = () =>
@@ -88,7 +88,7 @@ export const authorizeFromOauth = (data, sessionUserId) => {
   if (data.id || data.email) {
     loadUser(data.id || data.email).subscribe(res => {
       subject.onNext(res);
-      subject.onComplete();
+      subject.onCompleted();
     }, createUpdateFlow);
   } else {
     createUpdateFlow();
@@ -97,12 +97,11 @@ export const authorizeFromOauth = (data, sessionUserId) => {
   return subject;
 };
 
-export const formatUserResponse = (provider, user) =>
-  JSON.stringify({
-    provider,
-    profile: user,
-    uid: user.id,
-  });
+export const formatUserResponse = (provider, user) => ({
+  provider,
+  profile: user,
+  uid: user.id,
+});
 
 export default {
   createUser,

@@ -3,7 +3,6 @@
 /* =============================================================== */
 @import "imports/variables.css";
 @import "imports/media-queries.css";
-@import "imports/fonts.css";
 
 /* ID ensures semantic-ui is overridden without dozens of !important */
 #content {

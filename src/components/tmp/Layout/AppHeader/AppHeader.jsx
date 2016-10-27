@@ -5,17 +5,14 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 
 import {
-  LOG_IN,
   PRODUCTS,
   RECIPES,
-  SIGN_UP,
   FLAVORPRINT,
 } from 'constants/Routes';
 
 import Icon from 'components/ui-elements/Icon';
 
 import iconNav from 'assets/images/icons/icon-mobile-nav.svg';
-import iconSearch from 'assets/images/icons/icon-search.svg';
 import fpLogo from 'assets/images/icons/fp-logo.svg';
 import './styles.css';
 
@@ -32,7 +29,7 @@ const GuestMenu = ({ onLogInButtonClick, onSignUpButtonClick }) => {
       <div className="AppHeader-item AppHeader-item--desktop">
         <a
           className="AppHeader-link"
-          href={SIGN_UP}
+          href="/"
           onClick={onAuth(onSignUpButtonClick)}
         >
           <span className="AppHeader-link-text">Sign Up</span>
@@ -41,7 +38,7 @@ const GuestMenu = ({ onLogInButtonClick, onSignUpButtonClick }) => {
       <div className="AppHeader-item AppHeader-item--desktop">
         <a
           className="AppHeader-link"
-          href={LOG_IN}
+          href="/"
           onClick={onAuth(onLogInButtonClick)}
         >
           <span className="AppHeader-link-text">Log In</span>
@@ -58,11 +55,9 @@ const Menu = ({
   isAuthenticated,
   lastName,
   routerPath,
-  username,
 
   onLogInButtonClick,
   onLogOut,
-  onSearch,
   onSidebarOpen,
   onSignUpButtonClick,
 }) => {
@@ -105,14 +100,6 @@ const Menu = ({
             }}
           />
         </Link>
-      </div>
-
-      <div className="AppHeader-item AppHeader-item--mobile">
-        <a className="AppHeader-link" onClick={onSearch}>
-          <svg className="AppHeader-iconMobileSearch">
-            <use xlinkHref={iconSearch} />
-          </svg>
-        </a>
       </div>
 
       <div
@@ -158,13 +145,11 @@ const AppHeader = ({
     email,
     firstName,
     lastName,
-    username,
   },
   routerPath,
 
   onLogInButtonClick,
   onLogOut,
-  onSearch,
   onSidebarOpen,
   onSignUpButtonClick,
 }) => (
@@ -178,10 +163,8 @@ const AppHeader = ({
           isAuthenticated={isAuthenticated}
           lastName={lastName}
           routerPath={routerPath}
-          username={username}
           onLogInButtonClick={onLogInButtonClick}
           onLogOut={onLogOut}
-          onSearch={onSearch}
           onSidebarOpen={onSidebarOpen}
           onSignUpButtonClick={onSignUpButtonClick}
         />
@@ -203,11 +186,9 @@ Menu.propTypes = {
   isAuthenticated: PropTypes.bool,
   lastName: PropTypes.string,
   routerPath: PropTypes.string,
-  username: PropTypes.string,
 
   onLogInButtonClick: PropTypes.func.isRequired,
   onLogOut: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired,
   onSidebarOpen: PropTypes.func.isRequired,
   onSignUpButtonClick: PropTypes.func.isRequired,
 };
@@ -224,7 +205,6 @@ AppHeader.propTypes = {
 
   onLogInButtonClick: PropTypes.func.isRequired,
   onLogOut: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired,
   onSidebarOpen: PropTypes.func.isRequired,
   onSignUpButtonClick: PropTypes.func.isRequired,
 };

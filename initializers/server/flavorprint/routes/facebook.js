@@ -1,4 +1,5 @@
-/* eslint no-param-reassign:0 */
+
+import Rx from 'rx';
 
 import request from 'superagent';
 
@@ -11,22 +12,24 @@ import {
   formatUserResponse,
 } from '../actions/users';
 
-export default (req, res) => {
-  const query = {
+import { getSessionHeaders } from '../sessionMiddleware';
+
+export default ({ query, session }) => {
+  const subject = new Rx.Subject();
+
+  const oauthQuery = {
     client_id: Config.facebook.id,
     client_secret: serverConfig.OAUTH_SECRET.FACEBOOK,
-    redirect_uri: req.body.redirectUri,
-    code: req.body.code,
+    redirect_uri: query.redirectUri,
+    code: query.code,
   };
-
-  const fail = (err) => res.status(401).end(JSON.stringify(err));
 
   request
     .get('https://graph.facebook.com/v2.7/oauth/access_token')
-    .query(query)
+    .query(oauthQuery)
     .end((error, fbRes) => {
       if (error) {
-        fail();
+        subject.onError();
       } else {
         request
           .get('https://graph.facebook.com/v2.7/me')
@@ -39,7 +42,7 @@ export default (req, res) => {
             try { body = JSON.parse(get(appRes, 'text')); } catch (e) { /* ... */ }
 
             if (err || !body) {
-              return fail();
+              return subject.onError();
             }
 
             let email = body.email;
@@ -53,16 +56,19 @@ export default (req, res) => {
               email,
             };
 
-            authorizeFromOauth(data, req.session.userId).subscribe(
+            authorizeFromOauth(data, session.userId).subscribe(
               response => {
-                req.setSession({ userId: response.body.id });
-                res.append('Content-Type', 'application/json');
-                res.end(formatUserResponse('facebook', response.body));
+                subject.onNext({
+                  headers: getSessionHeaders({ userId: response.body.id }),
+                  body: formatUserResponse('facebook', response.body),
+                });
+                subject.onCompleted();
               },
-              fail
+              () => subject.onError()
             );
           });
       }
     });
-};
 
+  return subject;
+};

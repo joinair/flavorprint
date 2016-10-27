@@ -15,9 +15,9 @@ const leavingReasons = [
   { value: 'TOO_MANY_EMAILS', label: "I'm getting too many emails" },
   { value: 'NO_GOOD_RECIPES', label: "I can't find any good recipes" },
   { value: 'RECIPES_ARENT_SUITABLE',
-    label: "Whisk is suggesting recipes that aren't suitable for me" },
-  { value: 'DONT_LIKE_WHISK', label: "I don't use or like Whisk" },
-  { value: 'DONT_UNDERSTAND', label: "I don't understand Whisk" },
+    label: "FlavorPrint is suggesting recipes that aren't suitable for me" },
+  { value: 'DONT_LIKE_FLAVORPRINT', label: "I don't use or like FlavorPrint" },
+  { value: 'DONT_UNDERSTAND', label: "I don't understand FlavorPrint" },
   { value: 'PRIVACY_CONCERN', label: 'I have a privacy concern' },
   { value: 'OTHER', label: 'Other' },
 ];

@@ -13,11 +13,13 @@ export default ({
   cookieSelector,
   history,
   initialState,
+  extraMiddleware,
 }) => {
   const middlewares = [
     thunk,
     authentication,
     chain,
+    ...(extraMiddleware || []),
     apiMiddleware,
     notObject,
   ];

@@ -13,7 +13,7 @@ const styles = {
     marginBottom: '35px',
   },
   message: {
-    fontFamily: '"CircularStd", "Open Sans", "Helvetica Neue, Arial, Helvetica, sans-serif"',
+    fontFamily: '"Open Sans", "Helvetica Neue, Arial, Helvetica, sans-serif"',
     fontSize: '22px',
     lineHeight: '30px',
     color: '#454545',
