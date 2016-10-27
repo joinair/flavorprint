@@ -79,9 +79,8 @@
 
     @descendent dropdown {
       position: absolute;
-      top: 66px;
-      left: 50%;
-      margin-left: -90px;
+      top: 60px;
+      right: 0%;
       width: var(--UserMenu-dropdown-width);
       background-color: #fff;
       display: none;
@@ -102,7 +101,7 @@
       &:before {
         content: '';
         position: absolute;
-        left: 50%;
+        left: 80%;
         top: -5px;
         margin-left: -5px;
         width: 10px;

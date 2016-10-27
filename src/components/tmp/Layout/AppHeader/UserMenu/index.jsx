@@ -6,12 +6,8 @@ import { Link } from 'react-router';
 import classnames from 'classnames';
 import bind from 'lodash/bind';
 
-import { VIEW_FROM_HEADER, VIEW_SOURCE } from 'constants/QueryParams';
-
 import { on, off } from 'helpers/event';
 
-import iconRoundedAdd from 'assets/images/icons/icon-mobile-rounded-add.svg';
-import iconHelp from 'assets/images/icons/icon-mobile-help.svg';
 import iconSettings from 'assets/images/icons/icon-mobile-settings.svg';
 import iconLogout from 'assets/images/icons/icon-mobile-logout.svg';
 import Icon from 'components/ui-elements/Icon';
@@ -73,34 +69,6 @@ class UserMenu extends Component {
           </div>
           <div className="AppHeader-user-dropdown">
             <div className="AppHeader-user-dropdown-container">
-              <div className="AppHeader-user-dropdown-item">
-                <Link
-                  className="AppHeader-user-dropdown-link"
-                  to={{
-                    pathname: '/recipes/new',
-                    query: { [VIEW_SOURCE]: VIEW_FROM_HEADER },
-                  }}
-                >
-                  <div className="AppHeader-user-dropdown-link-iconContainer">
-                    <Icon
-                      className={linkIconClasses('add')}
-                      glyph={iconRoundedAdd}
-                    />
-                  </div>
-                  <div className="AppHeader-user-dropdown-link-text">Add recipe</div>
-                </Link>
-              </div>
-              <div className="AppHeader-user-dropdown-item">
-                <a href="http://whisk.uservoice.com/" className="AppHeader-user-dropdown-link">
-                  <div className="AppHeader-user-dropdown-link-iconContainer">
-                    <Icon
-                      className={linkIconClasses('help')}
-                      glyph={iconHelp}
-                    />
-                  </div>
-                  <div className="AppHeader-user-dropdown-link-text">Help & Feedback</div>
-                </a>
-              </div>
               <div className="AppHeader-user-dropdown-item">
                 <Link to={{ pathname: '/settings' }} className="AppHeader-user-dropdown-link">
                   <div className="AppHeader-user-dropdown-link-iconContainer">
