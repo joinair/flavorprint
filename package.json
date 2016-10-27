@@ -25,10 +25,6 @@
     "Max Kostuchenko <max.kostuchenko@whisk.co.uk>"
   ],
 
-  "bugs": {
-    "url": "http://youtrack.whisk.com/youtrack/issues"
-  },
-
   "engines": {
     "node": "^4.0.0",
     "npm": "^3.0.0"
