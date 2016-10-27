@@ -2,11 +2,8 @@
 import React, { PropTypes } from 'react';
 
 import iconTwitter from 'assets/images/icons/icon-twitter.svg';
-import iconGPlus from 'assets/images/icons/icon-gplus.svg';
 import iconFacebook from 'assets/images/icons/icon-facebook.svg';
 import './styles.css';
-
-const staticPage = path => `https://about.whisk.com${path}`;
 
 const TextLink = ({ to, children }) =>
   <div className="AppFooter-item">
