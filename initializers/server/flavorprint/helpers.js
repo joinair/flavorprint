@@ -8,7 +8,7 @@ export const verifyUser = handler => data => {
 
   if (!userId) {
     const subject = new Rx.AsyncSubject();
-    subject.onError({ error: 'Please authorized' });
+    subject.onError({ error: 'Please authorize' });
     return subject;
   }
 

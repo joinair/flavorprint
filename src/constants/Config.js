@@ -2,8 +2,7 @@
 const DOMAIN = global.__APP_DOMAIN__;
 
 const hostPort = host =>
-  typeof global.__PORT__ === 'undefined' ||
-  [443, 80].indexOf(global.__PORT__) >= 0
+  typeof global.__PORT__ === 'undefined'
     ? host
     : `${host}:${global.__PORT__}`;
 
@@ -15,7 +14,7 @@ export const cookie = {
 
 export const domain = {
   development: `http://${hostPort('localhost')}`,
-  production: `https://${hostPort(DOMAIN)}`,
+  production: `https://${DOMAIN}`,
 }[global.__APP_ENV__];
 
 export const facebook = {
@@ -30,7 +29,7 @@ export const google = {
     : 'UA-XXXXXXXX-8',
 
   id: global.__APP_ENV__ === 'production'
-    ? 'XXXXXXXXXXXX-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY.apps.googleusercontent.com'
+    ? '474785211570-go3ar3sjrubdh2dg9c35hmmdq2e4rguv.apps.googleusercontent.com'
     : '838731358549-dalr15he82j6vj19j3r8454occqcb6o9.apps.googleusercontent.com',
 };
 
