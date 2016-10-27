@@ -2,23 +2,10 @@
 const DOMAIN = global.__APP_DOMAIN__;
 
 const hostPort = host =>
-  typeof global.__PORT__ === 'undefined'
+  typeof global.__PORT__ === 'undefined' ||
+  [443, 80].indexOf(global.__PORT__) >= 0
     ? host
     : `${host}:${global.__PORT__}`;
-
-export const api = {
-  host: global.__APP_ENV__ === 'production'
-    ? hostPort(DOMAIN)
-    : `localhost:${global.__PORT__}`,
-
-  url: global.__APP_ENV__ === 'production'
-    ? `https://${hostPort(DOMAIN)}/api`
-    : `http://${hostPort('localhost')}/api`,
-
-  protocol: global.__APP_ENV__ === 'production'
-    ? 'https'
-    : 'http',
-};
 
 export const cookie = {
   domain: global.__APP_ENV__ === 'production'
@@ -28,7 +15,7 @@ export const cookie = {
 
 export const domain = {
   development: `http://${hostPort('localhost')}`,
-  production: `https://${DOMAIN}`,
+  production: `https://${hostPort(DOMAIN)}`,
 }[global.__APP_ENV__];
 
 export const facebook = {
@@ -48,7 +35,6 @@ export const google = {
 };
 
 export default {
-  api,
   cookie,
   domain,
   facebook,
