@@ -1,7 +1,7 @@
 FROM node:6.9.1-slim
 
 ENV PORT=3000
-ENV APP_DOMAIN=fp.whisk.com
+ENV APP_DOMAIN=localhost
 ENV APP_ENV=production
 ENV SERVE_ASSETS=1
 
