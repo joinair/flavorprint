@@ -29,7 +29,7 @@ const BackendError = ({ message }) => {
   }
 
   const contactUs = (
-    <a href="mailto:support@whisk.com" style={styles.link}>
+    <a href="mailto:contact@vivanda.com" style={styles.link}>
       contact us
     </a>
   );

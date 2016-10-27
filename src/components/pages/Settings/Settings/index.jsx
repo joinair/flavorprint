@@ -252,8 +252,6 @@ class Settings extends Component {
                 </FormControl>
               </FormGroup>
 
-              {provider === 'whisk' && <SettingsPassword />}
-
               <FormGroup label="Username" multiline>
                 <FormControl>
                   <Input

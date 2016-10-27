@@ -7,11 +7,11 @@ const AuthenticationFormTerms = () => (
       By creating an account you agree to our{' '}
       <a
         className="AuthenticationForm-terms-link"
-        href="https://about.whisk.com/terms"
+        href="https://www.myflavorprint.com/TermsOfService.aspx"
         rel="noopener noreferrer"
         target="_blank"
       >
-        Terms & Conditions
+        Terms &amp; Conditions
       </a>
     </span>
   </div>
