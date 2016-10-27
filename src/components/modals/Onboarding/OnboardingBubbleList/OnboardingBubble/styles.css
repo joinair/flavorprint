@@ -6,7 +6,11 @@
   width: 90px;
 
   & + & {
-    margin-left: 40px;
+    margin-top: 25px;
+    @media (--s) {
+      margin-top: 0px;
+      margin-left: 40px;
+    }
   }
 
   @media (--m) {

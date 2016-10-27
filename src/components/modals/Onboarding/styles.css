@@ -54,6 +54,7 @@
       font-weight: bold;
       border-radius: var(--border-radius);
       text-align: center;
+      line-height: 33px;
     }
   }
 
