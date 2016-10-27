@@ -7,7 +7,7 @@ import './styles.css';
 
 const Mark = ({ width, height, mark }) => (
   <div className="Mark" style={{ width, height: (height || width) }}>
-    {map(mark.images, (image, i) => (
+    {mark && map(mark.images, (image, i) => (
       <img alt="" key={i} src={image} />
     ))}
   </div>
@@ -16,7 +16,7 @@ const Mark = ({ width, height, mark }) => (
 Mark.propTypes = {
   mark: PropTypes.shape({
     images: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
-  }).isRequired,
+  }),
 
   width: PropTypes.number.isRequired,
   height: PropTypes.number,
