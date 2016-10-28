@@ -49,7 +49,7 @@ const GuestMenu = ({ onLogInButtonClick, onSignUpButtonClick }) => {
 };
 
 const Menu = ({
-  avatar,
+  mark,
   email,
   firstName,
   isAuthenticated,
@@ -66,10 +66,10 @@ const Menu = ({
   const menu = isAuthenticated
     ? (
       <UserMenu
-        avatar={avatar}
         email={email}
         firstName={firstName}
         lastName={lastName}
+        mark={mark}
         onLogOut={onLogOut}
       />
     ) : (
@@ -141,7 +141,7 @@ const Menu = ({
 const AppHeader = ({
   isAuthenticated,
   profile: {
-    avatarUrl,
+    mark,
     email,
     firstName,
     lastName,
@@ -157,11 +157,11 @@ const AppHeader = ({
     <div className="AppHeader-natural">
       <div className="AppHeader-container">
         <Menu
-          avatar={avatarUrl}
           email={email}
           firstName={firstName}
           isAuthenticated={isAuthenticated}
           lastName={lastName}
+          mark={mark}
           routerPath={routerPath}
           onLogInButtonClick={onLogInButtonClick}
           onLogOut={onLogOut}
@@ -180,7 +180,7 @@ GuestMenu.propTypes = {
 };
 
 Menu.propTypes = {
-  avatar: PropTypes.string,
+  mark: PropTypes.object,
   email: PropTypes.string,
   firstName: PropTypes.string,
   isAuthenticated: PropTypes.bool,

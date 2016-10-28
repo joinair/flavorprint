@@ -11,9 +11,9 @@ import { on, off } from 'helpers/event';
 import iconSettings from 'assets/images/icons/icon-mobile-settings.svg';
 import iconLogout from 'assets/images/icons/icon-mobile-logout.svg';
 import Icon from 'components/ui-elements/Icon';
+import Mark from 'components/blocks/Mark';
 
 import './styles.css';
-import Avatar from 'components/ui-elements/Avatar';
 
 const linkIconClasses = name =>
   `AppHeader-user-dropdown-link-icon AppHeader-user-dropdown-link-icon--${name}`;
@@ -39,7 +39,7 @@ class UserMenu extends Component {
     }
   }
   render() {
-    const { avatar, email, firstName, onLogOut } = this.props;
+    const { mark, email, firstName, onLogOut } = this.props;
     const { isOpen } = this.state;
 
     const menuClasses = classnames(
@@ -56,12 +56,9 @@ class UserMenu extends Component {
             className="AppHeader-link AppHeader-user-title"
             ref="trigger"
           >
-            <Avatar
-              className="AppHeader-user-avatar"
-              height={34}
-              iconClassName="AppHeader-user-avatar-icon"
-              url={avatar}
-              width={34}
+            <Mark
+              width={55}
+              mark={mark}
             />
             <span className="AppHeader-link-text AppHeader-user-name">
               {username}
@@ -100,7 +97,7 @@ class UserMenu extends Component {
 }
 
 UserMenu.propTypes = {
-  avatar: PropTypes.string,
+  mark: PropTypes.object,
   email: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,
