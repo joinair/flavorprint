@@ -40,7 +40,8 @@
         content: '';
         transform: rotate(45deg);
         background-color: var(--color-paprika);
-      } }
+      }
+    }
   }
 
   @when disabled {
