@@ -16,7 +16,7 @@ const NotFound = () => {
     </Link>
   );
   const contactUs = (
-    <a href="mailto:support@whisk.com">
+    <a href="mailto:contact@vivanda.com">
       contact us
     </a>
   );

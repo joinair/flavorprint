@@ -1,6 +1,8 @@
 
 import Rx from 'rx';
 
+import initialLoad from 'helpers/initialLoad';
+
 import values from 'lodash/values';
 import identity from 'lodash/identity';
 
@@ -23,6 +25,8 @@ export default store => ({
   analyticsTag: 'Recipe feed',
 
   prepareData() {
+    if (initialLoad()) { return undefined; }
+
     const recipes$ = store.dispatch(
       loadOnboardingRecipes(values(RECIPES_SEED))
     );
