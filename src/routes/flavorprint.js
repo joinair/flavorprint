@@ -1,6 +1,8 @@
 
 import Rx from 'rx';
 
+import initialLoad from 'helpers/initialLoad';
+
 import identity from 'lodash/identity';
 
 import { FLAVORPRINT } from 'constants/Routes';
@@ -15,6 +17,8 @@ export default store => ({
   component: FlavorPrint,
 
   prepareData(...args) {
+    if (initialLoad()) { return undefined; }
+
     const homeRoute = home(store);
 
     return Rx.Observable
