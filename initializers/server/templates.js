@@ -9,7 +9,6 @@ export const head = (config, webpackAsset) => `
     <meta charset="utf-8" />
     <link rel="shortcut icon" href="${config.ASSETS_PUBLIC_PATH}/images/static-images/favicon2.ico" type="image/x-icon" />
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport" />
-    <meta name="apple-itunes-app" content="app-id=1133637674">
     ${
       (process.env.NODE_ENV !== 'development')
         ? `<link rel="stylesheet" type="text/css" href="${webpackAsset('style', 'css')}" />`
