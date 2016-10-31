@@ -1,10 +1,7 @@
 
-import noop from 'lodash/noop';
-
 import { PRODUCTS } from 'constants/Routes';
 
 import { loadDetailedProducts } from 'actions/products';
-import fetching from 'actions/fetching';
 
 import initialLoad from 'helpers/initialLoad';
 
@@ -17,14 +14,6 @@ export default store => ({
   prepareData: () => {
     if (initialLoad()) { return undefined; }
 
-    store.dispatch(fetching.start(fetching.GROUP_IDS.PRODUCTS));
-
-    const result$ = store.dispatch(loadDetailedProducts());
-
-    result$.subscribe(noop, noop, () => (
-      store.dispatch(fetching.stop(fetching.GROUP_IDS.PRODUCTS))
-    ));
-
-    return result$;
+    return store.dispatch(loadDetailedProducts());
   },
 });

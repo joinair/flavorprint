@@ -3,6 +3,8 @@
 @import "imports/media-queries.css";
 
 @component Feed {
+  position: relative;
+
   @descendent list {
     display: flex;
     flex-direction: row;
@@ -20,5 +22,18 @@
   @descendent showMoreButton {
     display: block;
     margin: 0 auto 60px;
+  }
+
+  @descendent loadingCover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(247,247,247,.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

@@ -18,19 +18,23 @@ const Feed = ({
   recommendations,
   showMore,
 }) => {
-  if (isFetching) {
+  if (!recommendations.length && isFetching) {
     return <Preloader />;
   }
 
-  const preloader = showMore && isFetching && <Preloader />;
   const CardComponent = component;
 
-  const showMoreButton = preloader || showMore && (
+  const showMoreHandler = () => {
+    document.body.scrollTop = 0;
+    return onShowMore();
+  };
+
+  const showMoreButton = showMore && (
     <Button
       className="Feed-showMoreButton"
       outline
       size="xLarge"
-      onClick={onShowMore}
+      onClick={showMoreHandler}
     >
       More {recommendationName}
     </Button>
@@ -50,7 +54,14 @@ const Feed = ({
 
   return (
     <div>
-      <div className="Feed">{content}</div>
+      <div className="Feed">
+        {content}
+        {isFetching && (
+          <div className="Feed-loadingCover">
+            <Preloader />
+          </div>
+        )}
+      </div>
       {showMoreButton}
     </div>
   );

@@ -3,12 +3,15 @@ import Rx from 'rx';
 
 import identity from 'lodash/identity';
 import map from 'lodash/map';
+
 import { API_CALL } from 'middleware/API';
 import { CHAIN } from 'middleware/chain';
 
+import fetching from 'actions/fetching';
+
 const SIZE = 8;
 
-export const loadRecommendations = types => ({ type, ignore } = {}) => ({
+export const loadRecommendations = (types) => ({ type, ignore } = {}) => ({
   [API_CALL]: {
     endpoint: '/custom/recommendations',
     query: {
@@ -33,8 +36,9 @@ export const loadDetails = types => recommendation => ({
   },
 });
 
-export const loadDetailedRecommendations = (loadRecs, loadDet) => params => ({
+export const loadDetailedRecommendations = (loadRecs, loadDet, fetchingType) => params => ({
   [CHAIN]: [
+    fetching.start(fetchingType),
     () => loadRecs(params),
     recommendations => dispatch => Rx.Observable.from(
       map(
@@ -42,5 +46,6 @@ export const loadDetailedRecommendations = (loadRecs, loadDet) => params => ({
         x => dispatch(loadDet(x))
       )
     ).flatMap(identity),
+    fetching.stop(fetchingType),
   ],
 });

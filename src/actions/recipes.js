@@ -11,6 +11,8 @@ import {
   loadDetailedRecommendations,
 } from './recommendations';
 
+import fetching from 'actions/fetching';
+
 export const LOAD_RECIPES_REQUEST = 'LOAD_RECIPES_REQUEST';
 export const LOAD_RECIPES_SUCCESS = 'LOAD_RECIPES_SUCCESS';
 export const LOAD_RECIPES_FAILURE = 'LOAD_RECIPES_FAILURE';
@@ -56,6 +58,7 @@ export const loadRecipeDetails = loadDetails([
 export const loadDetailedRecipes = loadDetailedRecommendations(
   loadRecipes,
   loadRecipeDetails,
+  fetching.GROUP_IDS.RECIPES
 );
 
 export default {

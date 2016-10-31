@@ -5,6 +5,8 @@ import {
   loadDetailedRecommendations,
 } from './recommendations';
 
+import fetching from 'actions/fetching';
+
 export const LOAD_PRODUCTS_REQUEST = 'LOAD_PRODUCTS_REQUEST';
 export const LOAD_PRODUCTS_SUCCESS = 'LOAD_PRODUCTS_SUCCESS';
 export const LOAD_PRODUCTS_FAILURE = 'LOAD_PRODUCTS_FAILURE';
@@ -28,6 +30,7 @@ export const loadProductDetails = loadDetails([
 export const loadDetailedProducts = loadDetailedRecommendations(
   loadProducts,
   loadProductDetails,
+  fetching.GROUP_IDS.PRODUCTS
 );
 
 export default {
