@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 import selectors from 'reducers/selectors';
-import { ONBOARDING } from 'constants/Modals';
+import { ONBOARDING, VIDEO_PROMO } from 'constants/Modals';
 import { FLAVORPRINT } from 'constants/Routes';
 
 import modal from 'actions/modal';
@@ -21,6 +21,9 @@ const actions = {
       dispatch(modal.open(ONBOARDING));
     }
   },
+
+  onPromo: () =>
+    modal.open(VIDEO_PROMO),
 };
 
 export default connect(null, actions)(Home);

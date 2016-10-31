@@ -64,7 +64,7 @@ Details.propTypes = {
   title: PropTypes.string,
 };
 
-const Main = ({ onStartOnboarding }) => (
+const Main = ({ onStartOnboarding, onPromo }) => (
   <div className="Home-main">
     <div className="Home-main-content Home-content Home-columns">
       <div className="Home-columns-column">
@@ -85,7 +85,7 @@ const Main = ({ onStartOnboarding }) => (
       </div>
 
       <div className="Home-columns-column">
-        <div className="Home-main-video">
+        <div className="Home-main-video" onClick={onPromo}>
           <Icon glyph={iconPlay} className="Home-main-video-play" />
         </div>
       </div>
@@ -220,9 +220,9 @@ const Vivanda = () => (
   </div>
 );
 
-const Home = ({ onStartOnboarding }) => (
+const Home = ({ onStartOnboarding, onPromo }) => (
   <div className="Home">
-    <Main onStartOnboarding={onStartOnboarding} />
+    <Main onStartOnboarding={onStartOnboarding} onPromo={onPromo} />
     <Recommendations />
     <Taste />
     <Vivanda />
@@ -230,10 +230,12 @@ const Home = ({ onStartOnboarding }) => (
 );
 
 Main.propTypes = {
+  onPromo: PropTypes.func.isRequired,
   onStartOnboarding: PropTypes.func.isRequired,
 };
 
 Home.propTypes = {
+  onPromo: PropTypes.func.isRequired,
   onStartOnboarding: PropTypes.func.isRequired,
 };
 

@@ -7,6 +7,7 @@ import {
   DELETE_ACCOUNT,
   ONBOARDING,
   REQUEST_RESET_PASSWORD,
+  VIDEO_PROMO,
 } from 'constants/Modals';
 
 import assign from 'lodash/assign';
@@ -19,12 +20,14 @@ import BodyClassName from 'components/ui-elements/BodyClassName';
 import DeleteAccount from 'components/modals/DeleteAccount';
 import Onboarding from 'components/modals/Onboarding';
 import RequestResetPassword from 'components/modals/RequestResetPassword';
+import VideoPromo from 'components/modals/VideoPromo';
 
 const components = {
   [AUTHENTICATION]: Authentication,
   [DELETE_ACCOUNT]: DeleteAccount,
   [ONBOARDING]: Onboarding,
   [REQUEST_RESET_PASSWORD]: RequestResetPassword,
+  [VIDEO_PROMO]: VideoPromo,
 };
 
 const content = (modal, onModalClose) => {

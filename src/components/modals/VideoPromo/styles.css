@@ -1,0 +1,19 @@
+
+@import "imports/variables";
+
+@component VideoPromo {
+  border-radius: var(--border-radius);
+  background: white;
+
+  @descendent header {
+    border-radius: var(--border-radius);
+    background: white;
+    height: 50px;
+  }
+
+  @descendent content {
+    padding: 10px 10px 5px 10px;
+    background: white;
+    border-radius: var(--border-radius);
+  }
+};
