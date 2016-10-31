@@ -8,7 +8,6 @@ import bind from 'lodash/bind';
 
 import { on, off } from 'helpers/event';
 
-import iconSettings from 'assets/images/icons/icon-mobile-settings.svg';
 import iconLogout from 'assets/images/icons/icon-mobile-logout.svg';
 import Icon from 'components/ui-elements/Icon';
 import Mark from 'components/blocks/Mark';
@@ -66,17 +65,6 @@ class UserMenu extends Component {
           </div>
           <div className="AppHeader-user-dropdown">
             <div className="AppHeader-user-dropdown-container">
-              <div className="AppHeader-user-dropdown-item">
-                <Link to={{ pathname: '/settings' }} className="AppHeader-user-dropdown-link">
-                  <div className="AppHeader-user-dropdown-link-iconContainer">
-                    <Icon
-                      className={linkIconClasses('settings')}
-                      glyph={iconSettings}
-                    />
-                  </div>
-                  <div className="AppHeader-user-dropdown-link-text">Settings</div>
-                </Link>
-              </div>
               <div className="AppHeader-user-dropdown-item">
                 <a onClick={onLogOut} className="AppHeader-user-dropdown-link">
                   <div className="AppHeader-user-dropdown-link-iconContainer">

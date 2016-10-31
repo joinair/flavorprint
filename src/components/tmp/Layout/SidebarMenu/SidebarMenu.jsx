@@ -2,11 +2,10 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 
-import { SETTINGS, RECIPES, FLAVORPRINT } from 'constants/Routes';
+import { RECIPES, FLAVORPRINT } from 'constants/Routes';
 
 import iconChefHat from 'assets/images/icons/icon-mobile-chef-hat.svg';
 import iconHeart from 'assets/images/icons/icon-mobile-heart.svg';
-import iconSettings from 'assets/images/icons/icon-mobile-settings.svg';
 import iconLogout from 'assets/images/icons/icon-mobile-logout.svg';
 
 import './styles.css';
@@ -144,23 +143,6 @@ const SidebarMenu = ({
             </div>
           </Link>
         </div>
-
-        {
-          user.isAuthenticated &&
-            <div className="MobileMenu-menu-item">
-              <Link to={SETTINGS} className="MobileMenu-menu-item-link">
-                <div className="MobileMenu-menu-item-iconContainer">
-                  <Icon
-                    className="MobileMenu-menu-item-icon MobileMenu-menu-item-icon--settings"
-                    glyph={iconSettings}
-                  />
-                </div>
-                <div className="MobileMenu-menu-item-text">
-                  Profile settings
-                </div>
-              </Link>
-            </div>
-        }
 
         <LogOutMenuItem
           isAuthenticated={user.isAuthenticated}
