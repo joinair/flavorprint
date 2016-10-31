@@ -10,7 +10,7 @@ const browserNotSupportedImage2x =
   `${config.ASSETS_PUBLIC_PATH}/images/static-images/browser-not-supported@2x.png`;
 
 const favicon =
-  `${config.ASSETS_PUBLIC_PATH}/images/static-images/favicon.ico`;
+  `${config.ASSETS_PUBLIC_PATH}/images/static-images/favicon2.ico`;
 
 const source = `
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ const source = `
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta charset="utf-8" />
-    <title>Whisk - Recipe recommendations, smart Cookbook, and Shopping list</title>
+    <title>FlavorPrint</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
     <link rel="shortcut icon" href="${favicon}" type="image/x-icon" />
     <style type="text/css">

@@ -7,7 +7,7 @@ export const head = (config, webpackAsset) => `
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
     <meta charset="utf-8" />
-    <link rel="shortcut icon" href="${config.ASSETS_PUBLIC_PATH}/images/static-images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="${config.ASSETS_PUBLIC_PATH}/images/static-images/favicon2.ico" type="image/x-icon" />
     <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport" />
     <meta name="apple-itunes-app" content="app-id=1133637674">
     ${
