@@ -1,6 +1,7 @@
 
 import uniq from 'lodash/uniq';
 import filter from 'lodash/filter';
+import merge from 'lodash/merge';
 
 import createReducer from 'helpers/createReducer';
 
@@ -59,13 +60,10 @@ export default createReducer(initialState, {
 
   [LOAD_ONBOARDING_RECIPES_SUCCESS]: (state, { payload }) => ({
     ...state,
-    currentStep: 0,
     recipes: normalizeEntities(payload),
-    selectedRecipes: [],
   }),
 
-  [ONBOARDING_SELECT_RECIPE_REQUEST]: (state, { payload }) => ({
-    ...state,
+  [ONBOARDING_SELECT_RECIPE_REQUEST]: (state, { payload }) => ({ ...state,
     selectedRecipes: uniq(
       [...state.selectedRecipes, payload.sourceId],
     ),
@@ -84,8 +82,7 @@ export default createReducer(initialState, {
 
   [LOAD_ONBOARDING_QUESTIONS_SUCCESS]: (state, { payload }) => ({
     ...state,
-    currentStep: 0,
-    questions: payload,
+    questions: merge({}, state.questions, payload),
   }),
 
   [ONBOARDING_ANSWER_QUESTION_SUCCESS]: (state, { payload }) => ({

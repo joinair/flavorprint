@@ -44,16 +44,16 @@ const selector = createStructuredSelector({
 const actions = {
   onNext: () => (dispatch, getState) => {
     const state = getState();
-    const isFinished = selectors.isFinishedOnboardingSelector(state);
-    const isAuthenticated = selectors.isAuthenticatedSelector(state);
+    const isLast = selectors.isLastOnboardingStepSelector(state);
     const step = stepSelector(state);
-
-    if (isFinished && isAuthenticated) {
-      return dispatch(router.push(FLAVORPRINT));
-    }
 
     if (step.onNext) {
       dispatch(step.onNext());
+    }
+
+    if (isLast) {
+      dispatch(onboarding.skipStep());
+      return dispatch(router.push(FLAVORPRINT));
     }
 
     dispatch(onboarding.skipStep());

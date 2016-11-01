@@ -1,4 +1,5 @@
 
+import every from 'lodash/every';
 import map from 'lodash/map';
 
 import { API_CALL } from 'middleware/API';
@@ -25,19 +26,25 @@ export const ONBOARDING_DESELECT_RECIPE_REQUEST = 'ONBOARDING_DESELECT_RECIPE_RE
 export const ONBOARDING_DESELECT_RECIPE_SUCCESS = 'ONBOARDING_DESELECT_RECIPE_SUCCESS';
 export const ONBOARDING_DESELECT_RECIPE_FAILURE = 'ONBOARDING_DESELECT_RECIPE_FAILURE';
 
-export const loadOnboardingRecipes = sourceIds => ({
-  [API_CALL]: {
-    endpoint: '/custom/onboarding/recipes',
-    query: {
-      sourceIds: sourceIds.join(','),
+export const loadOnboardingRecipes = sourceIds => (dispatch, getState) => {
+  const { recipes } = getState().onboarding;
+  const isLoaded = every(sourceIds, id => id in recipes);
+  if (isLoaded) return;
+
+  return dispatch({
+    [API_CALL]: {
+      endpoint: '/custom/onboarding/recipes',
+      query: {
+        sourceIds: sourceIds.join(','),
+      },
+      types: [
+        LOAD_ONBOARDING_RECIPES_REQUEST,
+        LOAD_ONBOARDING_RECIPES_SUCCESS,
+        LOAD_ONBOARDING_RECIPES_FAILURE,
+      ],
     },
-    types: [
-      LOAD_ONBOARDING_RECIPES_REQUEST,
-      LOAD_ONBOARDING_RECIPES_SUCCESS,
-      LOAD_ONBOARDING_RECIPES_FAILURE,
-    ],
-  },
-});
+  });
+};
 
 const likeRecipe = sourceId => ({
   payload: { sourceId },

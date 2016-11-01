@@ -1,23 +1,10 @@
 
-import Rx from 'rx';
-
 import initialLoad from 'helpers/initialLoad';
-
-import values from 'lodash/values';
-import identity from 'lodash/identity';
 
 import { HOME } from 'constants/Routes';
 import Home from 'components/pages/Home';
 
-import {
-  loadOnboardingQuestions,
-  loadOnboardingRecipes,
-} from 'actions/onboarding';
-
-import {
-  RECIPES_SEED,
-  QUESTIONS,
-} from 'constants/Onboarding';
+import { loadOnboardingData } from 'actions/onboarding';
 
 export default store => ({
   path: HOME,
@@ -27,16 +14,6 @@ export default store => ({
   prepareData() {
     if (initialLoad()) { return undefined; }
 
-    const recipes$ = store.dispatch(
-      loadOnboardingRecipes(values(RECIPES_SEED))
-    );
-
-    const questions$ = store.dispatch(
-      loadOnboardingQuestions(values(QUESTIONS))
-    );
-
-    return Rx.Observable
-      .from([recipes$, questions$])
-      .flatMap(identity);
+    return store.dispatch(loadOnboardingData());
   },
 });

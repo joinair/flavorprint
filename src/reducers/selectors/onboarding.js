@@ -14,6 +14,14 @@ export const onboardingSelector = ({ onboarding }) =>
 export const isFirstOnboardingStepSelector = state =>
   state.onboarding.currentStep === 0;
 
+export const isLastOnboardingStepSelector = createSelector(
+  state => filterFinishedSteps(onboardingSelector(state)),
+  state => state.onboarding.currentStep,
+  (onboarding, currentStep) =>
+    isEmpty(onboarding) ||
+    currentStep >= onboarding.length - 1
+);
+
 export const onboardingCurrentStepSelector = createSelector(
   onboardingSelector,
   state => state.onboarding.currentStep,
@@ -34,6 +42,7 @@ export const isFinishedOnboardingSelector = createSelector(
 
 export default {
   isFirstOnboardingStepSelector,
+  isLastOnboardingStepSelector,
   isFinishedOnboardingSelector,
   onboardingSelector,
   onboardingCurrentStepSelector,

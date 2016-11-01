@@ -1,4 +1,6 @@
 
+import every from 'lodash/every';
+
 import { API_CALL } from 'middleware/API';
 
 export const LOAD_ONBOARDING_QUESTIONS_REQUEST = 'LOAD_ONBOARDING_QUESTIONS_REQUEST';
@@ -11,17 +13,23 @@ export const ONBOARDING_ANSWER_QUESTION_FAILURE = 'ONBOARDING_ANSWER_QUESTION_FA
 
 export const ONBOARDING_MARK_ANSWER = 'ONBOARDING_MARK_ANSWER';
 
-export const loadOnboardingQuestions = questionIds => ({
-  [API_CALL]: {
-    endpoint: '/custom/onboarding/questions',
-    query: { questionIds },
-    types: [
-      LOAD_ONBOARDING_QUESTIONS_REQUEST,
-      LOAD_ONBOARDING_QUESTIONS_SUCCESS,
-      LOAD_ONBOARDING_QUESTIONS_FAILURE,
-    ],
-  },
-});
+export const loadOnboardingQuestions = questionIds => (dispatch, getState) => {
+  const { questions } = getState().onboarding;
+  const isLoaded = every(questionIds, id => id in questions);
+  if (isLoaded) return;
+
+  return dispatch({
+    [API_CALL]: {
+      endpoint: '/custom/onboarding/questions',
+      query: { questionIds },
+      types: [
+        LOAD_ONBOARDING_QUESTIONS_REQUEST,
+        LOAD_ONBOARDING_QUESTIONS_SUCCESS,
+        LOAD_ONBOARDING_QUESTIONS_FAILURE,
+      ],
+    },
+  });
+};
 
 export const markAnswer = (questionId, mark) => ({
   type: ONBOARDING_MARK_ANSWER,

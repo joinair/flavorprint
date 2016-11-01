@@ -15,6 +15,7 @@ import {
 import {
   TYPE_BUBBLES,
   BUTTON_CONTINUE,
+  BUTTON_SKIP,
 } from 'constants/Onboarding';
 
 const stepQuestions = ({
@@ -59,7 +60,7 @@ const stepQuestions = ({
     ...options,
     type: TYPE_BUBBLES,
     title,
-    button: BUTTON_CONTINUE,
+    button: values.length ? BUTTON_CONTINUE : BUTTON_SKIP,
     isFinished,
 
     bubbles,
