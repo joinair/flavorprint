@@ -11,7 +11,6 @@ import { PRODUCTS, RECIPES } from 'constants/Routes';
 import Button from 'components/ui-elements/Button';
 import Icon from 'components/ui-elements/Icon';
 
-import iconPlay from 'assets/images/icons/icon-play.svg';
 import iconProductRecs from 'assets/images/icons/icon-product-recs.svg';
 import iconRecipeRecs from 'assets/images/icons/icon-recipe-recs.svg';
 import iconMore from 'assets/images/icons/icon-more.svg';
@@ -85,9 +84,7 @@ const Main = ({ onStartOnboarding, onPromo }) => (
       </div>
 
       <div className="Home-columns-column">
-        <div className="Home-main-video" onClick={onPromo}>
-          <Icon glyph={iconPlay} className="Home-main-video-play" />
-        </div>
+        <div className="Home-main-video" onClick={onPromo} />
       </div>
     </div>
   </div>

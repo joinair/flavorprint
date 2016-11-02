@@ -107,8 +107,10 @@
     }
 
     @descendent video {
-      background: rgba(255,255,255,.5);
-      border: 2px solid rgba(0,0,0,.7);
+      background: url('/images/static-images/video-placeholder.png');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: 400px 230px;
       border-radius: var(--border-radius);
       display: flex;
       align-items: center;
@@ -118,6 +120,10 @@
       width: 320px;
       height: 184px;
 
+      @media (--retina) {
+        background-image: url('/images/static-images/video-placeholder@2x.png');
+      }
+
       @media (--s) {
         width: 400px;
         height: 230px;
@@ -125,11 +131,6 @@
 
       @media (--m) {
         margin-top: 0;
-      }
-
-      @descendent play {
-        width: 60px;
-        height: 60px;
       }
     }
   }
