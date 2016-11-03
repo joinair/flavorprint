@@ -33,10 +33,4 @@ webpack(webpackConfig, (_error, stats) => {
     path.join(config.ASSETS_PATH, config.MANIFEST_FILE),
     JSON.stringify(manifest)
   );
-
-  exec(
-    `cd ${process.cwd()} &&
-     mkdir ${config.ASSETS_PATH}/images/ &&
-     cp -R ${config.STATIC_ASSETS_PATH}/images/static-images ${config.ASSETS_PATH}/images/`
-  );
 });

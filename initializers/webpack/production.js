@@ -3,6 +3,7 @@ import path from 'path';
 import webpack from 'webpack';
 
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import common from './common';
 import config from '../config';
@@ -10,8 +11,7 @@ import config from '../config';
 common.module.loaders.push({
   test: /\.css$/,
   loader: ExtractTextPlugin.extract('style-loader', [
-    `css-loader?root=${config.ASSETS_PUBLIC_PATH.substr(1)}&-autoprefixer`,
-    'csscomb-loader',
+    `css-loader?root=${config.ASSETS_PUBLIC_PATH.substr(1)}&-autoprefixer`, 'csscomb-loader',
     'postcss-loader',
   ]),
   include: [common.root, common.entryDir],
@@ -52,6 +52,12 @@ export default {
       'global.__BUILD_NUMBER__': process.env.CIRCLE_BUILD_NUM,
       'process.env.NODE_ENV': "'production'",
     }),
+    new CopyWebpackPlugin([{
+      context: path.join(config.STATIC_ASSETS_PATH, 'images'),
+      from: path.join('static-images', '**', '*'),
+      to: 'images',
+      toType: 'dir',
+    }]),
   ],
 
   resolve: common.resolve,
