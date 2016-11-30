@@ -101,7 +101,7 @@ const Recommendations = () => (
           buttonUrl={PRODUCTS}
           iconProps={{
             glyph: iconProductRecs,
-            style: { width: 63, height: 58 },
+            style: { width: 41, height: 54 },
           }}
         />
       </div>
