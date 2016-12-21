@@ -17,7 +17,7 @@ const VideoPromo = ({ onClose }) => (
       <iframe
         allowFullScreen
         frameBorder="0"
-        src="https://www.youtube.com/embed/GGHC4BcRTAo?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1"
+        src="https://www.youtube.com/embed/n85Q5pmRHGc?rel=0&amp;controls=0&amp;showinfo=0&amp;autoplay=1"
         width="640"
         height="360"
       />
