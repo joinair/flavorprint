@@ -41,6 +41,13 @@ const apiCall = (
   const subject = new Rx.Subject();
   const HTTPMethod = method.toLowerCase();
 
+  if (!url) {
+    return subject.onError({
+      data: {},
+      error: { text: 'No url provided' },
+    });
+  }
+
   const formattedUrl = url.match(/^\/\//)
     ? `${defaultProtocol()}${url}`
     : url;

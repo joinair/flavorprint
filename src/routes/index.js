@@ -10,6 +10,7 @@ import productsRoute from './products';
 import recipesRoute from './recipes';
 import resetPasswordRoute from './resetPassword';
 import flavorprint from './flavorprint';
+import statics from './statics';
 
 import OAuthCallbackRoute from './OAuthCallback';
 
@@ -30,6 +31,7 @@ export default store => [
           productsRoute(store),
           recipesRoute(store),
           resetPasswordRoute(store),
+          ...statics(store),
 
           notFound(store), // WARNING: this route must be last
         ],
