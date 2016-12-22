@@ -54,6 +54,7 @@
     fill: white;
     justify-content: center;
     display: none;
+    pointer-events: none;
 
     @when visible {
       display: flex;
