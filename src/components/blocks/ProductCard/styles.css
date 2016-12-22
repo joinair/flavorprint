@@ -97,7 +97,6 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: center;
-    padding-left: 13px;
     margin-top: -5px;
 
     @descendent flavor {

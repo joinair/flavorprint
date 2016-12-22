@@ -109,15 +109,6 @@ class ProductCard extends Component {
         )}
 
         <div className="ProductCard-info">
-          <div className="ProductCard-match">
-            <div className="ProductCard-match-percent">
-              95%
-            </div>
-            <div className="ProductCard-match-text">
-              Match
-            </div>
-          </div>
-
           <div className="ProductCard-flavors">
             {map(topFlavors, (flavor, i) => (
               <div className="ProductCard-flavors-flavor" key={i}>
