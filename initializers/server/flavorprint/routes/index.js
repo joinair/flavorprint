@@ -16,6 +16,10 @@ export default [
   ['post', '/api/auth/facebook', facebook],
   ['post', '/api/auth/google', google],
 
+  // User interactions
+  ['get', '/api/custom/users/interactions',
+    passThroughWithUser(id => `/v3/users/${id}/interactions`)],
+
   // Like/Dislike recipes
   ['post', '/api/custom/users/interactions',
     passThroughWithUser(id => `/v3/users/${id}/interactions`)],

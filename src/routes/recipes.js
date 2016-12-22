@@ -1,7 +1,10 @@
 
+import Rx from 'rx';
+
 import { RECIPES } from 'constants/Routes';
 
 import { loadDetailedRecipes } from 'actions/recipes';
+import { loadInteractions } from 'actions/interactions';
 
 import initialLoad from 'helpers/initialLoad';
 
@@ -14,6 +17,9 @@ export default store => ({
   prepareData: () => {
     if (initialLoad()) { return undefined; }
 
-    return store.dispatch(loadDetailedRecipes());
+    return Rx.Observable.from([
+      store.dispatch(loadDetailedRecipes()),
+      store.dispatch(loadInteractions()),
+    ]).flatMap(x => x);
   },
 });

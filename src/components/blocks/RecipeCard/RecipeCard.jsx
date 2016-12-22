@@ -19,6 +19,7 @@ import Icon from 'components/ui-elements/Icon';
 
 const RecipeCard = ({
   recommendation,
+  shouldShowScore,
   onLike,
   onDislike,
 }) => {
@@ -28,6 +29,7 @@ const RecipeCard = ({
     topFlavors,
     compatibilityScore,
   } = recommendation;
+
   const link = get(recommendation, 'details.link');
 
   const image = recipeImageUrl(recommendation);
@@ -95,7 +97,7 @@ const RecipeCard = ({
         )}
 
         <div className="RecipeCard-info">
-          {(compatibilityScore === 0 || compatibilityScore) && (
+          {shouldShowScore && (compatibilityScore === 0 || compatibilityScore) && (
             <div className="RecipeCard-match">
               <div className="RecipeCard-match-percent">
                 {Math.round(compatibilityScore)}%
@@ -131,6 +133,7 @@ RecipeCard.propTypes = {
     originName: PropTypes.string.isRequired,
     details: PropTypes.object,
   }).isRequired,
+  shouldShowScore: PropTypes.bool,
 
   onLike: PropTypes.func.isRequired,
   onDislike: PropTypes.func.isRequired,

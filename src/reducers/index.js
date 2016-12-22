@@ -11,6 +11,7 @@ import recipes from './recipes';
 import router from './router';
 import sidebarMenu from './sidebarMenu';
 import user from './user';
+import interactions from './interactions';
 
 export default combineReducers({
   fetching,
@@ -23,4 +24,5 @@ export default combineReducers({
   router,
   sidebarMenu,
   user,
+  interactions,
 });
