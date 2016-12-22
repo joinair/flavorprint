@@ -31,7 +31,11 @@ const stepSnack = stepRecipes(
   'When it\'s time for a snack, what would you choose?',
   [
     { sourceId: RECIPES_SEED.chipotleLimeMixedNuts, image: 'chipotleLimeMixedNuts' },
-    { sourceId: RECIPES_SEED.houmousWithPitaBread, image: 'houmousWithPitaBread' },
+    {
+      sourceId: RECIPES_SEED.houmousWithPitaBread,
+      image: 'houmousWithPitaBread',
+      title: 'Hummus with Pita Bread',
+    },
     { sourceId: RECIPES_SEED.bakedCamembertWithBacon, image: 'bakedCamembertWithBacon' },
     { sourceId: RECIPES_SEED.blueberryMuffins, image: 'blueberryMuffins' },
   ]
