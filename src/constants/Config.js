@@ -19,7 +19,7 @@ export const domain = {
 
 export const facebook = {
   id: global.__APP_ENV__ === 'production'
-    ? '1439473699618528'
+    ? '949513865124484'
     : '1785132991698406',
 };
 
