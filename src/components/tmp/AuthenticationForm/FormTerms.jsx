@@ -1,18 +1,19 @@
 
 import React from 'react';
+import { Link } from 'react-router';
+
+import { TERMS_OF_SERVICE } from 'constants/Routes';
 
 const AuthenticationFormTerms = () => (
   <div className="AuthenticationForm-terms">
     <span>
       By creating an account you agree to our{' '}
-      <a
+      <Link
         className="AuthenticationForm-terms-link"
-        href="https://www.myflavorprint.com/TermsOfService.aspx"
-        rel="noopener noreferrer"
-        target="_blank"
+        to={TERMS_OF_SERVICE}
       >
         Terms &amp; Conditions
-      </a>
+      </Link>
     </span>
   </div>
 );
