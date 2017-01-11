@@ -37,6 +37,17 @@ if (cluster.isMaster) {
   let server;
   const application = express();
 
+  if (process.env.NODE_ENV !== 'development') {
+    application.use((req, res, next) => {
+      if ('x-forwarded-proto' in req.headers &&
+        req.headers['x-forwarded-proto'] !== 'https') {
+        res.redirect(`https://${process.env.APP_DOMAIN}${req.url}`);
+      } else {
+        next();
+      }
+    });
+  }
+
   application.use((req, res, next) => {
     const reqDomain = domain.create();
     reqDomain.add(req);
