@@ -1,10 +1,12 @@
 
+import config from 'constants/Config';
+
 import cookies from 'helpers/cookies';
 
 import forEach from 'lodash/forEach';
 
 const expires = 365;
-const secure = process.env.NODE_ENV !== 'development';
+const { secure } = config.cookie;
 
 export default selector => store => next => action => {
   next(action);

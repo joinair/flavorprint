@@ -6,15 +6,24 @@ const hostPort = host =>
     ? host
     : `${host}:${global.__PORT__}`;
 
+const protocol =
+  (global.Platform.OS !== 'browser')
+    ? 'https:'
+    : document.location.protocol;
+
 export const cookie = {
   domain: global.__APP_ENV__ === 'production'
     ? '.' + DOMAIN
     : 'localhost',
+
+  secure:
+    process.env.NODE_ENV !== 'development' &&
+    protocol === 'https:',
 };
 
 export const domain = {
   development: `http://${hostPort('localhost')}`,
-  production: `https://${DOMAIN}`,
+  production: `${protocol}://${DOMAIN}`,
 }[global.__APP_ENV__];
 
 export const facebook = {
