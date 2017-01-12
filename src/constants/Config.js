@@ -23,7 +23,7 @@ export const cookie = {
 
 export const domain = {
   development: `http://${hostPort('localhost')}`,
-  production: `${protocol}://${DOMAIN}`,
+  production: `${protocol}//${DOMAIN}`,
 }[global.__APP_ENV__];
 
 export const facebook = {
