@@ -206,7 +206,7 @@ const Vivanda = () => (
       <Details
         title="Insights powered by Vivanda"
         text="
-          Vivanda's mission is to enable our omni-channel partners to better
+          Vivanda's mission is to enable our food ecosystem partners to better
           meet their consumers' needs with an enhanced and relevant food
           experience through personalization and added insights.
         "
