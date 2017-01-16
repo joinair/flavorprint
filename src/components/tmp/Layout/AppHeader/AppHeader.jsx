@@ -127,7 +127,7 @@ const Menu = ({
         }
       >
         <Link to={FLAVORPRINT} className="AppHeader-link">
-          <span className="AppHeader-link-text">FlavorPrint</span>
+          <span className="AppHeader-link-text">Your FlavorPrint</span>
         </Link>
       </div>
 

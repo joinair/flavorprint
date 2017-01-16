@@ -109,7 +109,7 @@ const Recommendations = () => (
       <div className="Home-columns-column Home-recs-right">
         <Details
           title="Recipe recommendations"
-          text="Discover delicious recipes that are perfectly matched to your unique tastes."
+          text="Discover delicious recipes that are perfectly matched to your unique taste."
           buttonText="Explore recipes"
           buttonUrl={RECIPES}
           iconProps={{
@@ -130,9 +130,18 @@ class Taste extends Component {
 
     this.state = {
       steps: [
-        { percent: '87%', text: <span>Taste Drives Food<br />Choise Statistic</span> },
-        { percent: '89%', text: <span>Taste Drives Food<br />Choise Statistic</span> },
-        { percent: '90%', text: <span>Taste Drives Food<br />Choise Statistic</span> },
+        { percent: '59%', text: 'of consumers use devices to make shopping lists or meal plans.' },
+        { percent: '59%', text: 'of 25- to 34-year-olds head to the kitchen with either their smartphones or tablets.' },
+        { percent: '50%', text: 'of purchases are influenced by at least one digital touch point.' },
+        { percent: '86%', text: 'of foodies say the internet is their no. 1 source of food information.' },
+        { percent: '60%', text: 'of meals are prepared at home.' },
+        { percent: '78%', text: 'say that they visited food brand\'s social pages to find recipes and tips.' },
+        { percent: '30%', text: 'of consumers participate in some kind of specialized approach to eating.' },
+        { percent: '90%', text: 'of consumers find custom content useful.' },
+        { percent: '87%', text: 'of consumers say the online retailer that personalizes the best influences them to buy more.' },
+        { percent: '59%', text: 'of consumers want personalization when grocery shopping.' },
+        { percent: '39%', text: 'of shoppers who received a personalized coupon, promotion, or recommendation spend more.' },
+        { percent: '87%', text: 'of consumers say that taste ranks number one when it comes to food choices.' },
       ],
 
       previousStep: null,
@@ -141,7 +150,7 @@ class Taste extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.tick, 2000);
+    this.interval = setInterval(this.tick, 5000);
   }
 
   componentWillUnmount() {
@@ -197,10 +206,9 @@ const Vivanda = () => (
       <Details
         title="Insights powered by Vivanda"
         text="
-          Vivanda’s company mission is to be the personal and trusted food
-          advisor for the Network of Food. We help our customers build brand
-          loyalty and grow by helping them create seamless, contextualized
-          and personalized food experiences.
+          Vivanda's mission is to enable our omni-channel partners to better
+          meet their consumers' needs with an enhanced and relevant food
+          experience through personalization and added insights.
         "
         buttonText="Learn more"
         buttonUrl="http://vivanda.com"
