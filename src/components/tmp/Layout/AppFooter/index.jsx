@@ -8,10 +8,11 @@ import iconTwitter from 'assets/images/icons/icon-twitter.svg';
 import iconFacebook from 'assets/images/icons/icon-facebook.svg';
 import './styles.css';
 
-const TextLink = ({ to, children }) =>
+const TextLink = ({ to, href, children }) =>
   <div className="AppFooter-item">
     <Link
       to={to}
+      href={href}
       className="AppFooter-link"
     >
       {children}
@@ -35,10 +36,11 @@ const AppFooter = () =>
     <div className="AppFooter-container">
       <TextLink to={PRIVACY_POLICY}>Privacy</TextLink>
       <TextLink to={TERMS_OF_SERVICE}>Terms</TextLink>
-      <div className="AppFooter-item">© 2012 – 2016 FlavorPrint</div>
+      <TextLink href="mailto:contact@vivanda.com">Contact us</TextLink>
+      <div className="AppFooter-item">© 2017 Vivanda, Inc.</div>
 
       <div className="AppFooter-item AppFooter-iconsList">
-        <IconLink to="https://twitter.com/myflavorprint">
+        <IconLink to="https://twitter.com/Vivanda_Inc">
           <svg className="AppFooter-link-icon AppFooter-link-icon--tw">
             <use xlinkHref={iconTwitter} />
           </svg>
@@ -55,7 +57,8 @@ const AppFooter = () =>
 
 TextLink.propTypes = {
   children: PropTypes.string.isRequired,
-  to: PropTypes.string.isRequired,
+  to: PropTypes.string,
+  href: PropTypes.string,
 };
 
 IconLink.propTypes = {
