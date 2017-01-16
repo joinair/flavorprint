@@ -8,12 +8,11 @@ import './styles.css';
 const StaticContent = () => (
   <div className="FlavorPrintStaticAbout">
     <Content>
-      <h1>What makes up a FlavorPrint?</h1>
+      <h1>What makes up your FlavorPrint?</h1>
 
       <div className="FlavorPrintStaticAbout-centered">
-        FlavorPrint is a sophisticated taste machine.
-        Compiling data from 33 flavors, 9 textures and each flavor{"'"}s intensity,
-        it represents the taste profile of a recipe, product or you!
+      FlavorPrint, understands your unique taste palate based on the way you interact with food. Your personal FlavorPrint is made up of 33 flavors that will help you recognize in the food you love. Each person, product, recipe and food item has a FlavorPrint. By matching these together,       FlavorPrint finds recommendations for new recipes, products and flavors just for you. 
+        Come an explore your FlavorPrint!
       </div>
 
       <h2>Flavor Blending</h2>
