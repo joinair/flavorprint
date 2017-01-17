@@ -22,7 +22,8 @@
 
   "contributors": [
     "Sergey Laptev <sergey.laptev@whisk.co.uk>",
-    "Max Kostuchenko <max.kostuchenko@whisk.co.uk>"
+    "Max Kostuchenko <max.kostuchenko@whisk.co.uk>",
+	"Ryan Kaltreider <ryan@vivanda.com>"
   ],
 
   "engines": {
@@ -82,6 +83,7 @@
     "babel-polyfill": "6.13.0",
     "body-parser": "1.15.2",
     "classnames": "2.2.5",
+	"compression" : "1.6.2",
     "cookie-parser": "1.4.3",
     "express": "4.14.0",
     "fuse.js": "2.5.0",

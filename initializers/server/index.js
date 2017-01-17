@@ -19,6 +19,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import morgan from 'morgan';
 import cookieParser from 'cookie-parser';
+import compression from 'compression';
 
 if (cluster.isMaster) {
   cluster.fork();
@@ -73,6 +74,7 @@ if (cluster.isMaster) {
 
   application.use(morgan('combined'));
   application.use(cookieParser());
+  application.use(compression());
   application.use(sessionMiddleware);
 
   if (process.env.NODE_ENV === 'development') {
