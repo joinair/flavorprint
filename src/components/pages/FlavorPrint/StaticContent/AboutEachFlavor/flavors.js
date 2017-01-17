@@ -4,7 +4,7 @@ export default [
     title: 'Cooling',
     description: 'Cooling flavors, like with mint, feature a bright, fresh, sometimes inense sensation felt in your mouth and nose.',
     color: 'rgb(0, 185, 203)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_cooling.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Cooling.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Cooling_2_Dill_Mint_Ice_Cubes.jpg',
       '/assets/images/static-images/flavor-education/Cooling_6_Double_Chocolate_Chunk_Mint_Cookie.jpg',
@@ -30,7 +30,7 @@ export default [
     title: 'Licorice',
     description: 'The sharp, fruity aroma and flavor associated with black licorice is also found in fennel, anise seed, basil, and is the distinct character of ouzo & sambuca.',
     color: 'rgb(0, 0, 0)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_licorice.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Licorice.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Licorice_1_Sweet_Basil_and_Oregano_Bruschetta_Chicken.jpg',
       '/assets/images/static-images/flavor-education/Licorice_5_Easy_Homemade_Root_Beer.jpg',
@@ -56,7 +56,7 @@ export default [
     title: 'Woody',
     description: 'Woody refers to the light yet, distinct aroma and flavor associated with raw apples, cinnamon sticks, and freshly-cut cedar, oak and apple wood. Found in cedar plank grilled salmon or oak aged chardonnay.',
     color: 'rgb(115, 80, 45)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_woody.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Woody.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Woody_2_Dukkah_Crusted_Fish_with_Broccoli_Red_Lentils.jpg',
       '/assets/images/static-images/flavor-education/Woody_LemonChicken.jpg',
@@ -82,7 +82,7 @@ export default [
     title: 'Earthy',
     description: 'Earthy flavors are most reminiscent of foods such as mushrooms, potatoes and some red wines; thick, rich and full-bodied.',
     color: 'rgb(96, 38, 44)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_earthy.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Earthy.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Earthy_2_Buttery_Grilled_Mushrooms.jpg',
       '/assets/images/static-images/flavor-education/Earthy_5_Toasted_Onion_Garlic_Potatoes.jpg',
@@ -108,7 +108,7 @@ export default [
     title: 'Vegetable',
     description: 'Vegetable is a distinct aroma and flavor that ranges in intensity among different vegetables such as: carrots, broccoli, corn and cabbage.',
     color: 'rgb(0, 155, 75)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_vegetable.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Vegetable.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Vegetable_2_Eggplant-and-Goat-Cheese-Torte-with-Honey-Harissa-Sauce.jpg',
       '/assets/images/static-images/flavor-education/Vegetable_AsparagusMushroomQuesadillas.jpg',
@@ -134,7 +134,7 @@ export default [
     title: 'Tomatoey',
     description: 'Tomatoey referes to the tangy, bright flavor of dishes that contain fresh, cooked or sun-dried tomato as a central ingredient.',
     color: 'rgb(227, 74, 39)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_tomatoey.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Tomatoey.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Tomatoey_2_Tomato_Soup_with_Grilled_Cheese_Croutons.jpg',
       '/assets/images/static-images/flavor-education/Tomatoey_5_Easy_Meat_Lasagna.jpg',
@@ -160,7 +160,7 @@ export default [
     title: 'Floral',
     description: 'Sweet and aromatic, floral notes range from light scents of rose to stronger perfumes of lavender. It is commonly associated with herbal teas, honey and essential oils.',
     color: 'rgb(188, 169, 210)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_floral.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Floral.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Floral_2_Creamy_Carrot_Soup_with_Toasted_Cumin_and_Coriander.jpg',
       '/assets/images/static-images/flavor-education/Floral_4_Lemon_Ginger_Blueberry_Muffins.jpg',
@@ -186,7 +186,7 @@ export default [
     title: 'Fruity',
     description: 'While not citrusy, fruity flavors combine the soft, bright and tart notes associated with ripe berries, apples and pears.',
     color: 'rgb(166, 56, 133)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_fruity.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Fruity.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Fruity_5_Carrot_Cake.jpg',
       '/assets/images/static-images/flavor-education/Fruity_6_Beef_Bourguignon.jpg',
@@ -212,7 +212,7 @@ export default [
     title: 'Citrusy',
     description: 'A little sweet and a little sour, citrusy flavor includes lemon, lime, grapefruit and orange.',
     color: 'rgb(209, 213, 47)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_citrusy.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Citrusy.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Citrusy_3_Honey_Pineapple_Chicken.jpg',
       '/assets/images/static-images/flavor-education/Citrusy_7_Rack_of_Lamb_with_Quinoa_Hazelnut_Crust_and_Mint_Pesto_Gimme_Some_Oven.jpg',
@@ -238,7 +238,7 @@ export default [
     title: 'Sour',
     description: 'Whether you call it tart or biting, sour is one of the five basic tastes we experience when eating acidic foods such as citrus fruits and vinegars.',
     color: 'rgb(255, 231, 16)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_sour.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Sour.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Sour_3_Thai_Ginger_Rubbed_Grilled_Salmon_with_Green_Curry_Sauce.jpg',
       '/assets/images/static-images/flavor-education/Sour_6_Hibiscus_Ancho_Sorbet_Gimme_Some_Oven.jpg',
@@ -264,7 +264,7 @@ export default [
     title: 'Tropical',
     description: 'Bright and mostly sweet, Tropical flavors can have a sour bite as experienced with fresh pineapple. Tropical flavors range from fruits like coconut, guava and papaya to mango salsa and banana bread.',
     color: 'rgb(239, 86, 159)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_tropical.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Tropical.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Tropical_PineappleCoconutCooler.jpg',
       '/assets/images/static-images/flavor-education/Tropical_5_Rum_Ba_Fruit_Skewers.jpg',
@@ -290,7 +290,7 @@ export default [
     title: 'Vanilla',
     description: 'Though associated with sweet flavors can be reminiscent of both marshmallow or bourbon, vanilla complements many desserts and sweet, baked dishes.',
     color: 'rgb(200, 191, 161)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_vanilla.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Vanilla.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Vanilla_2_Quick_and_Easy_French_Toast.jpg',
       '/assets/images/static-images/flavor-education/Vanilla_6_Red_Tea_Smoked_Sea_Bass.jpg',
@@ -316,7 +316,7 @@ export default [
     title: 'Sweet',
     description: 'This sugary and mouth-watering basic taste is one of the more universally loved. It\'s commonly associated with honey soaked desserts, maple syrup drenched pancakes and frosting.',
     color: 'rgb(245, 156, 175)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_sweet.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Sweet.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Sweet_1_Citrus_Salmon_with_Orange_Relish.jpg',
       '/assets/images/static-images/flavor-education/Sweet_5_Raspberry_Brownies.jpg',
@@ -394,7 +394,7 @@ export default [
     title: 'Nutty',
     description: 'The unique flavor and aroma associated with all types of nuts, from creamy macadamia to fruity almonds. Nutty flavors are also associated with foods like sesame seeds, aged Gouda cheese, amaretto, and whole wheat bread.',
     color: 'rgb(182, 164, 102)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_nutty.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Nutty.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Nutty_3_Toasted_Sesame_Balsamic_Asparagus.jpg',
       '/assets/images/static-images/flavor-education/Nutty_6_Sesame_Ginger_Chicken_and_Asian_Slaw.jpg',
@@ -420,7 +420,7 @@ export default [
     title: 'Yeasty',
     description: 'Yeasty flavor is best described by the aroma that fills the air when fresh bread is baked or the aroma of a full-bodied beer.',
     color: 'rgb(146, 140, 116)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_yeasty.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Yeasty.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Yeasty_3_Herb_Mushroom_and_Wild_Rice_Stuffing.jpg',
       '/assets/images/static-images/flavor-education/Yeasty_5_Lemon_Ricotta_Pancakes.jpg',
@@ -446,7 +446,7 @@ export default [
     title: 'Starchy',
     description: 'Starchy flavors are subtle in corn and white rice but stronger in boiled beans, potatoes and pasta. Though perceived as bland and sometimes difficult to detect, they make great carriers for sauces.',
     color: 'rgb(199, 200, 202)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_starchy.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Starchy.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Starchy_1_Tuscan_Pasta.jpg',
       '/assets/images/static-images/flavor-education/Starchy_4_Easier_Than_Pear_Pie.jpg',
@@ -472,7 +472,7 @@ export default [
     title: 'Caramelized',
     description: '\n                                    As sugar caramelizes, it takes on a smooth, buttery sweet flavor, much like you\'ll find in toffee or caramel sauce.\n                                ',
     color: 'rgb(208, 128, 55)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_caramelized.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Caramelized.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Caramelized_1_Maple_Glaze_Donuts.jpg',
       '/assets/images/static-images/flavor-education/Caramelized_5_Caramel_Almond_Popcorn.jpg',
@@ -498,7 +498,7 @@ export default [
     title: 'Buttery',
     description: '\n                                    Buttery flavor is a mild, soft and slightly sweet, fatty flavor common foods other than butter like olive oil and pistachios.\n                                ',
     color: 'rgb(254, 243, 160)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_buttery.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Buttery.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Buttery_3_Fiery_Kickoff_wings.jpg',
       '/assets/images/static-images/flavor-education/Buttery_6_Crostini_with_Hummus_and_Roasted_Red_Peppers.jpg',
@@ -602,7 +602,7 @@ export default [
     title: 'Smoky',
     description: 'With a deep, chargrilled aroma, smoky flavors can bring to mind touches of several flavors— pecan or apple wood in bacon, or stronger notes of oak, mesquite, and hickory in whiskeys and BBQ ribs.',
     color: 'rgb(185, 187, 188)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_smoky.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Smoky.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/Smoky_3_Grilled_Oysters_with_Grapefruit_Red_Pepper_Relish.jpg',
       '/assets/images/static-images/flavor-education/Smoky_5_Louisiana_Creole_Gumbo.jpg',
@@ -654,7 +654,7 @@ export default [
     title: 'Pungent Spice',
     description: 'Pungent spice refers to the sharp almost stinging sensation felt throughout your nose and mouth when enjoying wasabi, coarse grain mustard or horseradish. They may even make your eyes water just a bit.',
     color: 'rgb(178, 165, 21)',
-    mark: '/assets/images/static-images/flavor-education/FPMark_pungent-spice.jpg',
+    mark: '/assets/images/static-images/flavor-education/FPMark_Pungent-spice.jpg',
     recipeImages: [
       '/assets/images/static-images/flavor-education/PungentSpice_3_Gingered_Cranberry_Chutney_Eats_Well_with_Others.jpg',
       '/assets/images/static-images/flavor-education/PungentSpice_ChipotleChickenTacos.jpg',
