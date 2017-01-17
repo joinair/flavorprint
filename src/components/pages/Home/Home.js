@@ -150,7 +150,7 @@ class Taste extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(this.tick, 5000);
+    this.interval = setInterval(this.tick, 7000);
   }
 
   componentWillUnmount() {
@@ -176,6 +176,7 @@ class Taste extends Component {
           })
         }
       >
+        <div className="Home-taste-content-small" />
         <div className="Home-taste-content-small" />
         <div className="Home-taste-content-small">
           {percent}
