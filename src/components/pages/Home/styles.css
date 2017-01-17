@@ -192,7 +192,7 @@
   }
 
   @descendent taste {
-    background: url('/images/static-images/home-taste-bg.jpg');
+    background: url('/images/static-images/home-taste-bg-min.jpg');
     background-position: center center;
     background-size: cover;
     position: relative;
@@ -204,7 +204,7 @@
     text-shadow: 0 1px 3px rgba(0,0,0,.65);
 
     @media (--retina) {
-      background-image: url('/images/static-images/home-taste-bg@2x.jpg');
+      background-image: url('/images/static-images/home-taste-bg@2x-min.jpg');
     }
 
     @descendent content {
