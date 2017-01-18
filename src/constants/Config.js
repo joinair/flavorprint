@@ -34,8 +34,8 @@ export const facebook = {
 
 export const google = {
   analyticsId: global.__APP_ENV__ === 'production'
-    ? 'UA-XXXXXXXX-7'
-    : 'UA-XXXXXXXX-8',
+    ? 'UA-47558985-1'
+    : 'UA-47558985-2',
 
   id: global.__APP_ENV__ === 'production'
     ? '474785211570-go3ar3sjrubdh2dg9c35hmmdq2e4rguv.apps.googleusercontent.com'
