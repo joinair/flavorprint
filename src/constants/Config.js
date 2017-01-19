@@ -1,5 +1,5 @@
 
-const DOMAIN = global.__APP_DOMAIN__;
+const DOMAIN = global.__APP_DOMAIN__ || 'localhost';
 
 const hostPort = host =>
   typeof global.__PORT__ === 'undefined'
@@ -12,9 +12,7 @@ const protocol =
     : document.location.protocol;
 
 export const cookie = {
-  domain: global.__APP_ENV__ === 'production'
-    ? '.' + DOMAIN
-    : 'localhost',
+  domain: '.' + DOMAIN,
 
   secure:
     process.env.NODE_ENV !== 'development' &&
@@ -22,7 +20,7 @@ export const cookie = {
 };
 
 export const domain = {
-  development: `http://${hostPort('localhost')}`,
+  development: `http://${hostPort(DOMAIN)}`,
   production: `${protocol}//${DOMAIN}`,
 }[global.__APP_ENV__];
 
