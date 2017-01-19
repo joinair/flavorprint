@@ -15,15 +15,8 @@ export const SESSION_SECRET =
     : '9ad18224bf31b2a2e91403b0170a3e240d48e4d0ea2a1';
 
 export const OAUTH_SECRET = {
-  FACEBOOK:
-    global.__APP_ENV__ === 'production'
-      ? '8c7a58be0a219e115418b7a82a923b7a'
-      : 'd88f7ff68604a04efceb44818af85323',
-
-  GOOGLE:
-    global.__APP_ENV__ === 'production'
-      ? 'z2F2usww9n0640Q3AZ51MmSS'
-      : '2C0lYkJkVJbLa31AE5KpXnxu',
+  FACEBOOK: '8c7a58be0a219e115418b7a82a923b7a',
+  GOOGLE: 'z2F2usww9n0640Q3AZ51MmSS',
 };
 
 export default {
