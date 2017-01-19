@@ -26,9 +26,7 @@ export const domain = {
 }[global.__APP_ENV__];
 
 export const facebook = {
-  id: global.__APP_ENV__ === 'production'
-    ? '949513865124484'
-    : '1785132991698406',
+  id: '949513865124484'
 };
 
 export const google = {
@@ -36,9 +34,7 @@ export const google = {
     ? 'UA-47558985-1'
     : 'UA-47558985-2',
 
-  id: global.__APP_ENV__ === 'production'
-    ? '474785211570-go3ar3sjrubdh2dg9c35hmmdq2e4rguv.apps.googleusercontent.com'
-    : '838731358549-dalr15he82j6vj19j3r8454occqcb6o9.apps.googleusercontent.com',
+  id: '474785211570-go3ar3sjrubdh2dg9c35hmmdq2e4rguv.apps.googleusercontent.com'
 };
 
 export default {
