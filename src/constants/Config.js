@@ -6,21 +6,22 @@ const hostPort = host =>
     ? host
     : `${host}:${global.__PORT__}`;
 
+const defaultProtocol =
+  process.env.NODE_ENV === 'development'
+    ? 'http:' : 'https:';
+
 const protocol =
   (global.Platform.OS !== 'browser')
-    ? 'https:'
+    ? defaultProtocol
     : document.location.protocol;
 
 export const cookie = {
   domain: '.' + DOMAIN,
-
-  secure:
-    process.env.NODE_ENV !== 'development' &&
-    protocol === 'https:',
+  secure: protocol === 'https:',
 };
 
 export const domain = {
-  development: `http://${hostPort(DOMAIN)}`,
+  development: `${protocol}//${hostPort(DOMAIN)}`,
   production: `${protocol}//${DOMAIN}`,
 }[global.__APP_ENV__];
 
